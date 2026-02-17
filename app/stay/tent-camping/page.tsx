@@ -4,17 +4,19 @@ import { SectionHeader, BookingCTA, Breadcrumbs, Check } from '@/components/ui';
 import { SITE } from '@/data/site';
 import { ExternalLink } from 'lucide-react';
 
-export const metadata: Metadata = seo({ title: 'Tent Camping Near Mount Rushmore — Black Hills Campground', description: 'Scenic tent camping under Ponderosa Pines near Mount Rushmore. Shaded sites, fire pits, clean bathhouses from $35/night.', path: '/stay/tent-camping' });
+export const metadata: Metadata = seo({ title: 'Tent Camping Near Mount Rushmore — Black Hills Campground', description: 'Scenic tent camping under Ponderosa Pines near Mount Rushmore. From $35/night.', path: '/stay/tent-camping' });
 
 export default function TentPage() {
   return (
     <>
       <Breadcrumbs items={[{ label: 'Stay', href: '/stay' }, { label: 'Tent Camping' }]} />
-      <section className="relative py-20 md:py-28 bg-brand-navy text-white">
-        <div className="max-w-5xl mx-auto px-4 text-center">
+      <section className="relative py-20 md:py-28 bg-brand-navy text-white overflow-hidden">
+        <div className="absolute inset-0 bg-cover bg-center opacity-20" style={{ backgroundImage: "url('/images/Wooded-Tent-Area.webp')" }} />
+        <div className="absolute inset-0 bg-hero-gradient" />
+        <div className="relative max-w-5xl mx-auto px-4 text-center z-10">
           <span className="badge-gold mb-6 inline-block !bg-brand-gold/20 !text-brand-gold-light">Camping Near Mount Rushmore</span>
           <h1 className="mb-6">Tent Camping in the Black Hills</h1>
-          <p className="text-lg text-white/70 max-w-3xl mx-auto">Wake up to mountain views and fresh pine air with full access to all resort amenities.</p>
+          <p className="text-lg text-white/70 max-w-3xl mx-auto">Wake up to mountain views and fresh pine air.</p>
         </div>
       </section>
       <section className="section-pad bg-surface-primary">
@@ -30,7 +32,7 @@ export default function TentPage() {
           </div>
           <div className="max-w-2xl mx-auto">
             <SectionHeader badge="Pricing" title="Tent Site Rates" />
-            <div className="card-lodge p-8">
+            <div className="card-premium p-8">
               <div className="flex items-center justify-between mb-6">
                 <div><h3 className="text-xl">Standard Tent Camping</h3><p className="text-sm text-brand-stone">Based on 2 people</p></div>
                 <span className="font-display text-4xl text-brand-gold">$35<span className="text-lg">/night</span></span>

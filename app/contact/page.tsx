@@ -26,44 +26,31 @@ export default function ContactPage() {
   return (
     <>
       <Breadcrumbs items={[{ label: 'Contact' }]} />
-      <section className="relative py-16 md:py-24 bg-brand-navy text-white">
-        <div className="max-w-5xl mx-auto px-4 text-center">
+      <section className="relative py-16 md:py-24 bg-brand-navy text-white overflow-hidden">
+        <div className="absolute inset-0 animate-shimmer" />
+        <div className="relative max-w-5xl mx-auto px-4 text-center z-10">
           <h1 className="mb-4">Contact Us</h1>
           <p className="text-lg text-white/70">We are here for you&hellip;</p>
         </div>
       </section>
-
-      {/* Contact cards */}
       <section className="py-12 bg-surface-primary">
         <div className="max-w-5xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="card-lodge p-8 text-center">
-            <div className="w-14 h-14 bg-brand-gold/10 rounded-full flex items-center justify-center mx-auto mb-4">
-              <MapPin className="w-7 h-7 text-brand-gold" />
+          {[
+            { icon: MapPin, title: 'Location', content: '21137 Brimstone Place\nSturgis, SD 57785', action: 'Get Directions', href: SITE.maps },
+            { icon: Mail, title: 'Email', content: SITE.email, action: 'Send Email', href: `mailto:${SITE.email}` },
+            { icon: Phone, title: 'Phone', content: SITE.phone, action: 'Call Now', href: `tel:${SITE.phoneTel}` },
+          ].map((card, i) => (
+            <div key={i} className="card-lodge p-8 text-center">
+              <div className="w-14 h-14 bg-brand-gold/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <card.icon className="w-7 h-7 text-brand-gold" />
+              </div>
+              <h3 className="text-lg mb-2">{card.title}</h3>
+              <p className="text-brand-stone text-sm mb-4 whitespace-pre-line">{card.content}</p>
+              <a href={card.href} target={card.href.startsWith('http') ? '_blank' : undefined} rel="noopener noreferrer" className="btn-gold text-sm">{card.action}</a>
             </div>
-            <h3 className="text-lg mb-2">Location</h3>
-            <p className="text-brand-stone text-sm mb-4">21137 Brimstone Place<br />Sturgis, SD 57785</p>
-            <a href={SITE.maps} target="_blank" rel="noopener noreferrer" className="btn-gold text-sm">Get Directions</a>
-          </div>
-          <div className="card-lodge p-8 text-center">
-            <div className="w-14 h-14 bg-brand-gold/10 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Mail className="w-7 h-7 text-brand-gold" />
-            </div>
-            <h3 className="text-lg mb-2">Email</h3>
-            <p className="text-brand-stone text-sm mb-4">{SITE.email}</p>
-            <a href={`mailto:${SITE.email}`} className="btn-gold text-sm">Send Email</a>
-          </div>
-          <div className="card-lodge p-8 text-center">
-            <div className="w-14 h-14 bg-brand-gold/10 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Phone className="w-7 h-7 text-brand-gold" />
-            </div>
-            <h3 className="text-lg mb-2">Phone</h3>
-            <p className="text-brand-stone text-sm mb-4">{SITE.phone}</p>
-            <a href={`tel:${SITE.phoneTel}`} className="btn-gold text-sm">Call Now</a>
-          </div>
+          ))}
         </div>
       </section>
-
-      {/* Form + Map */}
       <section className="section-pad bg-surface-secondary">
         <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12">
           <div>
@@ -91,7 +78,7 @@ export default function ContactPage() {
                   </select>
                 </div>
                 <textarea rows={5} required placeholder="Message *" value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} className="w-full px-4 py-3 rounded-lg border border-surface-muted bg-white focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 outline-none text-sm resize-none transition-all" aria-label="Message" />
-                {status === 'error' && <p className="text-red-500 text-sm">Something went wrong. Please call us directly at {SITE.phone}.</p>}
+                {status === 'error' && <p className="text-red-500 text-sm">Something went wrong. Please call us at {SITE.phone}.</p>}
                 <button onClick={handleSubmit} disabled={status === 'loading'} className="btn-gold">
                   {status === 'loading' ? <><Loader2 className="w-4 h-4 mr-2 animate-spin" />Sending...</> : <><Send className="w-4 h-4 mr-2" />Send Message</>}
                 </button>

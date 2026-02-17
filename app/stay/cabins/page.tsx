@@ -4,17 +4,19 @@ import { SectionHeader, BookingCTA, Breadcrumbs } from '@/components/ui';
 import { SITE, CABINS } from '@/data/site';
 import { ExternalLink, Users } from 'lucide-react';
 
-export const metadata: Metadata = seo({ title: 'Cabins Near Mount Rushmore — Presidential Cabin Rentals', description: 'Presidential cabins near Mount Rushmore sleeping 2-10 guests. Economy to luxury from $95/night.', path: '/stay/cabins' });
+export const metadata: Metadata = seo({ title: 'Cabins Near Mount Rushmore — Presidential Cabin Rentals', description: 'Presidential cabins near Mount Rushmore sleeping 2-10 guests. From $95/night.', path: '/stay/cabins' });
 
 export default function CabinsPage() {
   return (
     <>
       <Breadcrumbs items={[{ label: 'Stay', href: '/stay' }, { label: 'Cabins' }]} />
-      <section className="relative py-20 md:py-28 bg-brand-navy text-white">
-        <div className="max-w-5xl mx-auto px-4 text-center">
+      <section className="relative py-20 md:py-28 bg-brand-navy text-white overflow-hidden">
+        <div className="absolute inset-0 bg-cover bg-center opacity-20" style={{ backgroundImage: "url('/images/cabin-9_800.jpg')" }} />
+        <div className="absolute inset-0 bg-hero-gradient" />
+        <div className="relative max-w-5xl mx-auto px-4 text-center z-10">
           <span className="badge-gold mb-6 inline-block !bg-brand-gold/20 !text-brand-gold-light">Cabins Near Mount Rushmore</span>
           <h1 className="mb-6">Presidential Cabin Collection</h1>
-          <p className="text-lg text-white/70 max-w-3xl mx-auto">Each cabin named after a US President &mdash; from economy to luxury suites with full kitchens, king beds, and private decks.</p>
+          <p className="text-lg text-white/70 max-w-3xl mx-auto">Each cabin named after a US President &mdash; from economy to luxury suites.</p>
         </div>
       </section>
       <section className="section-pad bg-surface-primary">
@@ -24,7 +26,7 @@ export default function CabinsPage() {
               <SectionHeader title={cat.cat} />
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {cat.items.map((c, i) => (
-                  <div key={i} className="card-lodge">
+                  <div key={i} className="card-premium">
                     <div className="aspect-[4/3] bg-surface-secondary relative">
                       <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/50 to-transparent z-10" />
                       <div className="absolute bottom-3 left-3 z-20">
@@ -50,10 +52,6 @@ export default function CabinsPage() {
               </div>
             </div>
           ))}
-          <div className="bg-red-50 border border-red-200 rounded-xl p-5 mt-8">
-            <h4 className="text-red-800 font-bold mb-2">IMPORTANT: NO OPEN FIRES</h4>
-            <p className="text-red-700 text-sm">Open campfires are prohibited by law. NO fire pits, ground, or wood fires allowed. Charcoal grills and propane campfires are OK (unless burn ban is in effect). Propane campfires available for rent at our camp store.</p>
-          </div>
         </div>
       </section>
       <BookingCTA title="Find Your Perfect Cabin" />

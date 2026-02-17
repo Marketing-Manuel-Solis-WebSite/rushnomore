@@ -11,11 +11,7 @@ export interface ContactFormData {
 
 export async function submitContactForm(data: ContactFormData) {
   try {
-    const ref = await addDoc(collection(db, 'contacts'), {
-      ...data,
-      read: false,
-      createdAt: Timestamp.now(),
-    });
+    const ref = await addDoc(collection(db, 'contacts'), { ...data, read: false, createdAt: Timestamp.now() });
     return { success: true, id: ref.id };
   } catch (e) {
     console.error('Contact error:', e);
@@ -25,11 +21,7 @@ export async function submitContactForm(data: ContactFormData) {
 
 export async function submitReservation(data: Record<string, unknown>) {
   try {
-    const ref = await addDoc(collection(db, 'reservations'), {
-      ...data,
-      status: 'pending',
-      createdAt: Timestamp.now(),
-    });
+    const ref = await addDoc(collection(db, 'reservations'), { ...data, status: 'pending', createdAt: Timestamp.now() });
     return { success: true, id: ref.id };
   } catch (e) {
     console.error('Reservation error:', e);
@@ -37,24 +29,8 @@ export async function submitReservation(data: Record<string, unknown>) {
   }
 }
 
-export async function submitEventInquiry(data: Record<string, unknown>) {
-  try {
-    const ref = await addDoc(collection(db, 'eventInquiries'), {
-      ...data,
-      status: 'new',
-      createdAt: Timestamp.now(),
-    });
-    return { success: true, id: ref.id };
-  } catch (e) {
-    console.error('Event inquiry error:', e);
-    return { success: false, error: 'Failed to submit.' };
-  }
-}
-
 declare global {
-  interface Window {
-    gtag?: (...args: unknown[]) => void;
-  }
+  interface Window { gtag?: (...args: unknown[]) => void; }
 }
 
 export function trackEvent(name: string, params?: Record<string, unknown>) {

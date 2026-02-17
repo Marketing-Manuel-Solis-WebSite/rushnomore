@@ -17,9 +17,7 @@ const db = getFirestore(app);
 
 let analytics: ReturnType<typeof getAnalytics> | null = null;
 if (typeof window !== 'undefined') {
-  isSupported().then((yes) => {
-    if (yes) analytics = getAnalytics(app);
-  });
+  isSupported().then((yes) => { if (yes) analytics = getAnalytics(app); });
 }
 
 export { app, db, analytics };

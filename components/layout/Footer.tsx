@@ -11,10 +11,11 @@ const cols = {
     { label: 'Park Map', href: '/map' },
   ],
   Explore: [
-    { label: 'Mount Rushmore', href: '/mount-rushmore' },
-    { label: 'Black Hills Guide', href: '/black-hills' },
-    { label: 'Itineraries', href: '/itineraries' },
-    { label: 'Deadwood', href: '/attractions/deadwood' },
+    { label: 'All Attractions', href: '/explore' },
+    { label: 'Mount Rushmore', href: '/explore#mount-rushmore' },
+    { label: 'Black Hills Guide', href: '/explore#black-hills' },
+    { label: 'Itineraries', href: '/explore#black-hills' },
+    { label: 'Deadwood', href: '/explore#deadwood' },
   ],
   Events: [
     { label: 'Sturgis Rally', href: '/events/sturgis-rally' },
@@ -41,64 +42,36 @@ export function Footer() {
               <span className="text-white font-display text-xl font-bold">R</span>
             </div>
             <h3 className="font-display text-xl mb-1">{SITE.short}</h3>
-            <p className="text-xs uppercase tracking-[0.15em] text-white/50 mb-4">
-              RV Resort & Campground
-            </p>
+            <p className="text-xs uppercase tracking-[0.15em] text-white/50 mb-4">RV Resort & Campground</p>
             <div className="space-y-2 text-sm text-white/70">
-              <div className="flex items-start gap-2">
-                <MapPin className="w-4 h-4 text-brand-gold mt-0.5 flex-shrink-0" />
-                {SITE.address}
-              </div>
-              <a href={`tel:${SITE.phoneTel}`} className="flex items-center gap-2 hover:text-white transition-colors">
-                <Phone className="w-4 h-4 text-brand-gold" />
-                {SITE.phone}
-              </a>
-              <a href={`mailto:${SITE.email}`} className="flex items-center gap-2 hover:text-white transition-colors">
-                <Mail className="w-4 h-4 text-brand-gold" />
-                {SITE.email}
-              </a>
+              <div className="flex items-start gap-2"><MapPin className="w-4 h-4 text-brand-gold mt-0.5 flex-shrink-0" />{SITE.address}</div>
+              <a href={`tel:${SITE.phoneTel}`} className="flex items-center gap-2 hover:text-white transition-colors"><Phone className="w-4 h-4 text-brand-gold" />{SITE.phone}</a>
+              <a href={`mailto:${SITE.email}`} className="flex items-center gap-2 hover:text-white transition-colors"><Mail className="w-4 h-4 text-brand-gold" />{SITE.email}</a>
             </div>
           </div>
           {Object.entries(cols).map(([title, items]) => (
             <div key={title}>
-              <h4 className="text-xs uppercase tracking-[0.15em] text-brand-gold mb-4 font-bold">
-                {title}
-              </h4>
+              <h4 className="text-xs uppercase tracking-[0.15em] text-brand-gold mb-4 font-bold">{title}</h4>
               <ul className="space-y-2.5">
                 {items.map((l) => (
-                  <li key={l.href}>
-                    <Link href={l.href} className="text-sm text-white/60 hover:text-white transition-colors">
-                      {l.label}
-                    </Link>
-                  </li>
+                  <li key={l.href}><Link href={l.href} className="text-sm text-white/60 hover:text-white transition-colors">{l.label}</Link></li>
                 ))}
               </ul>
             </div>
           ))}
         </div>
-
-        {/* CTA bar */}
         <div className="glass rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-4 mb-12">
           <div>
             <h3 className="font-display text-xl md:text-2xl mb-1">Ready to Book?</h3>
             <p className="text-white/60 text-sm">Your Black Hills base camp is waiting.</p>
           </div>
           <div className="flex gap-3">
-            <a href={SITE.booking} target="_blank" rel="noopener noreferrer" className="btn-gold">
-              Check Availability
-              <ExternalLink className="w-4 h-4 ml-2" />
-            </a>
-            <a href={`tel:${SITE.phoneTel}`} className="btn-white">
-              <Phone className="w-4 h-4 mr-2" />
-              Call Us
-            </a>
+            <a href={SITE.booking} target="_blank" rel="noopener noreferrer" className="btn-gold">Check Availability <ExternalLink className="w-4 h-4 ml-2" /></a>
+            <a href={`tel:${SITE.phoneTel}`} className="btn-white"><Phone className="w-4 h-4 mr-2" />Call Us</a>
           </div>
         </div>
-
         <div className="border-t border-white/10 pt-6 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-xs text-white/40">
-            &copy; 2026 {SITE.name}. All rights reserved.
-          </p>
+          <p className="text-xs text-white/40">&copy; 2026 {SITE.name}. All rights reserved.</p>
           <div className="flex gap-4 text-xs text-white/40">
             <Link href="/policies" className="hover:text-white/60 transition-colors">Policies</Link>
             <Link href="/legal" className="hover:text-white/60 transition-colors">Legal</Link>

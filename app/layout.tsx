@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://www.rushnomore.com'),
   title: { default: 'Rush No More — Camping & RV Park Near Mount Rushmore, Black Hills SD', template: '%s | Rush No More' },
   description: 'Top-rated RV resort, cabins & tent camping near Mount Rushmore in the Black Hills. Pool, hot tubs, beer garden & Sturgis Rally HQ.',
-  keywords: ['camping near mount rushmore','rv park near mount rushmore','cabins near mount rushmore','black hills camping','sturgis rally campground'],
+  keywords: ['camping near mount rushmore', 'rv park near mount rushmore', 'cabins near mount rushmore', 'black hills camping', 'sturgis rally campground'],
   robots: { index: true, follow: true },
 };
 

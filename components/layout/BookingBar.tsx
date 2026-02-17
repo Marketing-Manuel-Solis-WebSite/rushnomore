@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { SITE } from '@/data/site';
 import { Phone, ExternalLink } from 'lucide-react';
 
@@ -14,38 +15,33 @@ export function BookingBar() {
   }, []);
 
   return (
-    <div
-      className={`fixed bottom-0 left-0 right-0 z-50 bg-brand-navy/95 backdrop-blur-md border-t border-white/10 py-3 px-4 transition-transform duration-500 ${
-        show ? 'translate-y-0' : 'translate-y-full'
-      }`}
-    >
-      <div className="max-w-7xl mx-auto flex items-center justify-between">
-        <div className="hidden sm:block">
-          <p className="text-white font-display text-lg">Your Black Hills adventure starts here</p>
-          <p className="text-white/50 text-xs uppercase tracking-wider">
-            From $35/night &middot; RV &middot; Cabins &middot; Tent
-          </p>
-        </div>
-        <div className="flex items-center gap-3 w-full sm:w-auto">
-          <a
-            href={SITE.booking}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-gold flex-1 sm:flex-initial text-center text-sm"
-          >
-            Check Availability
-            <ExternalLink className="w-3.5 h-3.5 ml-1.5 inline" />
-          </a>
-          <a
-            href={`tel:${SITE.phoneTel}`}
-            className="flex items-center gap-2 px-4 py-3 text-white/80 hover:text-white border border-white/20 rounded-lg transition-colors text-sm"
-          >
-            <Phone className="w-4 h-4" />
-            <span className="hidden md:inline">{SITE.phone}</span>
-            <span className="md:hidden">Call</span>
-          </a>
-        </div>
-      </div>
-    </div>
+    <AnimatePresence>
+      {show && (
+        <motion.div
+          className="fixed bottom-0 left-0 right-0 z-50 bg-brand-navy/95 backdrop-blur-md border-t border-white/10 py-3 px-4"
+          initial={{ y: 100 }}
+          animate={{ y: 0 }}
+          exit={{ y: 100 }}
+          transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <div className="max-w-7xl mx-auto flex items-center justify-between">
+            <div className="hidden sm:block">
+              <p className="text-white font-display text-lg">Your Black Hills adventure starts here</p>
+              <p className="text-white/50 text-xs uppercase tracking-wider">From $35/night &middot; RV &middot; Cabins &middot; Tent</p>
+            </div>
+            <div className="flex items-center gap-3 w-full sm:w-auto">
+              <a href={SITE.booking} target="_blank" rel="noopener noreferrer" className="btn-gold flex-1 sm:flex-initial text-center text-sm">
+                Check Availability <ExternalLink className="w-3.5 h-3.5 ml-1.5 inline" />
+              </a>
+              <a href={`tel:${SITE.phoneTel}`} className="flex items-center gap-2 px-4 py-3 text-white/80 hover:text-white border border-white/20 rounded-lg transition-colors text-sm">
+                <Phone className="w-4 h-4" />
+                <span className="hidden md:inline">{SITE.phone}</span>
+                <span className="md:hidden">Call</span>
+              </a>
+            </div>
+          </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 }

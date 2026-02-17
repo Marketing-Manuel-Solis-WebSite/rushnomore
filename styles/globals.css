@@ -23,10 +23,24 @@
 }
 
 @layer components {
+  /* ─── Buttons ─── */
   .btn-gold {
     @apply inline-flex items-center justify-center px-6 py-3 bg-brand-gold text-white font-semibold rounded-lg;
     @apply transition-all duration-300 hover:brightness-110 hover:shadow-gold hover:-translate-y-0.5;
     @apply focus:outline-none focus:ring-2 focus:ring-brand-gold focus:ring-offset-2 active:scale-95;
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-gold::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.5s ease;
+  }
+  .btn-gold:hover::after {
+    transform: translateX(100%);
   }
   .btn-navy {
     @apply inline-flex items-center justify-center px-6 py-3 bg-brand-navy text-white font-semibold rounded-lg;
@@ -40,20 +54,100 @@
     @apply inline-flex items-center justify-center px-6 py-3 bg-white text-brand-navy font-semibold rounded-lg;
     @apply transition-all duration-300 hover:bg-brand-cream hover:shadow-lodge;
   }
+  .btn-outline-light {
+    @apply inline-flex items-center justify-center px-6 py-3 border-2 border-white/30 text-white font-semibold rounded-lg;
+    @apply transition-all duration-300 hover:bg-white hover:text-brand-navy;
+  }
+
+  /* ─── Cards ─── */
   .card-lodge {
     @apply bg-white rounded-2xl shadow-lodge border border-surface-muted/50 overflow-hidden;
     @apply transition-all duration-500 hover:shadow-lodge-lg hover:-translate-y-1;
   }
+  .card-premium {
+    @apply bg-white rounded-2xl shadow-lodge border border-surface-muted/50 overflow-hidden;
+    @apply transition-all duration-700 hover:shadow-gold-lg hover:-translate-y-2;
+    @apply hover:border-brand-gold/30;
+  }
+
+  /* ─── Layout ─── */
   .section-pad { @apply py-20 md:py-28; }
+  .section-pad-sm { @apply py-12 md:py-16; }
+
+  /* ─── Badge ─── */
   .badge-gold {
     @apply inline-flex items-center px-3 py-1 text-xs font-bold uppercase tracking-widest rounded-full;
     @apply bg-brand-gold/10 text-brand-gold;
     font-family: var(--font-josefin), sans-serif;
   }
+  .badge-navy {
+    @apply inline-flex items-center px-3 py-1 text-xs font-bold uppercase tracking-widest rounded-full;
+    @apply bg-brand-navy/10 text-brand-navy;
+    font-family: var(--font-josefin), sans-serif;
+  }
+
+  /* ─── Dividers ─── */
   .divider-gold { @apply w-16 h-1 bg-brand-gold rounded-full; }
+  .divider-gold-wide { @apply w-24 h-1 bg-gold-gradient rounded-full; }
+
+  /* ─── Glass ─── */
+  .glass {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .glass-dark {
+    background: rgba(12, 35, 64, 0.6);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .glass-gold {
+    background: rgba(200, 147, 60, 0.08);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(200, 147, 60, 0.15);
+  }
+
+  /* ─── Hero Overlay ─── */
   .hero-overlay { @apply absolute inset-0 bg-hero-gradient; }
+
+  /* ─── Grain Texture ─── */
+  .grain-overlay::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* ─── Gold line accent ─── */
+  .gold-line-left {
+    position: relative;
+    padding-left: 1.5rem;
+  }
+  .gold-line-left::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(180deg, #C8933C, #DEB068);
+    border-radius: 2px;
+  }
+
+  /* ─── Logo Styling ─── */
+  img[alt*="logo"],
+  img[alt*="Logo"],
+  img[alt*="RushNoMore"] {
+    filter: none !important;
+    -webkit-filter: none !important;
+    opacity: 1 !important;
+    mix-blend-mode: normal !important;
+  }
 }
 
+/* ─── Animations ─── */
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(30px); }
   to { opacity: 1; transform: translateY(0); }
@@ -70,9 +164,25 @@
   0% { background-position: -200% 0; }
   100% { background-position: 200% 0; }
 }
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes pulseGold {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(200,147,60,0.3); }
+  50% { box-shadow: 0 0 20px 4px rgba(200,147,60,0.15); }
+}
 @keyframes countUp {
   from { opacity: 0; transform: scale(0.5); }
   to { opacity: 1; transform: scale(1); }
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
 }
 
 .animate-fade-in-up { animation: fadeInUp 0.7s ease-out forwards; }
@@ -84,19 +194,42 @@
   animation: shimmer 3s infinite;
 }
 .animate-count { animation: countUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
+.animate-marquee { animation: marquee 30s linear infinite; }
+
 .delay-100 { animation-delay: 100ms; }
 .delay-200 { animation-delay: 200ms; }
 .delay-300 { animation-delay: 300ms; }
 .delay-400 { animation-delay: 400ms; }
 .delay-500 { animation-delay: 500ms; }
 
-.glass {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
+/* ─── Scrollbar ─── */
 ::-webkit-scrollbar { width: 8px; }
 ::-webkit-scrollbar-track { background: #F5F0E8; }
 ::-webkit-scrollbar-thumb { background: #8B8178; border-radius: 4px; }
 ::-webkit-scrollbar-thumb:hover { background: #0C2340; }
+
+/* ─── Image hover zoom ─── */
+.img-zoom {
+  overflow: hidden;
+}
+.img-zoom img,
+.img-zoom .img-inner {
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.img-zoom:hover img,
+.img-zoom:hover .img-inner {
+  transform: scale(1.08);
+}
+
+/* ─── Noise texture for sections ─── */
+.texture-noise {
+  position: relative;
+}
+.texture-noise::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.02;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  pointer-events: none;
+}

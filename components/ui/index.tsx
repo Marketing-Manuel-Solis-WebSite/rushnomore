@@ -1,3 +1,5 @@
+'use client';
+
 import Link from 'next/link';
 import { ChevronRight, ExternalLink, Star, Phone } from 'lucide-react';
 import { SITE } from '@/data/site';
@@ -22,7 +24,7 @@ export function SectionHeader({
           {subtitle}
         </p>
       )}
-      <div className={`divider-gold mt-5 ${center ? 'mx-auto' : ''}`} />
+      <div className={`divider-gold-wide mt-5 ${center ? 'mx-auto' : ''}`} />
     </div>
   );
 }
@@ -68,17 +70,13 @@ export function Breadcrumbs({ items }: { items: { label: string; href?: string }
     <nav aria-label="Breadcrumb" className="py-4 px-4 max-w-7xl mx-auto">
       <ol className="flex items-center gap-1.5 text-sm text-brand-stone">
         <li>
-          <Link href="/" className="hover:text-brand-navy transition-colors">
-            Home
-          </Link>
+          <Link href="/" className="hover:text-brand-navy transition-colors">Home</Link>
         </li>
         {items.map((item, i) => (
           <li key={i} className="flex items-center gap-1.5">
             <ChevronRight className="w-3.5 h-3.5" />
             {item.href ? (
-              <Link href={item.href} className="hover:text-brand-navy transition-colors">
-                {item.label}
-              </Link>
+              <Link href={item.href} className="hover:text-brand-navy transition-colors">{item.label}</Link>
             ) : (
               <span className="text-brand-navy font-medium">{item.label}</span>
             )}
@@ -93,10 +91,7 @@ export function StarRating({ rating = 5 }: { rating?: number }) {
   return (
     <div className="flex gap-0.5" aria-label={`${rating} out of 5 stars`}>
       {Array.from({ length: 5 }, (_, i) => (
-        <Star
-          key={i}
-          className={`w-4 h-4 ${i < rating ? 'text-brand-gold fill-brand-gold' : 'text-surface-muted'}`}
-        />
+        <Star key={i} className={`w-4 h-4 ${i < rating ? 'text-brand-gold fill-brand-gold' : 'text-surface-muted'}`} />
       ))}
     </div>
   );
@@ -105,18 +100,31 @@ export function StarRating({ rating = 5 }: { rating?: number }) {
 export function Check({ children }: { children: React.ReactNode }) {
   return (
     <li className="flex items-start gap-2.5 text-sm text-brand-navy/80">
-      <svg
-        className="w-5 h-5 text-brand-gold mt-0.5 flex-shrink-0"
-        fill="currentColor"
-        viewBox="0 0 20 20"
-      >
-        <path
-          fillRule="evenodd"
-          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-          clipRule="evenodd"
-        />
+      <svg className="w-5 h-5 text-brand-gold mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
       </svg>
       <span>{children}</span>
     </li>
+  );
+}
+
+/* ─── Animated Stat Counter ─── */
+export function StatBlock({ value, label }: { value: string; label: string }) {
+  return (
+    <div className="text-center">
+      <p className="font-display text-4xl md:text-5xl text-brand-gold mb-2">{value}</p>
+      <p className="text-sm text-brand-stone uppercase tracking-wider font-bold">{label}</p>
+    </div>
+  );
+}
+
+/* ─── Video embed ─── */
+export function VideoEmbed({ src, title }: { src: string; title: string }) {
+  return (
+    <div className="rounded-2xl overflow-hidden shadow-lodge-lg">
+      <div className="aspect-video bg-surface-secondary">
+        <iframe src={src} title={title} className="w-full h-full" allowFullScreen loading="lazy" />
+      </div>
+    </div>
   );
 }
