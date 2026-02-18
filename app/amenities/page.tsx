@@ -3,11 +3,8 @@ import { seo } from '@/lib/seo';
 import { SectionHeader, BookingCTA, Breadcrumbs } from '@/components/ui';
 import { AmenityCard } from '@/components/cards';
 import { AMENITIES } from '@/data/site';
-import { Beer, Waves, ShowerHead, WashingMachine, Wifi, PawPrint, Bike, Fuel, Flame, Gamepad2, BookOpen, TreePine, Store, Utensils, Cable, ShieldCheck } from 'lucide-react';
 
 export const metadata: Metadata = seo({ title: 'Amenities — Pool, Hot Tub, Beer Garden & More', description: '16 resort amenities: pool, hot tubs, beer garden, game room, trails, Wi-Fi, pet friendly & more.', path: '/amenities' });
-
-const iconMap: Record<string, React.ComponentType<{ className?: string }>> = { Beer, Waves, ShowerHead, WashingMachine, Wifi, PawPrint, Bike, Fuel, Flame, Gamepad2, BookOpen, TreePine, Store, Utensils, Cable, ShieldCheck };
 
 export default function AmenitiesPage() {
   return (
@@ -25,7 +22,7 @@ export default function AmenitiesPage() {
           <SectionHeader badge="Come and enjoy..." title="All Our Amenities" />
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
             {AMENITIES.map((a, i) => (
-              <AmenityCard key={i} amenity={a} icon={iconMap[a.icon]} index={i} />
+              <AmenityCard key={i} amenity={a} index={i} />
             ))}
           </div>
         </div>

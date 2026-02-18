@@ -580,11 +580,3 @@ export default function HomePage() {
     </>
   );
 }
-
-/*
- ═══════════════════════════════════════════════════════════
- ALL IMAGES USED IN THIS PAGE (public/images/)
- ═══════════════════════════════════════════════════════════
- public/images/cabin-9_800.jpg
-
-*/

@@ -1,10 +1,15 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Star, ArrowRight, MapPin, Clock, ExternalLink, Users } from 'lucide-react';
+import { Star, ArrowRight, MapPin, Clock, ExternalLink, Users, Beer, Waves, ShowerHead, WashingMachine, Wifi, PawPrint, Bike, Fuel, Flame, Gamepad2, BookOpen, TreePine, Store, Utensils, Cable, ShieldCheck } from 'lucide-react';
 import Link from 'next/link';
 import type { Attraction, Review, Amenity, RVTier } from '@/data/site';
 import { SITE } from '@/data/site';
+
+/* ─── Amenity Icon Map (resolved inside client component) ─── */
+const amenityIconMap: Record<string, React.ComponentType<{ className?: string }>> = {
+  Beer, Waves, ShowerHead, WashingMachine, Wifi, PawPrint, Bike, Fuel, Flame, Gamepad2, BookOpen, TreePine, Store, Utensils, Cable, ShieldCheck,
+};
 
 /* ─── Attraction Card ─── */
 export function AttractionCard({
@@ -110,13 +115,15 @@ export function ReviewCard({
 /* ─── Amenity Card ─── */
 export function AmenityCard({
   amenity,
-  icon: Icon,
+  icon: IconProp,
   index = 0,
 }: {
   amenity: Amenity;
   icon?: React.ComponentType<{ className?: string }>;
   index?: number;
 }) {
+  const Icon = IconProp || amenityIconMap[amenity.icon];
+
   return (
     <motion.div
       className="bg-white rounded-2xl shadow-lodge border border-surface-muted/50 p-6 text-center group transition-all duration-500 hover:shadow-gold hover:-translate-y-2 hover:border-brand-gold/20"
