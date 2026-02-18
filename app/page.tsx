@@ -2,194 +2,589 @@ import Link from 'next/link';
 import { SITE, AMENITIES, REVIEWS, STATS } from '@/data/site';
 import { BookingCTA } from '@/components/ui';
 import { HeroSection } from '@/components/layout/HeroSection';
-import { ExternalLink, MapPin, Mountain, TreePine, Tent, Home, Truck, Phone, Star, ArrowRight } from 'lucide-react';
+import { ExternalLink, MapPin, Mountain, TreePine, Tent, Home, Truck, Phone, Star, ArrowRight, Users, Zap, Waves, Beer, ShieldCheck, Wifi, PawPrint, Clock, Navigation, Award, Heart, ThumbsUp, CheckCircle, Flame, Bike, Gamepad2, Quote } from 'lucide-react';
 
-/* ── Server Component: zero JS for 90% of the page ── */
 export default function HomePage() {
   return (
     <>
-      {/* ═══ HERO — only client island ═══ */}
       <HeroSection />
 
       {/* ═══ SOCIAL PROOF BAR ═══ */}
-      <section className="bg-white border-b border-surface-muted py-6">
-        <div className="max-w-7xl mx-auto px-4 flex flex-wrap items-center justify-center gap-8 md:gap-16">
-          <div className="flex items-center gap-3">
+      <section className="bg-brand-navy text-white py-5 border-b-4 border-brand-gold">
+        <div className="max-w-7xl mx-auto px-4 flex flex-wrap items-center justify-center gap-6 md:gap-12">
+          <div className="flex items-center gap-3 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/10">
             <div className="flex -space-x-0.5">{[1,2,3,4,5].map(i => <Star key={i} className="w-5 h-5 text-brand-gold fill-brand-gold" />)}</div>
-            <span className="text-sm text-brand-stone">4.8/5 on TripAdvisor</span>
+            <span className="text-sm font-bold text-white/90">4.8/5 on TripAdvisor</span>
           </div>
           {STATS.map((s, i) => (
-            <div key={i} className="text-center">
-              <span className="font-display text-2xl text-brand-navy">{s.value}</span>
-              <span className="text-xs text-brand-stone block uppercase tracking-wider">{s.label}</span>
+            <div key={i} className="text-center px-3">
+              <span className="font-display text-3xl text-brand-gold font-bold">{s.value}</span>
+              <span className="text-[10px] text-white/50 block uppercase tracking-widest font-bold">{s.label}</span>
             </div>
           ))}
         </div>
       </section>
 
-      {/* ═══ ACCOMMODATIONS ═══ */}
-      <section className="section-pad bg-surface-primary">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-12 md:mb-16">
-            <span className="badge-gold mb-4 inline-block">Accommodations</span>
-            <h2 className="mb-3">Choose Your Black Hills Stay</h2>
-            <p className="text-brand-stone text-lg max-w-2xl mx-auto">From premium RV sites with private hot tubs to shaded tent spots.</p>
-            <div className="divider-gold-wide mt-5 mx-auto" />
+      {/* ═══════════════════════════════════════════════════════════════
+          ACCOMMODATIONS
+      ═══════════════════════════════════════════════════════════════ */}
+      <section className="relative py-24 md:py-32 overflow-hidden" style={{ background: 'linear-gradient(180deg, #FDFBF7 0%, #F5F0E8 40%, #FDFBF7 100%)' }}>
+        <div className="absolute top-0 left-0 w-96 h-96 bg-brand-gold/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-brand-gold/5 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
+
+        <div className="max-w-7xl mx-auto px-4 relative z-10">
+          <div className="text-center mb-16 md:mb-20">
+            <span className="inline-block px-5 py-2 bg-brand-gold text-white text-xs font-black uppercase tracking-[0.2em] rounded-full shadow-gold mb-5">
+              ★ Accommodations ★
+            </span>
+            <h2 className="mb-5 text-4xl md:text-6xl leading-tight">
+              Choose Your <br className="hidden md:block" />
+              <span className="text-brand-gold italic">Black Hills</span> Stay
+            </h2>
+            <p className="text-brand-navy/70 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed font-medium">
+              Three unique ways to experience the Black Hills — each with full amenity access, stunning mountain surroundings, and genuine Rush No More hospitality.
+            </p>
+            <div className="w-32 h-1.5 bg-gold-gradient rounded-full mt-6 mx-auto" />
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              { href: '/stay/rv-sites', Icon: Truck, title: 'RV Sites', desc: 'Standard, VIP Deluxe & Presidential Spa. Full hookups, 30/50 AMP, up to 100ft.', price: 'From $53.99/night', img: '/images/RushMore-rv-camper-van.png' },
-              { href: '/stay/cabins', Icon: Home, title: 'Cabins', desc: 'Presidential cabins sleeping 2-10 guests. Economy to luxury suites.', price: 'From $95/night', img: '/images/cabin-9_800.jpg' },
-              { href: '/stay/tent-camping', Icon: Tent, title: 'Tent Camping', desc: 'Shaded sites under Ponderosa pines with fire pits & amenity access.', price: 'From $35/night', img: '/images/Wooded-Tent-Area.webp' },
-            ].map((s, i) => (
-              <Link key={i} href={s.href} className="card-premium group block">
-                <div className="aspect-[4/3] relative overflow-hidden">
-                  <div className="absolute inset-0 bg-brand-navy/20 group-hover:bg-brand-navy/10 transition-colors z-10" />
-                  <div className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" style={{ backgroundImage: `url('${s.img}')` }} />
-                </div>
-                <div className="p-6">
-                  <div className="flex items-center gap-2 mb-2"><s.Icon className="w-5 h-5 text-brand-gold" /><h3 className="text-xl">{s.title}</h3></div>
-                  <p className="text-brand-stone text-sm mb-4">{s.desc}</p>
-                  <div className="flex items-center justify-between">
-                    <span className="text-brand-gold font-display text-lg">{s.price}</span>
-                    <ArrowRight className="w-5 h-5 text-brand-stone group-hover:text-brand-gold group-hover:translate-x-1 transition-all" />
+
+          <div className="space-y-10">
+
+            {/* ── RV SITES ── */}
+            <Link href="/stay/rv-sites" className="group block relative rounded-3xl overflow-hidden shadow-lodge-lg hover:shadow-gold-lg transition-all duration-700 border-2 border-transparent hover:border-brand-gold/30">
+              <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[480px] md:min-h-[540px]">
+                <div className="relative overflow-hidden min-h-[320px] lg:min-h-full">
+                  <div className="absolute inset-0 bg-cover bg-center transition-transform duration-[1.2s] ease-out group-hover:scale-110" style={{ backgroundImage: "url('/images/RushMore-rv-camper-van.png')" }} />
+                  <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/70 via-brand-navy/20 to-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-brand-navy/10 lg:to-brand-navy/40" />
+                  <div className="absolute top-5 left-5 z-10">
+                    <span className="inline-flex items-center gap-2 px-4 py-2 bg-white/15 backdrop-blur-md text-white rounded-full text-xs font-black uppercase tracking-wider border border-white/20 shadow-lodge">
+                      <Truck className="w-4 h-4 text-brand-gold" /> RV Resort
+                    </span>
+                  </div>
+                  <div className="absolute bottom-0 left-0 right-0 p-6 z-10 lg:hidden bg-gradient-to-t from-brand-navy/90 to-transparent">
+                    <span className="font-display text-4xl text-white font-bold">From $53.99</span>
+                    <span className="text-white/70 text-sm block">per night · Full hookups included</span>
                   </div>
                 </div>
-              </Link>
-            ))}
+                <div className="relative p-8 md:p-10 lg:p-14 flex flex-col justify-center bg-white">
+                  <div className="absolute top-0 right-0 w-40 h-40">
+                    <div className="absolute top-0 right-0 w-full h-full bg-brand-gold/5 rounded-bl-[100px]" />
+                    <div className="absolute top-3 right-3 w-20 h-20 bg-brand-gold/5 rounded-bl-[50px]" />
+                  </div>
+                  <div className="absolute left-0 top-10 bottom-10 w-1.5 bg-gold-gradient rounded-r-full hidden lg:block" />
+                  <div className="relative">
+                    <div className="flex items-center gap-4 mb-5">
+                      <div className="w-14 h-14 bg-brand-gold/10 backdrop-blur-sm rounded-2xl flex items-center justify-center group-hover:bg-brand-gold group-hover:scale-110 transition-all duration-500 border border-brand-gold/20">
+                        <Truck className="w-7 h-7 text-brand-gold group-hover:text-white transition-colors duration-500" />
+                      </div>
+                      <div>
+                        <h3 className="text-3xl md:text-4xl font-display font-bold leading-tight">RV Sites</h3>
+                        <p className="text-xs text-brand-gold uppercase tracking-[0.15em] font-black mt-0.5">Standard · VIP Deluxe · Presidential Spa</p>
+                      </div>
+                    </div>
+                    <p className="text-brand-navy/80 text-base md:text-lg leading-relaxed mb-6 font-medium">
+                      Full hookups with 30/50 AMP service and pull-throughs up to 100ft. VIP sites feature private patios with gas BBQ grills. Our Presidential Spa sites include your very own <strong className="text-brand-navy">private hot tub</strong> — the ultimate RV glamping experience.
+                    </p>
+                    <div className="grid grid-cols-2 gap-2.5 mb-7">
+                      {['Full Hookups (W/E/S)', '30 & 50 AMP Service', 'Pull-Through up to 100ft', 'Private Patios Available', 'Gas BBQ on VIP Sites', 'Private Hot Tub (Spa)'].map((f, i) => (
+                        <span key={i} className="flex items-center gap-2.5 text-sm text-brand-navy/80 bg-surface-secondary/80 backdrop-blur-sm px-3 py-2 rounded-lg font-medium border border-surface-muted/30">
+                          <CheckCircle className="w-4 h-4 text-brand-gold flex-shrink-0" />{f}
+                        </span>
+                      ))}
+                    </div>
+                    <div className="flex items-center justify-between pt-5 border-t-2 border-brand-gold/20">
+                      <div className="hidden lg:block">
+                        <span className="font-display text-4xl text-brand-gold font-bold">From $53.99</span>
+                        <span className="text-sm text-brand-stone block font-semibold">per night · 50 AMP from $59.99</span>
+                      </div>
+                      <span className="inline-flex items-center gap-2 px-7 py-3.5 bg-brand-gold text-white font-bold text-sm rounded-xl shadow-gold group-hover:shadow-gold-lg group-hover:brightness-110 transition-all duration-500 uppercase tracking-wider">
+                        Explore RV Sites <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-500" />
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Link>
+
+            {/* ── CABINS ── */}
+            <Link href="/stay/cabins" className="group block relative rounded-3xl overflow-hidden shadow-lodge-lg hover:shadow-gold-lg transition-all duration-700 border-2 border-transparent hover:border-brand-gold/30">
+              <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[480px] md:min-h-[540px]">
+                <div className="relative p-8 md:p-10 lg:p-14 flex flex-col justify-center bg-white order-2 lg:order-1">
+                  <div className="absolute top-0 left-0 w-40 h-40">
+                    <div className="absolute top-0 left-0 w-full h-full bg-brand-gold/5 rounded-br-[100px]" />
+                    <div className="absolute top-3 left-3 w-20 h-20 bg-brand-gold/5 rounded-br-[50px]" />
+                  </div>
+                  <div className="absolute right-0 top-10 bottom-10 w-1.5 bg-gold-gradient rounded-l-full hidden lg:block" />
+                  <div className="relative">
+                    <div className="flex items-center gap-4 mb-5">
+                      <div className="w-14 h-14 bg-brand-gold/10 backdrop-blur-sm rounded-2xl flex items-center justify-center group-hover:bg-brand-gold group-hover:scale-110 transition-all duration-500 border border-brand-gold/20">
+                        <Home className="w-7 h-7 text-brand-gold group-hover:text-white transition-colors duration-500" />
+                      </div>
+                      <div>
+                        <h3 className="text-3xl md:text-4xl font-display font-bold leading-tight">Presidential Cabins</h3>
+                        <p className="text-xs text-brand-gold uppercase tracking-[0.15em] font-black mt-0.5">Named After US Presidents</p>
+                      </div>
+                    </div>
+                    <p className="text-brand-navy/80 text-base md:text-lg leading-relaxed mb-6 font-medium">
+                      Each cabin named after a US President — from cozy economy units for couples to <strong className="text-brand-navy">full luxury suites sleeping up to 10 guests</strong>. Perfect for families, reunions, and anyone who wants comfort without sacrificing the outdoors.
+                    </p>
+                    <div className="grid grid-cols-2 gap-2.5 mb-7">
+                      {['Sleeps 2 to 10 Guests', 'Full Kitchens Available', 'A/C & Heating', 'Private Bathrooms', 'Outdoor Fire Pits', '16 Unique Cabins'].map((f, i) => (
+                        <span key={i} className="flex items-center gap-2.5 text-sm text-brand-navy/80 bg-surface-secondary/80 backdrop-blur-sm px-3 py-2 rounded-lg font-medium border border-surface-muted/30">
+                          <CheckCircle className="w-4 h-4 text-brand-gold flex-shrink-0" />{f}
+                        </span>
+                      ))}
+                    </div>
+                    <div className="flex items-center justify-between pt-5 border-t-2 border-brand-gold/20">
+                      <div>
+                        <span className="font-display text-4xl text-brand-gold font-bold">From $95</span>
+                        <span className="text-sm text-brand-stone block font-semibold">per night · Up to $335 for luxury</span>
+                      </div>
+                      <span className="inline-flex items-center gap-2 px-7 py-3.5 bg-brand-gold text-white font-bold text-sm rounded-xl shadow-gold group-hover:shadow-gold-lg group-hover:brightness-110 transition-all duration-500 uppercase tracking-wider">
+                        View Cabins <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-500" />
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div className="relative overflow-hidden min-h-[320px] lg:min-h-full order-1 lg:order-2">
+                  <div className="absolute inset-0 bg-cover bg-center transition-transform duration-[1.2s] ease-out group-hover:scale-110" style={{ backgroundImage: "url('/images/RushMore-cabins.png')" }} />
+                  <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/70 via-brand-navy/20 to-transparent lg:bg-gradient-to-l lg:from-transparent lg:via-brand-navy/10 lg:to-brand-navy/40" />
+                  <div className="absolute top-5 right-5 z-10">
+                    <span className="inline-flex items-center gap-2 px-4 py-2 bg-white/15 backdrop-blur-md text-white rounded-full text-xs font-black uppercase tracking-wider border border-white/20 shadow-lodge">
+                      <Users className="w-4 h-4 text-brand-gold" /> 2-10 Guests
+                    </span>
+                  </div>
+                  <div className="absolute bottom-0 left-0 right-0 p-6 z-10 lg:hidden bg-gradient-to-t from-brand-navy/90 to-transparent">
+                    <span className="font-display text-4xl text-white font-bold">From $95</span>
+                    <span className="text-white/70 text-sm block">per night · 16 unique cabins</span>
+                  </div>
+                </div>
+              </div>
+            </Link>
+
+            {/* ── TENT CAMPING ── */}
+            <Link href="/stay/tent-camping" className="group block relative rounded-3xl overflow-hidden shadow-lodge-lg hover:shadow-gold-lg transition-all duration-700 border-2 border-transparent hover:border-brand-gold/30">
+              <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[480px] md:min-h-[540px]">
+                <div className="relative overflow-hidden min-h-[320px] lg:min-h-full">
+                  <div className="absolute inset-0 bg-cover bg-center transition-transform duration-[1.2s] ease-out group-hover:scale-110" style={{ backgroundImage: "url('/images/RushMore-camping.png')" }} />
+                  <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/70 via-brand-navy/20 to-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-brand-navy/10 lg:to-brand-navy/40" />
+                  <div className="absolute top-5 left-5 z-10">
+                    <span className="inline-flex items-center gap-2 px-4 py-2 bg-white/15 backdrop-blur-md text-white rounded-full text-xs font-black uppercase tracking-wider border border-white/20 shadow-lodge">
+                      <TreePine className="w-4 h-4 text-brand-gold" /> Pine Forest
+                    </span>
+                  </div>
+                  <div className="absolute bottom-0 left-0 right-0 p-6 z-10 lg:hidden bg-gradient-to-t from-brand-navy/90 to-transparent">
+                    <span className="font-display text-4xl text-white font-bold">From $35</span>
+                    <span className="text-white/70 text-sm block">per night · Best value</span>
+                  </div>
+                </div>
+                <div className="relative p-8 md:p-10 lg:p-14 flex flex-col justify-center bg-white">
+                  <div className="absolute top-0 right-0 w-40 h-40">
+                    <div className="absolute top-0 right-0 w-full h-full bg-brand-gold/5 rounded-bl-[100px]" />
+                    <div className="absolute top-3 right-3 w-20 h-20 bg-brand-gold/5 rounded-bl-[50px]" />
+                  </div>
+                  <div className="absolute left-0 top-10 bottom-10 w-1.5 bg-gold-gradient rounded-r-full hidden lg:block" />
+                  <div className="relative">
+                    <div className="flex items-center gap-4 mb-5">
+                      <div className="w-14 h-14 bg-brand-gold/10 backdrop-blur-sm rounded-2xl flex items-center justify-center group-hover:bg-brand-gold group-hover:scale-110 transition-all duration-500 border border-brand-gold/20">
+                        <Tent className="w-7 h-7 text-brand-gold group-hover:text-white transition-colors duration-500" />
+                      </div>
+                      <div>
+                        <h3 className="text-3xl md:text-4xl font-display font-bold leading-tight">Tent Camping</h3>
+                        <p className="text-xs text-brand-gold uppercase tracking-[0.15em] font-black mt-0.5">Under the Ponderosa Pines</p>
+                      </div>
+                    </div>
+                    <p className="text-brand-navy/80 text-base md:text-lg leading-relaxed mb-6 font-medium">
+                      Wake up to fresh mountain air under towering Ponderosa pines. Spacious, level sites with fire pits and <strong className="text-brand-navy">full access to every resort amenity</strong> — pool, hot tubs, beer garden, bathhouses, and more.
+                    </p>
+                    <div className="grid grid-cols-2 gap-2.5 mb-7">
+                      {['Shaded Pine Forest', 'Fire Pits at Each Site', 'Water Hookups Nearby', 'Clean Bathhouses', 'Pool & Hot Tub Access', 'Hiking Trail Access'].map((f, i) => (
+                        <span key={i} className="flex items-center gap-2.5 text-sm text-brand-navy/80 bg-surface-secondary/80 backdrop-blur-sm px-3 py-2 rounded-lg font-medium border border-surface-muted/30">
+                          <CheckCircle className="w-4 h-4 text-brand-gold flex-shrink-0" />{f}
+                        </span>
+                      ))}
+                    </div>
+                    <div className="flex items-center justify-between pt-5 border-t-2 border-brand-gold/20">
+                      <div className="hidden lg:block">
+                        <span className="font-display text-4xl text-brand-gold font-bold">From $35</span>
+                        <span className="text-sm text-brand-stone block font-semibold">per night · Electric +$5</span>
+                      </div>
+                      <span className="inline-flex items-center gap-2 px-7 py-3.5 bg-brand-gold text-white font-bold text-sm rounded-xl shadow-gold group-hover:shadow-gold-lg group-hover:brightness-110 transition-all duration-500 uppercase tracking-wider">
+                        View Tent Sites <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-500" />
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Link>
+          </div>
+
+          {/* Quick compare */}
+          <div className="mt-14 bg-brand-navy/95 backdrop-blur-xl rounded-2xl shadow-lodge-xl p-6 md:p-8 border border-white/10">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-6 items-center">
+              <div className="text-white">
+                <h4 className="font-display text-xl font-bold mb-1">Quick Compare</h4>
+                <p className="text-xs text-white/40 uppercase tracking-wider font-bold">All include full amenity access</p>
+              </div>
+              {[
+                { type: 'RV Sites', price: 'From $53.99', icon: Truck, href: '/stay/rv-sites' },
+                { type: 'Cabins', price: 'From $95', icon: Home, href: '/stay/cabins' },
+                { type: 'Tent', price: 'From $35', icon: Tent, href: '/stay/tent-camping' },
+              ].map((item, i) => (
+                <Link key={i} href={item.href} className="flex items-center gap-3 p-4 rounded-xl bg-white/5 backdrop-blur-sm hover:bg-white/10 border border-white/10 hover:border-brand-gold/30 transition-all duration-300 group">
+                  <div className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center group-hover:bg-brand-gold/20 transition-colors duration-300 border border-white/10">
+                    <item.icon className="w-6 h-6 text-brand-gold" />
+                  </div>
+                  <div className="flex-1">
+                    <span className="font-bold text-sm text-white block">{item.type}</span>
+                    <span className="text-brand-gold font-display text-lg font-bold">{item.price}</span>
+                  </div>
+                  <ArrowRight className="w-5 h-5 text-white/30 group-hover:text-brand-gold transition-colors" />
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ═══ VIDEO + WHY US ═══ */}
-      <section className="section-pad bg-surface-secondary">
-        <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <div className="mb-12">
-              <span className="badge-gold mb-4 inline-block">Why Stay With Us</span>
-              <h2 className="mb-3">More Than a Campground</h2>
-              <div className="divider-gold-wide mt-5" />
+      {/* ═══════════════════════════════════════════════════════════════
+          WHY STAY WITH US + VIDEO (original size, autoplay)
+      ═══════════════════════════════════════════════════════════════ */}
+      <section className="relative py-24 md:py-32 overflow-hidden" style={{ background: 'linear-gradient(180deg, #F5F0E8 0%, #FDFBF7 30%, #F5F0E8 70%, #FDFBF7 100%)' }}>
+        <div className="absolute top-20 right-0 w-80 h-80 bg-brand-gold/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 left-0 w-80 h-80 bg-brand-navy/5 rounded-full blur-3xl" />
+
+        <div className="max-w-7xl mx-auto px-4">
+          {/* Intro + Image mosaic */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-20">
+            <div>
+              <span className="inline-block px-5 py-2 bg-brand-gold text-white text-xs font-black uppercase tracking-[0.2em] rounded-full shadow-gold mb-5">
+                ★ Why Rush No More ★
+              </span>
+              <h2 className="mb-5 text-4xl md:text-5xl leading-tight">
+                More Than a <br /><span className="text-brand-gold italic">Campground</span>
+              </h2>
+              <div className="w-32 h-1.5 bg-gold-gradient rounded-full mb-6" />
+              <p className="text-brand-navy/80 text-lg mb-4 leading-relaxed font-medium">Rush No More is a top-rated RV resort nestled in the beautiful Black Hills of South Dakota. Just minutes from Sturgis and an easy drive to Mount Rushmore, Deadwood, Custer State Park, and Spearfish Canyon.</p>
+              <p className="text-brand-navy/70 mb-8 leading-relaxed font-medium">Our dedicated team has hosted thousands of happy campers. We combine premium amenities, gorgeous mountain surroundings, and genuine warm hospitality to create an experience you&apos;ll never forget.</p>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
+                {[
+                  { icon: Award, text: 'Top-rated on TripAdvisor & Google' },
+                  { icon: Heart, text: 'Family-owned, personal service' },
+                  { icon: ShieldCheck, text: '24/7 security & peace of mind' },
+                  { icon: ThumbsUp, text: '4,200+ happy campers & counting' },
+                ].map((item, i) => (
+                  <div key={i} className="flex items-center gap-3 p-3.5 rounded-xl bg-white/70 backdrop-blur-sm border border-brand-gold/15 shadow-lodge hover:shadow-gold hover:-translate-y-0.5 transition-all duration-300">
+                    <div className="w-10 h-10 bg-brand-gold/10 backdrop-blur-sm rounded-lg flex items-center justify-center flex-shrink-0 border border-brand-gold/15">
+                      <item.icon className="w-5 h-5 text-brand-gold" />
+                    </div>
+                    <span className="text-sm text-brand-navy font-bold">{item.text}</span>
+                  </div>
+                ))}
+              </div>
+
+              <a href={SITE.booking} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-8 py-4 bg-brand-gold text-white font-bold text-base rounded-xl shadow-gold hover:shadow-gold-lg hover:brightness-110 transition-all duration-300 uppercase tracking-wider">
+                Book Your Stay <ExternalLink className="w-5 h-5" />
+              </a>
             </div>
-            <p className="text-brand-navy/80 text-lg mb-4">Rush No More is a top-rated RV resort in the Black Hills, just minutes from Sturgis and an easy drive to Mount Rushmore, Deadwood, and Custer State Park.</p>
-            <p className="text-brand-navy/70 mb-8">Our dedicated team has hosted thousands of happy campers. Premium amenities, gorgeous mountain surroundings, and warm hospitality.</p>
-            <div className="grid grid-cols-2 gap-4">
-              {[
-                { val: '5 mi', label: 'to Sturgis' },
-                { val: '55 mi', label: 'to Mt. Rushmore' },
-                { val: '12 mi', label: 'to Deadwood' },
-                { val: '<2 min', label: 'from I-90' },
-              ].map((d, i) => (
-                <div key={i} className="bg-white rounded-xl p-4 shadow-lodge hover:shadow-gold transition-shadow duration-300">
-                  <span className="font-display text-3xl text-brand-gold">{d.val}</span>
-                  <p className="text-sm text-brand-stone mt-1">{d.label}</p>
+
+            {/* Image mosaic */}
+            <div className="relative">
+              <div className="grid grid-cols-2 gap-3 md:gap-4">
+                <div className="space-y-3 md:space-y-4">
+                  <div className="aspect-[3/4] rounded-2xl overflow-hidden shadow-lodge-lg group border-2 border-white">
+                    <div className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style={{ backgroundImage: "url('/images/DSC05580-s.png')" }} />
+                  </div>
+                  <div className="aspect-square rounded-2xl overflow-hidden shadow-lodge-lg group border-2 border-white">
+                    <div className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style={{ backgroundImage: "url('/images/rv-camper-van.png')" }} />
+                  </div>
                 </div>
-              ))}
+                <div className="space-y-3 md:space-y-4 pt-10">
+                  <div className="aspect-square rounded-2xl overflow-hidden shadow-lodge-lg group border-2 border-white">
+                    <div className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style={{ backgroundImage: "url('/images/cabin-9_800.png')" }} />
+                  </div>
+                  <div className="aspect-[3/4] rounded-2xl overflow-hidden shadow-lodge-lg group border-2 border-white">
+                    <div className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style={{ backgroundImage: "url('/images/Wooded-Tent-Area.png')" }} />
+                  </div>
+                </div>
+              </div>
+              {/* Floating glassmorphic stat */}
+              <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 bg-white/70 backdrop-blur-xl px-8 py-4 rounded-2xl shadow-lodge-xl flex items-center gap-6 z-10 border border-brand-gold/20">
+                <div className="text-center">
+                  <span className="font-display text-2xl text-brand-gold font-bold block">84</span>
+                  <span className="text-[9px] text-brand-stone uppercase tracking-widest font-bold">Rallies</span>
+                </div>
+                <div className="w-px h-10 bg-brand-gold/20" />
+                <div className="text-center">
+                  <span className="font-display text-2xl text-brand-gold font-bold block">4,200+</span>
+                  <span className="text-[9px] text-brand-stone uppercase tracking-widest font-bold">Campers</span>
+                </div>
+                <div className="w-px h-10 bg-brand-gold/20" />
+                <div className="text-center">
+                  <span className="font-display text-2xl text-brand-gold font-bold block">4.8★</span>
+                  <span className="text-[9px] text-brand-stone uppercase tracking-widest font-bold">Rating</span>
+                </div>
+              </div>
             </div>
           </div>
-          <div className="rounded-2xl overflow-hidden shadow-lodge-lg">
-            <div className="aspect-video bg-surface-secondary">
-              <iframe src={SITE.youtube} title="Rush No More Drone Tour" className="w-full h-full" allowFullScreen loading="lazy" />
+
+          {/* Distance cards */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-20">
+            {[
+              { val: '5 mi', label: 'to Sturgis', sub: '~7 min drive', icon: MapPin },
+              { val: '55 mi', label: 'to Mt. Rushmore', sub: '~1 hour scenic', icon: Mountain },
+              { val: '12 mi', label: 'to Deadwood', sub: '~15 min drive', icon: Navigation },
+              { val: '<2 min', label: 'from I-90 Exit 37', sub: 'Easy access', icon: Zap },
+            ].map((d, i) => (
+              <div key={i} className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 shadow-lodge hover:shadow-gold hover:-translate-y-1 transition-all duration-300 text-center group border border-brand-gold/10 hover:border-brand-gold/30">
+                <div className="w-12 h-12 bg-brand-gold/10 backdrop-blur-sm rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-brand-gold group-hover:scale-110 transition-all duration-300 border border-brand-gold/15">
+                  <d.icon className="w-6 h-6 text-brand-gold group-hover:text-white transition-colors" />
+                </div>
+                <span className="font-display text-4xl md:text-5xl text-brand-gold block font-bold">{d.val}</span>
+                <p className="text-sm text-brand-navy font-bold mt-2">{d.label}</p>
+                <p className="text-xs text-brand-stone mt-1 font-medium">{d.sub}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* Video — original embedded size, autoplay muted */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <span className="inline-block px-5 py-2 bg-brand-gold text-white text-xs font-black uppercase tracking-[0.2em] rounded-full shadow-gold mb-5">
+                ★ Take a Tour ★
+              </span>
+              <h2 className="mb-4">See Our Resort <span className="text-brand-gold italic">From Above</span></h2>
+              <div className="w-24 h-1 bg-gold-gradient rounded-full mb-6" />
+              <p className="text-brand-navy/70 text-lg leading-relaxed font-medium mb-6">Take a drone tour of our beautiful resort and see why thousands choose Rush No More as their Black Hills home base.</p>
+              <div className="grid grid-cols-3 gap-3">
+                {[
+                  { img: '/images/vip-site.png', label: 'VIP Sites' },
+                  { img: '/images/presidential-spa.png', label: 'Spa Sites' },
+                  { img: '/images/Aereal-2_1400.png', label: 'Aerial View' },
+                ].map((thumb, i) => (
+                  <div key={i} className="aspect-square rounded-xl overflow-hidden shadow-lodge group border border-brand-gold/10">
+                    <div className="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-110 relative" style={{ backgroundImage: `url('${thumb.img}')` }}>
+                      <div className="absolute inset-0 bg-brand-navy/40 flex items-end p-2">
+                        <span className="text-[10px] text-white font-bold uppercase tracking-wider">{thumb.label}</span>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="rounded-2xl overflow-hidden shadow-lodge-xl border-2 border-white">
+              <div className="aspect-video bg-brand-navy">
+                <iframe
+                  src={`${SITE.youtube}&autoplay=1&mute=1&loop=1&playlist=qfQcJnSybqQ`}
+                  title="Rush No More RV Resort Drone Tour — Aerial view of campground, pool, cabins and RV sites in the Black Hills"
+                  className="w-full h-full"
+                  allow="autoplay; encrypted-media"
+                  allowFullScreen
+                  loading="lazy"
+                />
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* ═══ AMENITIES ═══ */}
-      <section className="section-pad bg-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-12 md:mb-16">
-            <span className="badge-gold mb-4 inline-block">Amenities</span>
-            <h2 className="mb-3">Everything for the Perfect Stay</h2>
-            <div className="divider-gold-wide mt-5 mx-auto" />
+      <section className="py-24 md:py-28 bg-white relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-80 h-80 bg-brand-gold/3 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 right-0 w-80 h-80 bg-brand-gold/3 rounded-full blur-3xl" />
+        <div className="max-w-7xl mx-auto px-4 relative z-10">
+          <div className="text-center mb-14">
+            <span className="inline-block px-5 py-2 bg-brand-gold text-white text-xs font-black uppercase tracking-[0.2em] rounded-full shadow-gold mb-5">
+              ★ 16 Amenities ★
+            </span>
+            <h2 className="mb-3">Everything for the <span className="text-brand-gold italic">Perfect</span> Stay</h2>
+            <p className="text-brand-navy/70 text-lg max-w-2xl mx-auto font-medium">All resort amenities included with every stay — no hidden fees.</p>
+            <div className="w-32 h-1.5 bg-gold-gradient rounded-full mt-5 mx-auto" />
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-            {AMENITIES.slice(0, 8).map((a, i) => (
-              <div key={i} className="bg-surface-secondary rounded-xl p-5 text-center hover:bg-brand-cream hover:-translate-y-1 hover:shadow-gold transition-all duration-300">
-                <div className="w-12 h-12 bg-brand-gold/10 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <span className="text-brand-gold text-lg font-bold">&#9733;</span>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-5 mb-5">
+            {[
+              { icon: Waves, title: 'Pool & Hot Tubs', desc: 'Cool off or soak under the Black Hills stars' },
+              { icon: Beer, title: 'Beer Garden', desc: 'Relax with a cold one after a day of adventure' },
+              { icon: Wifi, title: 'Free Wi-Fi', desc: 'Stay connected throughout the entire park' },
+              { icon: PawPrint, title: 'Pet Friendly', desc: 'Your furry family members are welcome' },
+            ].map((a, i) => (
+              <div key={i} className="bg-white/80 backdrop-blur-sm border-2 border-brand-gold/15 rounded-2xl p-6 text-center hover:bg-white hover:-translate-y-2 hover:shadow-gold hover:border-brand-gold/30 transition-all duration-300 group shadow-lodge">
+                <div className="w-16 h-16 bg-brand-gold/10 backdrop-blur-sm rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-brand-gold group-hover:scale-110 transition-all duration-300 border border-brand-gold/15">
+                  <a.icon className="w-8 h-8 text-brand-gold group-hover:text-white transition-colors" />
+                </div>
+                <h4 className="font-bold text-base mb-1">{a.title}</h4>
+                <p className="text-xs text-brand-stone font-medium">{a.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
+            {[
+              { icon: Flame, title: 'Fire Pits', desc: 'Campfires under the stars' },
+              { icon: Gamepad2, title: 'Game Room', desc: 'Fun for the whole family' },
+              { icon: Bike, title: 'Bike Wash', desc: 'Keep your ride clean' },
+              { icon: ShieldCheck, title: '24/7 Security', desc: 'Safe and secure always' },
+            ].map((a, i) => (
+              <div key={i} className="bg-surface-secondary/80 backdrop-blur-sm border border-surface-muted/50 rounded-2xl p-5 text-center hover:bg-white hover:-translate-y-1 hover:shadow-gold hover:border-brand-gold/20 transition-all duration-300 group">
+                <div className="w-12 h-12 bg-brand-gold/10 backdrop-blur-sm rounded-xl flex items-center justify-center mx-auto mb-3 group-hover:bg-brand-gold/20 group-hover:scale-110 transition-all duration-300 border border-brand-gold/10">
+                  <a.icon className="w-6 h-6 text-brand-gold" />
                 </div>
                 <h4 className="font-bold text-sm mb-1">{a.title}</h4>
                 <p className="text-xs text-brand-stone">{a.desc}</p>
               </div>
             ))}
           </div>
-          <div className="text-center mt-8">
-            <Link href="/amenities" className="btn-outline text-sm">View All 16 Amenities <ArrowRight className="w-4 h-4 ml-2" /></Link>
+
+          <div className="text-center mt-10">
+            <Link href="/amenities" className="inline-flex items-center gap-2 px-8 py-3.5 border-2 border-brand-navy text-brand-navy font-bold rounded-xl hover:bg-brand-navy hover:text-white transition-all duration-300 uppercase tracking-wider text-sm">
+              View All 16 Amenities <ArrowRight className="w-5 h-5" />
+            </Link>
           </div>
         </div>
       </section>
 
       {/* ═══ EXPLORE ═══ */}
-      <section className="section-pad bg-brand-navy text-white relative overflow-hidden">
+      <section className="py-24 md:py-32 bg-brand-navy text-white relative overflow-hidden">
+        <div className="absolute inset-0 animate-shimmer" />
         <div className="max-w-7xl mx-auto px-4 relative z-10">
-          <div className="text-center mb-12 md:mb-16">
-            <span className="badge-gold mb-4 inline-block !bg-brand-gold/20 !text-brand-gold-light">Explore</span>
-            <h2 className="mb-3 text-white">Gateway to the Black Hills</h2>
-            <div className="divider-gold-wide mt-5 mx-auto" />
+          <div className="text-center mb-14">
+            <span className="inline-block px-5 py-2 bg-brand-gold text-white text-xs font-black uppercase tracking-[0.2em] rounded-full shadow-gold mb-5">
+              ★ Explore ★
+            </span>
+            <h2 className="mb-3 text-white text-4xl md:text-5xl">Gateway to the <span className="text-brand-gold italic">Black Hills</span></h2>
+            <p className="text-white/50 text-lg max-w-2xl mx-auto font-medium">World-class attractions are all an easy drive from Rush No More.</p>
+            <div className="w-32 h-1.5 bg-gold-gradient rounded-full mt-5 mx-auto" />
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
             {[
-              { t: 'Mount Rushmore', d: 'Iconic presidential carvings', dist: '55 mi', href: '/explore#mount-rushmore' },
-              { t: 'Deadwood', d: 'Wild West gambling town', dist: '12 mi', href: '/explore#deadwood' },
-              { t: 'Custer State Park', d: '71,000 acres of buffalo & scenic drives', dist: '70 mi', href: '/explore#custer-state-park' },
-              { t: 'Spearfish Canyon', d: 'Waterfalls & fly fishing', dist: '25 mi', href: '/explore#spearfish-canyon' },
-              { t: 'Sturgis Rally', d: '500,000+ riders every August', dist: '5 mi', href: '/explore#sturgis-rally' },
-              { t: 'All Attractions', d: 'Browse all Black Hills experiences', dist: '', href: '/explore' },
+              { t: 'Mount Rushmore', d: 'The iconic presidential carvings — evening lighting ceremony is a must-see.', dist: '55 mi', time: '~1 hour', href: '/explore#mount-rushmore', img: '/images/DSC05580-s.png' },
+              { t: 'Deadwood', d: '80+ gaming halls, Adams Museum, gold panning, and Wild West history.', dist: '12 mi', time: '~15 min', href: '/explore#deadwood', img: '/images/cabin-9_800.png' },
+              { t: 'Custer State Park', d: '71,000 acres with 1,300 buffalo, Needles Highway & Sylvan Lake.', dist: '70 mi', time: '~1.5 hrs', href: '/explore#custer-state-park', img: '/images/Wooded-Tent-Area.png' },
             ].map((item, i) => (
-              <Link key={i} href={item.href} className="glass rounded-xl p-6 hover:bg-white/10 transition-all duration-300 group block">
-                <div className="flex items-start justify-between mb-3">
-                  <h3 className="text-lg font-display">{item.t}</h3>
-                  {item.dist && <span className="text-xs text-brand-gold uppercase tracking-wider">{item.dist}</span>}
+              <Link key={i} href={item.href} className="group block rounded-2xl overflow-hidden border border-white/10 hover:border-brand-gold/40 transition-all duration-500 hover:-translate-y-1 bg-white/5 backdrop-blur-sm">
+                <div className="relative aspect-[16/10] overflow-hidden">
+                  <div className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style={{ backgroundImage: `url('${item.img}')` }} />
+                  <div className="absolute inset-0 bg-gradient-to-t from-brand-navy via-brand-navy/30 to-transparent" />
+                  <div className="absolute top-3 right-3">
+                    <span className="px-3 py-1.5 bg-white/15 backdrop-blur-md rounded-full text-[10px] font-black uppercase tracking-wider text-brand-gold-light border border-white/20">{item.dist}</span>
+                  </div>
+                  <div className="absolute bottom-4 left-4 right-4">
+                    <h3 className="text-xl font-display text-white font-bold">{item.t}</h3>
+                  </div>
                 </div>
-                <p className="text-white/60 text-sm mb-4">{item.d}</p>
-                <span className="text-brand-gold text-sm flex items-center gap-1 group-hover:gap-2 transition-all">Learn more <ArrowRight className="w-4 h-4" /></span>
+                <div className="p-5">
+                  <p className="text-white/60 text-sm mb-4 leading-relaxed font-medium">{item.d}</p>
+                  <div className="flex items-center justify-between">
+                    <span className="flex items-center gap-1 text-xs text-white/40 font-bold"><Clock className="w-3.5 h-3.5" /> {item.time}</span>
+                    <span className="inline-flex items-center gap-1.5 px-4 py-1.5 bg-white/10 backdrop-blur-sm text-brand-gold text-xs font-bold rounded-full group-hover:bg-brand-gold group-hover:text-white transition-all duration-300 uppercase tracking-wider border border-white/10 group-hover:border-brand-gold">
+                      Explore <ArrowRight className="w-3.5 h-3.5" />
+                    </span>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              { t: 'Spearfish Canyon', d: 'Waterfalls, fly fishing & 20-mile scenic drive', dist: '25 mi', href: '/explore#spearfish-canyon' },
+              { t: 'Sturgis Rally', d: '500,000+ riders every August — we are rally HQ', dist: '5 mi', href: '/explore#sturgis-rally' },
+              { t: 'All Attractions', d: 'Browse every Black Hills experience', dist: '', href: '/explore' },
+            ].map((item, i) => (
+              <Link key={i} href={item.href} className="bg-white/5 backdrop-blur-sm rounded-xl p-6 hover:bg-white/10 transition-all duration-300 group block border border-white/10 hover:border-brand-gold/30">
+                <div className="flex items-start justify-between mb-3">
+                  <h3 className="text-lg font-display font-bold">{item.t}</h3>
+                  {item.dist && <span className="px-2.5 py-1 bg-white/10 backdrop-blur-sm text-brand-gold text-[10px] font-black uppercase tracking-wider rounded-full border border-white/10">{item.dist}</span>}
+                </div>
+                <p className="text-white/50 text-sm mb-4 font-medium">{item.d}</p>
+                <span className="text-brand-gold text-sm flex items-center gap-1 group-hover:gap-2 transition-all font-bold">Learn more <ArrowRight className="w-4 h-4" /></span>
               </Link>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ═══ STATS ═══ */}
-      <section className="py-16 bg-surface-secondary">
-        <div className="max-w-5xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-          {STATS.map((s, i) => (
-            <div key={i}>
-              <p className="font-display text-4xl md:text-5xl text-brand-gold mb-2">{s.value}</p>
-              <p className="text-sm text-brand-stone uppercase tracking-wider font-bold">{s.label}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* ═══ REVIEWS ═══ */}
-      <section className="section-pad bg-surface-primary">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-12 md:mb-16">
-            <span className="badge-gold mb-4 inline-block">Reviews</span>
-            <h2 className="mb-3">What Our Campers Say</h2>
-            <div className="divider-gold-wide mt-5 mx-auto" />
+      <section className="py-24 md:py-28 relative overflow-hidden" style={{ background: 'linear-gradient(180deg, #FDFBF7 0%, #F5F0E8 50%, #FDFBF7 100%)' }}>
+        <div className="absolute top-10 left-10 text-brand-gold/[0.04]"><Quote className="w-48 h-48" /></div>
+        <div className="absolute bottom-10 right-10 text-brand-gold/[0.04] rotate-180"><Quote className="w-48 h-48" /></div>
+
+        <div className="max-w-7xl mx-auto px-4 relative z-10">
+          <div className="text-center mb-14">
+            <span className="inline-block px-5 py-2 bg-brand-gold text-white text-xs font-black uppercase tracking-[0.2em] rounded-full shadow-gold mb-5">
+              ★ Reviews ★
+            </span>
+            <h2 className="mb-3">What Our <span className="text-brand-gold italic">Campers</span> Say</h2>
+            <p className="text-brand-navy/70 text-lg max-w-2xl mx-auto font-medium">Don&apos;t just take our word for it — hear from thousands of happy guests.</p>
+            <div className="w-32 h-1.5 bg-gold-gradient rounded-full mt-5 mx-auto" />
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {REVIEWS.slice(0, 3).map((r, i) => (
-              <div key={i} className="card-lodge p-6">
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex gap-0.5">{Array.from({ length: 5 }, (_, j) => <Star key={j} className={`w-4 h-4 ${j < r.rating ? 'text-brand-gold fill-brand-gold' : 'text-surface-muted'}`} />)}</div>
-                  {r.source && <span className="text-[10px] font-bold uppercase tracking-wider text-brand-stone bg-surface-secondary px-2 py-1 rounded">{r.source}</span>}
+
+          {/* Featured review */}
+          <div className="bg-white/80 backdrop-blur-xl rounded-3xl p-8 md:p-14 mb-8 relative overflow-hidden shadow-lodge-lg border border-brand-gold/15">
+            <div className="absolute top-0 right-0 w-48 h-48 bg-brand-gold/5 rounded-bl-[120px]" />
+            <div className="absolute bottom-0 left-0 w-32 h-32 bg-brand-gold/5 rounded-tr-[80px]" />
+            <div className="relative max-w-3xl mx-auto text-center">
+              <div className="flex justify-center gap-1.5 mb-6">
+                {[1,2,3,4,5].map(i => <Star key={i} className="w-7 h-7 text-brand-gold fill-brand-gold" />)}
+              </div>
+              <p className="text-xl md:text-3xl text-brand-navy italic leading-relaxed mb-8 font-display font-bold">
+                &ldquo;{REVIEWS[0].text}&rdquo;
+              </p>
+              <div className="inline-flex items-center gap-3 bg-white/60 backdrop-blur-sm px-5 py-2.5 rounded-full border border-brand-gold/15 shadow-lodge">
+                <div className="w-8 h-8 bg-brand-gold rounded-full flex items-center justify-center">
+                  <span className="text-white text-xs font-black">{REVIEWS[0].title.charAt(0)}</span>
                 </div>
-                <p className="text-brand-navy/70 italic mb-4 text-sm leading-relaxed">&ldquo;{r.text}&rdquo;</p>
-                <p className="font-display text-brand-navy font-bold">{r.title}</p>
+                <div className="text-left">
+                  <p className="font-display text-brand-navy font-bold text-sm">{REVIEWS[0].title}</p>
+                  {REVIEWS[0].source && <span className="text-[10px] font-bold uppercase tracking-wider text-brand-stone">{REVIEWS[0].source}</span>}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {REVIEWS.slice(1, 4).map((r, i) => (
+              <div key={i} className="bg-white/80 backdrop-blur-sm rounded-2xl p-7 shadow-lodge border border-white/50 hover:shadow-gold-lg hover:-translate-y-1 hover:border-brand-gold/20 transition-all duration-500">
+                <div className="flex items-center justify-between mb-5">
+                  <div className="flex gap-1">{Array.from({ length: 5 }, (_, j) => <Star key={j} className={`w-5 h-5 ${j < r.rating ? 'text-brand-gold fill-brand-gold' : 'text-surface-muted'}`} />)}</div>
+                  {r.source && <span className="text-[10px] font-black uppercase tracking-wider text-brand-stone bg-white/60 backdrop-blur-sm px-3 py-1 rounded-full border border-surface-muted/30">{r.source}</span>}
+                </div>
+                <p className="text-brand-navy/80 italic mb-5 text-sm leading-relaxed font-medium">&ldquo;{r.text}&rdquo;</p>
+                <div className="flex items-center gap-2 pt-4 border-t border-brand-gold/10">
+                  <div className="w-8 h-8 bg-brand-gold/10 backdrop-blur-sm rounded-full flex items-center justify-center border border-brand-gold/15">
+                    <span className="text-brand-gold text-xs font-black">{r.title.charAt(0)}</span>
+                  </div>
+                  <p className="font-display text-brand-navy font-bold text-sm">{r.title}</p>
+                </div>
               </div>
             ))}
+          </div>
+
+          <div className="text-center mt-10">
+            <a href={SITE.tripadvisor} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3 bg-brand-navy text-white font-bold rounded-xl hover:bg-brand-navy/90 transition-all duration-300 text-sm uppercase tracking-wider shadow-lodge">
+              Read More on TripAdvisor <ExternalLink className="w-4 h-4" />
+            </a>
           </div>
         </div>
       </section>
 
       {/* ═══ MAP ═══ */}
-      <section className="h-[400px]">
-        <iframe src={SITE.mapsEmbed} className="w-full h-full border-0" allowFullScreen loading="lazy" title="Location" />
+      <section className="h-[450px] relative">
+        <div className="absolute top-0 left-0 right-0 h-12 bg-gradient-to-b from-surface-primary to-transparent z-10" />
+        <iframe src={SITE.mapsEmbed} className="w-full h-full border-0" allowFullScreen loading="lazy" title="Rush No More RV Resort location — Sturgis, South Dakota" />
       </section>
 
       <BookingCTA title="Start Your Black Hills Adventure Today" subtitle="RV from $53.99 | Cabins from $95 | Tent from $35/night" />
     </>
   );
 }
+
+/*
+ ═══════════════════════════════════════════════════════════
+ ALL IMAGES USED IN THIS PAGE (public/images/)
+ ═══════════════════════════════════════════════════════════
+ public/images/cabin-9_800.jpg
+
+*/
