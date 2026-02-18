@@ -43,7 +43,7 @@ export default function ExplorePage() {
       <Breadcrumbs items={[{ label: 'Explore' }]} />
 
       <section className="relative py-20 md:py-28 bg-brand-navy text-white overflow-hidden">
-        <div className="absolute inset-0 bg-cover bg-center opacity-30" style={{ backgroundImage: "url('/images/DSC05580-s.webp')" }} />
+        <div className="absolute inset-0 bg-cover bg-center opacity-30" style={{ backgroundImage: "url('/images/DSC05580-s.png')" }} />
         <div className="absolute inset-0 bg-hero-gradient" />
         <div className="absolute inset-0 animate-shimmer" />
         <div className="relative max-w-5xl mx-auto px-4 text-center z-10">

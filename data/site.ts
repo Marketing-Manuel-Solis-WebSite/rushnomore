@@ -188,7 +188,7 @@ export const ATTRACTIONS: Attraction[] = [
     category: 'history',
     distance: '55 mi',
     driveTime: '~1 hour',
-    heroImage: '/images/DSC05580-s.webp',
+    heroImage: '/images/DSC05580-s.png',
     description: 'The iconic presidential carvings featuring Washington, Jefferson, Roosevelt, and Lincoln.',
     longDescription: 'Mount Rushmore National Memorial features 60-foot carvings of Presidents George Washington, Thomas Jefferson, Theodore Roosevelt, and Abraham Lincoln. The memorial attracts nearly 3 million visitors annually. The Avenue of Flags, the Lincoln Borglum Visitor Center, and the Presidential Trail offer immersive experiences. The Evening Lighting Ceremony from May through September is a must-see highlight.',
     highlights: ['Avenue of Flags', 'Presidential Trail hike', 'Evening Lighting Ceremony', 'Lincoln Borglum Museum', 'Sculptor\'s Studio'],
@@ -242,7 +242,7 @@ export const ATTRACTIONS: Attraction[] = [
     category: 'history',
     distance: '60 mi',
     driveTime: '~1 hour',
-    heroImage: '/images/DSC05580-s.webp',
+    heroImage: '/images/DSC05580-s.png',
     description: 'The world\'s largest mountain carving in progress, honoring the Lakota warrior.',
     longDescription: 'The Crazy Horse Memorial is the world\'s largest mountain carving currently in progress, depicting the Lakota warrior Crazy Horse pointing to his ancestral lands. The Indian Museum of North America and the Native American Educational & Cultural Center offer deep cultural experiences. Night blasting events and laser light shows are seasonal highlights.',
     highlights: ['World\'s largest mountain carving', 'Indian Museum of North America', 'Native American Cultural Center', 'Night blast events', 'Sculptor\'s studio tour'],
@@ -294,7 +294,7 @@ export const ATTRACTIONS: Attraction[] = [
     category: 'events',
     distance: 'On-site',
     driveTime: '0 min',
-    heroImage: '/images/DSC05580-s.webp',
+    heroImage: '/images/DSC05580-s.png',
     description: 'Annual Show and Shine right here at Rush No More. Free admission with live music!',
     longDescription: 'The Dakota Rods & Classics Car Show is our annual on-site event featuring classic cars, hot rods, and custom vehicles. This free-admission Show and Shine includes live music, food vendors, our famous beer garden, and a pool party. September 12, 2026 is this year\'s date — mark your calendar!',
     highlights: ['Free admission', 'Classic cars & hot rods', 'Live music all day', 'Beer garden & food', 'Pool party'],
@@ -370,7 +370,7 @@ export const STATS: Stat[] = [
 ];
 
 export const GALLERY_IMAGES = [
-  { src: '/images/DSC05580-s.webp', alt: 'Aerial view of Rush No More RV Resort' },
+  { src: '/images/DSC05580-s.png', alt: 'Aerial view of Rush No More RV Resort' },
   { src: '/images/cabin-9_800.jpg', alt: 'Presidential Cabin at Rush No More' },
   { src: '/images/rv-camper-van.jpg', alt: 'Premium RV sites with mountain views' },
   { src: '/images/Wooded-Tent-Area.webp', alt: 'Shaded tent camping under Ponderosa Pines' },

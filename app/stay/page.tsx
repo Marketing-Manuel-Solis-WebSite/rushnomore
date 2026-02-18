@@ -13,7 +13,7 @@ export default function StayPage() {
     <>
       <Breadcrumbs items={[{ label: 'Accommodations' }]} />
       <section className="relative py-20 md:py-28 bg-brand-navy text-white overflow-hidden">
-        <div className="absolute inset-0 bg-cover bg-center opacity-20" style={{ backgroundImage: "url('/images/DSC05580-s.webp')" }} />
+        <div className="absolute inset-0 bg-cover bg-center opacity-20" style={{ backgroundImage: "url('/images/DSC05580-s.png')" }} />
         <div className="absolute inset-0 bg-hero-gradient" />
         <div className="relative max-w-5xl mx-auto px-4 text-center z-10">
           <span className="badge-gold mb-6 inline-block !bg-brand-gold/20 !text-brand-gold-light">Top-Rated RV Resort</span>

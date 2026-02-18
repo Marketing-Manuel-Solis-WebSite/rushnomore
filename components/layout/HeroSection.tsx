@@ -28,7 +28,7 @@ export function HeroSection() {
         loop
         playsInline
         preload="auto"
-        poster="/images/DSC05580-s.webp"
+        poster="/images/DSC05580-s.png"
       />
 
       {/* Overlay negro más fuerte para mejor legibilidad */}
