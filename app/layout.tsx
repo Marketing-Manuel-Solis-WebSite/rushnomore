@@ -4,6 +4,7 @@ import '@/styles/globals.css';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { BookingBar } from '@/components/layout/BookingBar';
+import { AIChatWidget } from '@/components/chat/AIChatWidget';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { campgroundSchema } from '@/lib/seo';
 
@@ -32,6 +33,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main>{children}</main>
         <Footer />
         <BookingBar />
+        <AIChatWidget />
       </body>
     </html>
   );
