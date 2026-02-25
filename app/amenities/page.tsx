@@ -531,7 +531,7 @@ export default function AmenitiesPage() {
               </div>
 
               <div className="flex flex-wrap gap-3">
-                <Link href="/events/weddings" className="inline-flex items-center gap-2 px-7 py-3.5 bg-brand-gold text-white font-bold text-sm rounded-xl shadow-gold hover:shadow-gold-lg hover:brightness-110 transition-all duration-500 uppercase tracking-wider">
+                <Link href="/events#weddings" className="inline-flex items-center gap-2 px-7 py-3.5 bg-brand-gold text-white font-bold text-sm rounded-xl shadow-gold hover:shadow-gold-lg hover:brightness-110 transition-all duration-500 uppercase tracking-wider">
                   Events & Weddings <ArrowRight className="w-5 h-5" />
                 </Link>
                 <Link href="/contact" className="inline-flex items-center gap-2 px-6 py-3 border-2 border-white/30 text-white font-semibold rounded-xl hover:bg-white hover:text-brand-navy transition-all duration-300 text-sm uppercase tracking-wider">

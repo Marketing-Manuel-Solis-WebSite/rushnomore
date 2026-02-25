@@ -100,11 +100,7 @@ export const SITE: SiteConfig = {
 };
 
 export const NAV: NavItem[] = [
-  { label: 'Stay', href: '/stay', children: [
-    { label: 'RV Sites', href: '/stay/rv-sites' },
-    { label: 'Cabins', href: '/stay/cabins' },
-    { label: 'Tent Camping', href: '/stay/tent-camping' },
-  ]},
+  { label: 'Stay', href: '/stay' },
   { label: 'Amenities', href: '/amenities' },
   { label: 'Explore', href: '/explore', children: [
     { label: 'All Attractions', href: '/explore' },
@@ -114,12 +110,7 @@ export const NAV: NavItem[] = [
     { label: 'Spearfish Canyon', href: '/explore#spearfish-canyon' },
     { label: 'Custer State Park', href: '/explore#custer-state-park' },
   ]},
-  { label: 'Events', href: '/events/sturgis-rally', children: [
-    { label: 'Sturgis Rally', href: '/events/sturgis-rally' },
-    { label: 'Rally Rates 2026', href: '/events/sturgis-rally/rates' },
-    { label: 'Car Show', href: '/events/car-show' },
-    { label: 'Weddings & Groups', href: '/events/weddings' },
-  ]},
+  { label: 'Events', href: '/events' },
   { label: 'Map', href: '/map' },
   { label: 'About', href: '/about' },
   { label: 'Contact', href: '/contact' },

@@ -6,8 +6,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: '/', p: 1.0 }, { url: '/stay', p: 0.9 }, { url: '/stay/rv-sites', p: 0.9 },
     { url: '/stay/cabins', p: 0.9 }, { url: '/stay/tent-camping', p: 0.9 },
     { url: '/explore', p: 0.9 },
-    { url: '/events/sturgis-rally', p: 0.8 }, { url: '/events/sturgis-rally/rates', p: 0.8 },
-    { url: '/events/car-show', p: 0.6 }, { url: '/events/weddings', p: 0.6 },
+    { url: '/events', p: 0.8 },
     { url: '/amenities', p: 0.7 }, { url: '/map', p: 0.6 }, { url: '/about', p: 0.6 },
     { url: '/contact', p: 0.7 }, { url: '/policies', p: 0.5 }, { url: '/ada', p: 0.3 }, { url: '/legal', p: 0.3 },
   ];

@@ -1,7 +1,7 @@
 // app/book/results/page.tsx
 'use client';
 
-import { useState, useEffect } from 'react';
+import { Suspense, useState, useEffect } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { Breadcrumbs } from '@/components/ui';
@@ -35,6 +35,18 @@ interface PriceBreakdown {
 }
 
 export default function ResultsPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen flex items-center justify-center">
+        <Loader2 className="w-10 h-10 text-brand-gold animate-spin" />
+      </div>
+    }>
+      <ResultsContent />
+    </Suspense>
+  );
+}
+
+function ResultsContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const [loading, setLoading] = useState(true);

@@ -7,6 +7,8 @@ import { BookingBar } from '@/components/layout/BookingBar';
 import { AIChatWidget } from '@/components/chat/AIChatWidget';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { campgroundSchema } from '@/lib/seo';
+import { Analytics } from '@vercel/analytics/next';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const playfair = Playfair_Display({ subsets: ['latin'], variable: '--font-playfair', display: 'swap' });
 const sourceSans = Source_Sans_3({ subsets: ['latin'], variable: '--font-source-sans', display: 'swap' });
@@ -25,15 +27,28 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${playfair.variable} ${sourceSans.variable} ${josefin.variable}`}>
       <head>
         <JsonLd data={campgroundSchema()} />
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-EWDY6CJPVE" />
-        <script dangerouslySetInnerHTML={{ __html: "window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-EWDY6CJPVE');" }} />
+        {/* Google Tag Manager */}
+        <script dangerouslySetInnerHTML={{ __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KFGKRRJH');` }} />
+        {/* Google Analytics */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-BXSP32TXZ1" />
+        <script dangerouslySetInnerHTML={{ __html: "window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-BXSP32TXZ1');" }} />
       </head>
       <body className="antialiased">
+        {/* Google Tag Manager (noscript) */}
+        <noscript>
+          <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KFGKRRJH" height="0" width="0" style={{ display: 'none', visibility: 'hidden' }} />
+        </noscript>
         <Header />
         <main>{children}</main>
         <Footer />
         <BookingBar />
         <AIChatWidget />
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

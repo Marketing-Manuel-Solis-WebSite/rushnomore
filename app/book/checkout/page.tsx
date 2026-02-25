@@ -1,7 +1,7 @@
 // app/book/checkout/page.tsx
 'use client';
 
-import { useState, useEffect } from 'react';
+import { Suspense, useState, useEffect } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import {
   Loader2, CreditCard, AlertCircle, ArrowLeft,
@@ -28,6 +28,18 @@ interface PriceData {
 }
 
 export default function CheckoutPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen flex items-center justify-center">
+        <Loader2 className="w-10 h-10 text-brand-gold animate-spin" />
+      </div>
+    }>
+      <CheckoutContent />
+    </Suspense>
+  );
+}
+
+function CheckoutContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
 

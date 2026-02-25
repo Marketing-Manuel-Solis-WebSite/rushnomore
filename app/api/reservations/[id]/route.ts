@@ -11,10 +11,11 @@ import type { Reservation } from '@/lib/types';
 // GET — Obtener reserva individual
 export async function GET(
   request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const resDoc = await getDoc(doc(db, 'reservations', params.id));
+    const { id } = await params;
+    const resDoc = await getDoc(doc(db, 'reservations', id));
     if (!resDoc.exists()) {
       return NextResponse.json({ error: 'Not found' }, { status: 404 });
     }
@@ -29,13 +30,14 @@ export async function GET(
 // PATCH — Actualizar reserva (admin: status, notes, check-in/out)
 export async function PATCH(
   request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params;
     const body = await request.json();
     const { status, adminNotes, action } = body;
 
-    const resDoc = await getDoc(doc(db, 'reservations', params.id));
+    const resDoc = await getDoc(doc(db, 'reservations', id));
     if (!resDoc.exists()) {
       return NextResponse.json({ error: 'Not found' }, { status: 404 });
     }
@@ -72,7 +74,7 @@ export async function PATCH(
         }
       }
 
-      await updateDoc(doc(db, 'reservations', params.id), updates);
+      await updateDoc(doc(db, 'reservations', id), updates);
 
       // Emails
       try {
@@ -89,7 +91,7 @@ export async function PATCH(
 
     // Acción: Check-in
     if (action === 'check-in') {
-      await updateDoc(doc(db, 'reservations', params.id), {
+      await updateDoc(doc(db, 'reservations', id), {
         status: 'checked-in', updatedAt: now,
       });
       return NextResponse.json({ success: true });
@@ -97,7 +99,7 @@ export async function PATCH(
 
     // Acción: Check-out
     if (action === 'check-out') {
-      await updateDoc(doc(db, 'reservations', params.id), {
+      await updateDoc(doc(db, 'reservations', id), {
         status: 'checked-out', updatedAt: now,
       });
       return NextResponse.json({ success: true });
@@ -108,7 +110,7 @@ export async function PATCH(
     if (status) updates.status = status;
     if (adminNotes !== undefined) updates.adminNotes = adminNotes;
 
-    await updateDoc(doc(db, 'reservations', params.id), updates);
+    await updateDoc(doc(db, 'reservations', id), updates);
     return NextResponse.json({ success: true });
   } catch (e) {
     console.error('Update reservation error:', e);

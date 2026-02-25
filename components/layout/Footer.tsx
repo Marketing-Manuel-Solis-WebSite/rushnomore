@@ -19,10 +19,10 @@ const cols = {
     { label: 'Deadwood', href: '/explore#deadwood' },
   ],
   Events: [
-    { label: 'Sturgis Rally', href: '/events/sturgis-rally' },
-    { label: 'Rally Rates', href: '/events/sturgis-rally/rates' },
-    { label: 'Car Show', href: '/events/car-show' },
-    { label: 'Weddings', href: '/events/weddings' },
+    { label: 'Sturgis Rally', href: '/events#sturgis-rally' },
+    { label: 'Rally Rates', href: '/events#rally-rates' },
+    { label: 'Car Show', href: '/events#car-show' },
+    { label: 'Weddings', href: '/events#weddings' },
   ],
   Info: [
     { label: 'About Us', href: '/about' },
