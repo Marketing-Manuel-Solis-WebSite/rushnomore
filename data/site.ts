@@ -102,14 +102,7 @@ export const SITE: SiteConfig = {
 export const NAV: NavItem[] = [
   { label: 'Stay', href: '/stay' },
   { label: 'Amenities', href: '/amenities' },
-  { label: 'Explore', href: '/explore', children: [
-    { label: 'All Attractions', href: '/explore' },
-    { label: 'Mount Rushmore', href: '/explore#mount-rushmore' },
-    { label: 'Black Hills Guide', href: '/explore#black-hills' },
-    { label: 'Deadwood', href: '/explore#deadwood' },
-    { label: 'Spearfish Canyon', href: '/explore#spearfish-canyon' },
-    { label: 'Custer State Park', href: '/explore#custer-state-park' },
-  ]},
+  { label: 'Explore', href: '/explore' },
   { label: 'Events', href: '/events' },
   { label: 'Map', href: '/map' },
   { label: 'About', href: '/about' },

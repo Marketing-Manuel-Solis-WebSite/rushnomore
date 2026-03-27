@@ -14,9 +14,9 @@ const cols = {
   Explore: [
     { label: 'All Attractions', href: '/explore' },
     { label: 'Mount Rushmore', href: '/explore#mount-rushmore' },
-    { label: 'Black Hills Guide', href: '/explore#black-hills' },
-    { label: 'Itineraries', href: '/explore#black-hills' },
     { label: 'Deadwood', href: '/explore#deadwood' },
+    { label: 'Spearfish Canyon', href: '/explore#spearfish-canyon' },
+    { label: '6-Day Itinerary', href: '/explore#itinerary' },
   ],
   Events: [
     { label: 'Sturgis Rally', href: '/events#sturgis-rally' },
