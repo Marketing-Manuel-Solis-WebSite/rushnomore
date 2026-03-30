@@ -70,33 +70,31 @@ export default function MapPage() {
       {/* ═══════════════════════════════════════════════════════════════
           HERO — Video background
       ═══════════════════════════════════════════════════════════════ */}
-      <section className="relative min-h-[60vh] flex items-end overflow-hidden bg-brand-navy">
+      <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-brand-navy">
         <video
           ref={heroVideoRef}
           className="absolute inset-0 w-full h-full object-cover"
-          src="/videos/rushnomore-map.mp4"
+          src="/videos/RNM-map.mp4"
           autoPlay
           muted
           loop
           playsInline
-          preload="auto"
           poster="/images/Aereal-2_1400.png"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-brand-navy via-brand-navy/50 to-brand-navy/20" />
-        <div className="absolute inset-0 animate-shimmer" />
+        <div className="absolute inset-0 bg-black/30" />
 
-        <div className="relative z-20 max-w-5xl mx-auto px-4 pb-14 md:pb-20 text-white">
+        <div className="relative z-20 max-w-5xl mx-auto px-8 text-center text-white">
           <motion.span
-            className="inline-block px-5 py-2 bg-brand-gold text-white text-xs font-black uppercase tracking-[0.2em] rounded-full shadow-gold mb-6"
+            className="badge-gold mb-8 inline-block !bg-brand-gold/30 !text-brand-gold-light"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            ★ Interactive Map ★
+            Interactive Map
           </motion.span>
 
           <motion.h1
-            className="text-4xl md:text-5xl lg:text-6xl font-display mb-4 leading-[1.1]"
+            className="text-4xl md:text-5xl lg:text-6xl font-display mb-6 leading-[1.1]"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
@@ -105,7 +103,7 @@ export default function MapPage() {
           </motion.h1>
 
           <motion.p
-            className="text-lg text-white/80 max-w-2xl mb-8"
+            className="text-lg text-white/80 max-w-2xl mx-auto mb-8"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
@@ -114,7 +112,7 @@ export default function MapPage() {
           </motion.p>
 
           <motion.div
-            className="flex flex-wrap items-center gap-6 md:gap-10"
+            className="flex flex-wrap items-center justify-center gap-6 md:gap-10"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.4 }}
@@ -183,7 +181,7 @@ export default function MapPage() {
       {/* ═══════════════════════════════════════════════════════════════
           WHAT YOU'LL FIND — Video background
       ═══════════════════════════════════════════════════════════════ */}
-      <section className="py-24 md:py-32 relative overflow-hidden">
+      <section className="py-16 md:py-24 relative overflow-hidden">
         {/* Video background */}
         <video
           ref={findVideoRef}
@@ -197,7 +195,6 @@ export default function MapPage() {
           poster="/images/DSC05580-s.png"
         />
         <div className="absolute inset-0 bg-brand-navy/85" />
-        <div className="absolute inset-0 animate-shimmer" />
 
         <div className="max-w-7xl mx-auto px-4 relative z-10">
           <div className="text-center mb-14">

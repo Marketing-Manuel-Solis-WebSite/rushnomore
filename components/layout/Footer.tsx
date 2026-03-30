@@ -5,9 +5,9 @@ import { MapPin, Phone, Mail } from 'lucide-react';
 
 const cols = {
   Accommodations: [
-    { label: 'RV Sites', href: '/stay/rv-sites' },
-    { label: 'Cabins', href: '/stay/cabins' },
-    { label: 'Tent Camping', href: '/stay/tent-camping' },
+    { label: 'RV Sites', href: '/stay#rv-sites' },
+    { label: 'Cabins', href: '/stay#cabins' },
+    { label: 'Tent Camping', href: '/stay#tent-camping' },
     { label: 'Amenities', href: '/amenities' },
     { label: 'Park Map', href: '/map' },
   ],
@@ -37,6 +37,9 @@ const cols = {
 export function Footer() {
   return (
     <footer className="bg-brand-navy text-white relative overflow-hidden">
+      {/* Seamless transition from any page background */}
+      <div className="h-16 bg-gradient-to-b from-transparent to-brand-navy" />
+
       {/* Subtle gold line at top */}
       <div className="h-px bg-gradient-to-r from-transparent via-brand-gold/40 to-transparent" />
 

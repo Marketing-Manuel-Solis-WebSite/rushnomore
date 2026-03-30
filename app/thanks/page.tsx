@@ -13,16 +13,19 @@ export default function ThanksPage() {
   return (
     <>
       {/* ═══ HERO ═══ */}
-      <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden bg-brand-navy">
-        <div className="absolute inset-0">
-          <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover opacity-15">
-            <source src="/videos/rushnomore-video.mp4" type="video/mp4" />
-          </video>
-          <div className="absolute inset-0 bg-gradient-to-b from-brand-navy/60 via-brand-navy/80 to-brand-navy" />
-        </div>
-        <div className="absolute inset-0 animate-shimmer" />
+      <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-brand-navy">
+        <video
+          className="absolute inset-0 w-full h-full object-cover"
+          src="/videos/rushnomore-video.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster="/images/DSC05580-s.png"
+        />
+        <div className="absolute inset-0 bg-black/30" />
 
-        <div className="relative z-10 max-w-2xl mx-auto px-4 text-center text-white">
+        <div className="relative z-20 max-w-2xl mx-auto px-8 text-center text-white">
           {/* Animated checkmark */}
           <motion.div
             className="w-24 h-24 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-8"

@@ -1,8 +1,9 @@
 'use client';
 
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect } from 'react';
+import Link from 'next/link';
 import { SITE } from '@/data/site';
-import { ExternalLink, MapPin, Mountain, TreePine, Phone } from 'lucide-react';
+import { MapPin, Mountain, TreePine, Phone } from 'lucide-react';
 
 export function HeroSection() {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -51,9 +52,9 @@ export function HeroSection() {
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up delay-300">
-          <a href={SITE.booking} target="_blank" rel="noopener noreferrer" className="btn-gold text-lg px-8 py-4">
-            Check Availability <ExternalLink className="w-5 h-5 ml-2" />
-          </a>
+          <Link href={SITE.booking} className="btn-gold text-lg px-8 py-4">
+            Check Availability
+          </Link>
           <a href={`tel:${SITE.phoneTel}`} className="flex items-center gap-2 text-white/90 hover:text-white transition-colors font-medium">
             <Phone className="w-5 h-5" />{SITE.phone}
           </a>

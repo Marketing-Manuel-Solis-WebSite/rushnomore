@@ -201,25 +201,34 @@ async function getReservedPropertyIds(
   checkIn: string,
   checkOut: string
 ): Promise<Set<string>> {
-  // Efficient query: only get reservations where checkIn < our checkOut
-  // Then filter client-side for checkOut > our checkIn
-  const reservationsSnap = await getDocs(
-    query(
-      collection(db, 'reservations'),
-      where('status', 'in', ['pending', 'confirmed', 'checked-in']),
-      where('checkIn', '<', checkOut)
-    )
-  );
+  let reservationsSnap;
+
+  try {
+    // Try compound query first (requires Firestore composite index)
+    reservationsSnap = await getDocs(
+      query(
+        collection(db, 'reservations'),
+        where('status', 'in', ['pending', 'confirmed', 'checked-in']),
+        where('checkIn', '<', checkOut)
+      )
+    );
+  } catch {
+    // Fallback: simple collection scan if index not ready
+    reservationsSnap = await getDocs(collection(db, 'reservations'));
+  }
 
   const reservedIds = new Set<string>();
   reservationsSnap.docs.forEach(d => {
     const res = d.data() as Reservation;
+    // Filter by active status
+    if (!['pending', 'confirmed', 'checked-in'].includes(res.status)) return;
     // Only count if not expired (pending reservations with expiresAt in the past)
     if (res.status === 'pending' && res.expiresAt) {
       const expiresAt = new Date(res.expiresAt).getTime();
-      if (expiresAt < Date.now()) return; // Expired, don't count
+      if (expiresAt < Date.now()) return;
     }
-    if (res.checkOut > checkIn) {
+    // Check date overlap
+    if (res.checkIn < checkOut && res.checkOut > checkIn) {
       reservedIds.add(res.propertyId);
     }
   });
@@ -278,13 +287,19 @@ export async function getCalendarAvailability(
   const totalProps = propsSnap.size;
 
   // Reservations overlapping this month
-  const reservationsSnap = await getDocs(
-    query(
-      collection(db, 'reservations'),
-      where('status', 'in', ['confirmed', 'checked-in']),
-      where('checkIn', '<', endDate)
-    )
-  );
+  let reservationsSnap;
+  try {
+    reservationsSnap = await getDocs(
+      query(
+        collection(db, 'reservations'),
+        where('status', 'in', ['confirmed', 'checked-in']),
+        where('checkIn', '<', endDate)
+      )
+    );
+  } catch {
+    // Fallback if composite index not ready
+    reservationsSnap = await getDocs(collection(db, 'reservations'));
+  }
 
   const calendar: Record<string, { available: number; total: number }> = {};
 
@@ -297,7 +312,13 @@ export async function getCalendarAvailability(
 
     reservationsSnap.docs.forEach(d => {
       const res = d.data() as Reservation;
-      if (res.propertyType === type && res.checkIn <= dateStr && res.checkOut > dateStr) {
+      // Filter for active reservations of this type overlapping this date
+      if (
+        ['confirmed', 'checked-in'].includes(res.status) &&
+        res.propertyType === type &&
+        res.checkIn <= dateStr &&
+        res.checkOut > dateStr
+      ) {
         occupied++;
       }
     });

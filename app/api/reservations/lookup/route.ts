@@ -55,28 +55,34 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Reservation not found. Please check your confirmation number and email.' }, { status: 404 });
     }
 
-    // Return guest-safe data only
-    return NextResponse.json({
-      reservation: {
-        confirmationNumber: reservation.confirmationNumber,
-        status: reservation.status,
-        paymentStatus: reservation.paymentStatus,
-        propertyName: reservation.propertyName,
-        propertyType: reservation.propertyType,
-        checkIn: reservation.checkIn,
-        checkOut: reservation.checkOut,
-        nights: reservation.nights,
-        numberOfGuests: reservation.numberOfGuests,
-        guestName: reservation.guestName,
-        pricePerNight: reservation.pricePerNight,
-        subtotal: reservation.subtotal,
-        tax: reservation.taxAmount,
-        totalAmount: reservation.totalAmount,
-        paidAt: reservation.paidAt,
-        cancellationPolicy: reservation.cancellationPolicy,
-        createdAt: reservation.createdAt,
-      },
-    });
+    // Build guest-safe response
+    const response: Record<string, unknown> = {
+      confirmationNumber: reservation.confirmationNumber,
+      status: reservation.status,
+      paymentStatus: reservation.paymentStatus,
+      propertyName: reservation.propertyName,
+      propertyType: reservation.propertyType,
+      checkIn: reservation.checkIn,
+      checkOut: reservation.checkOut,
+      nights: reservation.nights,
+      numberOfGuests: reservation.numberOfGuests,
+      guestName: reservation.guestName,
+      pricePerNight: reservation.pricePerNight,
+      subtotal: reservation.subtotal,
+      tax: reservation.taxAmount,
+      totalAmount: reservation.totalAmount,
+      paidAt: reservation.paidAt,
+      cancellationPolicy: reservation.cancellationPolicy,
+      createdAt: reservation.createdAt,
+    };
+
+    // If pending payment, include reservationId + expiresAt so guest can complete payment
+    if (reservation.status === 'pending') {
+      response.reservationId = doc.id;
+      response.expiresAt = reservation.expiresAt;
+    }
+
+    return NextResponse.json({ reservation: response });
   } catch {
     return NextResponse.json({ error: 'Server error' }, { status: 500 });
   }

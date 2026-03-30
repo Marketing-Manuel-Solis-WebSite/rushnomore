@@ -123,25 +123,24 @@ export default function StayPage() {
         <video
           ref={heroVideoRef}
           className="absolute inset-0 w-full h-full object-cover"
-          src="/videos/rushnomore-stay.mp4"
-          autoPlay muted loop playsInline preload="auto"
+          src="/videos/RNM-stay.mp4"
+          autoPlay muted loop playsInline
           poster="/images/DSC05580-s.png"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-brand-navy via-brand-navy/40 to-brand-navy/20" />
-        <div className="absolute inset-0 animate-shimmer" />
+        <div className="absolute inset-0 bg-black/30" />
 
-        <div className="relative z-20 max-w-5xl mx-auto px-4 text-center text-white">
+        <div className="relative z-20 max-w-5xl mx-auto px-8 text-center text-white">
           <motion.span
-            className="inline-block px-5 py-2 bg-brand-gold text-white text-xs font-black uppercase tracking-[0.2em] rounded-full shadow-gold mb-6"
+            className="badge-gold mb-8 inline-block !bg-brand-gold/30 !text-brand-gold-light"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            ★ Top-Rated RV Resort ★
+            Top-Rated RV Resort
           </motion.span>
 
           <motion.h1
-            className="text-5xl md:text-6xl lg:text-7xl font-display mb-6 leading-[1.1]"
+            className="text-4xl md:text-5xl lg:text-6xl font-display mb-6 leading-[1.1]"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
@@ -151,7 +150,7 @@ export default function StayPage() {
           </motion.h1>
 
           <motion.p
-            className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto mb-10"
+            className="text-lg text-white/80 max-w-2xl mx-auto mb-10"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
@@ -255,7 +254,6 @@ export default function StayPage() {
             poster="/images/RushMore-rv-camper-van.png"
           />
           <div className="absolute inset-0 bg-brand-navy/80" />
-          <div className="absolute inset-0 animate-shimmer" />
 
           <div className="relative z-10 max-w-5xl mx-auto px-4 text-center text-white">
             <span className="inline-block px-5 py-2 bg-brand-gold text-white text-xs font-black uppercase tracking-[0.2em] rounded-full shadow-gold mb-5">
@@ -464,7 +462,6 @@ export default function StayPage() {
             poster="/images/RushMore-cabins.png"
           />
           <div className="absolute inset-0 bg-brand-navy/80" />
-          <div className="absolute inset-0 animate-shimmer" />
 
           <div className="relative z-10 max-w-5xl mx-auto px-4 text-center text-white">
             <span className="inline-block px-5 py-2 bg-brand-gold text-white text-xs font-black uppercase tracking-[0.2em] rounded-full shadow-gold mb-5">
@@ -608,7 +605,6 @@ export default function StayPage() {
             poster="/images/RushMore-camping.png"
           />
           <div className="absolute inset-0 bg-brand-navy/80" />
-          <div className="absolute inset-0 animate-shimmer" />
 
           <div className="relative z-10 max-w-5xl mx-auto px-4 text-center text-white">
             <span className="inline-block px-5 py-2 bg-brand-gold text-white text-xs font-black uppercase tracking-[0.2em] rounded-full shadow-gold mb-5">
@@ -836,8 +832,7 @@ export default function StayPage() {
       {/* ═══════════════════════════════════════════════════════════════
           QUICK COMPARE
       ═══════════════════════════════════════════════════════════════ */}
-      <section className="py-20 bg-brand-navy text-white relative overflow-hidden">
-        <div className="absolute inset-0 animate-shimmer" />
+      <section className="py-16 bg-brand-navy text-white relative overflow-hidden">
         <div className="max-w-5xl mx-auto px-4 relative z-10 text-center">
           <span className="inline-block px-5 py-2 bg-brand-gold text-white text-xs font-black uppercase tracking-[0.2em] rounded-full shadow-gold mb-5">
             ★ Compare ★

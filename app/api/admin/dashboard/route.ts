@@ -63,7 +63,9 @@ export const GET = withAdminAuth(async () => {
     const revenueLastMonth = paidLastMonth.reduce((sum, r) => sum + r.totalAmount, 0);
 
     // Today's activity
-    const newToday = allReservations.filter(r => r.createdAt >= today).length;
+    const newToday = allReservations.filter(
+      r => r.createdAt >= today && ['pending', 'confirmed', 'checked-in'].includes(r.status)
+    ).length;
     const checkInsToday = allReservations.filter(
       r => r.checkIn === today && ['confirmed', 'checked-in'].includes(r.status)
     ).length;

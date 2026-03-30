@@ -1,10 +1,7 @@
 import type { Metadata } from 'next';
 import { Playfair_Display, Source_Sans_3, Josefin_Sans } from 'next/font/google';
 import '@/styles/globals.css';
-import { Header } from '@/components/layout/Header';
-import { Footer } from '@/components/layout/Footer';
-import { BookingBar } from '@/components/layout/BookingBar';
-import { AIChatWidget } from '@/components/chat/AIChatWidget';
+import { LayoutShell } from '@/components/layout/LayoutShell';
 import { ToastProvider } from '@/components/ui/Toast';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { campgroundSchema } from '@/lib/seo';
@@ -44,11 +41,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KFGKRRJH" height="0" width="0" style={{ display: 'none', visibility: 'hidden' }} />
         </noscript>
         <ToastProvider>
-          <Header />
-          <main>{children}</main>
-          <Footer />
-          <BookingBar />
-          <AIChatWidget />
+          <LayoutShell>{children}</LayoutShell>
         </ToastProvider>
         <Analytics />
         <SpeedInsights />

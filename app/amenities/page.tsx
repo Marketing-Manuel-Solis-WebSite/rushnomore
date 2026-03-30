@@ -116,24 +116,22 @@ export default function AmenitiesPage() {
           muted
           loop
           playsInline
-          preload="auto"
           poster="/images/DSC05580-s.png"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-brand-navy via-brand-navy/40 to-brand-navy/20" />
-        <div className="absolute inset-0 animate-shimmer" />
+        <div className="absolute inset-0 bg-black/30" />
 
-        <div className="relative z-20 max-w-5xl mx-auto px-4 text-center text-white">
+        <div className="relative z-20 max-w-5xl mx-auto px-8 text-center text-white">
           <motion.span
-            className="inline-block px-5 py-2 bg-brand-gold text-white text-xs font-black uppercase tracking-[0.2em] rounded-full shadow-gold mb-6"
+            className="badge-gold mb-8 inline-block !bg-brand-gold/30 !text-brand-gold-light"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            ★ 16 Resort Amenities ★
+            16 Resort Amenities
           </motion.span>
 
           <motion.h1
-            className="text-5xl md:text-6xl lg:text-7xl font-display mb-6 leading-[1.1]"
+            className="text-4xl md:text-5xl lg:text-6xl font-display mb-6 leading-[1.1]"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
@@ -143,7 +141,7 @@ export default function AmenitiesPage() {
           </motion.h1>
 
           <motion.p
-            className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto mb-10"
+            className="text-lg text-white/80 max-w-2xl mx-auto mb-10"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
@@ -376,7 +374,6 @@ export default function AmenitiesPage() {
           poster="/images/DSC05580-s.png"
         />
         <div className="absolute inset-0 bg-brand-navy/85" />
-        <div className="absolute inset-0 animate-shimmer" />
 
         <div className="max-w-5xl mx-auto px-4 relative z-10">
           <div className="text-center mb-16">
@@ -496,7 +493,6 @@ export default function AmenitiesPage() {
       <section className="relative py-24 md:py-32 overflow-hidden bg-brand-navy text-white">
         <div className="absolute inset-0 bg-cover bg-center opacity-20" style={{ backgroundImage: "url('/images/Aereal-2_1400.jpg')" }} />
         <div className="absolute inset-0 bg-gradient-to-r from-brand-navy via-brand-navy/90 to-brand-navy" />
-        <div className="absolute inset-0 animate-shimmer" />
 
         <div className="max-w-6xl mx-auto px-4 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">

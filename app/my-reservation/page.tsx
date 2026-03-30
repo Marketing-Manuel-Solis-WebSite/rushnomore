@@ -1,19 +1,21 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { SITE } from '@/data/site';
 import {
   Search, CheckCircle, Calendar, Users, Clock, MapPin,
   Phone, Mail, Printer, Home, AlertCircle, Shield,
   CreditCard, ArrowLeft, Navigation, ExternalLink, Loader2,
+  Timer, Sparkles, Star, Tent, Truck,
 } from 'lucide-react';
 
 interface GuestReservation {
   confirmationNumber: string;
   status: 'pending' | 'confirmed' | 'checked-in' | 'checked-out' | 'cancelled' | 'expired';
-  paymentStatus: 'unpaid' | 'paid' | 'refunded' | 'partial-refund';
+  paymentStatus: string;
   propertyName: string;
   propertyType: string;
   checkIn: string;
@@ -28,390 +30,320 @@ interface GuestReservation {
   paidAt?: string;
   cancellationPolicy: string;
   createdAt: string;
+  reservationId?: string;
+  expiresAt?: string;
 }
 
 const STATUS_CONFIG: Record<string, { label: string; color: string; bg: string }> = {
-  confirmed:    { label: 'Confirmed',   color: 'text-green-700',  bg: 'bg-green-100' },
-  pending:      { label: 'Pending',     color: 'text-amber-700',  bg: 'bg-amber-100' },
-  cancelled:    { label: 'Cancelled',   color: 'text-red-700',    bg: 'bg-red-100' },
-  'checked-in': { label: 'Checked In',  color: 'text-blue-700',   bg: 'bg-blue-100' },
-  'checked-out':{ label: 'Checked Out', color: 'text-gray-700',   bg: 'bg-gray-100' },
-  expired:      { label: 'Expired',     color: 'text-gray-700',   bg: 'bg-gray-100' },
+  confirmed:     { label: 'Confirmed',      color: 'text-green-700',  bg: 'bg-green-50 border-green-200' },
+  pending:       { label: 'Pending Payment', color: 'text-amber-700', bg: 'bg-amber-50 border-amber-200' },
+  cancelled:     { label: 'Cancelled',      color: 'text-red-700',    bg: 'bg-red-50 border-red-200' },
+  'checked-in':  { label: 'Checked In',     color: 'text-blue-700',   bg: 'bg-blue-50 border-blue-200' },
+  'checked-out': { label: 'Checked Out',    color: 'text-gray-600',   bg: 'bg-gray-50 border-gray-200' },
+  expired:       { label: 'Expired',        color: 'text-gray-600',   bg: 'bg-gray-50 border-gray-200' },
+};
+
+const PROPERTY_IMAGES: Record<string, string> = {
+  cabin: '/images/cabin-9_800.jpg',
+  rv: '/images/rv-camper-van.jpg',
+  tent: '/images/Wooded-Tent-Area.webp',
 };
 
 const CANCELLATION_LABELS: Record<string, string> = {
-  'standard-rv-tent': 'Standard cancellation policy (RV / Tent)',
-  'luxury-cabin':     'Luxury cabin cancellation policy',
-  'non-refundable':   'Non-refundable reservation',
+  'standard-rv-tent': '14+ days: full refund ($25 fee) · 7-14 days: 50% · <7 days: no refund',
+  'luxury-cabin': '30+ days: full refund ($25 fee) · 14-30: 75% · 7-14: 50% · <7: no refund',
+  'non-refundable': 'Non-refundable (Rally / Holiday period)',
 };
 
 function formatDate(d: string) {
-  return new Date(d + 'T12:00:00').toLocaleDateString('en-US', {
-    weekday: 'long', year: 'numeric', month: 'long', day: 'numeric',
-  });
+  return new Date(d + 'T12:00:00').toLocaleDateString('en-US', { weekday: 'short', month: 'long', day: 'numeric', year: 'numeric' });
+}
+function formatShort(d: string) {
+  return new Date(d + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+}
+function daysUntil(s: string) {
+  return Math.ceil((new Date(s + 'T12:00:00').getTime() - Date.now()) / 86400000);
 }
 
-function daysUntil(dateStr: string): number {
-  const target = new Date(dateStr + 'T12:00:00');
-  const now = new Date();
-  return Math.ceil((target.getTime() - now.getTime()) / (1000 * 60 * 60 * 24));
+function useCountdown(expiresAt: string | undefined) {
+  const [timeLeft, setTimeLeft] = useState('');
+  const [expired, setExpired] = useState(false);
+  useEffect(() => {
+    if (!expiresAt) return;
+    const tick = () => {
+      const diff = new Date(expiresAt).getTime() - Date.now();
+      if (diff <= 0) { setExpired(true); setTimeLeft('0:00'); return; }
+      setTimeLeft(`${Math.floor(diff / 60000)}:${String(Math.floor((diff % 60000) / 1000)).padStart(2, '0')}`);
+    };
+    tick();
+    const id = setInterval(tick, 1000);
+    return () => clearInterval(id);
+  }, [expiresAt]);
+  return { timeLeft, expired };
 }
 
 export default function MyReservationPage() {
-  const [confirmationNumber, setConfirmationNumber] = useState('');
+  const [cn, setCn] = useState('');
   const [email, setEmail] = useState('');
-  const [reservation, setReservation] = useState<GuestReservation | null>(null);
+  const [res, setRes] = useState<GuestReservation | null>(null);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [paying, setPaying] = useState(false);
 
   async function handleLookup(e: React.FormEvent) {
-    e.preventDefault();
-    setError('');
-    setReservation(null);
-    setLoading(true);
-
+    e.preventDefault(); setError(''); setRes(null); setLoading(true);
     try {
-      const res = await fetch('/api/reservations/lookup', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ confirmationNumber, email }),
-      });
-
-      const data = await res.json();
-
-      if (!res.ok) {
-        setError(data.error || 'Something went wrong. Please try again.');
-        return;
-      }
-
-      setReservation(data.reservation);
-    } catch {
-      setError('Unable to connect. Please check your internet and try again.');
-    } finally {
-      setLoading(false);
-    }
+      const r = await fetch('/api/reservations/lookup', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ confirmationNumber: cn, email }) });
+      const d = await r.json();
+      if (!r.ok) { setError(d.error || 'Not found.'); return; }
+      setRes(d.reservation);
+    } catch { setError('Connection error.'); } finally { setLoading(false); }
   }
 
-  function handleReset() {
-    setReservation(null);
-    setError('');
-    setConfirmationNumber('');
-    setEmail('');
-  }
+  const { timeLeft, expired: holdExpired } = useCountdown(res?.status === 'pending' ? res.expiresAt : undefined);
+
+  const handlePay = useCallback(async () => {
+    if (!res?.reservationId) return; setPaying(true);
+    try {
+      const r = await fetch('/api/payments/create-checkout', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ reservationId: res.reservationId }) });
+      const d = await r.json();
+      if (d.checkoutUrl) window.location.href = d.checkoutUrl;
+      else { setError('Payment unavailable. Try booking again.'); setPaying(false); }
+    } catch { setError('Connection error.'); setPaying(false); }
+  }, [res?.reservationId]);
+
+  const img = res ? (PROPERTY_IMAGES[res.propertyType] || '/images/DSC05580-s.png') : '';
+  const dti = res ? daysUntil(res.checkIn) : 0;
+  const sc = res ? STATUS_CONFIG[res.status] : null;
 
   return (
-    <>
-      {/* Hero / Form Section */}
-      <section className="relative min-h-[60vh] flex items-center justify-center bg-brand-navy text-white overflow-hidden">
-        {/* Background */}
-        <div className="absolute inset-0">
-          <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover opacity-10">
-            <source src="/videos/rushnomore-video.mp4" type="video/mp4" />
-          </video>
-          <div className="absolute inset-0 bg-gradient-to-b from-brand-navy/70 to-brand-navy" />
-        </div>
-        <div className="absolute inset-0 animate-shimmer" />
+    <div className="min-h-screen bg-surface-primary">
+      <AnimatePresence mode="wait">
+        {!res ? (
+          /* ═══════════ LOOKUP FORM ═══════════ */
+          <motion.div key="form" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+            {/* Warm hero — not navy */}
+            <section className="relative pt-12 pb-20 md:pt-16 md:pb-28 overflow-hidden">
+              <div className="absolute inset-0">
+                <Image src="/images/DSC05580-s.png" alt="" fill className="object-cover" priority />
+                <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-surface-primary" />
+              </div>
 
-        <div className="relative z-10 w-full max-w-xl mx-auto px-4 py-20">
-          <AnimatePresence mode="wait">
-            {!reservation ? (
-              /* ═══ LOOKUP FORM ═══ */
-              <motion.div
-                key="form"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.4 }}
-              >
+              <div className="relative z-10 max-w-md mx-auto px-4 pt-8">
                 <div className="text-center mb-8">
-                  <motion.div
-                    className="w-16 h-16 bg-brand-gold/20 rounded-full flex items-center justify-center mx-auto mb-5"
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    transition={{ delay: 0.1, type: 'spring', stiffness: 200 }}
-                  >
-                    <Search className="w-8 h-8 text-brand-gold" />
-                  </motion.div>
-                  <h1 className="text-3xl md:text-4xl font-display font-bold mb-3">
-                    My Reservation
-                  </h1>
-                  <p className="text-white/60 text-sm md:text-base">
-                    Enter your confirmation number and email to view your booking details.
-                  </p>
+                  <div className="w-12 h-12 bg-white/10 backdrop-blur-md rounded-xl flex items-center justify-center mx-auto mb-4">
+                    <Search className="w-6 h-6 text-white" />
+                  </div>
+                  <h1 className="text-3xl md:text-4xl font-display font-bold text-white mb-2">My Reservation</h1>
+                  <p className="text-white/60 text-sm">Look up your booking details</p>
                 </div>
 
-                <form onSubmit={handleLookup} className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 md:p-8 shadow-lodge-xl space-y-5">
+                <form onSubmit={handleLookup} className="bg-white rounded-2xl shadow-lodge-xl p-6 space-y-4">
                   <div>
-                    <label htmlFor="confirmationNumber" className="block text-xs font-bold uppercase tracking-wider text-white/60 mb-2">
-                      Confirmation Number
-                    </label>
-                    <input
-                      id="confirmationNumber"
-                      type="text"
-                      value={confirmationNumber}
-                      onChange={(e) => setConfirmationNumber(e.target.value.toUpperCase())}
-                      placeholder="RNM-2026-XXXX"
-                      required
-                      className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:ring-2 focus:ring-brand-gold/50 focus:border-brand-gold/50 font-mono text-lg tracking-wider uppercase transition-all"
-                    />
+                    <label className="block text-xs font-bold text-brand-navy uppercase tracking-wider mb-1.5">Confirmation Number</label>
+                    <input type="text" value={cn} onChange={e => setCn(e.target.value.toUpperCase())} placeholder="RNM-2026-XXXXXX" required
+                      className="w-full border-2 border-surface-muted rounded-xl px-4 py-3 font-mono text-lg tracking-wider uppercase focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 outline-none transition-all" />
                   </div>
-
                   <div>
-                    <label htmlFor="email" className="block text-xs font-bold uppercase tracking-wider text-white/60 mb-2">
-                      Email Address
-                    </label>
-                    <input
-                      id="email"
-                      type="email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      placeholder="your@email.com"
-                      required
-                      className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:ring-2 focus:ring-brand-gold/50 focus:border-brand-gold/50 transition-all"
-                    />
+                    <label className="block text-xs font-bold text-brand-navy uppercase tracking-wider mb-1.5">Email Address</label>
+                    <input type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="your@email.com" required
+                      className="w-full border-2 border-surface-muted rounded-xl px-4 py-3 text-sm focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 outline-none transition-all" />
                   </div>
-
                   {error && (
-                    <motion.div
-                      initial={{ opacity: 0, y: -5 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      className="flex items-start gap-3 bg-red-500/10 border border-red-500/20 rounded-xl p-4"
-                    >
-                      <AlertCircle className="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" />
-                      <p className="text-red-300 text-sm">{error}</p>
-                    </motion.div>
+                    <div className="flex items-start gap-2.5 bg-red-50 border border-red-200 rounded-xl p-3">
+                      <AlertCircle className="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5" />
+                      <p className="text-sm text-red-700">{error}</p>
+                    </div>
                   )}
-
-                  <button
-                    type="submit"
-                    disabled={loading}
-                    className="w-full btn-gold py-3.5 text-base font-bold rounded-xl flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
-                  >
-                    {loading ? (
-                      <>
-                        <Loader2 className="w-5 h-5 animate-spin" />
-                        Searching...
-                      </>
-                    ) : (
-                      <>
-                        <Search className="w-5 h-5" />
-                        Find My Reservation
-                      </>
-                    )}
+                  <button type="submit" disabled={loading} className="w-full btn-gold py-3.5 rounded-xl font-bold flex items-center justify-center gap-2 disabled:opacity-50">
+                    {loading ? <><Loader2 className="w-5 h-5 animate-spin" /> Searching...</> : <><Search className="w-5 h-5" /> Find Reservation</>}
                   </button>
                 </form>
 
-                <p className="text-center text-white/40 text-xs mt-6 leading-relaxed">
-                  Don&apos;t have your confirmation number? Check your email or call{' '}
-                  <a href={`tel:${SITE.phoneTel}`} className="text-brand-gold hover:underline font-bold">
-                    {SITE.phone}
-                  </a>
+                <p className="text-center text-white/40 text-xs mt-4">
+                  Need help? <a href={`tel:${SITE.phoneTel}`} className="text-brand-gold hover:underline">{SITE.phone}</a>
                 </p>
-              </motion.div>
-            ) : (
-              /* ═══ SUCCESS HEADER ═══ */
-              <motion.div
-                key="success"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4 }}
-                className="text-center"
-              >
-                <motion.div
-                  className="w-20 h-20 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-5"
-                  initial={{ scale: 0, rotate: -180 }}
-                  animate={{ scale: 1, rotate: 0 }}
-                  transition={{ duration: 0.6, ease: [0.34, 1.56, 0.64, 1] }}
-                >
-                  <CheckCircle className="w-10 h-10 text-green-400" />
-                </motion.div>
-                <h1 className="text-3xl md:text-4xl font-display font-bold mb-2">
-                  Reservation Found
-                </h1>
-                <p className="text-white/60">
-                  Here are your booking details, <strong className="text-white">{reservation.guestName}</strong>.
-                </p>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
-      </section>
+              </div>
+            </section>
+          </motion.div>
+        ) : (
+          /* ═══════════ RESERVATION FOUND ═══════════ */
+          <motion.div key="found" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+            {/* Property hero image */}
+            <section className="relative h-56 md:h-72 overflow-hidden">
+              <Image src={img} alt={res.propertyName} fill className="object-cover" priority />
+              <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-surface-primary" />
+              <div className="absolute top-4 left-4 z-10">
+                <button onClick={() => { setRes(null); setError(''); setCn(''); setEmail(''); }} className="bg-white/90 backdrop-blur-sm text-brand-navy text-xs font-bold px-3 py-2 rounded-full flex items-center gap-1.5 hover:bg-white transition-colors">
+                  <ArrowLeft className="w-3.5 h-3.5" /> Back
+                </button>
+              </div>
+              <div className="absolute bottom-4 left-4 z-10">
+                <span className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wide border ${sc?.bg} ${sc?.color}`}>
+                  {res.status === 'confirmed' && <CheckCircle className="w-3 h-3" />}
+                  {res.status === 'pending' && <Clock className="w-3 h-3" />}
+                  {sc?.label}
+                </span>
+              </div>
+            </section>
 
-      {/* ═══ RESERVATION DETAILS ═══ */}
-      <AnimatePresence>
-        {reservation && (
-          <motion.section
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
-            className="relative -mt-10 z-10 pb-16"
-          >
-            <div className="max-w-2xl mx-auto px-4">
-              <motion.div
-                className="bg-white rounded-3xl shadow-lodge-xl border border-surface-muted/50 overflow-hidden"
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3, duration: 0.5 }}
-              >
-                {/* Status + Confirmation Header */}
-                <div className="bg-brand-gold px-6 md:px-8 py-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-                  <div>
-                    <p className="text-sm font-medium text-white/80">Confirmation Number</p>
-                    <p className="text-2xl font-display font-bold tracking-wider text-white">
-                      {reservation.confirmationNumber}
-                    </p>
+            {/* Content */}
+            <section className="max-w-2xl mx-auto px-4 -mt-6 pb-12 relative z-10 space-y-5">
+
+              {/* Pending payment */}
+              {res.status === 'pending' && !holdExpired && (
+                <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} className="bg-amber-50 border-2 border-amber-200 rounded-2xl p-5 flex items-start gap-4">
+                  <Timer className="w-6 h-6 text-amber-600 flex-shrink-0 mt-0.5" />
+                  <div className="flex-1">
+                    <p className="font-bold text-amber-800 mb-1">Complete payment in <span className="font-mono text-lg">{timeLeft}</span></p>
+                    <button onClick={handlePay} disabled={paying} className="btn-gold py-2.5 px-5 text-sm rounded-xl flex items-center gap-2 mt-2 disabled:opacity-50">
+                      {paying ? <Loader2 className="w-4 h-4 animate-spin" /> : <CreditCard className="w-4 h-4" />} Pay ${res.totalAmount.toFixed(2)}
+                    </button>
                   </div>
-                  <div className="flex items-center gap-3">
-                    <span className={`px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wide ${STATUS_CONFIG[reservation.status]?.bg || 'bg-gray-100'} ${STATUS_CONFIG[reservation.status]?.color || 'text-gray-700'}`}>
-                      {STATUS_CONFIG[reservation.status]?.label || reservation.status}
-                    </span>
+                </motion.div>
+              )}
+              {res.status === 'pending' && holdExpired && (
+                <div className="bg-red-50 border-2 border-red-200 rounded-2xl p-5 flex items-start gap-3">
+                  <AlertCircle className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
+                  <div>
+                    <p className="font-bold text-red-800 mb-1">Hold Expired</p>
+                    <p className="text-sm text-red-700 mb-2">Dates released. Please book again.</p>
+                    <Link href="/booking" className="btn-gold py-2 px-4 text-sm rounded-xl inline-flex items-center gap-2">Book Again</Link>
+                  </div>
+                </div>
+              )}
+
+              {/* Main card */}
+              <motion.div className="bg-white rounded-2xl shadow-lodge border border-surface-muted/50 overflow-hidden" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}>
+                {/* Header bar */}
+                <div className="flex items-center justify-between px-6 py-4 border-b border-surface-muted/50 bg-surface-secondary/30">
+                  <div>
+                    <p className="text-[10px] text-brand-stone uppercase tracking-wider font-bold">Confirmation</p>
+                    <p className="font-mono font-bold text-brand-gold text-lg tracking-wider">{res.confirmationNumber}</p>
+                  </div>
+                  <div className="text-right">
+                    <p className="text-[10px] text-brand-stone uppercase tracking-wider font-bold">Total</p>
+                    <p className="font-display font-bold text-brand-navy text-xl">${res.totalAmount.toFixed(2)}</p>
                   </div>
                 </div>
 
-                <div className="p-6 md:p-8 space-y-6">
-                  {/* Property */}
+                <div className="p-6 space-y-5">
+                  {/* Property name */}
                   <div>
-                    <p className="text-[10px] text-brand-stone uppercase tracking-[0.15em] font-bold mb-1">Property</p>
-                    <p className="text-xl font-display font-bold text-brand-navy">{reservation.propertyName}</p>
-                    <p className="text-sm text-brand-stone capitalize">{reservation.propertyType} accommodation</p>
+                    <p className="text-xl font-display font-bold text-brand-navy">{res.propertyName}</p>
+                    <p className="text-sm text-brand-stone capitalize">{res.propertyType} · {res.guestName}</p>
                   </div>
 
-                  {/* Check-in / Check-out */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div className="bg-surface-secondary/50 rounded-xl p-4">
-                      <div className="flex items-center gap-2 mb-2">
-                        <Calendar className="w-4 h-4 text-brand-gold" />
-                        <p className="text-[10px] text-brand-stone uppercase tracking-wider font-bold">Check-in</p>
+                  {/* Dates grid */}
+                  <div className="grid grid-cols-2 gap-3">
+                    <div className="bg-surface-primary rounded-xl p-4 border border-surface-muted/50">
+                      <div className="flex items-center gap-1.5 mb-1.5">
+                        <Calendar className="w-3.5 h-3.5 text-brand-gold" />
+                        <span className="text-[10px] text-brand-stone uppercase tracking-wider font-bold">Check-in</span>
                       </div>
-                      <p className="font-bold text-brand-navy text-sm">{formatDate(reservation.checkIn)}</p>
-                      <p className="text-xs text-brand-stone mt-0.5">After 3:00 PM</p>
+                      <p className="font-bold text-brand-navy text-sm">{formatDate(res.checkIn)}</p>
+                      <p className="text-xs text-brand-stone">After 3:00 PM</p>
                     </div>
-                    <div className="bg-surface-secondary/50 rounded-xl p-4">
-                      <div className="flex items-center gap-2 mb-2">
-                        <Calendar className="w-4 h-4 text-brand-gold" />
-                        <p className="text-[10px] text-brand-stone uppercase tracking-wider font-bold">Check-out</p>
+                    <div className="bg-surface-primary rounded-xl p-4 border border-surface-muted/50">
+                      <div className="flex items-center gap-1.5 mb-1.5">
+                        <Calendar className="w-3.5 h-3.5 text-brand-gold" />
+                        <span className="text-[10px] text-brand-stone uppercase tracking-wider font-bold">Check-out</span>
                       </div>
-                      <p className="font-bold text-brand-navy text-sm">{formatDate(reservation.checkOut)}</p>
-                      <p className="text-xs text-brand-stone mt-0.5">Before 11:00 AM</p>
-                    </div>
-                  </div>
-
-                  {/* Stats Row */}
-                  <div className="grid grid-cols-3 gap-4">
-                    <div className="text-center p-3 bg-surface-secondary/50 rounded-xl">
-                      <Clock className="w-5 h-5 text-brand-gold mx-auto mb-1" />
-                      <p className="font-display text-xl font-bold text-brand-gold">{reservation.nights}</p>
-                      <p className="text-[10px] text-brand-stone uppercase font-bold">Nights</p>
-                    </div>
-                    <div className="text-center p-3 bg-surface-secondary/50 rounded-xl">
-                      <Users className="w-5 h-5 text-brand-gold mx-auto mb-1" />
-                      <p className="font-display text-xl font-bold text-brand-gold">{reservation.numberOfGuests}</p>
-                      <p className="text-[10px] text-brand-stone uppercase font-bold">Guests</p>
-                    </div>
-                    <div className="text-center p-3 bg-surface-secondary/50 rounded-xl">
-                      <CreditCard className="w-5 h-5 text-brand-gold mx-auto mb-1" />
-                      <p className="font-display text-xl font-bold text-green-500 capitalize">{reservation.paymentStatus}</p>
-                      <p className="text-[10px] text-brand-stone uppercase font-bold">Payment</p>
+                      <p className="font-bold text-brand-navy text-sm">{formatDate(res.checkOut)}</p>
+                      <p className="text-xs text-brand-stone">Before 11:00 AM</p>
                     </div>
                   </div>
 
-                  {/* Price Breakdown */}
-                  <div className="border-t border-surface-muted pt-5">
-                    <h3 className="text-xs font-bold uppercase tracking-wider text-brand-stone mb-3">Price Breakdown</h3>
-                    <div className="space-y-2 text-sm">
-                      <div className="flex justify-between text-brand-navy/70">
-                        <span>${reservation.pricePerNight.toFixed(2)} x {reservation.nights} night{reservation.nights !== 1 ? 's' : ''}</span>
-                        <span>${reservation.subtotal.toFixed(2)}</span>
+                  {/* Stats */}
+                  <div className="flex gap-3">
+                    {[
+                      { icon: Clock, val: res.nights, label: `Night${res.nights !== 1 ? 's' : ''}` },
+                      { icon: Users, val: res.numberOfGuests, label: `Guest${res.numberOfGuests !== 1 ? 's' : ''}` },
+                    ].map((s, i) => (
+                      <div key={i} className="flex-1 text-center p-3 bg-surface-primary rounded-xl border border-surface-muted/50">
+                        <s.icon className="w-4 h-4 text-brand-gold mx-auto mb-1" />
+                        <p className="font-display text-lg font-bold text-brand-navy">{s.val}</p>
+                        <p className="text-[10px] text-brand-stone uppercase font-bold">{s.label}</p>
                       </div>
-                      <div className="flex justify-between text-brand-navy/70">
-                        <span>Tax</span>
-                        <span>${reservation.tax.toFixed(2)}</span>
-                      </div>
-                      <div className="flex justify-between font-bold text-brand-navy pt-2 border-t border-surface-muted text-base">
-                        <span>Total</span>
-                        <span>${reservation.totalAmount.toFixed(2)}</span>
-                      </div>
+                    ))}
+                  </div>
+
+                  {/* Price breakdown */}
+                  <div className="border-t border-surface-muted pt-4 space-y-1.5 text-sm">
+                    <div className="flex justify-between text-brand-stone">
+                      <span>${res.pricePerNight.toFixed(2)} x {res.nights} nights</span>
+                      <span>${res.subtotal.toFixed(2)}</span>
+                    </div>
+                    {res.tax > 0 && <div className="flex justify-between text-brand-stone"><span>Tax (6%)</span><span>${res.tax.toFixed(2)}</span></div>}
+                    <div className="flex justify-between font-bold text-brand-navy pt-2 border-t border-surface-muted">
+                      <span>Total</span>
+                      <span className="text-brand-gold">${res.totalAmount.toFixed(2)}</span>
                     </div>
                   </div>
 
-                  {/* Cancellation Policy */}
-                  <div className="flex items-start gap-3 bg-surface-secondary/50 rounded-xl p-4">
-                    <Shield className="w-5 h-5 text-brand-gold flex-shrink-0 mt-0.5" />
+                  {/* Policy */}
+                  <div className="flex items-start gap-2.5 bg-surface-primary rounded-xl p-3.5 border border-surface-muted/50">
+                    <Shield className="w-4 h-4 text-brand-gold flex-shrink-0 mt-0.5" />
                     <div>
-                      <p className="text-xs font-bold uppercase tracking-wider text-brand-stone mb-1">Cancellation Policy</p>
-                      <p className="text-sm text-brand-navy/70">
-                        {CANCELLATION_LABELS[reservation.cancellationPolicy] || reservation.cancellationPolicy}
-                      </p>
+                      <p className="text-xs font-bold text-brand-navy mb-0.5">Cancellation</p>
+                      <p className="text-xs text-brand-stone">{CANCELLATION_LABELS[res.cancellationPolicy] || res.cancellationPolicy}</p>
                     </div>
                   </div>
 
-                  {/* Cancellation note for confirmed reservations more than 7 days away */}
-                  {reservation.status === 'confirmed' && daysUntil(reservation.checkIn) > 7 && (
-                    <motion.div
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: 'auto' }}
-                      className="flex items-start gap-3 bg-blue-50 border border-blue-100 rounded-xl p-4"
-                    >
-                      <AlertCircle className="w-5 h-5 text-blue-500 flex-shrink-0 mt-0.5" />
-                      <p className="text-sm text-blue-700">
-                        Your check-in is more than 7 days away. If you need to cancel or modify your reservation, please contact us at{' '}
-                        <a href={`tel:${SITE.phoneTel}`} className="font-bold underline">{SITE.phone}</a> or{' '}
-                        <a href={`mailto:${SITE.email}`} className="font-bold underline">{SITE.email}</a>.
-                      </p>
-                    </motion.div>
+                  {res.status === 'confirmed' && dti > 7 && (
+                    <div className="flex items-start gap-2.5 bg-blue-50 border border-blue-100 rounded-xl p-3.5">
+                      <AlertCircle className="w-4 h-4 text-blue-500 flex-shrink-0 mt-0.5" />
+                      <p className="text-xs text-blue-700">Need changes? Call <a href={`tel:${SITE.phoneTel}`} className="font-bold underline">{SITE.phone}</a> ({dti} days until check-in)</p>
+                    </div>
                   )}
                 </div>
+              </motion.div>
 
-                {/* Getting Here */}
-                <div className="border-t border-surface-muted p-6 md:p-8 bg-surface-secondary/20">
-                  <h3 className="font-bold text-brand-navy mb-3 flex items-center gap-2 text-sm">
-                    <Navigation className="w-4 h-4 text-brand-gold" /> Getting Here
-                  </h3>
-                  <p className="text-sm text-brand-navy/70 font-bold mb-1">{SITE.address}</p>
-                  <p className="text-xs text-brand-stone mb-4">
-                    From I-90, take Exit 37 &rarr; Turn right onto Brimstone Place &rarr; Rush No More is on your right.
-                  </p>
-                  <div className="flex flex-wrap items-center gap-4 text-sm">
-                    <a href={`tel:${SITE.phoneTel}`} className="flex items-center gap-2 text-brand-gold font-bold hover:underline">
-                      <Phone className="w-4 h-4" /> {SITE.phone}
-                    </a>
-                    <a href={`mailto:${SITE.email}`} className="flex items-center gap-2 text-brand-gold font-bold hover:underline">
-                      <Mail className="w-4 h-4" /> {SITE.email}
-                    </a>
-                    <a href={SITE.maps} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-brand-gold font-bold hover:underline">
-                      <MapPin className="w-4 h-4" /> Google Maps <ExternalLink className="w-3 h-3" />
-                    </a>
+              {/* Map + Directions */}
+              <motion.div className="bg-white rounded-2xl shadow-lodge border border-surface-muted/50 overflow-hidden" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
+                <div className="aspect-[2.5/1] relative">
+                  <iframe src={SITE.mapsEmbed} className="absolute inset-0 w-full h-full border-0" loading="lazy" title="Location" />
+                </div>
+                <div className="p-5">
+                  <p className="text-sm font-bold text-brand-navy mb-1">{SITE.address}</p>
+                  <p className="text-xs text-brand-stone mb-3">I-90 Exit 37 &rarr; Right on Brimstone Place &rarr; 2 min from interstate</p>
+                  <div className="flex flex-wrap gap-3 text-sm">
+                    <a href={`tel:${SITE.phoneTel}`} className="flex items-center gap-1.5 text-brand-gold font-bold hover:underline"><Phone className="w-3.5 h-3.5" />{SITE.phone}</a>
+                    <a href={SITE.maps} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-brand-gold font-bold hover:underline"><MapPin className="w-3.5 h-3.5" />Directions</a>
                   </div>
                 </div>
               </motion.div>
 
-              {/* Action Buttons */}
-              <motion.div
-                className="flex flex-col sm:flex-row justify-center gap-4 mt-8"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5 }}
-              >
-                <button onClick={() => window.print()} className="btn-outline px-6">
-                  <Printer className="w-4 h-4 mr-2" /> Print
-                </button>
-                <Link href="/contact" className="btn-outline px-6">
-                  <Mail className="w-4 h-4 mr-2" /> Contact Us
-                </Link>
-                <button onClick={handleReset} className="btn-outline px-6">
-                  <ArrowLeft className="w-4 h-4 mr-2" /> Look Up Another
-                </button>
-                <Link href="/" className="btn-gold px-6">
-                  <Home className="w-4 h-4 mr-2" /> Back to Home
-                </Link>
-              </motion.div>
-            </div>
-          </motion.section>
+              {/* What to expect */}
+              {res.status === 'confirmed' && (
+                <motion.div className="bg-white rounded-2xl shadow-lodge border border-surface-muted/50 p-5" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}>
+                  <h3 className="text-sm font-bold text-brand-navy mb-3 flex items-center gap-2"><Sparkles className="w-4 h-4 text-brand-gold" />What to Expect</h3>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                    {[
+                      { icon: Star, text: '16 free amenities: Pool, Hot Tub, Beer Garden' },
+                      { icon: MapPin, text: '5 mi from Sturgis · 55 mi from Mt. Rushmore' },
+                      { icon: Shield, text: 'Gated entry · 24/7 security' },
+                      { icon: Phone, text: 'Office: 8 AM - 5 PM Mountain Time' },
+                    ].map((item, i) => (
+                      <div key={i} className="flex items-start gap-2 text-xs text-brand-navy/70">
+                        <item.icon className="w-3.5 h-3.5 text-brand-gold flex-shrink-0 mt-0.5" />
+                        <span>{item.text}</span>
+                      </div>
+                    ))}
+                  </div>
+                </motion.div>
+              )}
+
+              {/* Actions */}
+              <div className="flex flex-wrap justify-center gap-3 pt-2 pb-4">
+                <button onClick={() => window.print()} className="btn-outline px-4 py-2.5 text-sm"><Printer className="w-4 h-4 mr-1.5" />Print</button>
+                <button onClick={() => { setRes(null); setError(''); setCn(''); setEmail(''); }} className="btn-outline px-4 py-2.5 text-sm"><Search className="w-4 h-4 mr-1.5" />Look Up Another</button>
+                <Link href="/" className="btn-gold px-4 py-2.5 text-sm"><Home className="w-4 h-4 mr-1.5" />Home</Link>
+              </div>
+            </section>
+          </motion.div>
         )}
       </AnimatePresence>
-
-      {/* Spacer when no reservation shown */}
-      {!reservation && <div className="h-4" />}
-    </>
+    </div>
   );
 }

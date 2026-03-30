@@ -169,7 +169,7 @@ export default function ExplorePage() {
       {/* ═══════════════════════════════════════════════
           SECTION 1: CINEMATIC VIDEO HERO
           ═══════════════════════════════════════════════ */}
-      <section id="hero" className="relative min-h-[100vh] flex items-center justify-center overflow-hidden">
+      <section id="hero" className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-brand-navy">
         {/* Video Background */}
         <video
           ref={videoRef}
@@ -178,12 +178,10 @@ export default function ExplorePage() {
           loop
           playsInline
           className="absolute inset-0 w-full h-full object-cover"
+          src="/videos/RNM-explore.mp4"
           poster="/images/DSC05580-s.png"
-        >
-          <source src="/videos/rushnomore-video.mp4" type="video/mp4" />
-        </video>
-        <div className="absolute inset-0 bg-gradient-to-b from-brand-navy/70 via-brand-navy/30 to-brand-navy/90" />
-        <div className="absolute inset-0 animate-shimmer" />
+        />
+        <div className="absolute inset-0 bg-black/30" />
 
         {/* Video control */}
         <button
@@ -195,9 +193,9 @@ export default function ExplorePage() {
         </button>
 
         {/* Hero Content */}
-        <div className="relative z-10 max-w-6xl mx-auto px-4 text-center text-white">
+        <div className="relative z-20 max-w-5xl mx-auto px-8 text-center text-white">
           <motion.span
-            className="badge-gold mb-6 inline-block !bg-brand-gold/20 !text-brand-gold-light"
+            className="badge-gold mb-8 inline-block !bg-brand-gold/30 !text-brand-gold-light"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -206,16 +204,16 @@ export default function ExplorePage() {
           </motion.span>
 
           <motion.h1
-            className="mb-6 text-5xl md:text-6xl lg:text-7xl"
+            className="text-4xl md:text-5xl lg:text-6xl font-display mb-6 leading-[1.1]"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.1 }}
           >
-            Explore the <span className="text-brand-gold">Black Hills</span>
+            Explore the <span className="text-brand-gold italic">Black Hills</span>
           </motion.h1>
 
           <motion.p
-            className="text-lg md:text-xl text-white/70 max-w-3xl mx-auto mb-10"
+            className="text-lg text-white/80 max-w-2xl mx-auto mb-10"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -252,22 +250,6 @@ export default function ExplorePage() {
               <span className="text-sm">Start Exploring</span>
               <ArrowDown className="w-4 h-4 animate-bounce" />
             </a>
-          </motion.div>
-        </div>
-
-        {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10">
-          <motion.div
-            className="w-6 h-10 rounded-full border-2 border-white/30 flex justify-center pt-2"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1 }}
-          >
-            <motion.div
-              className="w-1.5 h-1.5 rounded-full bg-white"
-              animate={{ y: [0, 16, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity }}
-            />
           </motion.div>
         </div>
       </section>
@@ -501,10 +483,9 @@ export default function ExplorePage() {
             transition={{ duration: 1.5 }}
           />
           <div className="absolute inset-0 bg-brand-navy/80" />
-          <div className="absolute inset-0 animate-shimmer" />
         </div>
 
-        <div className="relative z-10 max-w-6xl mx-auto px-4 py-24 md:py-32">
+        <div className="relative z-10 max-w-6xl mx-auto px-4 py-16 md:py-24">
           <div className="grid lg:grid-cols-5 gap-12 items-center">
             {/* Content - spans 3 cols */}
             <div className="lg:col-span-3">
@@ -760,10 +741,9 @@ export default function ExplorePage() {
             transition={{ duration: 1.5 }}
           />
           <div className="absolute inset-0 bg-brand-navy/85" />
-          <div className="absolute inset-0 animate-shimmer" />
         </div>
 
-        <div className="relative z-10 max-w-6xl mx-auto px-4 py-24 md:py-32">
+        <div className="relative z-10 max-w-6xl mx-auto px-4 py-16 md:py-24">
           <div className="grid lg:grid-cols-5 gap-12 items-center">
             {/* Tips & Quick Info */}
             <div className="lg:col-span-2 order-2 lg:order-1">
@@ -895,7 +875,6 @@ export default function ExplorePage() {
           SECTION 9: EVENTS — STURGIS RALLY + CAR SHOW
           ═══════════════════════════════════════════════ */}
       <section id="events" className="relative overflow-hidden bg-brand-navy text-white">
-        <div className="absolute inset-0 animate-shimmer" />
 
         <div className="relative z-10 py-20 md:py-28">
           <div className="max-w-6xl mx-auto px-4">

@@ -49,7 +49,7 @@ export async function POST(request: Request) {
       ],
       success_url: `${process.env.NEXT_PUBLIC_SITE_URL}/book/confirmation?id=${reservationId}`,
       cancel_url: `${process.env.NEXT_PUBLIC_SITE_URL}/book/checkout?id=${reservationId}&cancelled=true`,
-      expires_at: Math.floor(Date.now() / 1000) + 30 * 60, // 30 min
+      expires_at: Math.floor(Date.now() / 1000) + 10 * 60, // 10 min hold
     });
 
     // Guardar session ID en la reserva

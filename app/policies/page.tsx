@@ -70,20 +70,19 @@ export default function PoliciesPage() {
   return (
     <>
       {/* ═══ HERO ═══ */}
-      <section className="relative py-24 md:py-32 bg-brand-navy text-white overflow-hidden">
+      <section className="relative min-h-[50vh] flex items-center justify-center overflow-hidden bg-brand-navy">
         <div className="absolute inset-0 bg-cover bg-center opacity-20" style={{ backgroundImage: "url('/images/Aereal-2_1400.png')" }} />
-        <div className="absolute inset-0 bg-hero-gradient" />
-        <div className="absolute inset-0 animate-shimmer" />
-        <div className="relative max-w-5xl mx-auto px-4 text-center z-10">
+        <div className="absolute inset-0 bg-black/30" />
+        <div className="relative z-20 max-w-5xl mx-auto px-8 text-center text-white">
           <motion.span
-            className="badge-gold mb-4 inline-block !bg-brand-gold/20 !text-brand-gold-light"
+            className="badge-gold mb-8 inline-block !bg-brand-gold/30 !text-brand-gold-light"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
           >
             Good to Know
           </motion.span>
           <motion.h1
-            className="mb-4"
+            className="text-4xl md:text-5xl lg:text-6xl font-display mb-6 leading-[1.1]"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
@@ -91,7 +90,7 @@ export default function PoliciesPage() {
             Rules & Cancellation Policies
           </motion.h1>
           <motion.p
-            className="text-lg text-white/70 max-w-2xl mx-auto"
+            className="text-lg text-white/80 max-w-2xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
@@ -172,7 +171,6 @@ export default function PoliciesPage() {
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url('/images/Wooded-Tent-Area.png')" }} />
           <div className="absolute inset-0 bg-brand-navy/85" />
-          <div className="absolute inset-0 animate-shimmer" />
         </div>
         <div className="relative z-10 max-w-4xl mx-auto px-4">
           <FadeIn className="text-center mb-12">

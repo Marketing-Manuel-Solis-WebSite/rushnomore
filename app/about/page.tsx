@@ -44,13 +44,21 @@ export default function AboutPage() {
   return (
     <>
       {/* HERO */}
-      <section className="relative min-h-[55vh] flex items-end overflow-hidden bg-brand-navy">
-        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url('/images/Aereal-2_1400.png')" }} />
-        <div className="absolute inset-0 bg-gradient-to-t from-brand-navy via-brand-navy/60 to-brand-navy/10" />
+      <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-brand-navy">
+        <video
+          className="absolute inset-0 w-full h-full object-cover"
+          src="/videos/RNM-about.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster="/images/Aereal-2_1400.png"
+        />
+        <div className="absolute inset-0 bg-black/30" />
 
-        <div className="relative z-20 max-w-5xl mx-auto px-4 pb-14 md:pb-20 text-white">
+        <div className="relative z-20 max-w-5xl mx-auto px-8 text-center text-white">
           <motion.span
-            className="badge-gold mb-5 inline-block !bg-brand-gold/20 !text-brand-gold-light"
+            className="badge-gold mb-8 inline-block !bg-brand-gold/30 !text-brand-gold-light"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
@@ -59,7 +67,7 @@ export default function AboutPage() {
           </motion.span>
 
           <motion.h1
-            className="text-4xl md:text-5xl lg:text-6xl font-display mb-4 leading-[1.1]"
+            className="text-4xl md:text-5xl lg:text-6xl font-display mb-6 leading-[1.1]"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
@@ -68,7 +76,7 @@ export default function AboutPage() {
           </motion.h1>
 
           <motion.p
-            className="text-lg text-white/80 max-w-2xl"
+            className="text-lg text-white/80 max-w-2xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
@@ -131,7 +139,6 @@ export default function AboutPage() {
       {/* OUR JOURNEY — 4 horizontal cards */}
       <section className="py-20 md:py-28 bg-brand-navy text-white relative overflow-hidden">
         <div className="absolute inset-0 bg-cover bg-center opacity-[0.06]" style={{ backgroundImage: "url('/images/Aereal-2_1400.png')" }} />
-        <div className="absolute inset-0 animate-shimmer" />
 
         <div className="max-w-6xl mx-auto px-4 relative z-10">
           <div className="text-center mb-14">

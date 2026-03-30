@@ -112,7 +112,7 @@ export async function POST(request: Request) {
 
     // Crear reserva
     const now = new Date().toISOString();
-    const expiresAt = new Date(Date.now() + 30 * 60 * 1000).toISOString(); // 30 min
+    const expiresAt = new Date(Date.now() + 10 * 60 * 1000).toISOString(); // 10 min hold
 
     const reservation: Omit<Reservation, 'id'> = {
       confirmationNumber,

@@ -50,36 +50,14 @@ export default function AdminDashboard() {
       .catch(() => {});
   }, []);
 
-  const [seeding, setSeeding] = useState(false);
-  const [seedResult, setSeedResult] = useState('');
-
-  const handleSeed = async () => {
-    setSeeding(true);
-    try {
-      const { getAdminToken } = await import('@/lib/adminAuth');
-      const token = await getAdminToken();
-      const res = await fetch('/api/admin/seed', {
-        method: 'POST',
-        headers: { 'Authorization': `Bearer ${token}` },
-      });
-      const data = await res.json();
-      setSeedResult(data.message || data.error || 'Done');
-    } catch (e) {
-      setSeedResult('Seed failed');
-    } finally {
-      setSeeding(false);
-    }
-  };
-
   if (loading) return <div className="p-8 text-center">Loading dashboard...</div>;
   if (!stats) return (
     <div className="p-8 text-center space-y-4">
       {dashError && <p className="text-sm text-red-500 bg-red-50 p-3 rounded-xl max-w-lg mx-auto">{dashError}</p>}
-      <p className="text-brand-stone">No data yet. Seed properties first.</p>
-      <button onClick={handleSeed} disabled={seeding} className="btn-gold">
-        {seeding ? 'Seeding...' : 'Seed 186 Properties'}
+      <p className="text-brand-stone">Unable to load dashboard data.</p>
+      <button onClick={() => window.location.reload()} className="text-sm text-brand-gold font-bold hover:underline">
+        Try Again
       </button>
-      {seedResult && <p className="text-sm text-brand-gold font-bold">{seedResult}</p>}
     </div>
   );
 

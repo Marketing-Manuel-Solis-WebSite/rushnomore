@@ -80,29 +80,27 @@ export default function EventsPage() {
         <video
           ref={videoRef}
           className="absolute inset-0 w-full h-full object-cover"
-          src="/videos/rushnomore-video.mp4"
+          src="/videos/RNM-events.mp4"
           autoPlay
           muted
           loop
           playsInline
-          preload="auto"
           poster="/images/DSC05580-s.png"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-brand-navy via-brand-navy/40 to-brand-navy/20" />
-        <div className="absolute inset-0 animate-shimmer" />
+        <div className="absolute inset-0 bg-black/30" />
 
-        <div className="relative z-20 max-w-5xl mx-auto px-4 text-center text-white">
+        <div className="relative z-20 max-w-5xl mx-auto px-8 text-center text-white">
           <motion.span
-            className="inline-block px-5 py-2 bg-brand-gold text-white text-xs font-black uppercase tracking-[0.2em] rounded-full shadow-gold mb-6"
+            className="badge-gold mb-8 inline-block !bg-brand-gold/30 !text-brand-gold-light"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            ★ Events & Gatherings ★
+            Events & Gatherings
           </motion.span>
 
           <motion.h1
-            className="text-5xl md:text-6xl lg:text-7xl font-display mb-6 leading-[1.1]"
+            className="text-4xl md:text-5xl lg:text-6xl font-display mb-6 leading-[1.1]"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
@@ -111,7 +109,7 @@ export default function EventsPage() {
           </motion.h1>
 
           <motion.p
-            className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto mb-10"
+            className="text-lg text-white/80 max-w-2xl mx-auto mb-10"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
@@ -176,7 +174,7 @@ export default function EventsPage() {
       {/* ═══════════════════════════════════════════════════════════════
           STURGIS MOTORCYCLE RALLY — Deep Dive
       ═══════════════════════════════════════════════════════════════ */}
-      <section id="sturgis-rally" className="relative py-24 md:py-32 overflow-hidden scroll-mt-24" style={{ background: 'linear-gradient(180deg, #FDFBF7 0%, #F5F0E8 40%, #FDFBF7 100%)' }}>
+      <section id="sturgis-rally" className="relative py-16 md:py-24 overflow-hidden scroll-mt-24" style={{ background: 'linear-gradient(180deg, #FDFBF7 0%, #F5F0E8 40%, #FDFBF7 100%)' }}>
         <div className="absolute top-0 left-0 w-96 h-96 bg-brand-gold/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-brand-gold/5 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
 
@@ -456,10 +454,9 @@ export default function EventsPage() {
       {/* ═══════════════════════════════════════════════════════════════
           DAKOTA RODS & CLASSICS CAR SHOW
       ═══════════════════════════════════════════════════════════════ */}
-      <section id="car-show" className="relative py-24 md:py-32 overflow-hidden bg-brand-navy text-white scroll-mt-24">
+      <section id="car-show" className="relative py-16 md:py-24 overflow-hidden bg-brand-navy text-white scroll-mt-24">
         <div className="absolute inset-0 bg-cover bg-center opacity-20" style={{ backgroundImage: "url('/images/Aereal-2_1400.png')" }} />
         <div className="absolute inset-0 bg-gradient-to-r from-brand-navy via-brand-navy/90 to-brand-navy" />
-        <div className="absolute inset-0 animate-shimmer" />
 
         <div className="max-w-6xl mx-auto px-4 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -522,7 +519,7 @@ export default function EventsPage() {
       {/* ═══════════════════════════════════════════════════════════════
           WEDDINGS, REUNIONS & GROUP EVENTS
       ═══════════════════════════════════════════════════════════════ */}
-      <section id="weddings" className="relative py-24 md:py-32 overflow-hidden scroll-mt-24" style={{ background: 'linear-gradient(180deg, #FDFBF7 0%, #F5F0E8 40%, #FDFBF7 100%)' }}>
+      <section id="weddings" className="relative py-16 md:py-24 overflow-hidden scroll-mt-24" style={{ background: 'linear-gradient(180deg, #FDFBF7 0%, #F5F0E8 40%, #FDFBF7 100%)' }}>
         <div className="absolute top-0 right-0 w-96 h-96 bg-brand-gold/5 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" />
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-brand-gold/5 rounded-full blur-3xl -translate-x-1/2 translate-y-1/2" />
 
