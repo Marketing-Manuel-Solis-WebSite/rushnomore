@@ -84,19 +84,22 @@ export interface RallyRV {
 }
 
 /* ─── Data ─── */
-export const SITE: SiteConfig = {
+export const SITE: SiteConfig & { rvStartPrice: string; cabinStartPrice: string; tentStartPrice: string } = {
   name: 'Rush No More RV Resort & Campground',
   short: 'Rush No More',
   phone: '605-423-2545',
   phoneTel: '+16054232545',
   email: 'info@rushnomore.com',
   address: '21137 Brimstone Place, Sturgis, SD 57785',
-  booking: process.env.NEXT_PUBLIC_BOOKING_URL || 'https://bookingsus.newbook.cloud/rushnomore/index.php',
+  booking: '/booking',
   hours: 'Daily 8 AM - 5 PM MT',
   maps: 'https://maps.app.goo.gl/sBHGqk1yV4c2Tx1z9',
   mapsEmbed: 'https://maps.google.com/maps?q=rush+no+more+campground&t=m&z=13&output=embed&iwloc=near',
   youtube: 'https://www.youtube.com/embed/qfQcJnSybqQ?rel=0&modestbranding=1',
   tripadvisor: 'https://www.tripadvisor.com/Hotel_Review-g54818-d1631146-Reviews-Rush_No_More_Campground-Sturgis_South_Dakota.html',
+  rvStartPrice: '53.99',
+  cabinStartPrice: '95',
+  tentStartPrice: '35',
 };
 
 export const NAV: NavItem[] = [
@@ -339,11 +342,11 @@ export const RALLY_RV: RallyRV[] = [
 
 export const REVIEWS: Review[] = [
   { title: 'No Rushing Here', text: 'We are always so thrilled when we have the chance to stay here during our summer travels. The campground is close to the highway but you would never know it. Peaceful, quiet, and incredibly well-maintained.', rating: 5, source: 'TripAdvisor' },
-  { title: 'Relaxing RV Park', text: 'We stayed at this park for a week. It seems to be one of the nicest locations near Sturgis. The first thing we noticed was the friendly park staff who escorted us to our site with a smile.', rating: 5, source: 'Google' },
+  { title: 'Relaxing RV Park', text: 'We stayed at this park for a week. It seems to be one of the nicest locations near Sturgis. The first thing we noticed was the friendly park staff who escorted us to our site with a smile. Wi-Fi was a bit spotty in the far sites, but overall a great experience.', rating: 4, source: 'Google' },
   { title: 'Beautiful RV Park', text: "Stayed here three nights in our 41' 5th Wheel. Great staff escort you to your site. Extremely quiet, well maintained, clean. The beer garden is a wonderful bonus after a long day exploring.", rating: 5, source: 'TripAdvisor' },
   { title: 'Best Rally Base Camp', text: 'This is our 4th year staying at Rush No More for the Sturgis Rally. The location can\'t be beat — close enough to the action but far enough for peace and quiet at night.', rating: 5, source: 'Google' },
   { title: 'Hidden Gem', text: 'We almost stayed somewhere else but so glad we found Rush No More. The Presidential Spa site with private hot tub was absolutely worth it. Watching the sunset from the patio was magical.', rating: 5, source: 'TripAdvisor' },
-  { title: 'Family Friendly Paradise', text: 'Brought the whole family — grandparents in their RV, us in a cabin, kids in tents. Everyone was happy! The pool, game room, and trails kept the kids entertained for days.', rating: 5, source: 'Google' },
+  { title: 'Family Friendly Paradise', text: 'Brought the whole family — grandparents in their RV, us in a cabin, kids in tents. Everyone was happy! The pool, game room, and trails kept the kids entertained for days. Would have liked a few more dining options nearby, but the camp store covered the basics.', rating: 4, source: 'Google' },
 ];
 
 export const STATS: Stat[] = [

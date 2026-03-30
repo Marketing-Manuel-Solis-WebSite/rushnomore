@@ -4,7 +4,7 @@ import { useRef, useEffect } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { SITE, AMENITIES, REVIEWS } from '@/data/site';
-import { Breadcrumbs, BookingCTA, SectionHeader } from '@/components/ui';
+import { BookingCTA, SectionHeader } from '@/components/ui';
 import { FadeIn } from '@/components/motion';
 import {
   ExternalLink, Star, ArrowRight,
@@ -104,8 +104,6 @@ export default function AmenitiesPage() {
 
   return (
     <>
-      <Breadcrumbs items={[{ label: 'Amenities' }]} />
-
       {/* ═══════════════════════════════════════════════════════════════
           HERO — Full-screen video background
       ═══════════════════════════════════════════════════════════════ */}

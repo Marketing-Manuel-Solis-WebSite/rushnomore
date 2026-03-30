@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { SITE, REVIEWS, STATS } from '@/data/site';
-import { Breadcrumbs, BookingCTA } from '@/components/ui';
+import { BookingCTA } from '@/components/ui';
 import { FadeIn } from '@/components/motion';
 import {
   ExternalLink, Star, ArrowRight, Phone,
@@ -43,8 +43,6 @@ export default function AboutPage() {
 
   return (
     <>
-      <Breadcrumbs items={[{ label: 'About Us' }]} />
-
       {/* HERO */}
       <section className="relative min-h-[55vh] flex items-end overflow-hidden bg-brand-navy">
         <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url('/images/Aereal-2_1400.png')" }} />

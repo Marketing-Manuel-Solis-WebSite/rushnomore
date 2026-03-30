@@ -8,6 +8,8 @@ import {
   XCircle, Clock, LogIn, LogOut, MoreHorizontal,
   Download, RefreshCw
 } from 'lucide-react';
+import { adminGet, adminPatch } from '@/lib/adminFetch';
+import { useToast } from '@/components/ui/Toast';
 
 interface Reservation {
   id: string;
@@ -36,6 +38,7 @@ const STATUS_COLORS: Record<string, string> = {
 };
 
 export default function ReservationsPage() {
+  const toast = useToast();
   const [reservations, setReservations] = useState<Reservation[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('');
@@ -48,7 +51,7 @@ export default function ReservationsPage() {
       const params = new URLSearchParams();
       if (statusFilter) params.set('status', statusFilter);
       if (typeFilter) params.set('type', typeFilter);
-      const res = await fetch(`/api/reservations?${params}`);
+      const res = await adminGet(`/api/reservations?${params}`);
       const data = await res.json();
       setReservations(data.reservations || []);
     } catch {
@@ -73,13 +76,12 @@ export default function ReservationsPage() {
 
   const handleAction = async (id: string, action: string) => {
     try {
-      await fetch(`/api/reservations/${id}`, {
-        method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ action }),
-      });
+      await adminPatch(`/api/reservations/${id}`, { action });
+      toast.success(`Reservation ${action} successful`);
       fetchReservations();
-    } catch {}
+    } catch {
+      toast.error(`Failed to ${action} reservation`);
+    }
   };
 
   return (
@@ -96,7 +98,7 @@ export default function ReservationsPage() {
 
       {/* Filters */}
       <div className="flex flex-wrap gap-3 mb-6">
-        <div className="relative flex-1 min-w-[200px]">
+        <div className="relative flex-1 min-w-0 w-full sm:min-w-[200px] sm:w-auto">
           <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-brand-stone" />
           <input
             type="text"
@@ -133,13 +135,13 @@ export default function ReservationsPage() {
       {/* Table */}
       <div className="bg-white rounded-2xl shadow-lodge border border-surface-muted/50 overflow-hidden">
         <div className="overflow-x-auto">
-          <table className="w-full text-sm">
+          <table className="w-full min-w-[700px] text-sm">
             <thead>
               <tr className="bg-surface-secondary/50 border-b border-surface-muted">
                 <th className="text-left px-4 py-3 font-bold text-brand-navy">Confirmation</th>
                 <th className="text-left px-4 py-3 font-bold text-brand-navy">Guest</th>
-                <th className="text-left px-4 py-3 font-bold text-brand-navy">Property</th>
-                <th className="text-left px-4 py-3 font-bold text-brand-navy">Dates</th>
+                <th className="text-left px-4 py-3 font-bold text-brand-navy hidden sm:table-cell">Property</th>
+                <th className="text-left px-4 py-3 font-bold text-brand-navy hidden sm:table-cell">Dates</th>
                 <th className="text-left px-4 py-3 font-bold text-brand-navy">Amount</th>
                 <th className="text-left px-4 py-3 font-bold text-brand-navy">Status</th>
                 <th className="text-left px-4 py-3 font-bold text-brand-navy">Actions</th>
@@ -159,14 +161,14 @@ export default function ReservationsPage() {
                       </Link>
                     </td>
                     <td className="px-4 py-3">
-                      <p className="font-medium">{r.guestName}</p>
+                      <p className="font-medium truncate max-w-[120px]">{r.guestName}</p>
                       <p className="text-xs text-brand-stone">{r.guestEmail}</p>
                     </td>
-                    <td className="px-4 py-3">
-                      <p className="font-medium">{r.propertyName}</p>
+                    <td className="px-4 py-3 hidden sm:table-cell">
+                      <p className="font-medium truncate max-w-[100px]">{r.propertyName}</p>
                       <p className="text-xs text-brand-stone capitalize">{r.propertyType}</p>
                     </td>
-                    <td className="px-4 py-3">
+                    <td className="px-4 py-3 hidden sm:table-cell">
                       <p className="font-medium">{r.checkIn}</p>
                       <p className="text-xs text-brand-stone">{r.nights} nights</p>
                     </td>

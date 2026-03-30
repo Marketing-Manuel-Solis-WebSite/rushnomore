@@ -3,14 +3,14 @@
 import { NextResponse } from 'next/server';
 import { db } from '@/lib/firebase';
 import { doc, getDoc } from 'firebase/firestore';
+import { withAdminAuth } from '@/lib/withAdminAuth';
 import {
   sendConfirmationEmail, sendCancellationEmail,
   sendPreArrivalEmail, sendAdminNotification
 } from '@/lib/email';
 import type { Reservation } from '@/lib/types';
 
-// POST — Enviar email manual desde admin
-export async function POST(request: Request) {
+export const POST = withAdminAuth(async (request) => {
   try {
     const { reservationId, emailType, customMessage } = await request.json();
 
@@ -46,6 +46,7 @@ export async function POST(request: Request) {
 
     return NextResponse.json({ success: true });
   } catch (e) {
-    return NextResponse.json({ error: 'Server error' }, { status: 500 });
+    console.error('Notification error:', e);
+    return NextResponse.json({ error: 'Failed to send email' }, { status: 500 });
   }
-}
+});

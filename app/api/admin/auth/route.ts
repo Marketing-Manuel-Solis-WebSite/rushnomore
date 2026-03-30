@@ -1,45 +1,76 @@
-// app/api/admin/auth/route.ts
+// app/api/admin/auth/route.ts — Admin authentication with rate limiting
+//
+// Supports two modes:
+// 1. Firebase Auth: Client uses signInWithEmailAndPassword directly (preferred)
+// 2. Legacy password: For backward compatibility during migration
+//
+// Required env vars:
+//   ADMIN_PASSWORD (for legacy mode)
+//   MANAGER_PASSWORD (for legacy mode)
+//   FRONTDESK_PASSWORD (for legacy mode)
 
 import { NextResponse } from 'next/server';
 import crypto from 'crypto';
+import { authLimiter, checkRateLimit, getRequestIP } from '@/lib/rateLimit';
 
-// Passwords de admin — En producción, mover a Firestore con hash bcrypt
+// Legacy password accounts — will be removed once Firebase Auth is fully configured
 const ADMIN_ACCOUNTS = [
   {
-    password: process.env.ADMIN_PASSWORD || 'RushNoMore2026!',
+    password: process.env.ADMIN_PASSWORD || '',
     role: 'super-admin',
     name: 'Admin',
   },
   {
-    password: process.env.MANAGER_PASSWORD || 'RNMManager2026!',
+    password: process.env.MANAGER_PASSWORD || '',
     role: 'manager',
     name: 'Manager',
   },
   {
-    password: process.env.FRONTDESK_PASSWORD || 'RNMFrontDesk2026!',
+    password: process.env.FRONTDESK_PASSWORD || '',
     role: 'front-desk',
     name: 'Front Desk',
   },
-];
+].filter(a => a.password.length > 0); // Only include accounts with configured passwords
 
 export async function POST(request: Request) {
   try {
+    // Rate limiting
+    const ip = getRequestIP(request);
+    const { allowed, retryAfter } = await checkRateLimit(authLimiter, ip);
+    if (!allowed) {
+      return NextResponse.json(
+        { success: false, error: `Too many login attempts. Try again in ${retryAfter} seconds.` },
+        { status: 429 }
+      );
+    }
+
     const { password } = await request.json();
 
     if (!password) {
-      return NextResponse.json({ success: false, error: 'Password required' }, { status: 400 });
+      return NextResponse.json(
+        { success: false, error: 'Password required' },
+        { status: 400 }
+      );
     }
 
-    // Buscar cuenta que coincida
-    const account = ADMIN_ACCOUNTS.find(a => a.password === password);
+    // Use constant-time comparison to prevent timing attacks
+    const account = ADMIN_ACCOUNTS.find(a => {
+      if (a.password.length !== password.length) return false;
+      return crypto.timingSafeEqual(
+        Buffer.from(a.password),
+        Buffer.from(password)
+      );
+    });
 
     if (!account) {
-      // Delay para prevenir brute force
+      // Delay to slow down brute force even without rate limiter
       await new Promise(r => setTimeout(r, 1000));
-      return NextResponse.json({ success: false, error: 'Invalid password' }, { status: 401 });
+      return NextResponse.json(
+        { success: false, error: 'Invalid credentials' },
+        { status: 401 }
+      );
     }
 
-    // Generar token de sesión
     const token = crypto.randomBytes(32).toString('hex');
 
     return NextResponse.json({
@@ -50,6 +81,9 @@ export async function POST(request: Request) {
     });
   } catch (e) {
     console.error('Admin auth error:', e);
-    return NextResponse.json({ success: false, error: 'Server error' }, { status: 500 });
+    return NextResponse.json(
+      { success: false, error: 'Server error' },
+      { status: 500 }
+    );
   }
 }

@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { SITE, REVIEWS } from '@/data/site';
-import { Breadcrumbs, BookingCTA } from '@/components/ui';
+import { BookingCTA } from '@/components/ui';
 import { FadeIn } from '@/components/motion';
 import { submitContactForm, trackEvent } from '@/lib/booking';
 import {
@@ -49,8 +49,6 @@ export default function ContactPage() {
 
   return (
     <>
-      <Breadcrumbs items={[{ label: 'Contact' }]} />
-
       {/* ═══════════════════════════════════════════════════════════════
           HERO — Video Background
       ═══════════════════════════════════════════════════════════════ */}

@@ -7,6 +7,8 @@ import {
   ArrowUpRight, ArrowDownRight, Bell, Truck, Home, Tent,
   CheckCircle, Clock, AlertTriangle
 } from 'lucide-react';
+import { adminGet } from '@/lib/adminFetch';
+import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
 interface Stats {
   occupancy: {
@@ -21,16 +23,65 @@ interface Stats {
 export default function AdminDashboard() {
   const [stats, setStats] = useState<Stats | null>(null);
   const [loading, setLoading] = useState(true);
+  const [revenueData, setRevenueData] = useState<{month: string; amount: number}[]>([]);
+
+  const [dashError, setDashError] = useState('');
 
   useEffect(() => {
-    fetch('/api/admin/dashboard')
+    adminGet('/api/admin/dashboard')
       .then(r => r.json())
-      .then(data => { setStats(data); setLoading(false); })
-      .catch(() => setLoading(false));
+      .then(data => {
+        if (data.occupancy) {
+          setStats(data);
+        } else {
+          setDashError(data.error || JSON.stringify(data));
+        }
+        setLoading(false);
+      })
+      .catch((e) => { setDashError(String(e)); setLoading(false); });
   }, []);
 
+  useEffect(() => {
+    adminGet('/api/admin/reports?type=revenue')
+      .then(r => r.json())
+      .then(data => {
+        if (data.revenueByMonth) setRevenueData(data.revenueByMonth);
+      })
+      .catch(() => {});
+  }, []);
+
+  const [seeding, setSeeding] = useState(false);
+  const [seedResult, setSeedResult] = useState('');
+
+  const handleSeed = async () => {
+    setSeeding(true);
+    try {
+      const { getAdminToken } = await import('@/lib/adminAuth');
+      const token = await getAdminToken();
+      const res = await fetch('/api/admin/seed', {
+        method: 'POST',
+        headers: { 'Authorization': `Bearer ${token}` },
+      });
+      const data = await res.json();
+      setSeedResult(data.message || data.error || 'Done');
+    } catch (e) {
+      setSeedResult('Seed failed');
+    } finally {
+      setSeeding(false);
+    }
+  };
+
   if (loading) return <div className="p-8 text-center">Loading dashboard...</div>;
-  if (!stats) return <div className="p-8 text-center">Error loading stats</div>;
+  if (!stats) return (
+    <div className="p-8 text-center space-y-4">
+      {dashError && <p className="text-sm text-red-500 bg-red-50 p-3 rounded-xl max-w-lg mx-auto">{dashError}</p>}
+      <p className="text-brand-stone">No data yet. Seed properties first.</p>
+      <button onClick={handleSeed} disabled={seeding} className="btn-gold">
+        {seeding ? 'Seeding...' : 'Seed 186 Properties'}
+      </button>
+      {seedResult && <p className="text-sm text-brand-gold font-bold">{seedResult}</p>}
+    </div>
+  );
 
   const monthChange = stats.revenue.lastMonth > 0
     ? ((stats.revenue.thisMonth - stats.revenue.lastMonth) / stats.revenue.lastMonth * 100).toFixed(1)
@@ -50,7 +101,7 @@ export default function AdminDashboard() {
           { label: 'RV Sites', icon: Truck, data: stats.occupancy.rv, color: 'bg-blue-500' },
           { label: 'Tent Sites', icon: Tent, data: stats.occupancy.tent, color: 'bg-green-500' },
         ].map((item, i) => (
-          <div key={i} className="bg-white rounded-2xl shadow-lodge border border-surface-muted/50 p-6">
+          <div key={i} className="bg-white rounded-2xl shadow-lodge border border-surface-muted/50 p-6 overflow-hidden">
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-3">
                 <div className={`w-10 h-10 ${item.color} rounded-xl flex items-center justify-center`}>
@@ -77,14 +128,14 @@ export default function AdminDashboard() {
 
       {/* Revenue & Quick Stats */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div className="bg-white rounded-2xl shadow-lodge border border-surface-muted/50 p-6">
+        <div className="bg-white rounded-2xl shadow-lodge border border-surface-muted/50 p-6 overflow-hidden">
           <div className="flex items-center gap-2 mb-2">
             <DollarSign className="w-5 h-5 text-brand-gold" />
             <span className="text-sm font-bold text-brand-stone uppercase tracking-wider">Today</span>
           </div>
           <span className="font-display text-3xl font-bold text-brand-navy">${stats.revenue.today.toLocaleString()}</span>
         </div>
-        <div className="bg-white rounded-2xl shadow-lodge border border-surface-muted/50 p-6">
+        <div className="bg-white rounded-2xl shadow-lodge border border-surface-muted/50 p-6 overflow-hidden">
           <div className="flex items-center gap-2 mb-2">
             <DollarSign className="w-5 h-5 text-brand-gold" />
             <span className="text-sm font-bold text-brand-stone uppercase tracking-wider">This Month</span>
@@ -95,7 +146,7 @@ export default function AdminDashboard() {
             {monthChange}% vs last month
           </div>
         </div>
-        <div className="bg-white rounded-2xl shadow-lodge border border-surface-muted/50 p-6">
+        <div className="bg-white rounded-2xl shadow-lodge border border-surface-muted/50 p-6 overflow-hidden">
           <div className="flex items-center gap-2 mb-2">
             <Calendar className="w-5 h-5 text-brand-gold" />
             <span className="text-sm font-bold text-brand-stone uppercase tracking-wider">New Today</span>
@@ -103,7 +154,7 @@ export default function AdminDashboard() {
           <span className="font-display text-3xl font-bold text-brand-navy">{stats.reservations.newToday}</span>
           <p className="text-sm text-brand-stone mt-1">new reservations</p>
         </div>
-        <div className="bg-white rounded-2xl shadow-lodge border border-surface-muted/50 p-6">
+        <div className="bg-white rounded-2xl shadow-lodge border border-surface-muted/50 p-6 overflow-hidden">
           <div className="flex items-center gap-2 mb-2">
             <Users className="w-5 h-5 text-brand-gold" />
             <span className="text-sm font-bold text-brand-stone uppercase tracking-wider">Check-ins</span>
@@ -127,6 +178,52 @@ export default function AdminDashboard() {
           </div>
         </div>
       )}
+
+      {/* Charts */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        {/* Revenue Trend */}
+        <div className="bg-white rounded-2xl shadow-lodge border border-surface-muted/50 p-6 overflow-hidden">
+          <h3 className="font-bold text-brand-navy mb-4 flex items-center gap-2">
+            <BarChart3 className="w-5 h-5 text-brand-gold" /> Revenue Trend
+          </h3>
+          {revenueData.length > 0 ? (
+            <ResponsiveContainer width="100%" height={250}>
+              <LineChart data={revenueData}>
+                <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
+                <XAxis dataKey="month" tick={{ fontSize: 12 }} />
+                <YAxis tick={{ fontSize: 12 }} tickFormatter={(v) => `$${v.toLocaleString()}`} />
+                <Tooltip formatter={(value) => [`$${Number(value).toLocaleString()}`, 'Revenue']} />
+                <Line type="monotone" dataKey="amount" stroke="#C8933C" strokeWidth={2} dot={{ fill: '#C8933C' }} />
+              </LineChart>
+            </ResponsiveContainer>
+          ) : (
+            <div className="h-[250px] flex items-center justify-center text-brand-stone text-sm">
+              No revenue data yet
+            </div>
+          )}
+        </div>
+
+        {/* Occupancy by Type */}
+        <div className="bg-white rounded-2xl shadow-lodge border border-surface-muted/50 p-6 overflow-hidden">
+          <h3 className="font-bold text-brand-navy mb-4 flex items-center gap-2">
+            <Users className="w-5 h-5 text-brand-gold" /> Occupancy Today
+          </h3>
+          <ResponsiveContainer width="100%" height={250}>
+            <BarChart data={[
+              { type: 'Cabins', occupied: stats.occupancy.cabins.occupied, total: stats.occupancy.cabins.total },
+              { type: 'RV', occupied: stats.occupancy.rv.occupied, total: stats.occupancy.rv.total },
+              { type: 'Tent', occupied: stats.occupancy.tent.occupied, total: stats.occupancy.tent.total },
+            ]}>
+              <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
+              <XAxis dataKey="type" tick={{ fontSize: 12 }} />
+              <YAxis tick={{ fontSize: 12 }} />
+              <Tooltip />
+              <Bar dataKey="occupied" fill="#C8933C" name="Occupied" radius={[4, 4, 0, 0]} />
+              <Bar dataKey="total" fill="#e5e7eb" name="Total" radius={[4, 4, 0, 0]} />
+            </BarChart>
+          </ResponsiveContainer>
+        </div>
+      </div>
     </div>
   );
 }

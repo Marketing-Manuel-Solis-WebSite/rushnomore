@@ -3,19 +3,21 @@
 import { NextResponse } from 'next/server';
 import { db } from '@/lib/firebase';
 import { collection, query, where, getDocs } from 'firebase/firestore';
+import { withAdminAuth } from '@/lib/withAdminAuth';
+import { todayISO, addDays } from '@/lib/dateUtils';
 import type { Reservation, Property, DashboardStats } from '@/lib/types';
 
-export async function GET() {
+export const GET = withAdminAuth(async () => {
   try {
-    const today = new Date().toISOString().split('T')[0];
-    const weekAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0];
+    const today = todayISO();
+    const weekAgo = addDays(today, -7);
     const monthStart = today.slice(0, 7) + '-01';
     const lastMonthDate = new Date();
     lastMonthDate.setMonth(lastMonthDate.getMonth() - 1);
     const lastMonthStart = lastMonthDate.toISOString().slice(0, 7) + '-01';
     const lastMonthEnd = today.slice(0, 7) + '-01';
 
-    // Propiedades activas
+    // Active properties — simple single-field query
     const propsSnap = await getDocs(
       query(collection(db, 'properties'), where('status', '==', 'active'))
     );
@@ -24,51 +26,49 @@ export async function GET() {
     const totalRV = properties.filter(p => p.type === 'rv').length;
     const totalTent = properties.filter(p => p.type === 'tent').length;
 
-    // Reservas activas hoy
-    const reservSnap = await getDocs(
-      query(
-        collection(db, 'reservations'),
-        where('status', 'in', ['confirmed', 'checked-in'])
-      )
+    // All reservations — single query, filter client-side
+    // This avoids needing multiple composite indexes
+    let allReservations: Reservation[] = [];
+    try {
+      const allResSnap = await getDocs(collection(db, 'reservations'));
+      allReservations = allResSnap.docs.map(d => ({ id: d.id, ...d.data() }) as Reservation);
+    } catch {
+      // No reservations yet — that's fine
+    }
+
+    // Occupancy today
+    const activeToday = allReservations.filter(
+      r => ['confirmed', 'checked-in'].includes(r.status) &&
+           r.checkIn <= today && r.checkOut > today
     );
-    const reservations = reservSnap.docs.map(d => ({ id: d.id, ...d.data() }) as Reservation);
-
-    const occupiedCabins = reservations.filter(
-      r => r.propertyType === 'cabin' && r.checkIn <= today && r.checkOut > today
-    ).length;
-    const occupiedRV = reservations.filter(
-      r => r.propertyType === 'rv' && r.checkIn <= today && r.checkOut > today
-    ).length;
-    const occupiedTent = reservations.filter(
-      r => r.propertyType === 'tent' && r.checkIn <= today && r.checkOut > today
-    ).length;
-
-    // Todas las reservas para stats
-    const allResSnap = await getDocs(collection(db, 'reservations'));
-    const allReservations = allResSnap.docs.map(d => ({ id: d.id, ...d.data() }) as Reservation);
+    const occupiedCabins = activeToday.filter(r => r.propertyType === 'cabin').length;
+    const occupiedRV = activeToday.filter(r => r.propertyType === 'rv').length;
+    const occupiedTent = activeToday.filter(r => r.propertyType === 'tent').length;
 
     // Revenue
-    const paidReservations = allReservations.filter(r => r.paymentStatus === 'paid');
-    const revenueToday = paidReservations
-      .filter(r => r.paidAt?.startsWith(today))
+    const paid = allReservations.filter(r => r.paymentStatus === 'paid');
+    const paidThisMonth = paid.filter(r => (r.paidAt || r.createdAt) >= monthStart);
+    const paidLastMonth = paid.filter(r => {
+      const date = r.paidAt || r.createdAt;
+      return date >= lastMonthStart && date < lastMonthEnd;
+    });
+
+    const revenueToday = paidThisMonth
+      .filter(r => (r.paidAt || r.createdAt).startsWith(today))
       .reduce((sum, r) => sum + r.totalAmount, 0);
-    const revenueWeek = paidReservations
-      .filter(r => r.paidAt && r.paidAt >= weekAgo)
+    const revenueWeek = paidThisMonth
+      .filter(r => (r.paidAt || r.createdAt) >= weekAgo)
       .reduce((sum, r) => sum + r.totalAmount, 0);
-    const revenueMonth = paidReservations
-      .filter(r => r.paidAt && r.paidAt >= monthStart)
-      .reduce((sum, r) => sum + r.totalAmount, 0);
-    const revenueLastMonth = paidReservations
-      .filter(r => r.paidAt && r.paidAt >= lastMonthStart && r.paidAt < lastMonthEnd)
-      .reduce((sum, r) => sum + r.totalAmount, 0);
+    const revenueMonth = paidThisMonth.reduce((sum, r) => sum + r.totalAmount, 0);
+    const revenueLastMonth = paidLastMonth.reduce((sum, r) => sum + r.totalAmount, 0);
 
     // Today's activity
-    const newToday = allReservations.filter(r => r.createdAt.startsWith(today)).length;
+    const newToday = allReservations.filter(r => r.createdAt >= today).length;
     const checkInsToday = allReservations.filter(
       r => r.checkIn === today && ['confirmed', 'checked-in'].includes(r.status)
     ).length;
     const checkOutsToday = allReservations.filter(
-      r => r.checkOut === today && ['checked-in'].includes(r.status)
+      r => r.checkOut === today && r.status === 'checked-in'
     ).length;
     const pendingPayment = allReservations.filter(r => r.status === 'pending').length;
 
@@ -108,4 +108,4 @@ export async function GET() {
     console.error('Dashboard error:', e);
     return NextResponse.json({ error: 'Server error' }, { status: 500 });
   }
-}
+});

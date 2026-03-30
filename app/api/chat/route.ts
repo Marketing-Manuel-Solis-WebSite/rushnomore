@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 import { db } from '@/lib/firebase';
 import { collection, addDoc, Timestamp } from 'firebase/firestore';
+import { chatLimiter, checkRateLimit, getRequestIP } from '@/lib/rateLimit';
+import { sanitizeInput } from '@/lib/sanitize';
 
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 const GEMINI_MODEL = 'gemini-2.0-flash-lite';
@@ -22,7 +24,7 @@ RESORT INFO:
 📞 Phone: 605-423-2545
 📧 Email: info@rushnomore.com
 🕐 Office Hours: Daily 8 AM – 5 PM Mountain Time
-🔗 Booking: https://bookingsus.newbook.cloud/rushnomore/index.php
+🔗 Booking: https://www.rushnomore.com/booking (direct on-site booking)
 
 ACCOMMODATIONS:
 
@@ -95,20 +97,36 @@ The resort is family-owned, has a 4.8-star rating, has hosted 84+ Sturgis Rallie
 
 export async function POST(request: Request) {
   try {
+    // Rate limiting
+    const ip = getRequestIP(request);
+    const { allowed, retryAfter } = await checkRateLimit(chatLimiter, ip);
+    if (!allowed) {
+      return NextResponse.json(
+        { reply: `I'm receiving too many messages right now. Please try again in ${retryAfter} seconds, or call us at 605-423-2545.` },
+        { status: 429 }
+      );
+    }
+
     const { message, history } = await request.json();
 
+    // Validate and limit message size
     if (!message || typeof message !== 'string' || message.trim().length === 0) {
       return NextResponse.json({ error: 'Message is required' }, { status: 400 });
+    }
+
+    if (message.length > 2000) {
+      return NextResponse.json({ error: 'Message too long (max 2000 characters)' }, { status: 400 });
     }
 
     if (!GEMINI_API_KEY) {
       return NextResponse.json({ error: 'API key not configured' }, { status: 500 });
     }
 
-    // Save question to Firebase
+    // Save question to Firebase — sanitize before storing
+    const sanitizedMessage = sanitizeInput(message);
     try {
       await addDoc(collection(db, 'chat_questions'), {
-        question: message.trim(),
+        question: sanitizedMessage,
         timestamp: Timestamp.now(),
         page: '',
         userAgent: '',
@@ -120,13 +138,23 @@ export async function POST(request: Request) {
     // Build conversation for Gemini
     const contents: Array<{ role: string; parts: Array<{ text: string }> }> = [];
 
-    // Add history if provided
+    // Add history if provided — sanitize each entry
     if (history && Array.isArray(history)) {
       for (const msg of history.slice(-6)) {
-        contents.push({
-          role: msg.role === 'assistant' ? 'model' : 'user',
-          parts: [{ text: msg.content }],
-        });
+        // Only allow valid role values and string content
+        const role = msg.role;
+        const content = msg.content;
+        if (
+          (role === 'user' || role === 'assistant') &&
+          typeof content === 'string' &&
+          content.length <= 2000
+        ) {
+          contents.push({
+            role: role === 'assistant' ? 'model' : 'user',
+            parts: [{ text: content }],
+          });
+        }
+        // Silently skip invalid history entries
       }
     }
 

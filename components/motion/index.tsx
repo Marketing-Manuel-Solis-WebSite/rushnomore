@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, useScroll, useTransform, useInView, type Variants } from 'framer-motion';
+import { motion, useScroll, useTransform, useInView, useReducedMotion, type Variants } from 'framer-motion';
 import { useRef, type ReactNode } from 'react';
 
 /* ─── Fade-in on scroll ─── */
@@ -19,6 +19,8 @@ export function FadeIn({
   duration?: number;
   once?: boolean;
 }) {
+  const shouldReduceMotion = useReducedMotion();
+
   const dirMap = {
     up: { y: 30 },
     down: { y: -30 },
@@ -27,13 +29,15 @@ export function FadeIn({
     none: {},
   };
 
+  const effectiveDuration = shouldReduceMotion ? 0 : duration;
+
   return (
     <motion.div
       className={className}
-      initial={{ opacity: 0, ...dirMap[direction] }}
+      initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, ...dirMap[direction] }}
       whileInView={{ opacity: 1, x: 0, y: 0 }}
       viewport={{ once, margin: '-50px' }}
-      transition={{ duration, delay, ease: [0.16, 1, 0.3, 1] }}
+      transition={{ duration: effectiveDuration, delay: shouldReduceMotion ? 0 : delay, ease: [0.16, 1, 0.3, 1] }}
     >
       {children}
     </motion.div>

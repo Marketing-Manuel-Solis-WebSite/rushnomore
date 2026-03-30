@@ -4,6 +4,7 @@ import { useState, useRef, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MessageSquare, X, Send, Loader2, Bot, User, Phone, ExternalLink, ChevronDown } from 'lucide-react';
 import { SITE } from '@/data/site';
+import DOMPurify from 'dompurify';
 
 interface ChatMessage {
   role: 'user' | 'assistant';
@@ -34,6 +35,15 @@ function formatMessage(text: string): string {
   );
   // Convert line breaks to <br>
   formatted = formatted.replace(/\n/g, '<br/>');
+
+  // Sanitize HTML to prevent XSS from API responses
+  if (typeof window !== 'undefined') {
+    formatted = DOMPurify.sanitize(formatted, {
+      ALLOWED_TAGS: ['strong', 'em', 'a', 'br', 'div', 'span', 'p'],
+      ALLOWED_ATTR: ['href', 'target', 'rel', 'class'],
+    });
+  }
+
   return formatted;
 }
 

@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, MapPin, Clock, ExternalLink, Lightbulb, Star, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
@@ -12,6 +13,16 @@ interface Props {
 }
 
 export function AttractionModal({ attraction, onClose }: Props) {
+  // Close on Escape key
+  useEffect(() => {
+    if (!attraction) return;
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
+    document.addEventListener('keydown', handler);
+    return () => document.removeEventListener('keydown', handler);
+  }, [attraction, onClose]);
+
   if (!attraction) return null;
 
   return (
@@ -28,6 +39,9 @@ export function AttractionModal({ attraction, onClose }: Props) {
           />
           {/* Modal */}
           <motion.div
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby={`modal-title-${attraction.id}`}
             className="fixed inset-4 md:inset-8 lg:inset-y-12 lg:inset-x-[10%] z-50 bg-white rounded-2xl overflow-hidden shadow-lodge-xl flex flex-col"
             layoutId={`card-${attraction.id}`}
             initial={{ opacity: 0, scale: 0.9 }}
@@ -52,7 +66,7 @@ export function AttractionModal({ attraction, onClose }: Props) {
                 <span className="badge-gold !bg-brand-gold/20 !text-brand-gold-light mb-3 inline-block">
                   {attraction.category.charAt(0).toUpperCase() + attraction.category.slice(1)}
                 </span>
-                <h2 className="text-white text-2xl md:text-3xl">{attraction.title}</h2>
+                <h2 id={`modal-title-${attraction.id}`} className="text-white text-2xl md:text-3xl">{attraction.title}</h2>
                 <div className="flex items-center gap-4 mt-2 text-white/70 text-sm">
                   <span className="flex items-center gap-1"><MapPin className="w-4 h-4" />{attraction.distance}</span>
                   <span className="flex items-center gap-1"><Clock className="w-4 h-4" />{attraction.driveTime}</span>
@@ -126,9 +140,9 @@ export function AttractionModal({ attraction, onClose }: Props) {
                   <p className="text-sm font-bold text-brand-stone uppercase tracking-wider mb-4">Stay With Us</p>
                   <div className="grid grid-cols-3 gap-3">
                     {[
-                      { label: 'RV Sites', price: 'From $53.99', href: '/stay/rv-sites' },
-                      { label: 'Cabins', price: 'From $95', href: '/stay/cabins' },
-                      { label: 'Tent', price: 'From $35', href: '/stay/tent-camping' },
+                      { label: 'RV Sites', price: `From $${SITE.rvStartPrice || '53.99'}`, href: '/stay/rv-sites' },
+                      { label: 'Cabins', price: `From $${SITE.cabinStartPrice || '95'}`, href: '/stay/cabins' },
+                      { label: 'Tent', price: `From $${SITE.tentStartPrice || '35'}`, href: '/stay/tent-camping' },
                     ].map((s, i) => (
                       <Link
                         key={i}

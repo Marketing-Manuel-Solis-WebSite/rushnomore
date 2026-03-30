@@ -4,7 +4,7 @@ import { useState, useEffect, useRef, useMemo } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform, useInView } from 'framer-motion';
 import Link from 'next/link';
 import { ATTRACTIONS, ITINERARY, SITE, REVIEWS, type Attraction } from '@/data/site';
-import { Breadcrumbs, BookingCTA, SectionHeader } from '@/components/ui';
+import { BookingCTA, SectionHeader } from '@/components/ui';
 import { FadeIn, ParallaxHero, StaggerChildren, StaggerItem } from '@/components/motion';
 import {
   ExternalLink, MapPin, Clock, Star, Lightbulb, ArrowRight, ArrowDown,
@@ -166,8 +166,6 @@ export default function ExplorePage() {
 
   return (
     <>
-      <Breadcrumbs items={[{ label: 'Explore the Black Hills' }]} />
-
       {/* ═══════════════════════════════════════════════
           SECTION 1: CINEMATIC VIDEO HERO
           ═══════════════════════════════════════════════ */}

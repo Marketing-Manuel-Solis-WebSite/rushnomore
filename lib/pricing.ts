@@ -1,20 +1,103 @@
-// lib/pricing.ts
+// lib/pricing.ts — Price calculation engine
+//
+// Reads rally dates and tax rate from Firestore config/siteSettings
+// with 5-minute in-memory cache. Falls back to hardcoded defaults.
 
 import type {
   Property, PriceBreakdown, ReservationExtra, SeasonalPricing
 } from './types';
 
-const TAX_RATE = 0.06; // 6% South Dakota state tax
-
-// Fechas del Rally 2026
-const RALLY_2026 = { start: '2026-08-02', end: '2026-08-18' };
-
-// Festivos no reembolsables
-const HOLIDAYS_2026 = [
+// ─── Defaults (used when Firestore is not available) ───
+const DEFAULT_TAX_RATE = 0.06;
+const DEFAULT_RALLY = { start: '2026-08-02', end: '2026-08-18' };
+const DEFAULT_HOLIDAYS = [
   '2026-05-25', // Memorial Day
   '2026-07-04', // July 4th
   '2026-09-07', // Labor Day
 ];
+
+// ─── In-memory cache ───
+interface CachedSettings {
+  taxRate: number;
+  rallyStart: string;
+  rallyEnd: string;
+  rallyDays: number;
+  fetchedAt: number;
+}
+
+let cachedSettings: CachedSettings | null = null;
+const CACHE_TTL = 5 * 60 * 1000; // 5 minutes
+
+function getCachedOrDefaults(): CachedSettings {
+  if (cachedSettings && (Date.now() - cachedSettings.fetchedAt) < CACHE_TTL) {
+    return cachedSettings;
+  }
+  // Return defaults if cache expired or not yet loaded
+  return {
+    taxRate: DEFAULT_TAX_RATE,
+    rallyStart: DEFAULT_RALLY.start,
+    rallyEnd: DEFAULT_RALLY.end,
+    rallyDays: calculateRallyDays(DEFAULT_RALLY.start, DEFAULT_RALLY.end),
+    fetchedAt: 0,
+  };
+}
+
+function calculateRallyDays(start: string, end: string): number {
+  const s = new Date(start + 'T12:00:00');
+  const e = new Date(end + 'T12:00:00');
+  return Math.max(1, Math.ceil((e.getTime() - s.getTime()) / (1000 * 60 * 60 * 24)));
+}
+
+/**
+ * Fetch site settings from Firestore and update cache.
+ * Safe to call from server or client. Non-blocking on failure.
+ */
+export async function getSiteSettings(): Promise<CachedSettings> {
+  // Return cache if still fresh
+  if (cachedSettings && (Date.now() - cachedSettings.fetchedAt) < CACHE_TTL) {
+    return cachedSettings;
+  }
+
+  try {
+    const { db } = await import('./firebase');
+    const { doc, getDoc } = await import('firebase/firestore');
+    const snap = await getDoc(doc(db, 'config', 'siteSettings'));
+
+    if (snap.exists()) {
+      const data = snap.data();
+      const rallyStart = data.rallyStartDate || DEFAULT_RALLY.start;
+      const rallyEnd = data.rallyEndDate || DEFAULT_RALLY.end;
+      cachedSettings = {
+        taxRate: (data.taxRate != null ? data.taxRate / 100 : DEFAULT_TAX_RATE),
+        rallyStart,
+        rallyEnd,
+        rallyDays: calculateRallyDays(rallyStart, rallyEnd),
+        fetchedAt: Date.now(),
+      };
+      return cachedSettings;
+    }
+  } catch (err) {
+    console.error('[Pricing] Failed to fetch settings from Firestore:', err);
+  }
+
+  // Fallback to defaults
+  return getCachedOrDefaults();
+}
+
+export async function getRallyDates(): Promise<{ start: Date; end: Date }> {
+  const settings = await getSiteSettings();
+  return {
+    start: new Date(settings.rallyStart + 'T12:00:00'),
+    end: new Date(settings.rallyEnd + 'T12:00:00'),
+  };
+}
+
+export async function getTaxRate(): Promise<number> {
+  const settings = await getSiteSettings();
+  return settings.taxRate;
+}
+
+// ─── Synchronous price calculation (uses cached values) ───
 
 export function calculatePrice(
   property: Property,
@@ -23,13 +106,14 @@ export function calculatePrice(
   nights: number,
   guests: number
 ): PriceBreakdown {
-  const isRallyPeriod = isOverlapping(checkIn, checkOut, RALLY_2026.start, RALLY_2026.end);
+  const settings = getCachedOrDefaults();
+  const isRallyPeriod = isOverlapping(checkIn, checkOut, settings.rallyStart, settings.rallyEnd);
 
   let pricePerNight: number;
 
   if (isRallyPeriod) {
-    // Durante el Rally, usar precio de paquete dividido por noches del rally
-    pricePerNight = property.priceRally / 10; // paquete de 10 días
+    // Rally price divided by actual rally duration (dynamic, not hardcoded /10)
+    pricePerNight = property.priceRally / settings.rallyDays;
   } else if (isSummerSeason(checkIn)) {
     pricePerNight = property.priceSummer || property.pricePerNight;
   } else {
@@ -41,7 +125,7 @@ export function calculatePrice(
   // Extras
   const extras: ReservationExtra[] = [];
 
-  // Para tent: personas adicionales ($5/día cada una extra después de 2)
+  // Tent: additional guests ($5/day each after 2)
   if (property.type === 'tent' && guests > 2) {
     const extraGuests = guests - 2;
     const extraGuestTotal = extraGuests * 5 * nights;
@@ -54,7 +138,7 @@ export function calculatePrice(
 
   const extrasTotal = extras.reduce((sum, e) => sum + e.total, 0);
   const taxableAmount = subtotal + extrasTotal;
-  const tax = Math.round(taxableAmount * TAX_RATE * 100) / 100;
+  const tax = Math.round(taxableAmount * settings.taxRate * 100) / 100;
   const total = Math.round((taxableAmount + tax) * 100) / 100;
 
   return {
@@ -70,22 +154,21 @@ export function calculatePrice(
 }
 
 export function isRallyDate(date: string): boolean {
-  return date >= RALLY_2026.start && date <= RALLY_2026.end;
+  const settings = getCachedOrDefaults();
+  return date >= settings.rallyStart && date <= settings.rallyEnd;
 }
 
 export function isHolidayDate(date: string): boolean {
-  return HOLIDAYS_2026.includes(date);
+  return DEFAULT_HOLIDAYS.includes(date);
 }
 
 export function getCancellationPolicy(
   property: Property,
   checkIn: string
 ): 'standard-rv-tent' | 'luxury-cabin' | 'non-refundable' {
-  // Rally y festivos = no reembolsable
   if (isRallyDate(checkIn) || isHolidayDate(checkIn)) {
     return 'non-refundable';
   }
-  // Cabañas y sitios Luxury/Spa = política especial
   if (
     property.type === 'cabin' ||
     property.category === 'rv-vip' ||

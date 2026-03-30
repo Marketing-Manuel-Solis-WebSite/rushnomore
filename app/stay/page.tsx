@@ -4,7 +4,7 @@ import { useRef, useEffect, useState } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { SITE, RV_TIERS, CABINS, REVIEWS } from '@/data/site';
-import { Breadcrumbs, BookingCTA } from '@/components/ui';
+import { BookingCTA } from '@/components/ui';
 import { FadeIn } from '@/components/motion';
 import {
   ExternalLink, Star, ArrowRight, ArrowDown, Phone,
@@ -116,8 +116,6 @@ export default function StayPage() {
 
   return (
     <>
-      <Breadcrumbs items={[{ label: 'Accommodations' }]} />
-
       {/* ═══════════════════════════════════════════════════════════════
           HERO — Video Background
       ═══════════════════════════════════════════════════════════════ */}

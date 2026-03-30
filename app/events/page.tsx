@@ -4,7 +4,7 @@ import { useRef, useEffect } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { SITE, RALLY_RV, REVIEWS } from '@/data/site';
-import { Breadcrumbs, BookingCTA, SectionHeader } from '@/components/ui';
+import { BookingCTA, SectionHeader } from '@/components/ui';
 import { FadeIn } from '@/components/motion';
 import { JsonLd } from '@/components/seo/JsonLd';
 import {
@@ -57,8 +57,6 @@ export default function EventsPage() {
 
   return (
     <>
-      <Breadcrumbs items={[{ label: 'Events' }]} />
-
       {/* Schema */}
       <JsonLd data={{
         '@context': 'https://schema.org', '@type': 'Event',

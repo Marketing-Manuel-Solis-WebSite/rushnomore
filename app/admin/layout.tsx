@@ -10,17 +10,17 @@ import {
   ClipboardList,
   Package,
   DollarSign,
+  Wallet,
   BarChart3,
   Settings,
   LogOut,
   Menu,
 } from 'lucide-react';
+import { auth, onAuthStateChanged, signOutAdmin, getAdminSession, type User } from '@/lib/adminAuth';
 
-interface AdminSession {
-  token: string;
-  role: string;
+interface AdminInfo {
   name: string;
-  expiresAt: number;
+  role: string;
 }
 
 const NAV = [
@@ -29,6 +29,7 @@ const NAV = [
   { href: '/admin/reservations', label: 'Reservations', icon: ClipboardList },
   { href: '/admin/inventory', label: 'Inventory', icon: Package },
   { href: '/admin/payments', label: 'Payments', icon: DollarSign },
+  { href: '/admin/finance', label: 'Finance', icon: Wallet },
   { href: '/admin/reports', label: 'Reports', icon: BarChart3 },
   { href: '/admin/settings', label: 'Settings', icon: Settings },
 ];
@@ -41,10 +42,9 @@ export default function AdminLayout({
   const pathname = usePathname();
   const router = useRouter();
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [session, setSession] = useState<AdminSession | null>(null);
+  const [adminInfo, setAdminInfo] = useState<AdminInfo | null>(null);
   const [checked, setChecked] = useState(false);
 
-  // ⚠️ IMPORTANTE: Si estamos en /admin/login, NO verificar sesión
   const isLoginPage = pathname === '/admin/login';
 
   useEffect(() => {
@@ -53,39 +53,55 @@ export default function AdminLayout({
       return;
     }
 
-    // Verificar sesión
-    try {
-      const raw = sessionStorage.getItem('rnm-admin-session');
-      if (!raw) {
-        router.replace('/admin/login');
+    // Primary: Firebase Auth state listener
+    const unsubscribe = onAuthStateChanged(auth, (user: User | null) => {
+      if (user) {
+        setAdminInfo({
+          name: user.displayName || user.email || 'Admin',
+          role: 'admin',
+        });
+        setChecked(true);
         return;
       }
-      const s: AdminSession = JSON.parse(raw);
-      if (s.expiresAt < Date.now()) {
-        sessionStorage.removeItem('rnm-admin-session');
-        router.replace('/admin/login');
+
+      // Fallback: legacy session (during migration)
+      const session = getAdminSession();
+      if (session) {
+        setAdminInfo({
+          name: session.name,
+          role: session.role,
+        });
+        setChecked(true);
         return;
       }
-      setSession(s);
-    } catch {
+
+      // Not authenticated
       router.replace('/admin/login');
-      return;
-    }
-    setChecked(true);
+    });
+
+    return () => unsubscribe();
   }, [router, isLoginPage, pathname]);
 
-  const handleLogout = () => {
-    sessionStorage.removeItem('rnm-admin-session');
+  const handleLogout = async () => {
+    try {
+      await signOutAdmin();
+    } catch {
+      // Ignore sign-out errors
+    }
+    // Also clear legacy session
+    if (typeof window !== 'undefined') {
+      sessionStorage.removeItem('rnm-admin-session');
+    }
     router.push('/admin/login');
   };
 
-  // Si es la página de login, renderizar sin sidebar
+  // Login page renders without sidebar
   if (isLoginPage) {
     return <>{children}</>;
   }
 
-  // Esperando verificación de sesión
-  if (!checked || !session) {
+  // Loading spinner while checking auth
+  if (!checked || !adminInfo) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-surface-primary">
         <div className="text-center">
@@ -112,7 +128,7 @@ export default function AdminLayout({
             Admin Panel
           </p>
           <p className="text-xs text-brand-gold mt-1">
-            {session.name} ({session.role})
+            {adminInfo.name} ({adminInfo.role})
           </p>
         </div>
 
@@ -173,11 +189,11 @@ export default function AdminLayout({
           <div className="flex items-center gap-4">
             <div className="w-8 h-8 bg-brand-gold rounded-full flex items-center justify-center">
               <span className="text-white text-xs font-bold">
-                {session.name[0]}
+                {adminInfo.name[0]}
               </span>
             </div>
             <span className="text-sm font-bold text-brand-navy">
-              {session.name}
+              {adminInfo.name}
             </span>
           </div>
         </header>

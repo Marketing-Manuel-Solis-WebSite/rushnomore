@@ -8,12 +8,28 @@ import {
 } from 'firebase/firestore';
 import { verifyPropertyAvailable, calculateNights } from '@/lib/availability';
 import { calculatePrice, getCancellationPolicy, isRallyDate, isHolidayDate } from '@/lib/pricing';
+import { chatLimiter, checkRateLimit, getRequestIP } from '@/lib/rateLimit';
+import { withAdminAuth } from '@/lib/withAdminAuth';
+import {
+  sanitizeInput, isValidEmail, isValidPhone,
+  isValidISODate, isValidFirestoreId, truncate
+} from '@/lib/sanitize';
 import type { Reservation, Property } from '@/lib/types';
 import { nanoid } from 'nanoid';
 
 // POST — Crear nueva reserva (estado: pending)
 export async function POST(request: Request) {
   try {
+    // Rate limiting
+    const ip = getRequestIP(request);
+    const { allowed, retryAfter } = await checkRateLimit(chatLimiter, ip);
+    if (!allowed) {
+      return NextResponse.json(
+        { error: 'Too many requests. Please try again later.' },
+        { status: 429, headers: { 'Retry-After': String(retryAfter) } }
+      );
+    }
+
     const body = await request.json();
     const {
       propertyId, checkIn, checkOut, guestName,
@@ -21,10 +37,54 @@ export async function POST(request: Request) {
       source = 'web'
     } = body;
 
-    // Validaciones
+    // ─── Input Validation ───
+
     if (!propertyId || !checkIn || !checkOut || !guestName || !guestEmail) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
     }
+
+    // Validate propertyId format (Firestore ID)
+    if (!isValidFirestoreId(propertyId)) {
+      return NextResponse.json({ error: 'Invalid property ID format' }, { status: 400 });
+    }
+
+    // Validate email format
+    if (!isValidEmail(guestEmail)) {
+      return NextResponse.json({ error: 'Invalid email format' }, { status: 400 });
+    }
+
+    // Validate phone format (if provided)
+    if (guestPhone && !isValidPhone(guestPhone)) {
+      return NextResponse.json({ error: 'Invalid phone number format' }, { status: 400 });
+    }
+
+    // Validate dates are valid ISO format
+    if (!isValidISODate(checkIn) || !isValidISODate(checkOut)) {
+      return NextResponse.json({ error: 'Invalid date format. Use YYYY-MM-DD.' }, { status: 400 });
+    }
+
+    // Validate checkIn < checkOut
+    if (checkIn >= checkOut) {
+      return NextResponse.json({ error: 'Check-out must be after check-in' }, { status: 400 });
+    }
+
+    // Validate numberOfGuests is a reasonable number
+    const guests = parseInt(numberOfGuests, 10);
+    if (isNaN(guests) || guests < 1 || guests > 20) {
+      return NextResponse.json({ error: 'Number of guests must be between 1 and 20' }, { status: 400 });
+    }
+
+    // Validate guestNotes length
+    if (guestNotes && typeof guestNotes === 'string' && guestNotes.length > 500) {
+      return NextResponse.json({ error: 'Guest notes too long (max 500 characters)' }, { status: 400 });
+    }
+
+    // Sanitize all string inputs — strip HTML tags
+    const cleanName = sanitizeInput(guestName);
+    const cleanEmail = sanitizeInput(guestEmail);
+    const cleanPhone = guestPhone ? sanitizeInput(guestPhone) : '';
+    const cleanNotes = guestNotes ? truncate(sanitizeInput(guestNotes), 500) : '';
+    const cleanSource = sanitizeInput(String(source));
 
     // DOBLE VERIFICACIÓN de disponibilidad (prevención overbooking)
     const isAvailable = await verifyPropertyAvailable(propertyId, checkIn, checkOut);
@@ -44,7 +104,7 @@ export async function POST(request: Request) {
 
     // Calcular precio
     const nights = calculateNights(checkIn, checkOut);
-    const pricing = calculatePrice(property, checkIn, checkOut, nights, numberOfGuests);
+    const pricing = calculatePrice(property, checkIn, checkOut, nights, guests);
     const cancellationPolicy = getCancellationPolicy(property, checkIn);
 
     // Generar número de confirmación
@@ -63,11 +123,11 @@ export async function POST(request: Request) {
       checkIn,
       checkOut,
       nights,
-      guestName,
-      guestEmail,
-      guestPhone: guestPhone || '',
-      guestNotes: guestNotes || '',
-      numberOfGuests,
+      guestName: cleanName,
+      guestEmail: cleanEmail,
+      guestPhone: cleanPhone,
+      guestNotes: cleanNotes,
+      numberOfGuests: guests,
       pricePerNight: pricing.pricePerNight,
       subtotal: pricing.subtotal,
       extras: pricing.extras,
@@ -80,7 +140,7 @@ export async function POST(request: Request) {
       isRally: isRallyDate(checkIn),
       isHoliday: isHolidayDate(checkIn),
       cancellationPolicy,
-      source: source as any,
+      source: cleanSource as any,
       createdAt: now,
       updatedAt: now,
       expiresAt,
@@ -101,8 +161,8 @@ export async function POST(request: Request) {
   }
 }
 
-// GET — Listar reservas (admin)
-export async function GET(request: Request) {
+// GET — Listar reservas (admin only)
+export const GET = withAdminAuth(async (request) => {
   try {
     const { searchParams } = new URL(request.url);
     const status = searchParams.get('status');
@@ -110,7 +170,7 @@ export async function GET(request: Request) {
     const from = searchParams.get('from');
     const to = searchParams.get('to');
 
-    let q = query(
+    const q = query(
       collection(db, 'reservations'),
       orderBy('createdAt', 'desc')
     );
@@ -137,4 +197,4 @@ export async function GET(request: Request) {
     console.error('List reservations error:', e);
     return NextResponse.json({ error: 'Server error' }, { status: 500 });
   }
-}
+});

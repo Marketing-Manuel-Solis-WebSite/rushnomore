@@ -4,7 +4,6 @@
 import { Suspense, useState, useEffect } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { Breadcrumbs } from '@/components/ui';
 import {
   Loader2, CheckCircle, Users, ArrowRight, AlertCircle,
   Calendar, MapPin
@@ -101,11 +100,6 @@ function ResultsContent() {
 
   return (
     <>
-      <Breadcrumbs items={[
-        { label: 'Book', href: '/book' },
-        { label: 'Results' },
-      ]} />
-
       <section className="py-12 md:py-16 bg-surface-primary min-h-screen">
         <div className="max-w-6xl mx-auto px-4">
           {/* Search summary */}

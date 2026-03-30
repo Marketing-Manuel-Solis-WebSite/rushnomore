@@ -1,6 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { DollarSign, Calendar, XCircle } from 'lucide-react';
+import { adminGet } from '@/lib/adminFetch';
 
 export default function ReportsPage() {
   const [reportType, setReportType] = useState('revenue');
@@ -13,7 +14,7 @@ export default function ReportsPage() {
     setLoading(true);
     const params = new URLSearchParams({ type: reportType });
     if (dateFrom) params.set('from', dateFrom); if (dateTo) params.set('to', dateTo);
-    fetch(`/api/admin/reports?${params}`).then(r => r.json()).then(d => { setData(d); setLoading(false); });
+    adminGet(`/api/admin/reports?${params}`).then(r => r.json()).then(d => { setData(d); setLoading(false); });
   }, [reportType, dateFrom, dateTo]);
 
   return (

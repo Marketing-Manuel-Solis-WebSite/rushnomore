@@ -5,7 +5,6 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { SITE } from '@/data/site';
-import { Breadcrumbs } from '@/components/ui';
 import {
   Truck, Home, Tent, Calendar, Users, Search,
   ArrowRight, Loader2, ExternalLink
@@ -42,8 +41,6 @@ export default function BookPage() {
 
   return (
     <>
-      <Breadcrumbs items={[{ label: 'Book Your Stay' }]} />
-
       {/* Hero */}
       <section className="relative py-20 md:py-28 bg-brand-navy text-white overflow-hidden">
         <div className="absolute inset-0 animate-shimmer" />

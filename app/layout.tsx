@@ -5,6 +5,7 @@ import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { BookingBar } from '@/components/layout/BookingBar';
 import { AIChatWidget } from '@/components/chat/AIChatWidget';
+import { ToastProvider } from '@/components/ui/Toast';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { campgroundSchema } from '@/lib/seo';
 import { Analytics } from '@vercel/analytics/next';
@@ -42,11 +43,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <noscript>
           <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KFGKRRJH" height="0" width="0" style={{ display: 'none', visibility: 'hidden' }} />
         </noscript>
-        <Header />
-        <main>{children}</main>
-        <Footer />
-        <BookingBar />
-        <AIChatWidget />
+        <ToastProvider>
+          <Header />
+          <main>{children}</main>
+          <Footer />
+          <BookingBar />
+          <AIChatWidget />
+        </ToastProvider>
         <Analytics />
         <SpeedInsights />
       </body>

@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { SITE } from '@/data/site';
-import { BookingCTA, Breadcrumbs } from '@/components/ui';
+import { BookingCTA } from '@/components/ui';
 import { FadeIn, ParallaxHero } from '@/components/motion';
 import {
   Accessibility, CheckCircle, Eye, Keyboard, Smartphone, Monitor,
@@ -30,8 +30,6 @@ const PROPERTY_FEATURES = [
 export default function ADAPage() {
   return (
     <>
-      <Breadcrumbs items={[{ label: 'ADA Compliance' }]} />
-
       {/* ═══ HERO ═══ */}
       <section className="relative py-24 md:py-32 bg-brand-navy text-white overflow-hidden">
         <div className="absolute inset-0 bg-cover bg-center opacity-20" style={{ backgroundImage: "url('/images/Aereal-2_1400.png')" }} />

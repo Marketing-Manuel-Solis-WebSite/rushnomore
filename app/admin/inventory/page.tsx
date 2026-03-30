@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Plus, Search, Edit, Trash2, CheckCircle, AlertTriangle, XCircle, RefreshCw } from 'lucide-react';
+import { adminGet, adminDelete, adminPatch } from '@/lib/adminFetch';
 
 export default function InventoryPage() {
   const [properties, setProperties] = useState<any[]>([]);
@@ -12,15 +13,15 @@ export default function InventoryPage() {
   const fetchProperties = async () => {
     setLoading(true);
     const params = new URLSearchParams(); if (typeFilter) params.set('type', typeFilter);
-    const res = await fetch(`/api/inventory?${params}`); const data = await res.json();
+    const res = await adminGet(`/api/inventory?${params}`); const data = await res.json();
     setProperties(data.properties || []); setLoading(false);
   };
 
   useEffect(() => { fetchProperties(); }, [typeFilter]);
 
-  const handleDelete = async (id: string) => { if (!confirm('Delete this property?')) return; await fetch(`/api/inventory/${id}`, { method: 'DELETE' }); fetchProperties(); };
+  const handleDelete = async (id: string) => { if (!confirm('Delete this property?')) return; await adminDelete(`/api/inventory/${id}`); fetchProperties(); };
   const handleStatusToggle = async (id: string, s: string) => {
-    await fetch(`/api/inventory/${id}`, { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ status: s === 'active' ? 'maintenance' : 'active' }) });
+    await adminPatch(`/api/inventory/${id}`, { status: s === 'active' ? 'maintenance' : 'active' });
     fetchProperties();
   };
 
@@ -46,22 +47,22 @@ export default function InventoryPage() {
         </select>
       </div>
       <div className="bg-white rounded-2xl shadow-lodge border border-surface-muted/50 overflow-x-auto">
-        <table className="w-full text-sm">
+        <table className="w-full min-w-[700px] text-sm">
           <thead><tr className="bg-surface-secondary/50 border-b border-surface-muted">
             <th className="text-left px-4 py-3 font-bold">Status</th><th className="text-left px-4 py-3 font-bold">Name</th>
-            <th className="text-left px-4 py-3 font-bold">Type</th><th className="text-left px-4 py-3 font-bold">Category</th>
-            <th className="text-left px-4 py-3 font-bold">Capacity</th><th className="text-left px-4 py-3 font-bold">$/Night</th>
-            <th className="text-left px-4 py-3 font-bold">Rally $</th><th className="text-left px-4 py-3 font-bold">Actions</th>
+            <th className="text-left px-4 py-3 font-bold">Type</th><th className="text-left px-4 py-3 font-bold hidden sm:table-cell">Category</th>
+            <th className="text-left px-4 py-3 font-bold hidden sm:table-cell">Capacity</th><th className="text-left px-4 py-3 font-bold">$/Night</th>
+            <th className="text-left px-4 py-3 font-bold hidden sm:table-cell">Rally $</th><th className="text-left px-4 py-3 font-bold">Actions</th>
           </tr></thead>
           <tbody>{filtered.map(p => (
             <tr key={p.id} className="border-b border-surface-muted/50 hover:bg-surface-secondary/30">
               <td className="px-4 py-3"><button onClick={() => handleStatusToggle(p.id, p.status)}>{statusIcon(p.status)}</button></td>
-              <td className="px-4 py-3 font-bold">{p.name || `#${p.number}`}</td>
+              <td className="px-4 py-3 font-bold"><span className="truncate max-w-[120px] block">{p.name || `#${p.number}`}</span></td>
               <td className="px-4 py-3 capitalize">{p.type}</td>
-              <td className="px-4 py-3"><span className="text-xs bg-brand-gold/10 text-brand-gold px-2 py-0.5 rounded-full font-bold">{p.category?.replace(/-/g,' ')}</span></td>
-              <td className="px-4 py-3">{p.maxGuests}</td>
+              <td className="px-4 py-3 hidden sm:table-cell"><span className="text-xs bg-brand-gold/10 text-brand-gold px-2 py-0.5 rounded-full font-bold">{p.category?.replace(/-/g,' ')}</span></td>
+              <td className="px-4 py-3 hidden sm:table-cell">{p.maxGuests}</td>
               <td className="px-4 py-3">${p.pricePerNight}</td>
-              <td className="px-4 py-3">${p.priceRally}</td>
+              <td className="px-4 py-3 hidden sm:table-cell">${p.priceRally}</td>
               <td className="px-4 py-3"><div className="flex gap-1">
                 <Link href={`/admin/inventory/${p.id}`} className="p-1.5 rounded-lg hover:bg-surface-secondary"><Edit className="w-4 h-4 text-brand-stone" /></Link>
                 <button onClick={() => handleDelete(p.id)} className="p-1.5 rounded-lg hover:bg-red-50"><Trash2 className="w-4 h-4 text-red-500" /></button>

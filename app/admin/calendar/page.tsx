@@ -1,6 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, Truck, Home, Tent } from 'lucide-react';
+import { adminGet } from '@/lib/adminFetch';
 
 type PropertyType = 'cabin' | 'rv' | 'tent';
 
@@ -13,7 +14,7 @@ export default function CalendarPage() {
 
   useEffect(() => {
     setLoading(true);
-    fetch(`/api/availability?mode=calendar&type=${type}&month=${month}&year=${year}`)
+    adminGet(`/api/availability?mode=calendar&type=${type}&month=${month}&year=${year}`)
       .then(r => r.json()).then(data => { setCalendar(data.calendar || {}); setLoading(false); }).catch(() => setLoading(false));
   }, [type, month, year]);
 
@@ -35,7 +36,7 @@ export default function CalendarPage() {
   return (
     <div className="p-6 md:p-8">
       <h1 className="text-2xl font-display font-bold text-brand-navy mb-6">Occupancy Calendar</h1>
-      <div className="flex flex-wrap items-center gap-4 mb-6">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 mb-6">
         <div className="flex gap-2">
           {([['cabin', Home, 'Cabins'], ['rv', Truck, 'RV'], ['tent', Tent, 'Tent']] as const).map(([t, Icon, label]) => (
             <button key={t} onClick={() => setType(t)} className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-bold transition-all ${type === t ? 'bg-brand-gold text-white' : 'bg-white border border-surface-muted hover:border-brand-gold'}`}>
@@ -43,7 +44,7 @@ export default function CalendarPage() {
             </button>
           ))}
         </div>
-        <div className="flex items-center gap-3 ml-auto">
+        <div className="flex items-center gap-3 sm:ml-auto">
           <button onClick={prevMonth} className="p-2 rounded-xl hover:bg-surface-secondary"><ChevronLeft className="w-5 h-5" /></button>
           <span className="font-bold text-brand-navy min-w-[180px] text-center">{monthName}</span>
           <button onClick={nextMonth} className="p-2 rounded-xl hover:bg-surface-secondary"><ChevronRight className="w-5 h-5" /></button>
@@ -67,7 +68,7 @@ export default function CalendarPage() {
             const data = calendar[dateStr] || { available: 0, total: 0 };
             return (
               <div key={day} className={`aspect-square border border-surface-muted/30 p-1 flex flex-col items-center justify-center ${loading ? 'animate-pulse bg-gray-50' : getColor(data.available, data.total)}`}>
-                <span className="text-xs font-bold">{day}</span>
+                <span className="text-[10px] sm:text-xs font-bold">{day}</span>
                 {!loading && <span className="text-[10px] font-medium mt-0.5">{data.available}/{data.total}</span>}
               </div>
             );

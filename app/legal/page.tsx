@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { SITE } from '@/data/site';
-import { BookingCTA, Breadcrumbs } from '@/components/ui';
+import { BookingCTA } from '@/components/ui';
 import { FadeIn } from '@/components/motion';
 import {
   Scale, Shield, Cookie, FileText, Eye, Mail, Phone, MapPin,
@@ -51,8 +51,6 @@ const SECTIONS = [
 export default function LegalPage() {
   return (
     <>
-      <Breadcrumbs items={[{ label: 'Legal Notices' }]} />
-
       {/* ═══ HERO ═══ */}
       <section className="relative py-24 md:py-32 bg-brand-navy text-white overflow-hidden">
         <div className="absolute inset-0 bg-cover bg-center opacity-15" style={{ backgroundImage: "url('/images/DSC05580-s.png')" }} />

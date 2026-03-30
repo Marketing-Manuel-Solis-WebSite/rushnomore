@@ -27,6 +27,7 @@ const cols = {
   Info: [
     { label: 'About Us', href: '/about' },
     { label: 'Contact', href: '/contact' },
+    { label: 'My Reservation', href: '/my-reservation' },
     { label: 'Policies', href: '/policies' },
     { label: 'ADA', href: '/ada' },
     { label: 'Legal', href: '/legal' },
@@ -97,7 +98,7 @@ export function Footer() {
 
         {/* ── Bottom bar ── */}
         <div className="border-t border-white/[0.06] pt-6 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-xs text-white/25">&copy; 2026 {SITE.name}. All rights reserved.</p>
+          <p className="text-xs text-white/25">&copy; {new Date().getFullYear()} {SITE.name}. All rights reserved.</p>
           <div className="flex gap-5 text-xs text-white/25">
             <Link href="/policies" className="hover:text-white/50 transition-colors">Policies</Link>
             <Link href="/legal" className="hover:text-white/50 transition-colors">Legal</Link>

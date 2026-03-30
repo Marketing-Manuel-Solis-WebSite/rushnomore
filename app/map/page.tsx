@@ -4,7 +4,7 @@ import { useRef, useEffect } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { SITE } from '@/data/site';
-import { BookingCTA, Breadcrumbs } from '@/components/ui';
+import { BookingCTA } from '@/components/ui';
 import { InteractiveMapWrapper } from './InteractiveMapWrapper';
 import {
   MapPin, Phone, Mail, Navigation, ExternalLink, ArrowRight,
@@ -67,8 +67,6 @@ export default function MapPage() {
 
   return (
     <>
-      <Breadcrumbs items={[{ label: 'Park Map' }]} />
-
       {/* ═══════════════════════════════════════════════════════════════
           HERO — Video background
       ═══════════════════════════════════════════════════════════════ */}

@@ -1,0 +1,77 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ─── Helper: Check if the user is an authenticated admin ───
+    function isAdmin() {
+      return request.auth != null && request.auth.token.admin == true;
+    }
+
+    // ─── properties ───
+    // Public: read-only (for browsing inventory/availability)
+    // Admin: full read/write
+    match /properties/{propertyId} {
+      allow read: if true;
+      allow create, update, delete: if isAdmin();
+    }
+
+    // ─── reservations ───
+    // Public: can create (booking flow), can read single doc (confirmation page)
+    // Admin: full read/write/update
+    match /reservations/{reservationId} {
+      allow create: if true;
+      allow read: if true;
+      allow update, delete: if isAdmin();
+    }
+
+    // ─── config ───
+    // Admin only — site configuration, pricing overrides, etc.
+    match /config/{docId} {
+      allow read, write: if isAdmin();
+    }
+
+    // ─── payments ───
+    // Admin/server only — payment records from Stripe webhooks
+    match /payments/{paymentId} {
+      allow read, write: if isAdmin();
+    }
+
+    // ─── processedStripeEvents ───
+    // Server/admin only — idempotency tracking for webhooks
+    match /processedStripeEvents/{eventId} {
+      allow read, write: if isAdmin();
+    }
+
+    // ─── chat_questions ───
+    // Public: can create (AI chat widget saves questions)
+    // Admin: can read (dashboard analytics)
+    match /chat_questions/{questionId} {
+      allow create: if true;
+      allow read: if isAdmin();
+      allow update, delete: if isAdmin();
+    }
+
+    // ─── contacts ───
+    // Public: can create (contact form submissions)
+    // Admin: can read (to review/respond)
+    match /contacts/{contactId} {
+      allow create: if true;
+      allow read: if isAdmin();
+      allow update, delete: if isAdmin();
+    }
+
+    // ─── dateBlocks ───
+    // Public: can read (availability calendar needs to know blocked dates)
+    // Admin: full write (manage date blocks)
+    match /dateBlocks/{blockId} {
+      allow read: if true;
+      allow create, update, delete: if isAdmin();
+    }
+
+    // ─── Deny all other collections by default ───
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

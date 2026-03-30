@@ -2,10 +2,21 @@
 
 import { NextResponse } from 'next/server';
 import { checkAvailability, getCalendarAvailability } from '@/lib/availability';
+import { availabilityLimiter, checkRateLimit, getRequestIP } from '@/lib/rateLimit';
 import type { AvailabilityQuery, PropertyType } from '@/lib/types';
 
 export async function GET(request: Request) {
   try {
+    // Rate limiting — 20 per minute
+    const ip = getRequestIP(request);
+    const { allowed, retryAfter } = await checkRateLimit(availabilityLimiter, ip);
+    if (!allowed) {
+      return NextResponse.json(
+        { error: `Too many requests. Please try again in ${retryAfter} seconds.` },
+        { status: 429, headers: { 'Retry-After': String(retryAfter) } }
+      );
+    }
+
     const { searchParams } = new URL(request.url);
 
     // Modo calendario

@@ -6,6 +6,8 @@ import { doc, getDoc, updateDoc } from 'firebase/firestore';
 import { stripe } from '@/lib/stripe';
 import { sendCancellationEmail, sendAdminNotification } from '@/lib/email';
 import { calculateRefund } from '@/lib/pricing';
+import { verifyAdminToken } from '@/lib/firebaseAdmin';
+import { withAdminAuth } from '@/lib/withAdminAuth';
 import type { Reservation } from '@/lib/types';
 
 // GET — Obtener reserva individual
@@ -19,21 +21,44 @@ export async function GET(
     if (!resDoc.exists()) {
       return NextResponse.json({ error: 'Not found' }, { status: 404 });
     }
+
+    const data = resDoc.data() as Reservation;
+
+    // Check if request comes from an authenticated admin
+    const adminToken = await verifyAdminToken(request);
+
+    if (adminToken) {
+      // Admin: return full reservation data
+      return NextResponse.json({
+        reservation: { ...data, id: resDoc.id },
+      });
+    }
+
+    // Public: return only minimal data needed for the confirmation page
     return NextResponse.json({
-      reservation: { id: resDoc.id, ...resDoc.data() },
+      reservation: {
+        id: resDoc.id,
+        confirmationNumber: data.confirmationNumber,
+        propertyName: data.propertyName,
+        propertyType: data.propertyType,
+        checkIn: data.checkIn,
+        checkOut: data.checkOut,
+        nights: data.nights,
+        numberOfGuests: data.numberOfGuests,
+        totalAmount: data.totalAmount,
+        status: data.status,
+        paymentStatus: data.paymentStatus,
+      },
     });
   } catch (e) {
     return NextResponse.json({ error: 'Server error' }, { status: 500 });
   }
 }
 
-// PATCH — Actualizar reserva (admin: status, notes, check-in/out)
-export async function PATCH(
-  request: Request,
-  { params }: { params: Promise<{ id: string }> }
-) {
+// PATCH — Actualizar reserva (admin only: status, notes, check-in/out)
+export const PATCH = withAdminAuth(async (request, context) => {
   try {
-    const { id } = await params;
+    const { id } = await context.params;
     const body = await request.json();
     const { status, adminNotes, action } = body;
 
@@ -116,4 +141,4 @@ export async function PATCH(
     console.error('Update reservation error:', e);
     return NextResponse.json({ error: 'Server error' }, { status: 500 });
   }
-}
+});

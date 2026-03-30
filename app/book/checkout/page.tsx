@@ -64,16 +64,21 @@ function CheckoutContent() {
   useEffect(() => {
     async function loadData() {
       try {
+        // First fetch property to get its actual type
+        const propRes = await fetch(`/api/inventory/${propertyId}`);
+        const propData = await propRes.json();
+        const propertyType = propData.property?.type || 'rv';
+
         const params = new URLSearchParams({
-          type: 'rv', // Will be filtered by propertyId
+          type: propertyType,
           checkIn, checkOut, guests: String(guests),
         });
         const res = await fetch(`/api/availability?${params}`);
         const data = await res.json();
 
         if (data.available) {
-          const prop = data.available.find((p: any) => p.id === propertyId);
-          const prc = data.priceBreakdown.find((p: any) => p.propertyId === propertyId);
+          const prop = data.available.find((p: PropertyData & { id: string }) => p.id === propertyId);
+          const prc = data.priceBreakdown.find((p: PriceData) => p.propertyId === propertyId);
           if (prop) setProperty(prop);
           if (prc) setPrice(prc);
         }

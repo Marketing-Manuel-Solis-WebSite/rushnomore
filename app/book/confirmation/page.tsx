@@ -8,7 +8,7 @@ import { SITE } from '@/data/site';
 import {
   CheckCircle, Calendar, MapPin, Phone, Mail,
   Printer, Home, Loader2, Clock, Users, Sparkles,
-  Navigation, Star, ArrowRight, ExternalLink
+  Navigation, Star, ArrowRight, ExternalLink, Search
 } from 'lucide-react';
 
 interface ReservationData {
@@ -62,7 +62,8 @@ function ConfirmationContent() {
       }
     }
 
-    setTimeout(loadReservation, 1500);
+    // Allow a brief moment for webhook to process the payment
+    loadReservation();
   }, [reservationId]);
 
   if (loading) {
@@ -252,6 +253,9 @@ function ConfirmationContent() {
             <button onClick={() => window.print()} className="btn-outline px-6">
               <Printer className="w-4 h-4 mr-2" /> Print Confirmation
             </button>
+            <Link href="/my-reservation" className="btn-outline px-6">
+              <Search className="w-4 h-4 mr-2" /> Check Reservation Status
+            </Link>
             <Link href="/explore" className="btn-navy px-6">
               <Sparkles className="w-4 h-4 mr-2" /> Explore the Black Hills
             </Link>
@@ -259,6 +263,18 @@ function ConfirmationContent() {
               <Home className="w-4 h-4 mr-2" /> Return Home
             </Link>
           </motion.div>
+
+          <motion.p
+            className="text-center text-brand-stone text-sm mt-6"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1 }}
+          >
+            You can always check your reservation status at{' '}
+            <Link href="/my-reservation" className="text-brand-gold font-bold hover:underline">
+              rushnomore.com/my-reservation
+            </Link>
+          </motion.p>
         </div>
       </section>
     </>

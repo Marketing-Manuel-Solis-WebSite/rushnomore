@@ -9,17 +9,20 @@ import {
   Mail, Phone, Calendar, Users, DollarSign, Clock,
   MapPin, Send, Loader2
 } from 'lucide-react';
+import { adminGet, adminPatch, adminPost } from '@/lib/adminFetch';
+import { useToast } from '@/components/ui/Toast';
 
 export default function ReservationDetailPage() {
   const { id } = useParams();
   const router = useRouter();
+  const toast = useToast();
   const [reservation, setReservation] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [adminNotes, setAdminNotes] = useState('');
   const [saving, setSaving] = useState(false);
 
   useEffect(() => {
-    fetch(`/api/reservations/${id}`)
+    adminGet(`/api/reservations/${id}`)
       .then(r => r.json())
       .then(data => {
         setReservation(data.reservation);
@@ -31,15 +34,11 @@ export default function ReservationDetailPage() {
   const handleAction = async (action: string) => {
     if (action === 'cancel' && !confirm('Are you sure you want to cancel this reservation?')) return;
     try {
-      const res = await fetch(`/api/reservations/${id}`, {
-        method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ action }),
-      });
+      const res = await adminPatch(`/api/reservations/${id}`, { action });
       const data = await res.json();
       if (data.success) {
         // Reload
-        const r2 = await fetch(`/api/reservations/${id}`);
+        const r2 = await adminGet(`/api/reservations/${id}`);
         const d2 = await r2.json();
         setReservation(d2.reservation);
       }
@@ -48,21 +47,13 @@ export default function ReservationDetailPage() {
 
   const saveNotes = async () => {
     setSaving(true);
-    await fetch(`/api/reservations/${id}`, {
-      method: 'PATCH',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ adminNotes }),
-    });
+    await adminPatch(`/api/reservations/${id}`, { adminNotes });
     setSaving(false);
   };
 
   const sendEmail = async (type: string) => {
-    await fetch('/api/notifications', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ reservationId: id, emailType: type }),
-    });
-    alert(`${type} email sent!`);
+    await adminPost('/api/notifications', { reservationId: id, emailType: type });
+    toast.success(`${type} email sent successfully`);
   };
 
   if (loading) return <div className="p-8 text-center"><Loader2 className="w-8 h-8 animate-spin mx-auto" /></div>;
