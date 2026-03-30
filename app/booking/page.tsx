@@ -1044,31 +1044,34 @@ export default function BookingPage() {
                   </div>
                 </div>
 
-                {/* Mobile: Sticky bottom CTA */}
-                <div className="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-t border-surface-muted p-4 shadow-lodge-xl">
-                  <div className="max-w-6xl mx-auto flex items-center gap-4">
-                    <div className="flex-1 min-w-0">
-                      <p className="text-xs text-brand-stone truncate">{selectedProperty.name}</p>
-                      <p className="font-display text-lg font-bold text-brand-gold">${selectedPrice.total.toFixed(2)}</p>
-                    </div>
-                    <button
-                      onClick={handleSubmitReservation}
-                      disabled={submitting}
-                      className="btn-gold py-3 px-6 text-sm flex-shrink-0 disabled:opacity-50"
-                    >
-                      {submitting ? (
-                        <><Loader2 className="w-4 h-4 animate-spin mr-1" /> Processing</>
-                      ) : (
-                        <><CreditCard className="w-4 h-4 mr-1" /> Pay Now</>
-                      )}
-                    </button>
-                  </div>
-                </div>
               </motion.div>
             )}
           </AnimatePresence>
         </div>
       </section>
+
+      {/* Mobile: Sticky bottom CTA — OUTSIDE AnimatePresence so it never disappears */}
+      {step === 'checkout' && selectedProperty && selectedPrice && (
+        <div className="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-t border-surface-muted p-4 shadow-lodge-xl">
+          <div className="max-w-6xl mx-auto flex items-center gap-4">
+            <div className="flex-1 min-w-0">
+              <p className="text-xs text-brand-stone truncate">{selectedProperty.name}</p>
+              <p className="font-display text-lg font-bold text-brand-gold">${selectedPrice.total.toFixed(2)}</p>
+            </div>
+            <button
+              onClick={handleSubmitReservation}
+              disabled={submitting}
+              className="btn-gold py-3 px-6 text-sm flex-shrink-0 disabled:opacity-50"
+            >
+              {submitting ? (
+                <><Loader2 className="w-4 h-4 animate-spin mr-1" /> Processing</>
+              ) : (
+                <><CreditCard className="w-4 h-4 mr-1" /> Pay Now</>
+              )}
+            </button>
+          </div>
+        </div>
+      )}
     </>
   );
 }
