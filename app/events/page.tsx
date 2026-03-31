@@ -1,6 +1,7 @@
 'use client';
 
 import { useRef, useEffect } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { SITE, RALLY_RV, REVIEWS } from '@/data/site';
@@ -200,7 +201,7 @@ export default function EventsPage() {
                 <div className="relative rounded-3xl overflow-hidden shadow-lodge-xl group border-2 border-white aspect-[4/3]">
                   <div
                     className="absolute inset-0 bg-cover bg-center transition-transform duration-[1.2s] ease-out group-hover:scale-110"
-                    style={{ backgroundImage: "url('/images/rv-camper-van.png')" }}
+                    style={{ backgroundImage: "url('/images/BikeRally/IMG_9865.JPG')" }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/60 via-transparent to-transparent" />
                   <div className="absolute top-5 left-5 z-10">
@@ -280,6 +281,40 @@ export default function EventsPage() {
             })}
           </div>
 
+          {/* Rally Photo Strip */}
+          <div className="mb-16">
+            <div className="flex items-center gap-3 mb-6 justify-center">
+              <div className="h-px flex-1 max-w-[60px] bg-brand-gold/30" />
+              <span className="text-xs font-black uppercase tracking-[0.2em] text-brand-gold">Rally Moments</span>
+              <div className="h-px flex-1 max-w-[60px] bg-brand-gold/30" />
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+              {[
+                { src: '/images/BikeRally/IMG_9865.JPG', alt: 'Sturgis Rally bikes at Rush No More' },
+                { src: '/images/BikeRally/IMG_9866.JPG', alt: 'Motorcycle lineup during Sturgis Rally' },
+                { src: '/images/BikeRally/IMG_9867.JPG', alt: 'Rally riders gathering at the resort' },
+                { src: '/images/BikeRally/IMG_9868.JPG', alt: 'Sturgis Rally atmosphere at Rush No More' },
+              ].map((photo, i) => (
+                <motion.div
+                  key={i}
+                  className="rounded-xl overflow-hidden shadow-lodge group border-2 border-white aspect-[4/3] relative"
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: i * 0.1 }}
+                >
+                  <Image
+                    src={photo.src}
+                    alt={photo.alt}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-110"
+                    sizes="(max-width: 768px) 50vw, 25vw"
+                  />
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
           {/* Accommodations for Rally */}
           <div className="text-center mb-10">
             <h3 className="text-2xl md:text-3xl font-display font-bold mb-3">Rally Accommodations</h3>
@@ -288,9 +323,9 @@ export default function EventsPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
-              { icon: Truck, title: 'RV Sites', price: 'From $53.99', sub: 'per night · Full hookups', img: '/images/rv-camper-van.png', href: '/stay', features: ['30/50 AMP Service', 'Pull-Through up to 100ft', 'Private Patios (VIP)', 'Hot Tub (Presidential)'] },
-              { icon: Home, title: 'Presidential Cabins', price: 'From $95', sub: 'per night · 16 unique cabins', img: '/images/cabin-9_800.png', href: '/stay', features: ['Sleeps 2-10 Guests', 'Full Kitchens', 'A/C & Heating', 'Private Bathrooms'] },
-              { icon: Tent, title: 'Tent Camping', price: 'From $35', sub: 'per night · Best value', img: '/images/Wooded-Tent-Area.png', href: '/stay', features: ['Shaded Pine Forest', 'Fire Pits at Each Site', 'Water Hookups', 'Bathhouse Access'] },
+              { icon: Truck, title: 'RV Sites', price: 'From $53.99', sub: 'per night · Full hookups', img: '/images/GeneralImagesPark/IMG_7382.jpeg', href: '/stay', features: ['30/50 AMP Service', 'Pull-Through up to 100ft', 'Private Patios (VIP)', 'Hot Tub (Presidential)'] },
+              { icon: Home, title: 'Presidential Cabins', price: 'From $95', sub: 'per night · 16 unique cabins', img: '/images/GeneralImagesPark/IMG_7316.jpeg', href: '/stay', features: ['Sleeps 2-10 Guests', 'Full Kitchens', 'A/C & Heating', 'Private Bathrooms'] },
+              { icon: Tent, title: 'Tent Camping', price: 'From $35', sub: 'per night · Best value', img: '/images/CommonAreas/IMG_7435.jpeg', href: '/stay', features: ['Shaded Pine Forest', 'Fire Pits at Each Site', 'Water Hookups', 'Bathhouse Access'] },
             ].map((item, i) => {
               const Icon = item.icon;
               return (
@@ -493,22 +528,46 @@ export default function EventsPage() {
               </div>
             </div>
 
-            {/* Image collage */}
+            {/* Image collage — Beer Garden & Car Show atmosphere */}
             <div className="grid grid-cols-2 gap-3">
               <div className="space-y-3">
-                <div className="aspect-[3/4] rounded-2xl overflow-hidden shadow-lodge-lg group border border-white/10">
-                  <div className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style={{ backgroundImage: "url('/images/DSC05580-s.png')" }} />
+                <div className="aspect-[3/4] rounded-2xl overflow-hidden shadow-lodge-lg group border border-white/10 relative">
+                  <Image
+                    src="/images/BeerGarden/IMG_7359.jpg"
+                    alt="Beer garden atmosphere during the car show"
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-110"
+                    sizes="(max-width: 1024px) 50vw, 25vw"
+                  />
                 </div>
-                <div className="aspect-square rounded-2xl overflow-hidden shadow-lodge-lg group border border-white/10">
-                  <div className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style={{ backgroundImage: "url('/images/vip-site.png')" }} />
+                <div className="aspect-square rounded-2xl overflow-hidden shadow-lodge-lg group border border-white/10 relative">
+                  <Image
+                    src="/images/BeerGarden/IMG_7365.jpg"
+                    alt="Guests enjoying the beer garden"
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-110"
+                    sizes="(max-width: 1024px) 50vw, 25vw"
+                  />
                 </div>
               </div>
               <div className="space-y-3 pt-8">
-                <div className="aspect-square rounded-2xl overflow-hidden shadow-lodge-lg group border border-white/10">
-                  <div className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style={{ backgroundImage: "url('/images/rv-camper-van.png')" }} />
+                <div className="aspect-square rounded-2xl overflow-hidden shadow-lodge-lg group border border-white/10 relative">
+                  <Image
+                    src="/images/BikeRally/IMG_9869.JPG"
+                    alt="Bikes on display at Rush No More"
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-110"
+                    sizes="(max-width: 1024px) 50vw, 25vw"
+                  />
                 </div>
-                <div className="aspect-[3/4] rounded-2xl overflow-hidden shadow-lodge-lg group border border-white/10">
-                  <div className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style={{ backgroundImage: "url('/images/Wooded-Tent-Area.png')" }} />
+                <div className="aspect-[3/4] rounded-2xl overflow-hidden shadow-lodge-lg group border border-white/10 relative">
+                  <Image
+                    src="/images/BeerGarden/IMG_7327.jpg"
+                    alt="Beer garden bar area at Rush No More"
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-110"
+                    sizes="(max-width: 1024px) 50vw, 25vw"
+                  />
                 </div>
               </div>
             </div>
@@ -537,17 +596,50 @@ export default function EventsPage() {
             <div className="w-32 h-1.5 bg-gold-gradient rounded-full mt-6 mx-auto" />
           </div>
 
-          {/* Large image showcase */}
+          {/* Event Center photo showcase */}
           <FadeIn>
-            <div className="relative rounded-3xl overflow-hidden shadow-lodge-xl border-2 border-white aspect-[21/9] mb-16 group">
-              <div
-                className="absolute inset-0 bg-cover bg-center transition-transform duration-[1.2s] ease-out group-hover:scale-105"
-                style={{ backgroundImage: "url('/images/Aereal-2_1400.png')" }}
-              />
-              <div className="absolute inset-0 bg-gradient-to-r from-brand-navy/70 via-brand-navy/30 to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 md:right-auto p-8 md:p-12 z-10 max-w-xl">
-                <h3 className="text-white text-3xl md:text-4xl font-display font-bold mb-3">Your Dream Venue Awaits</h3>
-                <p className="text-white/80 text-sm md:text-base font-medium">Covered pavilion, full kitchen, stunning Black Hills backdrop — all with on-site lodging for every guest.</p>
+            <div className="mb-16">
+              {/* Main large image */}
+              <div className="relative rounded-3xl overflow-hidden shadow-lodge-xl border-2 border-white aspect-[21/9] mb-4 group">
+                <Image
+                  src="/images/EventCenter/IMG_7513.jpeg"
+                  alt="Rush No More event center pavilion setup for a celebration"
+                  fill
+                  className="object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-105"
+                  sizes="(max-width: 1280px) 100vw, 1280px"
+                  priority
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-brand-navy/70 via-brand-navy/30 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 md:right-auto p-8 md:p-12 z-10 max-w-xl">
+                  <h3 className="text-white text-3xl md:text-4xl font-display font-bold mb-3">Your Dream Venue Awaits</h3>
+                  <p className="text-white/80 text-sm md:text-base font-medium">Covered pavilion, full kitchen, stunning Black Hills backdrop — all with on-site lodging for every guest.</p>
+                </div>
+              </div>
+              {/* Supporting venue images */}
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                {[
+                  { src: '/images/EventCenter/IMG_7514.jpeg', alt: 'Event center interior with seating arrangement' },
+                  { src: '/images/EventCenter/IMG_7644.jpeg', alt: 'Pavilion setup for a private event' },
+                  { src: '/images/EventCenter/IMG_7773.jpeg', alt: 'Outdoor event space at Rush No More' },
+                  { src: '/images/EventCenter/IMG_7775.jpeg', alt: 'Event center venue with Black Hills backdrop' },
+                ].map((photo, i) => (
+                  <motion.div
+                    key={i}
+                    className="rounded-xl overflow-hidden shadow-lodge group border-2 border-white aspect-[4/3] relative"
+                    initial={{ opacity: 0, y: 15 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: i * 0.1 }}
+                  >
+                    <Image
+                      src={photo.src}
+                      alt={photo.alt}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-110"
+                      sizes="(max-width: 768px) 50vw, 25vw"
+                    />
+                  </motion.div>
+                ))}
               </div>
             </div>
           </FadeIn>
@@ -622,13 +714,13 @@ export default function EventsPage() {
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
             {[
-              { img: '/images/DSC05580-s.png', label: 'Resort Overview', span: 'col-span-2 row-span-2', aspect: 'aspect-square' },
-              { img: '/images/cabin-9_800.png', label: 'Presidential Cabins', span: '', aspect: 'aspect-[4/3]' },
-              { img: '/images/rv-camper-van.png', label: 'Premium RV Sites', span: '', aspect: 'aspect-[4/3]' },
-              { img: '/images/Wooded-Tent-Area.png', label: 'Pine Forest Camping', span: '', aspect: 'aspect-[4/3]' },
-              { img: '/images/vip-site.png', label: 'VIP Deluxe Sites', span: '', aspect: 'aspect-[4/3]' },
-              { img: '/images/presidential-spa.png', label: 'Spa Sites & Hot Tubs', span: 'col-span-2', aspect: 'aspect-[21/9]' },
-              { img: '/images/Aereal-2_1400.png', label: 'Aerial View', span: 'col-span-2', aspect: 'aspect-[21/9]' },
+              { img: '/images/GeneralImagesPark/IMG_7379.jpeg', label: 'Resort Overview', span: 'col-span-2 row-span-2', aspect: 'aspect-square' },
+              { img: '/images/EventCenter/IMG_7644.jpeg', label: 'Event Pavilion', span: '', aspect: 'aspect-[4/3]' },
+              { img: '/images/BikeRally/IMG_9866.JPG', label: 'Rally Season', span: '', aspect: 'aspect-[4/3]' },
+              { img: '/images/BeerGarden/IMG_7364.jpeg', label: 'Beer Garden', span: '', aspect: 'aspect-[4/3]' },
+              { img: '/images/PeoplePlaying/IMG_7608.jpeg', label: 'Fun & Community', span: '', aspect: 'aspect-[4/3]' },
+              { img: '/images/Pool/PoolWithPeople.jpeg', label: 'Pool & Hot Tubs', span: 'col-span-2', aspect: 'aspect-[21/9]' },
+              { img: '/images/CommonAreas/IMG_7029.jpeg', label: 'Resort Grounds', span: 'col-span-2', aspect: 'aspect-[21/9]' },
             ].map((item, i) => (
               <motion.div
                 key={i}

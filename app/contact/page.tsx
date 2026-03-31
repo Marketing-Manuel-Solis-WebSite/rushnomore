@@ -1,11 +1,14 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { SITE, REVIEWS } from '@/data/site';
 import { BookingCTA } from '@/components/ui';
 import { FadeIn } from '@/components/motion';
 import { submitContactForm, trackEvent } from '@/lib/booking';
+import { JsonLd } from '@/components/seo/JsonLd';
+import { faqSchema, breadcrumbSchema } from '@/lib/seo';
 import {
   MapPin, Phone, Mail, Send, CheckCircle, Loader2,
   ExternalLink, Star, ArrowRight, Clock, MessageSquare,
@@ -49,6 +52,9 @@ export default function ContactPage() {
 
   return (
     <>
+      <JsonLd data={faqSchema(FAQS)} />
+      <JsonLd data={breadcrumbSchema([{ name: 'Home', url: '/' }, { name: 'Contact', url: '/contact' }])} />
+
       {/* ═══════════════════════════════════════════════════════════════
           HERO — Video Background
       ═══════════════════════════════════════════════════════════════ */}
@@ -316,6 +322,17 @@ export default function ContactPage() {
 
             {/* ── Sidebar (2 cols) — Map + Quick Info ── */}
             <div className="lg:col-span-2 space-y-6">
+              {/* Welcoming photo */}
+              <div className="rounded-2xl overflow-hidden shadow-lodge-lg border-2 border-white relative aspect-[16/9]">
+                <Image
+                  src="/images/PeoplePlaying/IMG_7078.jpeg"
+                  alt="Guests enjoying activities at Rush No More resort"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 40vw"
+                />
+              </div>
+
               {/* Map */}
               <div className="rounded-2xl overflow-hidden shadow-lodge-lg border-2 border-white h-[300px] lg:h-[320px]">
                 <iframe

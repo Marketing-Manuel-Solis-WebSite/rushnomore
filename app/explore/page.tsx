@@ -3,9 +3,12 @@
 import { useState, useEffect, useRef, useMemo } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform, useInView } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ATTRACTIONS, ITINERARY, SITE, REVIEWS, type Attraction } from '@/data/site';
 import { BookingCTA, SectionHeader } from '@/components/ui';
 import { FadeIn, ParallaxHero, StaggerChildren, StaggerItem } from '@/components/motion';
+import { JsonLd } from '@/components/seo/JsonLd';
+import { breadcrumbSchema } from '@/lib/seo';
 import {
   ExternalLink, MapPin, Clock, Star, Lightbulb, ArrowRight, ArrowDown,
   Mountain, TreePine, Route, Calendar, Compass, ChevronRight, Play, Pause,
@@ -166,6 +169,8 @@ export default function ExplorePage() {
 
   return (
     <>
+      <JsonLd data={breadcrumbSchema([{ name: 'Home', url: '/' }, { name: 'Explore the Black Hills', url: '/explore' }])} />
+
       {/* ═══════════════════════════════════════════════
           SECTION 1: CINEMATIC VIDEO HERO
           ═══════════════════════════════════════════════ */}
@@ -1100,14 +1105,23 @@ export default function ExplorePage() {
                 Choose from premium RV sites, cozy cabins, or shaded tent camping — all just minutes from every attraction.
               </p>
               <div className="divider-gold-wide mt-5 mx-auto" />
+              <div className="mt-8 max-w-xl mx-auto rounded-xl overflow-hidden shadow-lodge-lg border-2 border-white relative aspect-[16/9]">
+                <Image
+                  src="/images/GeneralImagesPark/IMG_7383.jpeg"
+                  alt="Rush No More resort - your home base for Black Hills adventures"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+              </div>
             </FadeIn>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
-              { label: 'RV Sites', price: 'From $53.99/night', desc: 'Full hookups with 30/50 AMP. Pull-through and back-in options for rigs up to 100ft.', href: '/stay', img: '/images/rv-camper-van.png' },
-              { label: 'Cabins', price: 'From $95/night', desc: '21 presidential-themed cabins sleeping 2-10 guests. Fully furnished and ready for your arrival.', href: '/stay', img: '/images/cabin-9_800.png' },
-              { label: 'Tent Camping', price: 'From $35/night', desc: 'Shaded sites under towering Ponderosa Pines with access to all resort amenities.', href: '/stay', img: '/images/Wooded-Tent-Area.png' },
+              { label: 'RV Sites', price: 'From $53.99/night', desc: 'Full hookups with 30/50 AMP. Pull-through and back-in options for rigs up to 100ft.', href: '/stay', img: '/images/GeneralImagesPark/IMG_7382.jpeg' },
+              { label: 'Cabins', price: 'From $95/night', desc: '21 presidential-themed cabins sleeping 2-10 guests. Fully furnished and ready for your arrival.', href: '/stay', img: '/images/GeneralImagesPark/IMG_7316.jpeg' },
+              { label: 'Tent Camping', price: 'From $35/night', desc: 'Shaded sites under towering Ponderosa Pines with access to all resort amenities.', href: '/stay', img: '/images/CommonAreas/IMG_7435.jpeg' },
             ].map((s, i) => (
               <FadeIn key={i} delay={i * 0.15}>
                 <Link href={s.href} className="card-premium group block h-full">

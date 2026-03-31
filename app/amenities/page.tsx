@@ -2,10 +2,13 @@
 
 import { useRef, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { SITE, AMENITIES, REVIEWS } from '@/data/site';
 import { BookingCTA, SectionHeader } from '@/components/ui';
 import { FadeIn } from '@/components/motion';
+import { JsonLd } from '@/components/seo/JsonLd';
+import { breadcrumbSchema } from '@/lib/seo';
 import {
   ExternalLink, Star, ArrowRight,
   Beer, Waves, ShowerHead, WashingMachine, Wifi, PawPrint, Bike, Fuel,
@@ -30,7 +33,7 @@ const FEATURED_AMENITIES = [
     description: 'Our heated swimming pool is the centerpiece of summer fun at Rush No More. Surrounded by comfortable lounge chairs and shaded areas, it\'s the perfect spot to cool off after a day exploring the Black Hills. When evening comes, slip into one of our hot tubs and watch the stars emerge over the Ponderosa pines.',
     features: ['Heated swimming pool', 'Multiple hot tub spas', 'Poolside lounge chairs', 'Shaded seating areas', 'Open daily in season'],
     hours: 'Pool: 9 AM – 9 PM · Hot Tubs: 9 AM – 10 PM',
-    image: '/images/DSC05580-s.png',
+    image: '/images/Pool/PoolWithPeople.jpeg',
   },
   {
     icon: Beer,
@@ -39,7 +42,7 @@ const FEATURED_AMENITIES = [
     description: 'Rush No More\'s famous Beer Garden is where campground life truly comes alive. Enjoy ice-cold craft beers, refreshing cocktails, and non-alcoholic beverages in our open-air gathering spot. With live music during rally season and special events, it\'s the social heart of the resort — and over 34,000 drinks served proves it.',
     features: ['Craft beer selection', 'Full bar cocktails', 'Non-alcoholic options', 'Live music events', 'Rally headquarters'],
     hours: 'Open 11 AM – 10 PM (extended during Rally)',
-    image: '/images/cabin-9_800.jpg',
+    image: '/images/BeerGarden/IMG_7326.jpeg',
   },
   {
     icon: Flame,
@@ -48,7 +51,7 @@ const FEATURED_AMENITIES = [
     description: 'Nothing says camping like gathering around a crackling fire under the Black Hills sky. Every site has access to fire pits where families roast marshmallows, friends share stories, and couples enjoy the quiet of a mountain evening. Our communal fire areas are perfect for meeting fellow campers.',
     features: ['Fire pits at every site', 'Communal gathering areas', 'Firewood available for purchase', 'Perfect for s\'mores', 'Stargazing spots'],
     hours: 'Available 24/7 · Quiet hours after 10 PM',
-    image: '/images/Wooded-Tent-Area.webp',
+    image: '/images/CommonAreas/IMG_7435.jpeg',
   },
   {
     icon: Gamepad2,
@@ -57,7 +60,7 @@ const FEATURED_AMENITIES = [
     description: 'Our game room is a hit with families and groups alike. Packed with arcade games, pool tables, and board games, it\'s the go-to spot when you need a break from the sun or want some indoor fun. Kids love it, teenagers actually put down their phones, and adults rediscover their competitive side.',
     features: ['Arcade games', 'Pool tables', 'Board games', 'Indoor activities', 'Family-friendly fun'],
     hours: 'Open 8 AM – 10 PM daily',
-    image: '/images/rv-camper-van.jpg',
+    image: '/images/RecRoom/GamesRoom.jpeg',
   },
 ];
 
@@ -104,6 +107,8 @@ export default function AmenitiesPage() {
 
   return (
     <>
+      <JsonLd data={breadcrumbSchema([{ name: 'Home', url: '/' }, { name: 'Amenities', url: '/amenities' }])} />
+
       {/* ═══════════════════════════════════════════════════════════════
           HERO — Full-screen video background
       ═══════════════════════════════════════════════════════════════ */}
@@ -457,13 +462,13 @@ export default function AmenitiesPage() {
           {/* Mosaic grid */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
             {[
-              { img: '/images/DSC05580-s.png', label: 'Resort Overview', span: 'col-span-2 row-span-2', aspect: 'aspect-square' },
-              { img: '/images/cabin-9_800.jpg', label: 'Presidential Cabins', span: '', aspect: 'aspect-[4/3]' },
-              { img: '/images/rv-camper-van.jpg', label: 'Premium RV Sites', span: '', aspect: 'aspect-[4/3]' },
-              { img: '/images/Wooded-Tent-Area.webp', label: 'Pine Forest Camping', span: '', aspect: 'aspect-[4/3]' },
-              { img: '/images/vip-site.jpg', label: 'VIP Deluxe Sites', span: '', aspect: 'aspect-[4/3]' },
-              { img: '/images/presidential-spa.jpg', label: 'Spa Sites & Hot Tubs', span: 'col-span-2', aspect: 'aspect-[21/9]' },
-              { img: '/images/Aereal-2_1400.jpg', label: 'Aerial View', span: 'col-span-2', aspect: 'aspect-[21/9]' },
+              { img: '/images/Pool/PoolGeneral.jpeg', label: 'Heated Pool', span: 'col-span-2 row-span-2', aspect: 'aspect-square' },
+              { img: '/images/BeerGarden/IMG_7358.jpg', label: 'Beer Garden', span: '', aspect: 'aspect-[4/3]' },
+              { img: '/images/Jacuzzi/IMG_7205.jpeg', label: 'Hot Tub Spa', span: '', aspect: 'aspect-[4/3]' },
+              { img: '/images/GamesKids/Basketball.jpeg', label: 'Basketball Court', span: '', aspect: 'aspect-[4/3]' },
+              { img: '/images/Store/FrontStore.jpeg', label: 'Camp Store', span: '', aspect: 'aspect-[4/3]' },
+              { img: '/images/CommonAreas/IMG_7029.jpeg', label: 'Common Areas', span: 'col-span-2', aspect: 'aspect-[21/9]' },
+              { img: '/images/GeneralImagesPark/IMG_7379.jpeg', label: 'Park Grounds', span: 'col-span-2', aspect: 'aspect-[21/9]' },
             ].map((item, i) => (
               <motion.div
                 key={i}
@@ -491,7 +496,7 @@ export default function AmenitiesPage() {
           EVENT SPACE / PAVILION
       ═══════════════════════════════════════════════════════════════ */}
       <section className="relative py-24 md:py-32 overflow-hidden bg-brand-navy text-white">
-        <div className="absolute inset-0 bg-cover bg-center opacity-20" style={{ backgroundImage: "url('/images/Aereal-2_1400.jpg')" }} />
+        <div className="absolute inset-0 bg-cover bg-center opacity-20" style={{ backgroundImage: "url('/images/Aereal-2_1400.png')" }} />
         <div className="absolute inset-0 bg-gradient-to-r from-brand-navy via-brand-navy/90 to-brand-navy" />
 
         <div className="max-w-6xl mx-auto px-4 relative z-10">
@@ -538,18 +543,18 @@ export default function AmenitiesPage() {
             <div className="grid grid-cols-2 gap-3">
               <div className="space-y-3">
                 <div className="aspect-[3/4] rounded-2xl overflow-hidden shadow-lodge-lg group border border-white/10">
-                  <div className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style={{ backgroundImage: "url('/images/DSC05580-s.png')" }} />
+                  <div className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style={{ backgroundImage: "url('/images/Pool/PoolSide.jpeg')" }} />
                 </div>
                 <div className="aspect-square rounded-2xl overflow-hidden shadow-lodge-lg group border border-white/10">
-                  <div className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style={{ backgroundImage: "url('/images/cabin-9_800.jpg')" }} />
+                  <div className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style={{ backgroundImage: "url('/images/BeerGarden/IMG_7364.jpeg')" }} />
                 </div>
               </div>
               <div className="space-y-3 pt-8">
                 <div className="aspect-square rounded-2xl overflow-hidden shadow-lodge-lg group border border-white/10">
-                  <div className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style={{ backgroundImage: "url('/images/rv-camper-van.jpg')" }} />
+                  <div className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style={{ backgroundImage: "url('/images/GamesKids/ToboganKids.jpeg')" }} />
                 </div>
                 <div className="aspect-[3/4] rounded-2xl overflow-hidden shadow-lodge-lg group border border-white/10">
-                  <div className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style={{ backgroundImage: "url('/images/Wooded-Tent-Area.webp')" }} />
+                  <div className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style={{ backgroundImage: "url('/images/Cafe&SnackBar/IMG_7627.jpeg')" }} />
                 </div>
               </div>
             </div>
@@ -640,9 +645,9 @@ export default function AmenitiesPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
-              { icon: Truck, title: 'RV Sites', price: 'From $53.99', sub: 'per night · Full hookups', img: '/images/rv-camper-van.jpg', href: '/stay/rv-sites', features: ['30/50 AMP Service', 'Pull-Through up to 100ft', 'Private Patios (VIP)', 'Hot Tub (Presidential)'] },
-              { icon: Home, title: 'Presidential Cabins', price: 'From $95', sub: 'per night · 16 unique cabins', img: '/images/cabin-9_800.jpg', href: '/stay/cabins', features: ['Sleeps 2-10 Guests', 'Full Kitchens', 'A/C & Heating', 'Private Bathrooms'] },
-              { icon: Tent, title: 'Tent Camping', price: 'From $35', sub: 'per night · Best value', img: '/images/Wooded-Tent-Area.webp', href: '/stay/tent-camping', features: ['Shaded Pine Forest', 'Fire Pits at Each Site', 'Water Hookups', 'Bathhouse Access'] },
+              { icon: Truck, title: 'RV Sites', price: 'From $53.99', sub: 'per night · Full hookups', img: '/images/GeneralImagesPark/IMG_7381.jpeg', href: '/stay/rv-sites', features: ['30/50 AMP Service', 'Pull-Through up to 100ft', 'Private Patios (VIP)', 'Hot Tub (Presidential)'] },
+              { icon: Home, title: 'Presidential Cabins', price: 'From $95', sub: 'per night · 16 unique cabins', img: '/images/GeneralImagesPark/IMG_7316.jpeg', href: '/stay/cabins', features: ['Sleeps 2-10 Guests', 'Full Kitchens', 'A/C & Heating', 'Private Bathrooms'] },
+              { icon: Tent, title: 'Tent Camping', price: 'From $35', sub: 'per night · Best value', img: '/images/CommonAreas/IMG_8211.jpeg', href: '/stay/tent-camping', features: ['Shaded Pine Forest', 'Fire Pits at Each Site', 'Water Hookups', 'Bathhouse Access'] },
             ].map((item, i) => {
               const Icon = item.icon;
               return (
@@ -696,6 +701,103 @@ export default function AmenitiesPage() {
       <section className="h-[400px] relative">
         <div className="absolute top-0 left-0 right-0 h-12 bg-gradient-to-b from-surface-primary to-transparent z-10" />
         <iframe src={SITE.mapsEmbed} className="w-full h-full border-0" allowFullScreen loading="lazy" title="Rush No More location" />
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════════
+          SEE OUR AMENITIES — Real Photo Gallery
+      ═══════════════════════════════════════════════════════════════ */}
+      <section className="py-24 md:py-28 bg-white relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-brand-gold/5 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" />
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-brand-gold/5 rounded-full blur-3xl -translate-x-1/2 translate-y-1/2" />
+
+        <div className="max-w-7xl mx-auto px-4 relative z-10">
+          <div className="text-center mb-16">
+            <span className="inline-block px-5 py-2 bg-brand-gold text-white text-xs font-black uppercase tracking-[0.2em] rounded-full shadow-gold mb-5">
+              ★ Real Photos ★
+            </span>
+            <h2 className="mb-5 text-4xl md:text-5xl">
+              See Our <span className="text-brand-gold italic">Amenities</span>
+            </h2>
+            <p className="text-brand-navy/70 text-lg max-w-2xl mx-auto font-medium">
+              Real photos from Rush No More
+            </p>
+            <div className="w-32 h-1.5 bg-gold-gradient rounded-full mt-5 mx-auto" />
+          </div>
+
+          {/* Photo gallery categories */}
+          <div className="space-y-16">
+            {[
+              {
+                category: 'Pool & Hot Tubs',
+                photos: [
+                  { src: '/images/Pool/PoolGeneral.jpeg', alt: 'Rush No More heated swimming pool' },
+                  { src: '/images/Pool/PoolWithPeople.jpeg', alt: 'Guests enjoying the pool at Rush No More' },
+                  { src: '/images/Jacuzzi/IMG_7205.jpeg', alt: 'Hot tub spa at Rush No More' },
+                ],
+              },
+              {
+                category: 'Beer Garden',
+                photos: [
+                  { src: '/images/BeerGarden/IMG_7326.jpeg', alt: 'Rush No More Beer Garden outdoor seating' },
+                  { src: '/images/BeerGarden/IMG_7358.jpg', alt: 'Beer Garden bar and gathering area' },
+                  { src: '/images/BeerGarden/IMG_7422.jpg', alt: 'Beer Garden evening atmosphere' },
+                ],
+              },
+              {
+                category: 'Fun & Recreation',
+                photos: [
+                  { src: '/images/GamesKids/Basketball.jpeg', alt: 'Basketball court at Rush No More' },
+                  { src: '/images/GamesKids/ToboganKids.jpeg', alt: 'Kids playground slide area' },
+                  { src: '/images/RecRoom/GamesRoom.jpeg', alt: 'Game room with arcade games and pool tables' },
+                ],
+              },
+              {
+                category: 'Camp Store & Cafe',
+                photos: [
+                  { src: '/images/Store/FrontStore.jpeg', alt: 'Rush No More camp store exterior' },
+                  { src: '/images/Cafe&SnackBar/IMG_7627.jpeg', alt: 'Cafe and snack bar at Rush No More' },
+                ],
+              },
+              {
+                category: 'Our Grounds',
+                photos: [
+                  { src: '/images/CommonAreas/IMG_7029.jpeg', alt: 'Rush No More resort common areas' },
+                  { src: '/images/CommonAreas/IMG_7435.jpeg', alt: 'Scenic grounds and landscaping' },
+                  { src: '/images/GeneralImagesPark/IMG_7379.jpeg', alt: 'Rush No More park panoramic view' },
+                ],
+              },
+            ].map((group, gi) => (
+              <motion.div
+                key={gi}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: gi * 0.1 }}
+              >
+                <h3 className="text-2xl md:text-3xl font-display font-bold mb-6">
+                  <span className="text-brand-gold">/</span> {group.category}
+                </h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {group.photos.map((photo, pi) => (
+                    <div
+                      key={pi}
+                      className="rounded-2xl overflow-hidden relative aspect-[4/3] group"
+                    >
+                      <Image
+                        src={photo.src}
+                        alt={photo.alt}
+                        fill
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
       </section>
 
       <BookingCTA title="Ready to Enjoy All 16 Amenities?" subtitle="RV from $53.99 | Cabins from $95 | Tent from $35/night — all amenities included free." />

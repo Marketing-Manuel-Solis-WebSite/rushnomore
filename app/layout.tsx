@@ -15,9 +15,27 @@ const josefin = Josefin_Sans({ subsets: ['latin'], variable: '--font-josefin', d
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.rushnomore.com'),
   title: { default: 'Rush No More — Camping & RV Park Near Mount Rushmore, Black Hills SD', template: '%s | Rush No More' },
-  description: 'Top-rated RV resort, cabins & tent camping near Mount Rushmore in the Black Hills. Pool, hot tubs, beer garden & Sturgis Rally HQ.',
-  keywords: ['camping near mount rushmore', 'rv park near mount rushmore', 'cabins near mount rushmore', 'black hills camping', 'sturgis rally campground'],
+  description: 'Top-rated RV resort, presidential cabins & tent camping near Mount Rushmore in Sturgis, South Dakota. Heated pool, hot tubs, beer garden, game room & 16 free amenities. Sturgis Rally headquarters since 2014.',
+  keywords: [
+    'camping near mount rushmore', 'rv park near mount rushmore', 'cabins near mount rushmore',
+    'black hills camping', 'sturgis rally campground', 'sturgis motorcycle rally lodging',
+    'rv resort black hills', 'campground near sturgis sd', 'black hills rv park',
+    'tent camping black hills', 'cabins sturgis south dakota', 'rv park with pool south dakota',
+    'presidential cabins black hills', 'campground with beer garden', 'family camping black hills',
+    'sturgis rally rv sites', 'mount rushmore campground', 'deadwood camping nearby',
+    'black hills resort with hot tubs', 'pet friendly campground south dakota',
+  ],
   robots: { index: true, follow: true },
+  openGraph: {
+    type: 'website',
+    siteName: 'Rush No More RV Resort & Campground',
+    locale: 'en_US',
+    images: [{ url: '/images/Aereal-2_1400.png', width: 1400, height: 900, alt: 'Rush No More RV Resort — Aerial view of campground in the Black Hills' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['/images/Aereal-2_1400.png'],
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

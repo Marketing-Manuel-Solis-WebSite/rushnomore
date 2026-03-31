@@ -2,10 +2,13 @@
 
 import { useRef, useEffect, useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { SITE, RV_TIERS, CABINS, REVIEWS } from '@/data/site';
 import { BookingCTA } from '@/components/ui';
 import { FadeIn } from '@/components/motion';
+import { JsonLd } from '@/components/seo/JsonLd';
+import { faqSchema, breadcrumbSchema } from '@/lib/seo';
 import {
   ExternalLink, Star, ArrowRight, ArrowDown, Phone,
   Truck, Home, Tent, Users, Waves, Beer, ShieldCheck, Wifi, PawPrint,
@@ -116,6 +119,9 @@ export default function StayPage() {
 
   return (
     <>
+      <JsonLd data={faqSchema(RV_FAQS)} />
+      <JsonLd data={breadcrumbSchema([{ name: 'Home', url: '/' }, { name: 'Stay', url: '/stay' }])} />
+
       {/* ═══════════════════════════════════════════════════════════════
           HERO — Video Background
       ═══════════════════════════════════════════════════════════════ */}
@@ -388,18 +394,30 @@ export default function StayPage() {
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-4">
                   <div className="aspect-[3/4] rounded-2xl overflow-hidden shadow-lodge-lg group border-2 border-white">
-                    <div className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style={{ backgroundImage: "url('/images/RushMore-rv-camper-van.png')" }} />
+                    <div className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style={{ backgroundImage: "url('/images/GeneralImagesPark/IMG_7386.jpeg')" }} />
                   </div>
                   <div className="aspect-square rounded-2xl overflow-hidden shadow-lodge-lg group border-2 border-white">
-                    <div className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style={{ backgroundImage: "url('/images/vip-site.png')" }} />
+                    <div className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style={{ backgroundImage: "url('/images/Pool/PoolGeneral.jpeg')" }} />
                   </div>
                 </div>
                 <div className="space-y-4 pt-8">
-                  <div className="aspect-square rounded-2xl overflow-hidden shadow-lodge-lg group border-2 border-white">
-                    <div className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style={{ backgroundImage: "url('/images/presidential-spa.png')" }} />
+                  <div className="aspect-square rounded-xl overflow-hidden shadow-lodge-lg border-2 border-white relative">
+                    <Image
+                      src="/images/Jacuzzi/IMG_7205.jpeg"
+                      alt="Private hot tub spa at Presidential RV site"
+                      fill
+                      className="object-cover transition-transform duration-700 hover:scale-110"
+                      sizes="(max-width: 768px) 50vw, 25vw"
+                    />
                   </div>
-                  <div className="aspect-[3/4] rounded-2xl overflow-hidden shadow-lodge-lg group border-2 border-white">
-                    <div className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style={{ backgroundImage: "url('/images/Aereal-2_1400.png')" }} />
+                  <div className="aspect-[3/4] rounded-xl overflow-hidden shadow-lodge-lg border-2 border-white relative">
+                    <Image
+                      src="/images/GeneralImagesPark/IMG_7380.jpeg"
+                      alt="Rush No More RV resort grounds and landscape"
+                      fill
+                      className="object-cover transition-transform duration-700 hover:scale-110"
+                      sizes="(max-width: 768px) 50vw, 25vw"
+                    />
                   </div>
                 </div>
               </div>
@@ -754,10 +772,30 @@ export default function StayPage() {
               </div>
               <div className="space-y-4">
                 <div className="aspect-[16/10] rounded-2xl overflow-hidden shadow-lodge-lg group border-2 border-white">
-                  <div className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105" style={{ backgroundImage: "url('/images/RushMore-camping.png')" }} />
+                  <div className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105" style={{ backgroundImage: "url('/images/CommonAreas/IMG_7030.jpeg')" }} />
                 </div>
                 <div className="aspect-[16/10] rounded-2xl overflow-hidden shadow-lodge-lg group border-2 border-white">
-                  <div className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105" style={{ backgroundImage: "url('/images/Wooded-Tent-Area.png')" }} />
+                  <div className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105" style={{ backgroundImage: "url('/images/CommonAreas/IMG_8211.jpeg')" }} />
+                </div>
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="aspect-square rounded-xl overflow-hidden shadow-lodge-lg border-2 border-white relative">
+                    <Image
+                      src="/images/GeneralImagesPark/IMG_7381.jpeg"
+                      alt="Scenic park grounds at Rush No More resort"
+                      fill
+                      className="object-cover transition-transform duration-700 hover:scale-110"
+                      sizes="(max-width: 768px) 50vw, 20vw"
+                    />
+                  </div>
+                  <div className="aspect-square rounded-xl overflow-hidden shadow-lodge-lg border-2 border-white relative">
+                    <Image
+                      src="/images/Pool/PoolSide.jpeg"
+                      alt="Resort pool area with lounge chairs"
+                      fill
+                      className="object-cover transition-transform duration-700 hover:scale-110"
+                      sizes="(max-width: 768px) 50vw, 20vw"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
@@ -839,6 +877,37 @@ export default function StayPage() {
           </span>
           <h2 className="mb-3 text-white">Every Stay Includes <span className="text-brand-gold italic">All 16</span> Amenities</h2>
           <p className="text-white/50 text-lg mb-10 font-medium">No hidden fees, no resort charges.</p>
+
+          {/* Resort grounds preview */}
+          <div className="grid grid-cols-3 gap-3 mb-10 max-w-3xl mx-auto">
+            <div className="aspect-[4/3] rounded-xl overflow-hidden relative border border-white/10">
+              <Image
+                src="/images/GeneralImagesPark/IMG_7386.jpeg"
+                alt="Rush No More resort grounds with mountain views"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 33vw, 20vw"
+              />
+            </div>
+            <div className="aspect-[4/3] rounded-xl overflow-hidden relative border border-white/10">
+              <Image
+                src="/images/CommonAreas/IMG_7435.jpeg"
+                alt="Common areas and gathering spaces at the resort"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 33vw, 20vw"
+              />
+            </div>
+            <div className="aspect-[4/3] rounded-xl overflow-hidden relative border border-white/10">
+              <Image
+                src="/images/GeneralImagesPark/IMG_7380.jpeg"
+                alt="Park scenery and grounds at Rush No More"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 33vw, 20vw"
+              />
+            </div>
+          </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {TABS.map((tab, i) => {

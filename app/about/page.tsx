@@ -1,11 +1,14 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { SITE, REVIEWS, STATS } from '@/data/site';
 import { BookingCTA } from '@/components/ui';
 import { FadeIn } from '@/components/motion';
+import { JsonLd } from '@/components/seo/JsonLd';
+import { faqSchema, breadcrumbSchema } from '@/lib/seo';
 import {
   ExternalLink, Star, ArrowRight, Phone,
   Heart, Award, ThumbsUp, ShieldCheck, Sparkles,
@@ -43,6 +46,9 @@ export default function AboutPage() {
 
   return (
     <>
+      <JsonLd data={faqSchema(FAQS)} />
+      <JsonLd data={breadcrumbSchema([{ name: 'Home', url: '/' }, { name: 'About', url: '/about' }])} />
+
       {/* HERO */}
       <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-brand-navy">
         <video
@@ -121,14 +127,14 @@ export default function AboutPage() {
 
             <div className="lg:col-span-2 space-y-4">
               <div className="aspect-[4/5] rounded-2xl overflow-hidden shadow-lodge-lg group border-2 border-white">
-                <div className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105" style={{ backgroundImage: "url('/images/DSC05580-s.png')" }} />
+                <div className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105" style={{ backgroundImage: "url('/images/GeneralImagesPark/IMG_7379.jpeg')" }} />
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div className="aspect-square rounded-xl overflow-hidden shadow-lodge group border-2 border-white">
-                  <div className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105" style={{ backgroundImage: "url('/images/RushMore-cabins.png')" }} />
+                  <div className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105" style={{ backgroundImage: "url('/images/BeerGarden/IMG_7422.jpg')" }} />
                 </div>
                 <div className="aspect-square rounded-xl overflow-hidden shadow-lodge group border-2 border-white">
-                  <div className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105" style={{ backgroundImage: "url('/images/RushMore-camping.png')" }} />
+                  <div className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105" style={{ backgroundImage: "url('/images/CommonAreas/IMG_7031.jpeg')" }} />
                 </div>
               </div>
             </div>
@@ -180,7 +186,7 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-start">
             <div className="lg:col-span-2 order-2 lg:order-1">
               <div className="aspect-[3/4] rounded-2xl overflow-hidden shadow-lodge-lg group border-2 border-white lg:sticky lg:top-28">
-                <div className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105" style={{ backgroundImage: "url('/images/RushMore-rv-camper-van.png')" }} />
+                <div className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105" style={{ backgroundImage: "url('/images/PeoplePlaying/IMG_7656.jpeg')" }} />
               </div>
             </div>
 
@@ -245,12 +251,56 @@ export default function AboutPage() {
 
             <div className="space-y-4">
               <div className="aspect-[16/10] rounded-2xl overflow-hidden shadow-lodge-lg group border-2 border-white">
-                <div className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105" style={{ backgroundImage: "url('/images/presidential-spa.png')" }} />
+                <div className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105" style={{ backgroundImage: "url('/images/PeoplePlaying/IMG_7615.jpeg')" }} />
               </div>
               <div className="aspect-[16/10] rounded-2xl overflow-hidden shadow-lodge-lg group border-2 border-white">
-                <div className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105" style={{ backgroundImage: "url('/images/vip-site.png')" }} />
+                <div className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105" style={{ backgroundImage: "url('/images/PeoplePlaying/IMG_7646.jpeg')" }} />
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* LIFE AT RUSH NO MORE — Photo Collage */}
+      <section className="py-20 md:py-28 bg-white relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-80 h-80 bg-brand-gold/3 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 right-0 w-80 h-80 bg-brand-gold/3 rounded-full blur-3xl" />
+
+        <div className="max-w-6xl mx-auto px-4 relative z-10">
+          <div className="text-center mb-14">
+            <span className="badge-gold mb-5 inline-block">Life at the Resort</span>
+            <h2 className="mb-3 text-3xl md:text-4xl">More Than a Campground — <span className="text-brand-gold italic">It&apos;s a Community</span></h2>
+            <p className="text-brand-navy/60 text-lg max-w-xl mx-auto font-medium">Real moments from real guests enjoying everything Rush No More has to offer.</p>
+            <div className="w-24 h-1 bg-gold-gradient rounded-full mt-5 mx-auto" />
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
+            {[
+              { src: '/images/PeoplePlaying/IMG_7078.jpeg', alt: 'Guests enjoying outdoor activities at Rush No More' },
+              { src: '/images/CommonAreas/IMG_7030.jpeg', alt: 'Common area gathering space at the resort' },
+              { src: '/images/PeoplePlaying/IMG_7608.jpeg', alt: 'Family fun at Rush No More campground' },
+              { src: '/images/BeerGarden/IMG_7327.jpg', alt: 'Beer garden socializing at Rush No More' },
+              { src: '/images/GeneralImagesPark/IMG_7382.jpeg', alt: 'Beautiful grounds and scenery at the park' },
+              { src: '/images/PeoplePlaying/IMG_8325.jpeg', alt: 'Guests making memories at Rush No More resort' },
+            ].map((photo, i) => (
+              <motion.div
+                key={i}
+                className="rounded-xl overflow-hidden shadow-lodge group border-2 border-white aspect-[4/3] relative"
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.08 }}
+              >
+                <Image
+                  src={photo.src}
+                  alt={photo.alt}
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                  sizes="(max-width: 768px) 50vw, 33vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>

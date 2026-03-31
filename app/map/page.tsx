@@ -2,10 +2,13 @@
 
 import { useRef, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { SITE } from '@/data/site';
 import { BookingCTA } from '@/components/ui';
 import { InteractiveMapWrapper } from './InteractiveMapWrapper';
+import { JsonLd } from '@/components/seo/JsonLd';
+import { breadcrumbSchema } from '@/lib/seo';
 import {
   MapPin, Phone, Mail, Navigation, ExternalLink, ArrowRight,
   Truck, Home, Tent, Waves, Beer, ShieldCheck, TreePine,
@@ -67,6 +70,8 @@ export default function MapPage() {
 
   return (
     <>
+      <JsonLd data={breadcrumbSchema([{ name: 'Home', url: '/' }, { name: 'Map & Directions', url: '/map' }])} />
+
       {/* ═══════════════════════════════════════════════════════════════
           HERO — Video background
       ═══════════════════════════════════════════════════════════════ */}
@@ -149,6 +154,34 @@ export default function MapPage() {
           </div>
 
           <InteractiveMapWrapper />
+
+          {/* Park entrance and grounds photos */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
+            <div className="aspect-[16/9] rounded-xl overflow-hidden relative shadow-lodge-lg border-2 border-white">
+              <Image
+                src="/images/UTV/ParkingFrontPoll_RNM.jpeg"
+                alt="Rush No More resort entrance and front parking area"
+                fill
+                className="object-cover"
+                sizes="(max-width: 640px) 100vw, 50vw"
+              />
+              <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/50 to-transparent p-3">
+                <span className="text-white text-sm font-bold">Resort Entrance</span>
+              </div>
+            </div>
+            <div className="aspect-[16/9] rounded-xl overflow-hidden relative shadow-lodge-lg border-2 border-white">
+              <Image
+                src="/images/GeneralImagesPark/IMG_7316.jpeg"
+                alt="Rush No More park grounds and resort overview"
+                fill
+                className="object-cover"
+                sizes="(max-width: 640px) 100vw, 50vw"
+              />
+              <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/50 to-transparent p-3">
+                <span className="text-white text-sm font-bold">Resort Grounds</span>
+              </div>
+            </div>
+          </div>
 
           {/* Quick Booking Bar */}
           <div className="mt-8 bg-brand-navy/95 backdrop-blur-xl rounded-2xl shadow-lodge-xl p-6 md:p-8 border border-white/10">
