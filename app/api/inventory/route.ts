@@ -14,6 +14,7 @@ const ALLOWED_FIELDS = [
   'pricePerNight', 'priceSummer', 'priceRally', 'pricePrePostRally',
   'amenities', 'status', 'seasonal', 'seasonStart', 'seasonEnd',
   'hasPrivateHotTub', 'hasPrivatePatio', 'hasBBQ', 'hookups', 'images',
+  'publicNotes',
 ] as const;
 
 const VALID_TYPES = ['rv', 'cabin', 'tent'];

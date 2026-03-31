@@ -70,7 +70,7 @@ export function campgroundSchema() {
       'Heated Swimming Pool', 'Multiple Hot Tub Spas', 'Beer Garden & Bar',
       'Game Room', 'Nature Trails', 'Modern Bathhouses', 'Laundromat',
       'Free Wi-Fi', 'Pet Friendly', 'Bike Wash Station', 'Propane Sales',
-      'Fire Pits', 'Camp Library', 'Camp Store', 'Picnic Pavilions',
+      'Propane Campfires & Charcoal Grills', 'Camp Library', 'Camp Store', 'Picnic Pavilions',
       '24/7 Gated Security',
     ].map(name => ({ '@type': 'LocationFeatureSpecification', name, value: true })),
     numberOfRooms: 236,

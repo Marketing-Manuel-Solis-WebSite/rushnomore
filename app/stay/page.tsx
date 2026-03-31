@@ -539,7 +539,7 @@ export default function StayPage() {
                       transition={{ duration: 0.5, delay: i * 0.08 }}
                     >
                       <div className="aspect-[16/10] bg-surface-secondary relative overflow-hidden">
-                        <div className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style={{ backgroundImage: "url('/images/RushMore-cabins.png')" }} />
+                        <div className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style={{ backgroundImage: `url('${c.img || '/images/RushMore-cabins.png'}')` }} />
                         <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/60 to-transparent" />
                         <div className="absolute top-3 left-3">
                           <span className="bg-white/90 backdrop-blur-sm text-brand-navy text-xs font-bold px-2.5 py-1 rounded-full shadow-sm">

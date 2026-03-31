@@ -70,6 +70,7 @@ interface PropertyForm {
   hasPrivateHotTub: boolean;
   hasPrivatePatio: boolean;
   hasBBQ: boolean;
+  publicNotes: string;
 }
 
 const DEFAULT_FORM: PropertyForm = {
@@ -91,6 +92,7 @@ const DEFAULT_FORM: PropertyForm = {
   hasPrivateHotTub: false,
   hasPrivatePatio: false,
   hasBBQ: false,
+  publicNotes: '',
 };
 
 export default function InventoryEditPage({
@@ -137,6 +139,7 @@ export default function InventoryEditPage({
           hasPrivateHotTub: p.hasPrivateHotTub ?? false,
           hasPrivatePatio: p.hasPrivatePatio ?? false,
           hasBBQ: p.hasBBQ ?? false,
+          publicNotes: p.publicNotes || '',
         });
         setLoading(false);
       } catch {
@@ -202,6 +205,7 @@ export default function InventoryEditPage({
         hasPrivateHotTub: form.hasPrivateHotTub,
         hasPrivatePatio: form.hasPrivatePatio,
         hasBBQ: form.hasBBQ,
+        publicNotes: form.publicNotes,
       });
 
       if (res.ok) {
@@ -400,6 +404,27 @@ export default function InventoryEditPage({
               </div>
             </div>
           </div>
+        </section>
+
+        {/* Public Notes for Users */}
+        <section className="bg-white rounded-2xl shadow-lodge border border-surface-muted/50 p-6">
+          <h2 className="text-lg font-display font-bold text-brand-navy mb-2">
+            Public Notes
+          </h2>
+          <p className="text-xs text-brand-stone mb-4">
+            These notes are visible to guests when browsing available properties. Use them to share general status information about this property (e.g. recent renovations, special features, temporary notices).
+          </p>
+          <textarea
+            value={form.publicNotes}
+            onChange={(e) => updateField('publicNotes', e.target.value)}
+            placeholder="e.g. Recently renovated bathroom. New hot tub installed March 2026. Quiet area near the creek..."
+            rows={3}
+            maxLength={500}
+            className="w-full px-4 py-2.5 rounded-xl border border-surface-muted text-sm focus:border-brand-gold focus:ring-1 focus:ring-brand-gold outline-none transition-colors resize-none"
+          />
+          <p className="text-[10px] text-brand-stone mt-1 text-right">
+            {form.publicNotes.length}/500 characters
+          </p>
         </section>
 
         {/* Pricing */}

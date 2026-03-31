@@ -20,6 +20,7 @@ interface AvailableProperty {
   hasPrivateHotTub?: boolean;
   hasPrivatePatio?: boolean;
   hasBBQ?: boolean;
+  publicNotes?: string;
 }
 
 interface PriceBreakdown {
@@ -199,6 +200,14 @@ function ResultsContent() {
                                 </span>
                               )}
                             </div>
+                            {prop.publicNotes && (
+                              <div className="mt-3 bg-blue-50 border border-blue-100 rounded-xl px-3 py-2">
+                                <p className="text-xs text-blue-800 leading-relaxed">
+                                  <MapPin className="w-3 h-3 inline mr-1 text-blue-500" />
+                                  {prop.publicNotes}
+                                </p>
+                              </div>
+                            )}
                           </div>
 
                           {/* Price & CTA */}

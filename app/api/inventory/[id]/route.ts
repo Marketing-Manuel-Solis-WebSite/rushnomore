@@ -40,6 +40,7 @@ export async function GET(
         hasBBQ: data.hasBBQ,
         hookups: data.hookups,
         images: data.images,
+        publicNotes: data.publicNotes || '',
       },
     });
   } catch (e) {

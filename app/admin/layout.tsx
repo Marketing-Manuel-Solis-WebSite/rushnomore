@@ -19,6 +19,7 @@ import {
   Shield,
   X,
   Monitor,
+  GanttChart,
 } from 'lucide-react';
 import {
   auth,
@@ -39,6 +40,7 @@ const NAV_GROUPS = [
     label: 'Main',
     items: [
       { href: '/admin', label: 'Dashboard', icon: LayoutDashboard },
+      { href: '/admin/booking-chart', label: 'Booking Chart', icon: GanttChart },
       { href: '/admin/calendar', label: 'Calendar', icon: Calendar },
       { href: '/admin/reservations', label: 'Reservations', icon: ClipboardList },
     ],
