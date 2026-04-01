@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import Link from 'next/link';
 import { SITE } from '@/data/site';
 import { Phone, CalendarDays } from 'lucide-react';
 
@@ -31,9 +30,9 @@ export function BookingBar() {
               <p className="text-white/50 text-xs uppercase tracking-wider">From $35/night &middot; RV &middot; Cabins &middot; Tent</p>
             </div>
             <div className="flex items-center gap-3 w-full sm:w-auto">
-              <Link href={SITE.booking} className="btn-gold flex-1 sm:flex-initial text-center text-sm">
+              <a href={SITE.booking} target="_blank" rel="noopener noreferrer" className="btn-gold flex-1 sm:flex-initial text-center text-sm">
                 Check Availability <CalendarDays className="w-3.5 h-3.5 ml-1.5 inline" />
-              </Link>
+              </a>
               <a href={`tel:${SITE.phoneTel}`} className="flex items-center gap-2 px-4 py-3 text-white/80 hover:text-white border border-white/20 rounded-lg transition-colors text-sm">
                 <Phone className="w-4 h-4" />
                 <span className="hidden md:inline">{SITE.phone}</span>

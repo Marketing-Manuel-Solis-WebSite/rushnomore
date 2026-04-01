@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { NAV, SITE } from '@/data/site';
 import { WeatherWidget } from '@/components/weather';
-import { Phone, Menu, X, ChevronDown, MapPin, CalendarDays, ClipboardList } from 'lucide-react';
+import { Phone, Menu, X, ChevronDown, MapPin, CalendarDays } from 'lucide-react';
 
 export function Header() {
   const [open, setOpen] = useState(false);
@@ -154,20 +154,15 @@ export function Header() {
 
           {/* CTA & Mobile Toggle - A la derecha */}
           <div className="flex items-center gap-2 sm:gap-3">
-            <Link
-              href="/my-reservation"
-              className="hidden md:flex items-center gap-1.5 text-brand-navy hover:text-brand-gold text-xs font-bold py-2 px-3 rounded-full border border-surface-muted hover:border-brand-gold/30 transition-all duration-300 uppercase tracking-wide"
-            >
-              <ClipboardList className="w-3.5 h-3.5" />
-              <span>My Reservation</span>
-            </Link>
-            <Link
+            <a
               href={SITE.booking}
+              target="_blank"
+              rel="noopener noreferrer"
               className="hidden sm:flex items-center gap-2 bg-brand-gold hover:bg-yellow-500 text-white text-xs md:text-sm font-bold py-2.5 px-5 rounded-full shadow-md hover:shadow-lg transition-all duration-300 uppercase tracking-wide"
             >
               <CalendarDays className="w-3.5 h-3.5" />
               <span>Book Now</span>
-            </Link>
+            </a>
 
             <button 
               onClick={() => setOpen(!open)} 
@@ -222,22 +217,16 @@ export function Header() {
                 ))}
                 
                 <div className="pt-4 mt-2 space-y-2">
-                  <Link
+                  <a
                     href={SITE.booking}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     onClick={() => setOpen(false)}
                     className="flex w-full items-center justify-center gap-2 bg-brand-gold text-white font-bold py-3 rounded-lg shadow-md"
                   >
                     <CalendarDays className="w-4 h-4" />
                     Book Your Stay
-                  </Link>
-                  <Link
-                    href="/my-reservation"
-                    onClick={() => setOpen(false)}
-                    className="flex w-full items-center justify-center gap-2 border border-surface-muted text-brand-navy font-bold py-3 rounded-lg hover:bg-surface-secondary transition-colors"
-                  >
-                    <ClipboardList className="w-4 h-4" />
-                    My Reservation
-                  </Link>
+                  </a>
                 </div>
               </div>
             </motion.div>

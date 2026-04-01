@@ -91,7 +91,7 @@ export const SITE: SiteConfig & { rvStartPrice: string; cabinStartPrice: string;
   phoneTel: '+16054232545',
   email: 'info@rushnomore.com',
   address: '21137 Brimstone Place, Sturgis, SD 57785',
-  booking: '/booking',
+  booking: 'https://bookingsus.newbook.cloud/rushnomore/index.php',
   hours: 'Daily 8 AM - 5 PM MT',
   maps: 'https://maps.app.goo.gl/sBHGqk1yV4c2Tx1z9',
   mapsEmbed: 'https://maps.google.com/maps?q=rush+no+more+campground&t=m&z=13&output=embed&iwloc=near',
