@@ -78,14 +78,14 @@ export default function HomePage() {
                       </div>
                       <div>
                         <h3 className="text-3xl md:text-4xl font-display font-bold leading-tight">RV Sites</h3>
-                        <p className="text-xs text-brand-gold uppercase tracking-[0.15em] font-black mt-0.5">Standard · VIP Deluxe · Presidential Spa</p>
+                        <p className="text-xs text-brand-gold uppercase tracking-[0.15em] font-black mt-0.5">Standard · Luxury · Luxury Spa</p>
                       </div>
                     </div>
                     <p className="text-brand-navy/80 text-base md:text-lg leading-relaxed mb-6 font-medium">
-                      Full hookups with 30/50 AMP service and pull-throughs up to 100ft. VIP sites feature private patios with gas BBQ grills. Our Presidential Spa sites include your very own <strong className="text-brand-navy">private hot tub</strong> — the ultimate RV glamping experience.
+                      Full hookups with 30/50 AMP service and pull-throughs up to 100ft. Luxury sites feature cement slabs with gas BBQ grills. Our Luxury Spa sites include your very own <strong className="text-brand-navy">private hot tub</strong> — the ultimate RV glamping experience.
                     </p>
                     <div className="grid grid-cols-2 gap-2.5 mb-7">
-                      {['Full Hookups (W/E/S)', '30 & 50 AMP Service', 'Pull-Through up to 100ft', 'Private Patios Available', 'Gas BBQ on VIP Sites', 'Private Hot Tub (Spa)'].map((f, i) => (
+                      {['Full Hookups (W/E/S)', '30 & 50 AMP Service', 'Pull-Through up to 100ft', 'Cement Slabs (Luxury)', 'Gas BBQ on Luxury Sites', 'Private Hot Tub (Spa)'].map((f, i) => (
                         <span key={i} className="flex items-center gap-2.5 text-sm text-brand-navy/80 bg-surface-secondary/80 backdrop-blur-sm px-3 py-2 rounded-lg font-medium border border-surface-muted/30">
                           <CheckCircle className="w-4 h-4 text-brand-gold flex-shrink-0" />{f}
                         </span>
@@ -128,7 +128,7 @@ export default function HomePage() {
                       Each cabin named after a US President — from cozy economy units for couples to <strong className="text-brand-navy">full luxury suites sleeping up to 10 guests</strong>. Perfect for families, reunions, and anyone who wants comfort without sacrificing the outdoors.
                     </p>
                     <div className="grid grid-cols-2 gap-2.5 mb-7">
-                      {['Sleeps 2 to 10 Guests', 'Full Kitchens Available', 'A/C & Heating', 'Private Bathrooms', 'Outdoor Fire Pits', '16 Unique Cabins'].map((f, i) => (
+                      {['Sleeps 2 to 10 Guests', 'Full Kitchens Available', 'A/C & Heating', 'Private Bathrooms', 'Pet-Friendly Options', '16 Unique Cabins'].map((f, i) => (
                         <span key={i} className="flex items-center gap-2.5 text-sm text-brand-navy/80 bg-surface-secondary/80 backdrop-blur-sm px-3 py-2 rounded-lg font-medium border border-surface-muted/30">
                           <CheckCircle className="w-4 h-4 text-brand-gold flex-shrink-0" />{f}
                         </span>
@@ -146,7 +146,7 @@ export default function HomePage() {
                   </div>
                 </div>
                 <div className="relative overflow-hidden min-h-[320px] lg:min-h-full order-1 lg:order-2">
-                  <div className="absolute inset-0 bg-cover bg-center transition-transform duration-[1.2s] ease-out group-hover:scale-110" style={{ backgroundImage: "url('/images/RushMore-cabins.png')" }} />
+                  <div className="absolute inset-0 bg-cover bg-center transition-transform duration-[1.2s] ease-out group-hover:scale-110" style={{ backgroundImage: "url('/images/Cabins/CabinJamesMonroe/PhotoMainJamesMonroe.jpeg')" }} />
                   <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/70 via-brand-navy/20 to-transparent lg:bg-gradient-to-l lg:from-transparent lg:via-brand-navy/10 lg:to-brand-navy/40" />
                   <div className="absolute top-5 right-5 z-10">
                     <span className="inline-flex items-center gap-2 px-4 py-2 bg-white/15 backdrop-blur-md text-white rounded-full text-xs font-black uppercase tracking-wider border border-white/20 shadow-lodge">
@@ -165,7 +165,7 @@ export default function HomePage() {
             <Link href="/stay/tent-camping" className="group block relative rounded-3xl overflow-hidden shadow-lodge-lg hover:shadow-gold-lg transition-all duration-700 border-2 border-transparent hover:border-brand-gold/30">
               <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[480px] md:min-h-[540px]">
                 <div className="relative overflow-hidden min-h-[320px] lg:min-h-full">
-                  <div className="absolute inset-0 bg-cover bg-center transition-transform duration-[1.2s] ease-out group-hover:scale-110" style={{ backgroundImage: "url('/images/RushMore-camping.png')" }} />
+                  <div className="absolute inset-0 bg-cover bg-center transition-transform duration-[1.2s] ease-out group-hover:scale-110" style={{ backgroundImage: "url('/images/Wooded-Tent-Area.png')" }} />
                   <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/70 via-brand-navy/20 to-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-brand-navy/10 lg:to-brand-navy/40" />
                   <div className="absolute top-5 left-5 z-10">
                     <span className="inline-flex items-center gap-2 px-4 py-2 bg-white/15 backdrop-blur-md text-white rounded-full text-xs font-black uppercase tracking-wider border border-white/20 shadow-lodge">
@@ -194,10 +194,10 @@ export default function HomePage() {
                       </div>
                     </div>
                     <p className="text-brand-navy/80 text-base md:text-lg leading-relaxed mb-6 font-medium">
-                      Wake up to fresh mountain air under towering Ponderosa pines. Spacious, level sites with fire pits and <strong className="text-brand-navy">full access to every resort amenity</strong> — pool, hot tubs, beer garden, bathhouses, and more.
+                      Wake up to fresh mountain air under towering Ponderosa pines. Spacious, level sites with <strong className="text-brand-navy">full access to every resort amenity</strong> — pool, hot tubs, beer garden, bathhouses, and more. 15 of 20 sites have electricity.
                     </p>
                     <div className="grid grid-cols-2 gap-2.5 mb-7">
-                      {['Shaded Pine Forest', 'Fire Pits at Each Site', 'Water Hookups Nearby', 'Clean Bathhouses', 'Pool & Hot Tub Access', 'Hiking Trail Access'].map((f, i) => (
+                      {['Shaded Pine Forest', '15 Sites with Electric', 'Water Hookups Nearby', 'Clean Bathhouses', 'Pool & Hot Tub Access', 'Hiking Trail Access'].map((f, i) => (
                         <span key={i} className="flex items-center gap-2.5 text-sm text-brand-navy/80 bg-surface-secondary/80 backdrop-blur-sm px-3 py-2 rounded-lg font-medium border border-surface-muted/30">
                           <CheckCircle className="w-4 h-4 text-brand-gold flex-shrink-0" />{f}
                         </span>
@@ -301,7 +301,7 @@ export default function HomePage() {
                 </div>
                 <div className="space-y-3 md:space-y-4 pt-10">
                   <div className="aspect-square rounded-2xl overflow-hidden shadow-lodge-lg group border-2 border-white">
-                    <div className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style={{ backgroundImage: "url('/images/cabin-9_800.png')" }} />
+                    <div className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style={{ backgroundImage: "url('/images/Cabins/CabinTheThomasJeffersonCabinTheThomasJefferson/PhotoMainTheThomasJefferson.jpeg')" }} />
                   </div>
                   <div className="aspect-[3/4] rounded-2xl overflow-hidden shadow-lodge-lg group border-2 border-white">
                     <div className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style={{ backgroundImage: "url('/images/Wooded-Tent-Area.png')" }} />
@@ -358,8 +358,8 @@ export default function HomePage() {
               <p className="text-brand-navy/70 text-lg leading-relaxed font-medium mb-6">Take a drone tour of our beautiful resort and see why thousands choose Rush No More as their Black Hills home base.</p>
               <div className="grid grid-cols-3 gap-3">
                 {[
-                  { img: '/images/vip-site.png', label: 'VIP Sites' },
-                  { img: '/images/presidential-spa.png', label: 'Spa Sites' },
+                  { img: '/images/vip-site.png', label: 'Luxury Sites' },
+                  { img: '/images/Jacuzzi/IMG_7205.jpeg', label: 'Spa Sites' },
                   { img: '/images/Aereal-2_1400.png', label: 'Aerial View' },
                 ].map((thumb, i) => (
                   <div key={i} className="aspect-square rounded-xl overflow-hidden shadow-lodge group border border-brand-gold/10">
@@ -421,7 +421,7 @@ export default function HomePage() {
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
             {[
-              { icon: Flame, title: 'Fire Pits', desc: 'Campfires under the stars' },
+              { icon: Flame, title: 'Propane Campfires', desc: 'Propane & charcoal only' },
               { icon: Gamepad2, title: 'Game Room', desc: 'Fun for the whole family' },
               { icon: Bike, title: 'Bike Wash', desc: 'Keep your ride clean' },
               { icon: ShieldCheck, title: '24/7 Security', desc: 'Safe and secure always' },
@@ -460,7 +460,7 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
             {[
               { t: 'Mount Rushmore', d: 'The iconic presidential carvings — evening lighting ceremony is a must-see.', dist: '55 mi', time: '~1 hour', href: '/explore#mount-rushmore', img: '/images/DSC05580-s.png' },
-              { t: 'Deadwood', d: '80+ gaming halls, Adams Museum, gold panning, and Wild West history.', dist: '12 mi', time: '~15 min', href: '/explore#deadwood', img: '/images/cabin-9_800.png' },
+              { t: 'Deadwood', d: '80+ gaming halls, Adams Museum, gold panning, and Wild West history.', dist: '12 mi', time: '~15 min', href: '/explore#deadwood', img: '/images/GeneralImagesPark/IMG_7316.jpeg' },
               { t: 'Custer State Park', d: '71,000 acres with 1,300 buffalo, Needles Highway & Sylvan Lake.', dist: '70 mi', time: '~1.5 hrs', href: '/explore#custer-state-park', img: '/images/Wooded-Tent-Area.png' },
             ].map((item, i) => (
               <Link key={i} href={item.href} className="group block rounded-2xl overflow-hidden border border-white/10 hover:border-brand-gold/40 transition-all duration-500 hover:-translate-y-1 bg-white/5 backdrop-blur-sm">

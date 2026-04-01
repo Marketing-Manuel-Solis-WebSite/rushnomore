@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { SITE } from '@/data/site';
-import { MapPin, Phone, Mail } from 'lucide-react';
+import { MapPin, Phone, Mail, AlertTriangle } from 'lucide-react';
 
 const cols = {
   Accommodations: [
@@ -38,6 +38,15 @@ export function Footer() {
     <footer className="bg-brand-navy text-white relative overflow-hidden">
       {/* Seamless transition from any page background */}
       <div className="h-16 bg-gradient-to-b from-transparent to-brand-navy" />
+
+      {/* NO WOOD FIRES NOTICE */}
+      <div className="bg-red-700 text-white py-3">
+        <div className="max-w-7xl mx-auto px-4 flex items-center justify-center gap-3 text-sm font-bold uppercase tracking-wider">
+          <AlertTriangle className="w-5 h-5 flex-shrink-0" />
+          <span>No Wood Fires Allowed — We Back Up to Forest Service Land. Propane and Charcoal Only.</span>
+          <AlertTriangle className="w-5 h-5 flex-shrink-0" />
+        </div>
+      </div>
 
       {/* Subtle gold line at top */}
       <div className="h-px bg-gradient-to-r from-transparent via-brand-gold/40 to-transparent" />

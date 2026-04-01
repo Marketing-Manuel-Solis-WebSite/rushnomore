@@ -24,7 +24,7 @@ const CANCELLATION = [
   },
   {
     icon: Star,
-    title: 'VIP & Spa Site Cancellations',
+    title: 'Luxury & Spa Site Cancellations',
     color: 'bg-brand-gold',
     rules: [
       { label: '30+ days before', result: 'Full refund minus $25 admin fee', type: 'good' },
@@ -62,7 +62,7 @@ const PARK_RULES = [
   { icon: Volume2, text: 'Quiet hours: 10:00 PM - 7:00 AM' },
   { icon: Car, text: 'Speed limit: 5 MPH throughout the park' },
   { icon: Dog, text: 'Pets must be leashed at all times. Clean up after your pet.' },
-  { icon: Flame, text: 'Campfires in designated fire pits only. No ground fires.' },
+  { icon: Flame, text: 'NO WOOD FIRES ALLOWED — we back up to Forest Service land. Propane and charcoal only.' },
   { icon: Users, text: 'Maximum 2 vehicles per site. Extra vehicles $10/day.' },
 ];
 

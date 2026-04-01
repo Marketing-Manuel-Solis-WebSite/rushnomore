@@ -7,38 +7,38 @@ import { collection, getDocs, doc, updateDoc, addDoc, query, where } from 'fireb
 // Mapping: cabin name → { folder, images (PhotoMain first) }
 const CABIN_IMAGES: Record<string, string[]> = {
   'The James Monroe': [
-    '/images/cabins/CabinJamesMonroe/PhotoMainJamesMonroe.jpeg',
-    '/images/cabins/CabinJamesMonroe/IMG_7688.jpeg',
-    '/images/cabins/CabinJamesMonroe/IMG_7689.jpeg',
-    '/images/cabins/CabinJamesMonroe/IMG_7788.jpeg',
-    '/images/cabins/CabinJamesMonroe/IMG_7790.jpeg',
-    '/images/cabins/CabinJamesMonroe/IMG_7791.jpeg',
-    '/images/cabins/CabinJamesMonroe/IMG_7792.jpeg',
+    '/images/Cabins/CabinJamesMonroe/PhotoMainJamesMonroe.jpeg',
+    '/images/Cabins/CabinJamesMonroe/IMG_7688.jpeg',
+    '/images/Cabins/CabinJamesMonroe/IMG_7689.jpeg',
+    '/images/Cabins/CabinJamesMonroe/IMG_7788.jpeg',
+    '/images/Cabins/CabinJamesMonroe/IMG_7790.jpeg',
+    '/images/Cabins/CabinJamesMonroe/IMG_7791.jpeg',
+    '/images/Cabins/CabinJamesMonroe/IMG_7792.jpeg',
   ],
   'The John Quincy Adams': [
-    '/images/cabins/CabinJohnQuincyAdams/PhotoMainJamesMonroe.jpeg',
-    '/images/cabins/CabinJohnQuincyAdams/IMG_7785.jpeg',
-    '/images/cabins/CabinJohnQuincyAdams/IMG_8466.jpeg',
-    '/images/cabins/CabinJohnQuincyAdams/IMG_8467.jpeg',
+    '/images/Cabins/CabinJohnQuincyAdams/PhotoMainJamesMonroe.jpeg',
+    '/images/Cabins/CabinJohnQuincyAdams/IMG_7785.jpeg',
+    '/images/Cabins/CabinJohnQuincyAdams/IMG_8466.jpeg',
+    '/images/Cabins/CabinJohnQuincyAdams/IMG_8467.jpeg',
   ],
   'The Martin Van Buren': [
-    '/images/cabins/CabinMartinVanBuren/PhotoMainMartinVanBuren.jpeg',
+    '/images/Cabins/CabinMartinVanBuren/PhotoMainMartinVanBuren.jpeg',
   ],
   'The William Harrison': [
-    '/images/cabins/CabinWMHenryHarrison/MainPhotoWMHenryHarrison.jpeg',
+    '/images/Cabins/CabinWMHenryHarrison/MainPhotoWMHenryHarrison.jpeg',
   ],
   'The James Madison': [
-    '/images/cabins/CabinTheJamesMadison/PhotoMainTheJamesMadison.jpeg',
-    '/images/cabins/CabinTheJamesMadison/IMG_8481.jpeg',
-    '/images/cabins/CabinTheJamesMadison/IMG_8492.jpeg',
+    '/images/Cabins/CabinTheJamesMadison/PhotoMainTheJamesMadison.jpeg',
+    '/images/Cabins/CabinTheJamesMadison/IMG_8481.jpeg',
+    '/images/Cabins/CabinTheJamesMadison/IMG_8492.jpeg',
   ],
   'The Thomas Jefferson': [
-    '/images/cabins/CabinTheThomasJeffersonCabinTheThomasJefferson/PhotoMainTheThomasJefferson.jpeg',
-    '/images/cabins/CabinTheThomasJeffersonCabinTheThomasJefferson/IMG_8483.jpeg',
-    '/images/cabins/CabinTheThomasJeffersonCabinTheThomasJefferson/IMG_8493.jpeg',
+    '/images/Cabins/CabinTheThomasJeffersonCabinTheThomasJefferson/PhotoMainTheThomasJefferson.jpeg',
+    '/images/Cabins/CabinTheThomasJeffersonCabinTheThomasJefferson/IMG_8483.jpeg',
+    '/images/Cabins/CabinTheThomasJeffersonCabinTheThomasJefferson/IMG_8493.jpeg',
   ],
   'The Ulysses Grant': [
-    '/images/cabins/CabinUlyssesGrant/PhotoMainUlyssesGrant.png',
+    '/images/Cabins/CabinUlyssesGrant/PhotoMainUlyssesGrant.png',
   ],
 };
 

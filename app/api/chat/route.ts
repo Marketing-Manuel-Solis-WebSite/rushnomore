@@ -34,15 +34,15 @@ ACCOMMODATIONS:
    - Pull-through or back-in, up to 100ft
    - Open year-round
 
-2. VIP Deluxe RV Sites — $75.99/night
-   - Private patio with gas BBQ grill
+2. Luxury RV Sites — $75.99/night
+   - Cement slab with gas BBQ grill
    - Mountain Valley location
    - Full hook-ups, 30/50 AMP
    - Seasonal: May 1 – October 1
 
-3. Presidential Spa RV Sites — $95.99/night
+3. Luxury Spa RV Sites — $95.99/night
    - Private hot tub spa!
-   - Private patio with gas BBQ
+   - Cement slab with gas BBQ
    - Full hook-ups, 30/50 AMP
    - Seasonal: May 1 – October 1
 
@@ -57,15 +57,16 @@ ACCOMMODATIONS:
    - Electric hookup: +$5/night
    - Additional guests: $5/day per person
    - Plus 6% SD state tax
-   - Shaded Ponderosa pine forest, fire pits, water hookups nearby, bathhouse access
+   - Shaded Ponderosa pine forest, water hookups nearby, bathhouse access. 15 of 20 sites have electricity. No fire pits included — propane campfire rentals available.
 
 16 FREE AMENITIES (all included with every stay):
-Pool & Hot Tubs, Beer Garden & Bar, Modern Bathhouses, Laundromats, Free Wi-Fi, Pet Friendly (dog run), Bike Wash Station, Propane Sales, Fire Pits, Game Room, Camp Library, Nature Trails, Camp Store, Picnic Pavilions, Full Hookups, 24/7 Security (gated entry)
+Pool & Hot Tubs, Beer Garden & Bar, Modern Bathhouses, Laundromats, Free Wi-Fi, Pet Friendly (dog run), Bike Wash Station, Propane Sales, Propane Campfire Rentals (NO WOOD FIRES — we back up to Forest Service land, propane and charcoal only), Cafe (open weekends & all 10 days of Rally), Game Room, Camp Library, Nature Trails, Camp Store, Picnic Pavilions, Full Hookups, 24/7 Security (gated entry)
 
 STURGIS RALLY 2026 (Aug 2-18):
-- Full Hook-up: $1,450 (10-day package)
-- VIP Luxury: $1,995 (10-day package)
-- Presidential Spa: $2,500 (10-day package)
+- Standard 30A Hook-up: $899 (10-day package)
+- Standard 50A Hook-up: $999 (10-day package)
+- Luxury Site: $1,499 (10-day package)
+- Luxury Spa Site: $2,499 (10-day package)
 - Pre/Post Rally rates also available
 - Resort is 5 miles from Main Street Sturgis
 

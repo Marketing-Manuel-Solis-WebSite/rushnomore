@@ -121,7 +121,8 @@ export const AMENITIES: Amenity[] = [
   { icon: 'PawPrint', title: 'Pet Friendly', desc: 'Your furry friends are welcome here' },
   { icon: 'Bike', title: 'Bike Wash', desc: 'Keep your motorcycle clean and shining' },
   { icon: 'Fuel', title: 'Propane Sales', desc: 'Convenient propane refill service' },
-  { icon: 'Flame', title: 'Propane Campfires', desc: 'Propane campfire rentals & charcoal grills allowed' },
+  { icon: 'Flame', title: 'Propane & Charcoal Only', desc: 'No wood fires — propane campfire rentals & charcoal grills allowed' },
+  { icon: 'Coffee', title: 'Cafe', desc: 'Open weekends & all 10 days of Rally' },
   { icon: 'Gamepad2', title: 'Game Room', desc: 'Fun for the whole family' },
   { icon: 'BookOpen', title: 'Library', desc: 'Quiet reading space available' },
   { icon: 'TreePine', title: 'Nature Trails', desc: 'Explore beautiful walking paths' },
@@ -132,38 +133,38 @@ export const AMENITIES: Amenity[] = [
 ];
 
 export const RV_TIERS: RVTier[] = [
-  { name: 'Standard RV Sites', price: '$53.99', note: '50 AMP = $59.99/night', img: '/images/rv-camper-van.jpg', badge: '',
+  { name: 'Standard RV Sites', price: '$53.99', note: '50 AMP = $59.99/night', img: '/images/rv-camper-van.png', badge: '',
     features: ['Full hook-up sites', 'Water/Electric/30 or 50 AMP', 'Pull thru or back-in', 'Up to 100ft long'] },
-  { name: 'VIP Deluxe Sites', price: '$75.99', note: 'per night', img: '/images/vip-site.jpg', badge: 'POPULAR',
-    features: ['Private patio & gas BBQ', 'Mountain Valley location', 'Full hook-ups included', '30/50 AMP service'] },
-  { name: 'Presidential Spa Sites', price: '$95.99', note: 'per night', img: '/images/presidential-spa.jpg', badge: 'ULTIMATE',
-    features: ['Private hot tub spa!', 'Private patio & gas BBQ', 'Full hook-ups included', '30/50 AMP service'] },
+  { name: 'Luxury Sites', price: '$75.99', note: 'per night', img: '/images/vip-site.png', badge: 'POPULAR',
+    features: ['Cement slab & gas BBQ', 'Mountain Valley location', 'Full hook-ups included', '30/50 AMP service'] },
+  { name: 'Luxury Spa Sites', price: '$95.99', note: 'per night', img: '/images/Jacuzzi/IMG_7205.jpeg', badge: 'ULTIMATE',
+    features: ['Private hot tub spa!', 'Cement slab & gas BBQ', 'Full hook-ups included', '30/50 AMP service'] },
 ];
 
 export const CABINS: CabinCategory[] = [
   { cat: 'Cabins Sleeping 2', items: [
-    { name: 'The Martin Van Buren', num: '7', sleeps: 2, img: '/images/cabins/CabinMartinVanBuren/PhotoMainMartinVanBuren.jpeg' },
-    { name: 'The William Henry Harrison', num: '8', sleeps: 2, img: '/images/cabins/CabinWMHenryHarrison/MainPhotoWMHenryHarrison.jpeg' },
-    { name: 'The Millard Fillmore', num: '14', sleeps: 2 },
+    { name: 'The Martin Van Buren', num: '7', sleeps: 2, img: '/images/Cabins/CabinMartinVanBuren/PhotoMainMartinVanBuren.jpeg' },
+    { name: 'The William Henry Harrison', num: '8', sleeps: 2, img: '/images/Cabins/CabinWMHenryHarrison/MainPhotoWMHenryHarrison.jpeg' },
+    { name: 'The Millard Fillmore', num: '14', sleeps: 2, img: '/images/Cabins/CabinMartinVanBuren/PhotoMainMartinVanBuren.jpeg' },
   ]},
   { cat: 'Cabins Sleeping 4', items: [
-    { name: 'Standard Cabins', num: '1,4,5,17-20', sleeps: 4 },
-    { name: 'The James Madison', num: '6', sleeps: 4, img: '/images/cabins/CabinTheJamesMadison/PhotoMainTheJamesMadison.jpeg' },
-    { name: 'The John Adams', num: '12', sleeps: 4 },
+    { name: 'Standard Cabins', num: '1,4,5,17-20', sleeps: 4, img: '/images/Cabins/CabinTheJamesMadison/PhotoMainTheJamesMadison.jpeg' },
+    { name: 'The James Madison', num: '6', sleeps: 4, img: '/images/Cabins/CabinTheJamesMadison/PhotoMainTheJamesMadison.jpeg' },
+    { name: 'The John Adams', num: '12', sleeps: 4, img: '/images/Cabins/CabinJamesMonroe/PhotoMainJamesMonroe.jpeg' },
   ]},
   { cat: 'Cabins Sleeping 6', items: [
-    { name: 'John Quincy Adams', num: '9', sleeps: 6, img: '/images/cabins/CabinJohnQuincyAdams/PhotoMainJamesMonroe.jpeg' },
-    { name: 'Andrew Jackson', num: '10', sleeps: 6 },
-    { name: 'Ulysses S. Grant', num: '11', sleeps: 6, img: '/images/cabins/CabinUlyssesGrant/PhotoMainUlyssesGrant.png' },
-    { name: 'The George Washington', num: '15', sleeps: 6 },
-    { name: 'The Abe Lincoln', num: '16', sleeps: 6 },
+    { name: 'John Quincy Adams', num: '9', sleeps: 6, img: '/images/Cabins/CabinJohnQuincyAdams/PhotoMainJamesMonroe.jpeg' },
+    { name: 'Andrew Jackson', num: '10', sleeps: 6, img: '/images/Cabins/CabinTheJamesMadison/IMG_8481.jpeg' },
+    { name: 'Ulysses S. Grant', num: '11', sleeps: 6, img: '/images/Cabins/CabinUlyssesGrant/PhotoMainUlyssesGrant.png' },
+    { name: 'The George Washington', num: '15', sleeps: 6, img: '/images/Cabins/CabinTheThomasJeffersonCabinTheThomasJefferson/PhotoMainTheThomasJefferson.jpeg' },
+    { name: 'The Abe Lincoln', num: '16', sleeps: 6, img: '/images/Cabins/CabinJohnQuincyAdams/IMG_8466.jpeg' },
   ]},
   { cat: 'Cabins Sleeping 7', items: [
-    { name: 'The James Monroe', num: '2', sleeps: 7, img: '/images/cabins/CabinJamesMonroe/PhotoMainJamesMonroe.jpeg' },
-    { name: 'The Thomas Jefferson', num: '3', sleeps: 7, img: '/images/cabins/CabinTheThomasJeffersonCabinTheThomasJefferson/PhotoMainTheThomasJefferson.jpeg' },
+    { name: 'The James Monroe', num: '2', sleeps: 7, img: '/images/Cabins/CabinJamesMonroe/PhotoMainJamesMonroe.jpeg' },
+    { name: 'The Thomas Jefferson', num: '3', sleeps: 7, img: '/images/Cabins/CabinTheThomasJeffersonCabinTheThomasJefferson/PhotoMainTheThomasJefferson.jpeg' },
   ]},
   { cat: 'Cabins Sleeping 10', items: [
-    { name: 'John F. Kennedy', num: '21', sleeps: 10 },
+    { name: 'John F. Kennedy', num: '21', sleeps: 10, img: '/images/Cabins/CabinUlyssesGrant/PhotoMainUlyssesGrant.png' },
   ]},
 ];
 
@@ -189,7 +190,7 @@ export const ATTRACTIONS: Attraction[] = [
     category: 'history',
     distance: '12 mi',
     driveTime: '~15 min',
-    heroImage: '/images/cabin-9_800.jpg',
+    heroImage: '/images/Cabins/CabinJamesMonroe/PhotoMainJamesMonroe.jpeg',
     description: '80+ gaming halls, Adams Museum, Homestake Gold Mine. Wild West history lives here.',
     longDescription: 'Historic Deadwood is a legendary Wild West town with 80+ gaming halls, world-class restaurants, and rich gold rush history. Walk the same streets as Wild Bill Hickok and Calamity Jane. Tour the Adams Museum, pan for gold at Broken Boot, and experience the Trial of Jack McCall reenactment. The Homestake Gold Mine tour takes you deep into mining heritage.',
     highlights: ['80+ gaming halls & casinos', 'Adams Museum', 'Gold panning at Broken Boot', 'Trial of Jack McCall show', 'Mt. Moriah Cemetery'],
@@ -202,7 +203,7 @@ export const ATTRACTIONS: Attraction[] = [
     category: 'nature',
     distance: '70 mi',
     driveTime: '~1.5 hours',
-    heroImage: '/images/Wooded-Tent-Area.webp',
+    heroImage: '/images/Wooded-Tent-Area.png',
     description: '71,000 acres of buffalo herds, Needles Highway, and world-class hiking.',
     longDescription: 'Custer State Park encompasses 71,000 acres of spectacular wildlife, scenic drives, and outdoor adventure. Home to one of the world\'s largest publicly-owned buffalo herds (~1,300 head), the park features the iconic Needles Highway, Sylvan Lake, Cathedral Spires, and the Wildlife Loop Road where you\'ll encounter buffalo, pronghorn, wild burros, and more.',
     highlights: ['Wildlife Loop Road safari', 'Needles Highway drive', 'Sylvan Lake swimming', 'Cathedral Spires hike', 'Annual Buffalo Roundup'],
@@ -216,7 +217,7 @@ export const ATTRACTIONS: Attraction[] = [
     category: 'nature',
     distance: '25 mi',
     driveTime: '~30 min',
-    heroImage: '/images/rv-camper-van.jpg',
+    heroImage: '/images/rv-camper-van.png',
     description: 'Bridal Veil Falls, Roughlock Falls, world-class fly fishing on Spearfish Creek.',
     longDescription: 'Spearfish Canyon is one of the Black Hills\' most spectacular natural wonders. The 20-mile scenic byway winds through towering limestone cliffs adorned with spruce, birch, and aspen. Stop at Bridal Veil Falls and Roughlock Falls for easy waterfall hikes, try your hand at fly fishing on pristine Spearfish Creek, or simply enjoy one of America\'s most beautiful drives — especially stunning during fall foliage season.',
     highlights: ['Bridal Veil Falls', 'Roughlock Falls', 'Fly fishing on Spearfish Creek', '20-mile scenic byway', 'Fall foliage spectacle'],
@@ -242,7 +243,7 @@ export const ATTRACTIONS: Attraction[] = [
     category: 'routes',
     distance: 'All around',
     driveTime: 'Multi-day',
-    heroImage: '/images/Wooded-Tent-Area.webp',
+    heroImage: '/images/Wooded-Tent-Area.png',
     description: 'Complete 6-day itinerary covering every major attraction in the Black Hills region.',
     longDescription: 'The Black Hills of South Dakota offer one of America\'s greatest outdoor destinations. From the iconic presidential faces of Mount Rushmore to the Wild West streets of Deadwood, from the wildlife of Custer State Park to the waterfalls of Spearfish Canyon — there\'s enough to fill weeks of adventure. Our curated 6-day itinerary covers all the highlights with Rush No More as your perfect home base.',
     highlights: ['6-day curated itinerary', 'Mount Rushmore & Crazy Horse', 'Deadwood & gold country', 'Custer State Park wildlife', 'Spearfish Canyon waterfalls'],
@@ -255,7 +256,7 @@ export const ATTRACTIONS: Attraction[] = [
     category: 'routes',
     distance: '65 mi',
     driveTime: '~1.5 hours',
-    heroImage: '/images/cabin-9_800.jpg',
+    heroImage: '/images/GeneralImagesPark/IMG_7383.jpeg',
     description: 'Dramatic granite spires, narrow tunnels, and the famous Needles Eye on Highway 87.',
     longDescription: 'Needles Highway (SD-87) is one of America\'s most thrilling scenic drives. Wind through dramatic granite spires, narrow one-lane tunnels carved through solid rock, and hairpin curves with breathtaking views. The iconic Needles Eye — a narrow slit in a towering granite spire — is the signature landmark. Combined with Iron Mountain Road, it creates an unforgettable driving loop.',
     highlights: ['Needles Eye formation', 'Narrow granite tunnels', 'Cathedral Spires trailhead', 'Iron Mountain Road loop', 'Sylvan Lake access'],
@@ -268,7 +269,7 @@ export const ATTRACTIONS: Attraction[] = [
     category: 'events',
     distance: '5 mi',
     driveTime: '~7 min',
-    heroImage: '/images/rv-camper-van.jpg',
+    heroImage: '/images/BikeRally/IMG_9865.JPG',
     description: '500,000+ riders descend on Sturgis every August. Rush No More is your rally HQ.',
     longDescription: 'The Sturgis Motorcycle Rally is the world\'s largest motorcycle event, attracting over 500,000 riders every August since 1938. Rush No More has been a premier rally headquarters for over a decade, offering the perfect balance of proximity (just 5 miles from Main Street) and peaceful retreat. Live music, vendor markets, legendary rides, and camaraderie make this a bucket-list event.',
     highlights: ['500,000+ riders annually', 'Live music & entertainment', 'Main Street Sturgis action', 'Legendary scenic rides', 'Vendor markets & shows'],
@@ -335,9 +336,10 @@ export const ITINERARY: ItineraryDay[] = [
 ];
 
 export const RALLY_RV: RallyRV[] = [
-  { name: 'Full Hook-up Site', rally: '$1,450', pre: '$850', features: ['Water, Sewer, Electric', '30/50 AMP Service', 'Pull-through or Back-in'] },
-  { name: 'VIP Luxury Site', rally: '$1,995', pre: '$1,500', features: ['Mountain Valley Section', 'Private Patio', 'Gas BBQ Grill', 'Full Hook-ups'], popular: true },
-  { name: 'Presidential Spa Site', rally: '$2,500', pre: '$1,700', features: ['Private Hot Tub Spa!', 'Private Patio & BBQ', 'Full Hook-ups'] },
+  { name: 'Standard Hook-up Site (30A)', rally: '$899', pre: '$399', features: ['Water, Sewer, Electric', '30 AMP Service', 'Pull-through or Back-in'] },
+  { name: 'Standard Hook-up Site (50A)', rally: '$999', pre: '$449', features: ['Water, Sewer, Electric', '50 AMP Service', 'Pull-through or Back-in'] },
+  { name: 'Luxury Site', rally: '$1,499', pre: '$650', features: ['Mountain Valley Section', 'Cement Slab & Gas BBQ', 'Full Hook-ups', '50 AMP Service'], popular: true },
+  { name: 'Luxury Spa Site', rally: '$2,499', pre: '$999', features: ['Private Hot Tub Spa!', 'Cement Slab & Gas BBQ', 'Full Hook-ups', '50 AMP Service'] },
 ];
 
 export const REVIEWS: Review[] = [
@@ -358,11 +360,11 @@ export const STATS: Stat[] = [
 
 export const GALLERY_IMAGES = [
   { src: '/images/DSC05580-s.png', alt: 'Aerial view of Rush No More RV Resort' },
-  { src: '/images/cabin-9_800.jpg', alt: 'Presidential Cabin at Rush No More' },
-  { src: '/images/rv-camper-van.jpg', alt: 'Premium RV sites with mountain views' },
-  { src: '/images/Wooded-Tent-Area.webp', alt: 'Shaded tent camping under Ponderosa Pines' },
-  { src: '/images/Aereal-2_1400.jpg', alt: 'Full resort aerial view' },
-  { src: '/images/vip-site.jpg', alt: 'VIP Deluxe site with private patio' },
-  { src: '/images/presidential-spa.jpg', alt: 'Presidential Spa site with hot tub' },
+  { src: '/images/Cabins/CabinJamesMonroe/PhotoMainJamesMonroe.jpeg', alt: 'Presidential Cabin at Rush No More' },
+  { src: '/images/rv-camper-van.png', alt: 'Premium RV sites with mountain views' },
+  { src: '/images/Wooded-Tent-Area.png', alt: 'Shaded tent camping under Ponderosa Pines' },
+  { src: '/images/Aereal-2_1400.png', alt: 'Full resort aerial view' },
+  { src: '/images/vip-site.png', alt: 'Luxury site with cement slab' },
+  { src: '/images/Jacuzzi/IMG_7205.jpeg', alt: 'Luxury Spa site with hot tub' },
   { src: '/images/RushNoMoreMap.jpg', alt: 'Campground map overview' },
 ];

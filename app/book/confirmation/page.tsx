@@ -29,9 +29,9 @@ interface ReservationData {
 }
 
 const PROPERTY_IMAGES: Record<string, string> = {
-  cabin: '/images/cabin-9_800.jpg',
-  rv: '/images/rv-camper-van.jpg',
-  tent: '/images/Wooded-Tent-Area.webp',
+  cabin: '/images/Cabins/CabinJamesMonroe/PhotoMainJamesMonroe.jpeg',
+  rv: '/images/rv-camper-van.png',
+  tent: '/images/Wooded-Tent-Area.png',
 };
 
 export default function ConfirmationPage() {

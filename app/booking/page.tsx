@@ -48,7 +48,7 @@ interface PriceBreakdown {
 const ease = [0.16, 1, 0.3, 1];
 
 const TYPES = [
-  { id: 'cabin' as PropertyType, label: 'Cabins', icon: Home, price: 'From $95/night', desc: '16 Presidential Cabins, 2-10 guests', img: '/images/cabin-9_800.png' },
+  { id: 'cabin' as PropertyType, label: 'Cabins', icon: Home, price: 'From $95/night', desc: '16 Presidential Cabins, 2-10 guests', img: '/images/Cabins/CabinJamesMonroe/PhotoMainJamesMonroe.jpeg' },
   { id: 'rv' as PropertyType, label: 'RV Sites', icon: Truck, price: 'From $53.99/night', desc: 'Full hookups, 30/50 AMP, pull-thru', img: '/images/rv-camper-van.png' },
   { id: 'tent' as PropertyType, label: 'Tent Camping', icon: Tent, price: 'From $35/night', desc: 'Shaded sites under Ponderosa Pines', img: '/images/Wooded-Tent-Area.png' },
 ];
@@ -72,21 +72,21 @@ const CATEGORY_LABELS: Record<string, string> = {
   'cabin-luxury': 'Luxury Cabin',
   'rv-standard-30': '30 AMP Standard',
   'rv-standard-50': '50 AMP Standard',
-  'rv-vip': 'VIP Deluxe',
-  'rv-presidential': 'Presidential Spa',
+  'rv-luxury': 'Luxury',
+  'rv-presidential': 'Luxury Spa',
   'tent-basic': 'Basic Tent Site',
   'tent-electric': 'Electric Tent Site',
 };
 
 const CATEGORY_IMAGES: Record<string, string> = {
-  'cabin-economy': '/images/cabin-9_800.png',
-  'cabin-standard': '/images/cabin-9_800.png',
-  'cabin-family': '/images/RushMore-cabins.png',
-  'cabin-luxury': '/images/RushMore-cabins.png',
+  'cabin-economy': '/images/Cabins/CabinJamesMonroe/PhotoMainJamesMonroe.jpeg',
+  'cabin-standard': '/images/Cabins/CabinTheJamesMadison/PhotoMainTheJamesMadison.jpeg',
+  'cabin-family': '/images/Cabins/CabinTheThomasJeffersonCabinTheThomasJefferson/PhotoMainTheThomasJefferson.jpeg',
+  'cabin-luxury': '/images/Cabins/CabinUlyssesGrant/PhotoMainUlyssesGrant.png',
   'rv-standard-30': '/images/rv-camper-van.png',
   'rv-standard-50': '/images/rv-camper-van.png',
-  'rv-vip': '/images/vip-site.png',
-  'rv-presidential': '/images/presidential-spa.png',
+  'rv-luxury': '/images/vip-site.png',
+  'rv-presidential': '/images/Jacuzzi/IMG_7205.jpeg',
   'tent-basic': '/images/Wooded-Tent-Area.png',
   'tent-electric': '/images/Wooded-Tent-Area.png',
 };

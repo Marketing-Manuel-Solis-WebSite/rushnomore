@@ -323,9 +323,9 @@ export default function EventsPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
-              { icon: Truck, title: 'RV Sites', price: 'From $53.99', sub: 'per night · Full hookups', img: '/images/GeneralImagesPark/IMG_7382.jpeg', href: '/stay', features: ['30/50 AMP Service', 'Pull-Through up to 100ft', 'Private Patios (VIP)', 'Hot Tub (Presidential)'] },
-              { icon: Home, title: 'Presidential Cabins', price: 'From $95', sub: 'per night · 16 unique cabins', img: '/images/GeneralImagesPark/IMG_7316.jpeg', href: '/stay', features: ['Sleeps 2-10 Guests', 'Full Kitchens', 'A/C & Heating', 'Private Bathrooms'] },
-              { icon: Tent, title: 'Tent Camping', price: 'From $35', sub: 'per night · Best value', img: '/images/CommonAreas/IMG_7435.jpeg', href: '/stay', features: ['Shaded Pine Forest', 'Fire Pits at Each Site', 'Water Hookups', 'Bathhouse Access'] },
+              { icon: Truck, title: 'RV Sites', price: 'From $53.99', sub: 'per night · Full hookups', img: '/images/GeneralImagesPark/IMG_7382.jpeg', href: '/stay', features: ['30/50 AMP Service', 'Pull-Through up to 100ft', 'Cement Slabs (Luxury)', 'Hot Tub (Luxury Spa)'] },
+              { icon: Home, title: 'Presidential Cabins', price: 'From $95', sub: 'per night · 16 unique cabins', img: '/images/Cabins/CabinJamesMonroe/PhotoMainJamesMonroe.jpeg', href: '/stay', features: ['Sleeps 2-10 Guests', 'Full Kitchens', 'A/C & Heating', 'Private Bathrooms'] },
+              { icon: Tent, title: 'Tent Camping', price: 'From $35', sub: 'per night · Best value', img: '/images/Wooded-Tent-Area.png', href: '/stay', features: ['Shaded Pine Forest', '15 Sites with Electric', 'Water Hookups', 'Bathhouse Access'] },
             ].map((item, i) => {
               const Icon = item.icon;
               return (
@@ -396,7 +396,7 @@ export default function EventsPage() {
             <div className="w-32 h-1.5 bg-gold-gradient rounded-full mt-5 mx-auto" />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
             {RALLY_RV.map((r, i) => (
               <motion.div
                 key={i}
@@ -553,8 +553,8 @@ export default function EventsPage() {
               <div className="space-y-3 pt-8">
                 <div className="aspect-square rounded-2xl overflow-hidden shadow-lodge-lg group border border-white/10 relative">
                   <Image
-                    src="/images/BikeRally/IMG_9869.JPG"
-                    alt="Bikes on display at Rush No More"
+                    src="/images/EventCenter/IMG_7773.jpeg"
+                    alt="Event area at Rush No More car show"
                     fill
                     className="object-cover transition-transform duration-700 group-hover:scale-110"
                     sizes="(max-width: 1024px) 50vw, 25vw"
@@ -716,7 +716,7 @@ export default function EventsPage() {
             {[
               { img: '/images/GeneralImagesPark/IMG_7379.jpeg', label: 'Resort Overview', span: 'col-span-2 row-span-2', aspect: 'aspect-square' },
               { img: '/images/EventCenter/IMG_7644.jpeg', label: 'Event Pavilion', span: '', aspect: 'aspect-[4/3]' },
-              { img: '/images/BikeRally/IMG_9866.JPG', label: 'Rally Season', span: '', aspect: 'aspect-[4/3]' },
+              { img: '/images/EventCenter/IMG_7514.jpeg', label: 'Event Space', span: '', aspect: 'aspect-[4/3]' },
               { img: '/images/BeerGarden/IMG_7364.jpeg', label: 'Beer Garden', span: '', aspect: 'aspect-[4/3]' },
               { img: '/images/PeoplePlaying/IMG_7608.jpeg', label: 'Fun & Community', span: '', aspect: 'aspect-[4/3]' },
               { img: '/images/Pool/PoolWithPeople.jpeg', label: 'Pool & Hot Tubs', span: 'col-span-2', aspect: 'aspect-[21/9]' },

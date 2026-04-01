@@ -4,7 +4,7 @@
 export type PropertyType = 'cabin' | 'rv' | 'tent';
 export type PropertyCategory =
   | 'cabin-economy' | 'cabin-standard' | 'cabin-family' | 'cabin-luxury'
-  | 'rv-standard-30' | 'rv-standard-50' | 'rv-vip' | 'rv-presidential'
+  | 'rv-standard-30' | 'rv-standard-50' | 'rv-luxury' | 'rv-presidential'
   | 'tent-basic' | 'tent-electric';
 
 export type PropertyStatus = 'active' | 'maintenance' | 'inactive';

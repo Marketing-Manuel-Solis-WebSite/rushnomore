@@ -24,7 +24,7 @@ const PROPERTY_FEATURES = [
   'Designated accessible RV and camping sites',
   'Assistance available at check-in for mobility needs',
   'Service animals welcome throughout the property',
-  'Level concrete pads at VIP and Presidential sites',
+  'Level cement slabs at Luxury and Luxury Spa sites',
 ];
 
 export default function ADAPage() {

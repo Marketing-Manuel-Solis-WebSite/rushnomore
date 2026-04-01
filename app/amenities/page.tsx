@@ -15,13 +15,13 @@ import {
   Flame, Gamepad2, BookOpen, TreePine, Store, Utensils, Cable, ShieldCheck,
   Users, Tent, Home, Truck, CheckCircle, Sparkles, Sun, Moon,
   Music, Camera, Mountain, Quote, ChevronDown,
-  Clock
+  Clock, Coffee
 } from 'lucide-react';
 
 /* ─── Icon Map ─── */
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   Beer, Waves, ShowerHead, WashingMachine, Wifi, PawPrint, Bike, Fuel,
-  Flame, Gamepad2, BookOpen, TreePine, Store, Utensils, Cable, ShieldCheck,
+  Flame, Gamepad2, BookOpen, TreePine, Store, Utensils, Cable, ShieldCheck, Coffee,
 };
 
 /* ─── Featured Amenities with extended info ─── */
@@ -45,13 +45,13 @@ const FEATURED_AMENITIES = [
     image: '/images/BeerGarden/IMG_7326.jpeg',
   },
   {
-    icon: Flame,
-    title: 'Fire Pits & Gathering Areas',
-    tagline: 'S\'mores, stories, and stargazing',
-    description: 'Nothing says camping like gathering around a crackling fire under the Black Hills sky. Every site has access to fire pits where families roast marshmallows, friends share stories, and couples enjoy the quiet of a mountain evening. Our communal fire areas are perfect for meeting fellow campers.',
-    features: ['Fire pits at every site', 'Communal gathering areas', 'Firewood available for purchase', 'Perfect for s\'mores', 'Stargazing spots'],
-    hours: 'Available 24/7 · Quiet hours after 10 PM',
-    image: '/images/CommonAreas/IMG_7435.jpeg',
+    icon: Utensils,
+    title: 'Cafe',
+    tagline: 'Fresh food on weekends & Rally',
+    description: 'Our on-site Cafe serves up fresh food and drinks every weekend and throughout the full 10 days of Rally. A perfect spot to grab breakfast before heading out to explore the Black Hills, or a quick lunch between adventures. Enjoy indoor or outdoor seating with views of the resort grounds.',
+    features: ['Open weekends year-round', 'Open all 10 days of Rally', 'Breakfast & lunch options', 'Indoor & outdoor seating', 'Fresh coffee & drinks'],
+    hours: 'Weekends & Rally: 7 AM – 2 PM',
+    image: '/images/Cafe&SnackBar/IMG_7627.jpeg',
   },
   {
     icon: Gamepad2,
@@ -74,7 +74,7 @@ const AMENITY_GRID = [
   { icon: PawPrint, title: 'Pet Friendly', desc: 'Bring your furry family members — dog run included', tag: 'Paws Welcome' },
   { icon: Bike, title: 'Bike Wash Station', desc: 'Professional-grade wash station for motorcycles & bikes', tag: 'Riders Love' },
   { icon: Fuel, title: 'Propane Sales', desc: 'Convenient on-site propane refill and exchange', tag: '' },
-  { icon: Flame, title: 'Fire Pits', desc: 'Campfire rings at every site — firewood available', tag: '' },
+  { icon: Utensils, title: 'Cafe', desc: 'Open weekends & all 10 days of Rally', tag: '' },
   { icon: Gamepad2, title: 'Game Room', desc: 'Arcade games, pool tables, and board games', tag: '' },
   { icon: BookOpen, title: 'Camp Library', desc: 'Take a book, leave a book — quiet reading corner', tag: '' },
   { icon: TreePine, title: 'Nature Trails', desc: 'Miles of walking and hiking trails through pine forest', tag: '' },
@@ -91,7 +91,7 @@ const TIMELINE = [
   { time: '10:00 AM', icon: Mountain, title: 'Explore the Black Hills', desc: 'Head out to Mount Rushmore, Deadwood, or Custer State Park — all an easy drive.' },
   { time: '2:00 PM', icon: TreePine, title: 'Trail Time', desc: 'Hike our nature trails through Ponderosa pines and discover hidden views.' },
   { time: '4:00 PM', icon: Beer, title: 'Beer Garden O\'Clock', desc: 'Kick back with a cold craft beer and swap stories with fellow campers.' },
-  { time: '6:00 PM', icon: Flame, title: 'Fire Pit Dinner', desc: 'Grill at your site or use our picnic pavilions for a family cookout.' },
+  { time: '6:00 PM', icon: Utensils, title: 'Cookout Time', desc: 'Grill with propane or charcoal at your site, or use our picnic pavilions for a family cookout.' },
   { time: '8:00 PM', icon: Gamepad2, title: 'Game Room Fun', desc: 'Challenge the family to arcade games and pool while the kids go wild.' },
   { time: '9:30 PM', icon: Moon, title: 'Stargazing Soak', desc: 'Slip into the hot tub and watch a million stars appear over the Black Hills.' },
 ];
@@ -454,7 +454,7 @@ export default function AmenitiesPage() {
               See It for <span className="text-brand-gold italic">Yourself</span>
             </h2>
             <p className="text-brand-navy/70 text-lg max-w-2xl mx-auto font-medium">
-              A glimpse into the Rush No More experience — from poolside relaxation to fireside conversations.
+              A glimpse into the Rush No More experience — from poolside relaxation to mountain evenings.
             </p>
             <div className="w-32 h-1.5 bg-gold-gradient rounded-full mt-5 mx-auto" />
           </div>
@@ -645,9 +645,9 @@ export default function AmenitiesPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
-              { icon: Truck, title: 'RV Sites', price: 'From $53.99', sub: 'per night · Full hookups', img: '/images/GeneralImagesPark/IMG_7381.jpeg', href: '/stay/rv-sites', features: ['30/50 AMP Service', 'Pull-Through up to 100ft', 'Private Patios (VIP)', 'Hot Tub (Presidential)'] },
-              { icon: Home, title: 'Presidential Cabins', price: 'From $95', sub: 'per night · 16 unique cabins', img: '/images/GeneralImagesPark/IMG_7316.jpeg', href: '/stay/cabins', features: ['Sleeps 2-10 Guests', 'Full Kitchens', 'A/C & Heating', 'Private Bathrooms'] },
-              { icon: Tent, title: 'Tent Camping', price: 'From $35', sub: 'per night · Best value', img: '/images/CommonAreas/IMG_8211.jpeg', href: '/stay/tent-camping', features: ['Shaded Pine Forest', 'Fire Pits at Each Site', 'Water Hookups', 'Bathhouse Access'] },
+              { icon: Truck, title: 'RV Sites', price: 'From $53.99', sub: 'per night · Full hookups', img: '/images/GeneralImagesPark/IMG_7381.jpeg', href: '/stay/rv-sites', features: ['30/50 AMP Service', 'Pull-Through up to 100ft', 'Cement Slabs (Luxury)', 'Hot Tub (Luxury Spa)'] },
+              { icon: Home, title: 'Presidential Cabins', price: 'From $95', sub: 'per night · 16 unique cabins', img: '/images/Cabins/CabinJamesMonroe/PhotoMainJamesMonroe.jpeg', href: '/stay/cabins', features: ['Sleeps 2-10 Guests', 'Full Kitchens', 'A/C & Heating', 'Private Bathrooms'] },
+              { icon: Tent, title: 'Tent Camping', price: 'From $35', sub: 'per night · Best value', img: '/images/Wooded-Tent-Area.png', href: '/stay/tent-camping', features: ['Shaded Pine Forest', '15 Sites with Electric', 'Water Hookups', 'Bathhouse Access'] },
             ].map((item, i) => {
               const Icon = item.icon;
               return (

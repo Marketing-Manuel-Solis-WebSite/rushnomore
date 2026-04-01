@@ -44,9 +44,9 @@ const STATUS_CONFIG: Record<string, { label: string; color: string; bg: string }
 };
 
 const PROPERTY_IMAGES: Record<string, string> = {
-  cabin: '/images/cabin-9_800.jpg',
-  rv: '/images/rv-camper-van.jpg',
-  tent: '/images/Wooded-Tent-Area.webp',
+  cabin: '/images/Cabins/CabinJamesMonroe/PhotoMainJamesMonroe.jpeg',
+  rv: '/images/rv-camper-van.png',
+  tent: '/images/Wooded-Tent-Area.png',
 };
 
 const CANCELLATION_LABELS: Record<string, string> = {

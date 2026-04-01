@@ -21,8 +21,8 @@ const FAQS = [
   { q: 'What is your cancellation policy?', a: 'RV & Tent sites: 14+ days = full refund minus $25; 7-14 days = 50%; less than 7 days = no refund. Cabins: 30+ days = full refund minus $25. Holiday and Rally reservations are non-refundable.' },
   { q: 'Do you allow pets?', a: 'Yes! We are a pet-friendly resort. Dogs are welcome on leash throughout the park. We ask that you clean up after your pets and keep them quiet during quiet hours.' },
   { q: 'How far are you from Mount Rushmore?', a: 'About 55 miles — roughly a scenic 1-hour drive through the beautiful Black Hills. We are just 5 miles from Sturgis and 12 miles from Deadwood.' },
-  { q: 'What hookups do RV sites include?', a: 'All RV sites include full hookups: water, electric (30 or 50 AMP), and sewer. VIP and Presidential Spa sites add private patios, gas BBQ grills, and private hot tubs.' },
-  { q: 'Are you open year-round?', a: 'Standard RV sites are open year-round. VIP Luxury and Presidential Spa sites, as well as the pool and hot tubs, are seasonal (May 1 – October 1).' },
+  { q: 'What hookups do RV sites include?', a: 'All RV sites include full hookups: water, electric (30 or 50 AMP), and sewer. Luxury and Luxury Spa sites add cement slabs, gas BBQ grills, and private hot tubs.' },
+  { q: 'Are you open year-round?', a: 'Standard RV sites are open year-round. Luxury and Luxury Spa sites, as well as the pool and hot tubs, are seasonal (May 1 – October 1).' },
 ];
 
 export default function ContactPage() {

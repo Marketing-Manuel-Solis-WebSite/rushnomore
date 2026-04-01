@@ -171,7 +171,7 @@ export function getCancellationPolicy(
   }
   if (
     property.type === 'cabin' ||
-    property.category === 'rv-vip' ||
+    property.category === 'rv-luxury' ||
     property.category === 'rv-presidential'
   ) {
     return 'luxury-cabin';

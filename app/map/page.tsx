@@ -28,7 +28,7 @@ const AREAS = [
   {
     icon: Truck,
     title: 'RV Sites',
-    desc: 'Full hookup sites with 30/50 AMP, pull-throughs up to 100 ft. Standard, VIP Deluxe with patio & BBQ, and Presidential Spa with private hot tub.',
+    desc: 'Full hookup sites with 30/50 AMP, pull-throughs up to 100 ft. Standard, Luxury with cement slab & BBQ, and Luxury Spa with private hot tub.',
     price: 'From $53.99',
     href: '/stay/rv-sites',
     features: ['Full Hook-ups (W/E/S)', '30 & 50 AMP Service', 'Pull-Through up to 100ft', 'Private Hot Tub (Spa)'],
@@ -44,10 +44,10 @@ const AREAS = [
   {
     icon: Tent,
     title: 'Tent Camping',
-    desc: 'Shaded sites under Ponderosa pines with fire pits, water hookups nearby, and full access to all resort amenities including pool & hot tubs.',
+    desc: 'Shaded sites under Ponderosa pines with water hookups nearby, and full access to all resort amenities including pool & hot tubs. 15 of 20 sites have electricity.',
     price: 'From $35',
     href: '/stay/tent-camping',
-    features: ['Shaded Pine Forest', 'Fire Pits at Each Site', 'Water Hookups Nearby', 'Bathhouse Access'],
+    features: ['Shaded Pine Forest', '15 Sites with Electric', 'Water Hookups Nearby', 'Bathhouse Access'],
   },
   {
     icon: Beer,

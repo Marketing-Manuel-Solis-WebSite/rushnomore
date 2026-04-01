@@ -30,10 +30,10 @@ const TABS = [
    RV SITE FAQS
 ═══════════════════════════════════════════════════════════════ */
 const RV_FAQS = [
-  { q: 'What hookups do RV sites include?', a: 'All sites include water, electric (30/50 AMP), and sewer. VIP and Presidential add private patios and gas BBQ grills.' },
+  { q: 'What hookups do RV sites include?', a: 'All sites include water, electric (30/50 AMP), and sewer. Luxury and Luxury Spa sites add cement slabs and gas BBQ grills.' },
   { q: 'How long can my RV be?', a: 'We accommodate RVs up to 100 feet with pull-through and back-in options.' },
-  { q: 'What is the difference between VIP and Presidential?', a: 'Both have patios + BBQ. Presidential adds a private hot tub spa — the ultimate RV glamping experience.' },
-  { q: 'Are you open year-round?', a: 'Standard sites are open year-round. VIP Luxury & Presidential Spa sites are seasonal (May 1 – October 1).' },
+  { q: 'What is the difference between Luxury and Luxury Spa?', a: 'Both have cement slabs + BBQ. Luxury Spa adds a private hot tub spa — the ultimate RV glamping experience.' },
+  { q: 'Are you open year-round?', a: 'Standard sites are open year-round. Luxury & Luxury Spa sites are seasonal (May 1 – October 1).' },
 ];
 
 /* ═══════════════════════════════════════════════════════════════
@@ -52,9 +52,9 @@ const CABIN_FEATURES = [
   'Full kitchens in select cabins',
   'A/C and heating in every cabin',
   'Private bathrooms',
-  'Outdoor fire pits',
   'Pet-friendly options',
-  'Seasonal: open year-round',
+  'Open year-round',
+  'Propane campfire rentals available',
 ];
 
 /* ═══════════════════════════════════════════════════════════════
@@ -62,10 +62,10 @@ const CABIN_FEATURES = [
 ═══════════════════════════════════════════════════════════════ */
 const TENT_FEATURES = [
   { icon: TreePine, title: 'Shaded Pine Forest', desc: 'Spacious, level sites nestled under towering Ponderosa pines.' },
-  { icon: Flame, title: 'Fire Pits at Every Site', desc: 'Gather around crackling campfires under the Black Hills stars.' },
+  { icon: Zap, title: '15 Sites with Electricity', desc: '15 of our 20 tent sites include 20 AMP electric hookups.' },
   { icon: Waves, title: 'Full Amenity Access', desc: 'Pool, hot tubs, beer garden, game room — all included with tent sites.' },
   { icon: ShowerHead, title: 'Clean Bathhouses', desc: 'Modern, spotless shower and restroom facilities nearby.' },
-  { icon: Cable, title: 'Electric Hookup Option', desc: 'Add electric hookup for just $5/night for extra convenience.' },
+  { icon: Cable, title: 'Propane Campfire Rentals', desc: 'Rent a propane campfire for your site. No wood fires allowed.' },
   { icon: ShieldCheck, title: '24/7 Security', desc: 'Gated entry, patrol, and well-lit grounds for your peace of mind.' },
 ];
 
@@ -353,7 +353,7 @@ export default function StayPage() {
             </div>
 
             <div className="bg-brand-gold/10 border border-brand-gold/20 rounded-xl p-4 mt-8 text-center text-sm text-brand-navy/80 font-medium">
-              <strong>Seasonal Notice:</strong> VIP Luxury & Presidential Spa sites are seasonal — May 1 through October 1. Standard RV sites are open year-round.
+              <strong>Seasonal Notice:</strong> Luxury & Luxury Spa sites are seasonal — May 1 through October 1. Standard RV sites are open year-round.
             </div>
           </div>
         </div>
@@ -477,7 +477,7 @@ export default function StayPage() {
             className="absolute inset-0 w-full h-full object-cover"
             src="/videos/rushnomore-cabins.mp4"
             autoPlay muted loop playsInline preload="auto"
-            poster="/images/RushMore-cabins.png"
+            poster="/images/Cabins/CabinJamesMonroe/PhotoMainJamesMonroe.jpeg"
           />
           <div className="absolute inset-0 bg-brand-navy/80" />
 
@@ -539,7 +539,7 @@ export default function StayPage() {
                       transition={{ duration: 0.5, delay: i * 0.08 }}
                     >
                       <div className="aspect-[16/10] bg-surface-secondary relative overflow-hidden">
-                        <div className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style={{ backgroundImage: `url('${c.img || '/images/RushMore-cabins.png'}')` }} />
+                        <div className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style={{ backgroundImage: `url('${c.img || '/images/Cabins/CabinJamesMonroe/PhotoMainJamesMonroe.jpeg'}')` }} />
                         <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/60 to-transparent" />
                         <div className="absolute top-3 left-3">
                           <span className="bg-white/90 backdrop-blur-sm text-brand-navy text-xs font-bold px-2.5 py-1 rounded-full shadow-sm">
@@ -581,7 +581,7 @@ export default function StayPage() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div className="order-2 lg:order-1">
                 <div className="aspect-[4/5] rounded-2xl overflow-hidden shadow-lodge-lg group border-2 border-white">
-                  <div className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105" style={{ backgroundImage: "url('/images/cabin-9_800.png')" }} />
+                  <div className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105" style={{ backgroundImage: "url('/images/Cabins/CabinTheThomasJeffersonCabinTheThomasJefferson/PhotoMainTheThomasJefferson.jpeg')" }} />
                 </div>
               </div>
               <div className="order-1 lg:order-2">
@@ -620,7 +620,7 @@ export default function StayPage() {
             className="absolute inset-0 w-full h-full object-cover"
             src="/videos/rushnomore-tent.mp4"
             autoPlay muted loop playsInline preload="auto"
-            poster="/images/RushMore-camping.png"
+            poster="/images/Wooded-Tent-Area.png"
           />
           <div className="absolute inset-0 bg-brand-navy/80" />
 
@@ -754,7 +754,7 @@ export default function StayPage() {
                 <div className="grid grid-cols-2 gap-3 mb-8">
                   {[
                     { icon: TreePine, text: 'Shaded pine forest' },
-                    { icon: Flame, text: 'Campfire rings' },
+                    { icon: Zap, text: '15 sites with electric' },
                     { icon: Waves, text: 'Pool & hot tubs' },
                     { icon: Beer, text: 'Beer garden' },
                     { icon: ShowerHead, text: 'Modern bathhouses' },
