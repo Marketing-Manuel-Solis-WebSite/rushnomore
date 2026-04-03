@@ -255,7 +255,7 @@ export default function StayPage() {
           <video
             ref={rvVideoRef}
             className="absolute inset-0 w-full h-full object-cover"
-            src="/videos/rushnomore-rv.mp4"
+            src="/videos/RNM-stay.mp4"
             autoPlay muted loop playsInline preload="auto"
             poster="/images/RushMore-rv-camper-van.png"
           />
@@ -475,7 +475,7 @@ export default function StayPage() {
           <video
             ref={cabinsVideoRef}
             className="absolute inset-0 w-full h-full object-cover"
-            src="/videos/rushnomore-cabins.mp4"
+            src="/videos/RNM-stay.mp4"
             autoPlay muted loop playsInline preload="auto"
             poster="/images/Cabins/CabinJamesMonroe/PhotoMainJamesMonroe.jpeg"
           />
@@ -539,7 +539,7 @@ export default function StayPage() {
                       transition={{ duration: 0.5, delay: i * 0.08 }}
                     >
                       <div className="aspect-[16/10] bg-surface-secondary relative overflow-hidden">
-                        <div className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style={{ backgroundImage: `url('${c.img || '/images/Cabins/CabinJamesMonroe/PhotoMainJamesMonroe.jpeg'}')` }} />
+                        {c.img && <div className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style={{ backgroundImage: `url('${c.img}')` }} />}
                         <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/60 to-transparent" />
                         <div className="absolute top-3 left-3">
                           <span className="bg-white/90 backdrop-blur-sm text-brand-navy text-xs font-bold px-2.5 py-1 rounded-full shadow-sm">
@@ -618,7 +618,7 @@ export default function StayPage() {
           <video
             ref={tentVideoRef}
             className="absolute inset-0 w-full h-full object-cover"
-            src="/videos/rushnomore-tent.mp4"
+            src="/videos/RNM-stay.mp4"
             autoPlay muted loop playsInline preload="auto"
             poster="/images/Wooded-Tent-Area.png"
           />

@@ -219,7 +219,7 @@ export default function MapPage() {
         <video
           ref={findVideoRef}
           className="absolute inset-0 w-full h-full object-cover"
-          src="/videos/rushnomore-find.mp4"
+          src="/videos/RNM-map.mp4"
           autoPlay
           muted
           loop

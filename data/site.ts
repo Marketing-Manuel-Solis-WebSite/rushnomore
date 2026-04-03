@@ -145,26 +145,26 @@ export const CABINS: CabinCategory[] = [
   { cat: 'Cabins Sleeping 2', items: [
     { name: 'The Martin Van Buren', num: '7', sleeps: 2, img: '/images/Cabins/CabinMartinVanBuren/PhotoMainMartinVanBuren.jpeg' },
     { name: 'The William Henry Harrison', num: '8', sleeps: 2, img: '/images/Cabins/CabinWMHenryHarrison/MainPhotoWMHenryHarrison.jpeg' },
-    { name: 'The Millard Fillmore', num: '14', sleeps: 2, img: '/images/Cabins/CabinMartinVanBuren/PhotoMainMartinVanBuren.jpeg' },
+    { name: 'The Millard Fillmore', num: '14', sleeps: 2 },
   ]},
   { cat: 'Cabins Sleeping 4', items: [
-    { name: 'Standard Cabins', num: '1,4,5,17-20', sleeps: 4, img: '/images/Cabins/CabinTheJamesMadison/PhotoMainTheJamesMadison.jpeg' },
+    { name: 'Standard Cabins', num: '1,4,5,17-20', sleeps: 4, img: '/images/Cabins/CabinStandar/Cabinstandard.jpeg' },
     { name: 'The James Madison', num: '6', sleeps: 4, img: '/images/Cabins/CabinTheJamesMadison/PhotoMainTheJamesMadison.jpeg' },
-    { name: 'The John Adams', num: '12', sleeps: 4, img: '/images/Cabins/CabinJamesMonroe/PhotoMainJamesMonroe.jpeg' },
+    { name: 'The John Adams', num: '12', sleeps: 4, img: '/images/Cabins/CabinJohnAdams/PhotoMainJohnAdams.jpeg' },
   ]},
   { cat: 'Cabins Sleeping 6', items: [
     { name: 'John Quincy Adams', num: '9', sleeps: 6, img: '/images/Cabins/CabinJohnQuincyAdams/PhotoMainJamesMonroe.jpeg' },
-    { name: 'Andrew Jackson', num: '10', sleeps: 6, img: '/images/Cabins/CabinTheJamesMadison/IMG_8481.jpeg' },
+    { name: 'Andrew Jackson', num: '10', sleeps: 6 },
     { name: 'Ulysses S. Grant', num: '11', sleeps: 6, img: '/images/Cabins/CabinUlyssesGrant/PhotoMainUlyssesGrant.png' },
-    { name: 'The George Washington', num: '15', sleeps: 6, img: '/images/Cabins/CabinTheThomasJeffersonCabinTheThomasJefferson/PhotoMainTheThomasJefferson.jpeg' },
-    { name: 'The Abe Lincoln', num: '16', sleeps: 6, img: '/images/Cabins/CabinJohnQuincyAdams/IMG_8466.jpeg' },
+    { name: 'The George Washington', num: '15', sleeps: 6 },
+    { name: 'The Abe Lincoln', num: '16', sleeps: 6 },
   ]},
   { cat: 'Cabins Sleeping 7', items: [
     { name: 'The James Monroe', num: '2', sleeps: 7, img: '/images/Cabins/CabinJamesMonroe/PhotoMainJamesMonroe.jpeg' },
     { name: 'The Thomas Jefferson', num: '3', sleeps: 7, img: '/images/Cabins/CabinTheThomasJeffersonCabinTheThomasJefferson/PhotoMainTheThomasJefferson.jpeg' },
   ]},
   { cat: 'Cabins Sleeping 10', items: [
-    { name: 'John F. Kennedy', num: '21', sleeps: 10, img: '/images/Cabins/CabinUlyssesGrant/PhotoMainUlyssesGrant.png' },
+    { name: 'John F. Kennedy', num: '21', sleeps: 10, img: '/images/Cabins/CabinJohnKennedy/PhotoMainJohnFKennedy.jpeg' },
   ]},
 ];
 
@@ -282,7 +282,7 @@ export const ATTRACTIONS: Attraction[] = [
     category: 'events',
     distance: 'On-site',
     driveTime: '0 min',
-    heroImage: '/images/DSC05580-s.png',
+    heroImage: '/images/car_show_RNM.png',
     description: 'Annual Show and Shine right here at Rush No More. Free admission with live music!',
     longDescription: 'The Dakota Rods & Classics Car Show is our annual on-site event featuring classic cars, hot rods, and custom vehicles. This free-admission Show and Shine includes live music, food vendors, our famous beer garden, and a pool party. September 12, 2026 is this year\'s date — mark your calendar!',
     highlights: ['Free admission', 'Classic cars & hot rods', 'Live music all day', 'Beer garden & food', 'Pool party'],

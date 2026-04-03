@@ -4,7 +4,7 @@ import '@/styles/globals.css';
 import { LayoutShell } from '@/components/layout/LayoutShell';
 import { ToastProvider } from '@/components/ui/Toast';
 import { JsonLd } from '@/components/seo/JsonLd';
-import { campgroundSchema } from '@/lib/seo';
+import { campgroundSchema, lodgingSchema } from '@/lib/seo';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 
@@ -14,16 +14,17 @@ const josefin = Josefin_Sans({ subsets: ['latin'], variable: '--font-josefin', d
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.rushnomore.com'),
-  title: { default: 'Rush No More — Camping & RV Park Near Mount Rushmore, Black Hills SD', template: '%s | Rush No More' },
-  description: 'Top-rated RV resort, presidential cabins & tent camping near Mount Rushmore in Sturgis, South Dakota. Heated pool, hot tubs, beer garden, game room & 16 free amenities. Sturgis Rally headquarters since 2014.',
+  title: { default: 'Rush No More — #1 RV Park & Camping Near Mount Rushmore | Sturgis, SD', template: '%s | Rush No More — Black Hills, SD' },
+  description: 'Top-rated campground near Sturgis, SD — RV sites from $53.99, presidential cabins from $95 & tent camping from $35/night. Heated pool, hot tubs, beer garden & 16 free amenities. Only 55 mi to Mount Rushmore. Sturgis Rally HQ since 2014. Book today!',
   keywords: [
-    'camping near mount rushmore', 'rv park near mount rushmore', 'cabins near mount rushmore',
-    'black hills camping', 'sturgis rally campground', 'sturgis motorcycle rally lodging',
-    'rv resort black hills', 'campground near sturgis sd', 'black hills rv park',
-    'tent camping black hills', 'cabins sturgis south dakota', 'rv park with pool south dakota',
-    'presidential cabins black hills', 'campground with beer garden', 'family camping black hills',
-    'sturgis rally rv sites', 'mount rushmore campground', 'deadwood camping nearby',
-    'black hills resort with hot tubs', 'pet friendly campground south dakota',
+    'rv park near mount rushmore', 'camping near mount rushmore', 'cabins near mount rushmore',
+    'sturgis rally campground', 'black hills camping', 'rv resort sturgis south dakota',
+    'tent camping black hills', 'campground near sturgis sd', 'campground with pool near mount rushmore',
+    'cabins sturgis south dakota', 'mount rushmore campground', 'black hills rv park',
+    'sturgis motorcycle rally lodging', 'rv park with pool south dakota',
+    'family camping black hills', 'pet friendly campground south dakota',
+    'presidential cabins black hills', 'deadwood camping nearby',
+    'campground with beer garden sturgis', 'black hills resort with hot tubs',
   ],
   robots: { index: true, follow: true },
   openGraph: {
@@ -43,6 +44,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${playfair.variable} ${sourceSans.variable} ${josefin.variable}`}>
       <head>
         <JsonLd data={campgroundSchema()} />
+        <JsonLd data={lodgingSchema()} />
         {/* Google Tag Manager */}
         <script dangerouslySetInnerHTML={{ __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],

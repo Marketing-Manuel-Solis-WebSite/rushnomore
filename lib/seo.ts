@@ -88,11 +88,49 @@ export function campgroundSchema() {
   };
 }
 
-export function eventSchema(event: { name: string; description: string; startDate: string; endDate: string }) {
+export function eventSchema(event: { name: string; description: string; startDate: string; endDate: string; image?: string }) {
   return {
     '@context': 'https://schema.org', '@type': 'Event',
     name: event.name, description: event.description, startDate: event.startDate, endDate: event.endDate,
-    location: { '@type': 'Place', name: 'Rush No More RV Resort', address: { '@type': 'PostalAddress', streetAddress: '21137 Brimstone Place', addressLocality: 'Sturgis', addressRegion: 'SD', postalCode: '57785' } },
+    eventStatus: 'https://schema.org/EventScheduled',
+    eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+    image: event.image ? `${DOMAIN}${event.image}` : undefined,
+    location: { '@type': 'Place', name: 'Rush No More RV Resort & Campground', address: { '@type': 'PostalAddress', streetAddress: '21137 Brimstone Place', addressLocality: 'Sturgis', addressRegion: 'SD', postalCode: '57785', addressCountry: 'US' } },
+    organizer: { '@type': 'Organization', name: 'Rush No More RV Resort & Campground', url: DOMAIN },
+  };
+}
+
+export function lodgingSchema() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'LodgingBusiness',
+    name: 'Rush No More RV Resort & Campground',
+    url: DOMAIN,
+    telephone: '+1-605-423-2545',
+    email: 'info@rushnomore.com',
+    description: 'Top-rated RV park, presidential cabins & tent camping near Mount Rushmore in Sturgis, South Dakota. 200+ RV sites, 16 cabins & 20+ tent sites with heated pool, hot tubs, beer garden & 16 free amenities.',
+    image: `${DOMAIN}/images/Aereal-2_1400.png`,
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: '21137 Brimstone Place',
+      addressLocality: 'Sturgis',
+      addressRegion: 'SD',
+      postalCode: '57785',
+      addressCountry: 'US',
+    },
+    geo: { '@type': 'GeoCoordinates', latitude: 44.39857, longitude: -103.46825 },
+    priceRange: '$35 - $335',
+    starRating: { '@type': 'Rating', ratingValue: '4.8' },
+    aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.8', reviewCount: '420', bestRating: '5' },
+    checkinTime: '14:00',
+    checkoutTime: '11:00',
+    petsAllowed: true,
+    numberOfRooms: 236,
+    amenityFeature: [
+      'Heated Swimming Pool', 'Multiple Hot Tub Spas', 'Beer Garden & Bar',
+      'Game Room', 'Nature Trails', 'Modern Bathhouses', 'Laundromat',
+      'Free Wi-Fi', 'Pet Friendly', '24/7 Gated Security',
+    ].map(name => ({ '@type': 'LocationFeatureSpecification', name, value: true })),
   };
 }
 

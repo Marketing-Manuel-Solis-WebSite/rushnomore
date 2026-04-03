@@ -82,7 +82,7 @@ export default function HomePage() {
                       </div>
                     </div>
                     <p className="text-brand-navy/80 text-base md:text-lg leading-relaxed mb-6 font-medium">
-                      Full hookups with 30/50 AMP service and pull-throughs up to 100ft. Luxury sites feature cement slabs with gas BBQ grills. Our Luxury Spa sites include your very own <strong className="text-brand-navy">private hot tub</strong> — the ultimate RV glamping experience.
+                      Full hookups with 30/50 AMP service and pull-throughs up to 100ft. Luxury sites feature cement slabs with gas BBQ grills.
                     </p>
                     <div className="grid grid-cols-2 gap-2.5 mb-7">
                       {['Full Hookups (W/E/S)', '30 & 50 AMP Service', 'Pull-Through up to 100ft', 'Cement Slabs (Luxury)', 'Gas BBQ on Luxury Sites', 'Private Hot Tub (Spa)'].map((f, i) => (
@@ -146,7 +146,7 @@ export default function HomePage() {
                   </div>
                 </div>
                 <div className="relative overflow-hidden min-h-[320px] lg:min-h-full order-1 lg:order-2">
-                  <div className="absolute inset-0 bg-cover bg-center transition-transform duration-[1.2s] ease-out group-hover:scale-110" style={{ backgroundImage: "url('/images/Cabins/CabinJamesMonroe/PhotoMainJamesMonroe.jpeg')" }} />
+                  <div className="absolute inset-0 bg-cover bg-center transition-transform duration-[1.2s] ease-out group-hover:scale-110" style={{ backgroundImage: "url('/images/Cabins/CabinUlyssesGrant/PhotoMainUlyssesGrant.png')" }} />
                   <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/70 via-brand-navy/20 to-transparent lg:bg-gradient-to-l lg:from-transparent lg:via-brand-navy/10 lg:to-brand-navy/40" />
                   <div className="absolute top-5 right-5 z-10">
                     <span className="inline-flex items-center gap-2 px-4 py-2 bg-white/15 backdrop-blur-md text-white rounded-full text-xs font-black uppercase tracking-wider border border-white/20 shadow-lodge">
@@ -165,7 +165,7 @@ export default function HomePage() {
             <Link href="/stay/tent-camping" className="group block relative rounded-3xl overflow-hidden shadow-lodge-lg hover:shadow-gold-lg transition-all duration-700 border-2 border-transparent hover:border-brand-gold/30">
               <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[480px] md:min-h-[540px]">
                 <div className="relative overflow-hidden min-h-[320px] lg:min-h-full">
-                  <div className="absolute inset-0 bg-cover bg-center transition-transform duration-[1.2s] ease-out group-hover:scale-110" style={{ backgroundImage: "url('/images/Wooded-Tent-Area.png')" }} />
+                  <div className="absolute inset-0 bg-cover bg-center transition-transform duration-[1.2s] ease-out group-hover:scale-110" style={{ backgroundImage: "url('/images/tent_camping_RNM.png')" }} />
                   <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/70 via-brand-navy/20 to-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-brand-navy/10 lg:to-brand-navy/40" />
                   <div className="absolute top-5 left-5 z-10">
                     <span className="inline-flex items-center gap-2 px-4 py-2 bg-white/15 backdrop-blur-md text-white rounded-full text-xs font-black uppercase tracking-wider border border-white/20 shadow-lodge">

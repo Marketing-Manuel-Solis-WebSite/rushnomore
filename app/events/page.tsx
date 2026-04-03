@@ -8,6 +8,7 @@ import { SITE, RALLY_RV, REVIEWS } from '@/data/site';
 import { BookingCTA, SectionHeader } from '@/components/ui';
 import { FadeIn } from '@/components/motion';
 import { JsonLd } from '@/components/seo/JsonLd';
+import { eventSchema, breadcrumbSchema } from '@/lib/seo';
 import {
   ExternalLink, Star, ArrowRight, ChevronDown,
   MapPin, Users, Music, Beer, Car, Calendar,
@@ -59,20 +60,19 @@ export default function EventsPage() {
   return (
     <>
       {/* Schema */}
-      <JsonLd data={{
-        '@context': 'https://schema.org', '@type': 'Event',
-        name: 'Sturgis Motorcycle Rally 2026',
-        description: 'Rush No More is your perfect rally base camp — just 5 miles from Main St Sturgis.',
+      <JsonLd data={eventSchema({
+        name: 'Sturgis Motorcycle Rally 2026 at Rush No More',
+        description: 'Rush No More RV Resort is your perfect Sturgis Rally base camp — RV sites, cabins & tent camping just 5 miles from Main Street Sturgis. Beer garden, pool, hot tubs & 16 amenities.',
         startDate: '2026-08-02', endDate: '2026-08-18',
-        location: { '@type': 'Place', name: 'Rush No More RV Resort', address: { '@type': 'PostalAddress', streetAddress: '21137 Brimstone Place', addressLocality: 'Sturgis', addressRegion: 'SD', postalCode: '57785' } },
-      }} />
-      <JsonLd data={{
-        '@context': 'https://schema.org', '@type': 'Event',
+        image: '/images/BikeRally/IMG_9865.JPG',
+      })} />
+      <JsonLd data={eventSchema({
         name: 'Dakota Rods & Classics Car Show 2026',
-        description: 'Annual Show and Shine at Rush No More. Free admission with live music, food & beer garden.',
+        description: 'Annual Show and Shine at Rush No More RV Resort in Sturgis, SD. Free admission with classic cars, hot rods, live music, food vendors & beer garden.',
         startDate: '2026-09-12', endDate: '2026-09-12',
-        location: { '@type': 'Place', name: 'Rush No More RV Resort', address: { '@type': 'PostalAddress', streetAddress: '21137 Brimstone Place', addressLocality: 'Sturgis', addressRegion: 'SD', postalCode: '57785' } },
-      }} />
+        image: '/images/car_show_RNM.png',
+      })} />
+      <JsonLd data={breadcrumbSchema([{ name: 'Home', url: '/' }, { name: 'Events', url: '/events' }])} />
 
       {/* ═══════════════════════════════════════════════════════════════
           HERO — Full-screen video background

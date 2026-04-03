@@ -41,13 +41,13 @@ export function HeroSection() {
         </span>
 
         <h1 className="text-5xl md:text-6xl lg:text-7xl font-display mb-6 leading-[1.1] animate-fade-in-up delay-100">
-          Your Base Camp for{' '}
+          RV Park & Camping Near{' '}
           <span className="text-brand-gold">Mount Rushmore</span>{' '}
-          & the Black Hills
+          in the Black Hills
         </h1>
 
         <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto mb-10 animate-fade-in-up delay-200">
-          Premium RV sites, cozy cabins & tent camping just minutes from Sturgis, SD. Pool, hot tubs, beer garden & direct trail access.
+          200+ RV sites, 16 presidential cabins & shaded tent camping in Sturgis, SD — just 55 miles from Mount Rushmore. Heated pool, hot tubs, beer garden & 16 free amenities.
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up delay-300">
