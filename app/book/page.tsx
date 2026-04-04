@@ -13,8 +13,8 @@ import {
 type PropertyType = 'rv' | 'cabin' | 'tent';
 
 const TYPES = [
-  { id: 'rv' as PropertyType, label: 'RV Sites', icon: Truck, price: 'From $53.99/night', desc: 'Full hookups, 30/50 AMP' },
-  { id: 'cabin' as PropertyType, label: 'Cabins', icon: Home, price: 'From $95/night', desc: '16 Presidential Cabins' },
+  { id: 'rv' as PropertyType, label: 'RV Sites', icon: Truck, price: 'Starts at $41.22/night', desc: 'Full hookups, 30/50 AMP' },
+  { id: 'cabin' as PropertyType, label: 'Cabins', icon: Home, price: 'Starts at $51.76/night', desc: '16 Presidential Cabins' },
   { id: 'tent' as PropertyType, label: 'Tent Camping', icon: Tent, price: 'From $35/night', desc: 'Shaded pine forest' },
 ];
 

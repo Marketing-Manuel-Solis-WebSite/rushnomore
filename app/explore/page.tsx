@@ -1119,8 +1119,8 @@ export default function ExplorePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
-              { label: 'RV Sites', price: 'From $53.99/night', desc: 'Full hookups with 30/50 AMP. Pull-through and back-in options for rigs up to 100ft.', href: '/stay', img: '/images/GeneralImagesPark/IMG_7382.jpeg' },
-              { label: 'Cabins', price: 'From $95/night', desc: '21 presidential-themed cabins sleeping 2-10 guests. Fully furnished and ready for your arrival.', href: '/stay', img: '/images/GeneralImagesPark/IMG_7316.jpeg' },
+              { label: 'RV Sites', price: 'Starts at $41.22/night', desc: 'Full hookups with 30/50 AMP. Pull-through and back-in options for rigs up to 100ft.', href: '/stay', img: '/images/GeneralImagesPark/IMG_7382.jpeg' },
+              { label: 'Cabins', price: 'Starts at $51.76/night', desc: '21 presidential-themed cabins sleeping 2-10 guests. Fully furnished and ready for your arrival.', href: '/stay', img: '/images/GeneralImagesPark/IMG_7316.jpeg' },
               { label: 'Tent Camping', price: 'From $35/night', desc: 'Shaded sites under towering Ponderosa Pines with access to all resort amenities.', href: '/stay', img: '/images/CommonAreas/IMG_7435.jpeg' },
             ].map((s, i) => (
               <FadeIn key={i} delay={i * 0.15}>

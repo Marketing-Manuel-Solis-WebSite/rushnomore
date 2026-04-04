@@ -323,8 +323,8 @@ export default function EventsPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
-              { icon: Truck, title: 'RV Sites', price: 'From $53.99', sub: 'per night · Full hookups', img: '/images/GeneralImagesPark/IMG_7382.jpeg', href: '/stay', features: ['30/50 AMP Service', 'Pull-Through up to 100ft', 'Cement Slabs (Luxury)', 'Hot Tub (Luxury Spa)'] },
-              { icon: Home, title: 'Presidential Cabins', price: 'From $95', sub: 'per night · 16 unique cabins', img: '/images/Cabins/CabinJamesMonroe/PhotoMainJamesMonroe.jpeg', href: '/stay', features: ['Sleeps 2-10 Guests', 'Full Kitchens', 'A/C & Heating', 'Private Bathrooms'] },
+              { icon: Truck, title: 'RV Sites', price: 'Starts at $41.22', sub: 'per night · Full hookups', img: '/images/GeneralImagesPark/IMG_7382.jpeg', href: '/stay', features: ['30/50 AMP Service', 'Pull-Through up to 100ft', 'Cement Slabs (Luxury)', 'Hot Tub (Luxury Spa)'] },
+              { icon: Home, title: 'Presidential Cabins', price: 'Starts at $51.76', sub: 'per night · 16 unique cabins', img: '/images/Cabins/CabinJamesMonroe/PhotoMainJamesMonroe.jpeg', href: '/stay', features: ['Sleeps 2-10 Guests', 'Full Kitchens', 'A/C & Heating', 'Private Bathrooms'] },
               { icon: Tent, title: 'Tent Camping', price: 'From $35', sub: 'per night · Best value', img: '/images/Wooded-Tent-Area.png', href: '/stay', features: ['Shaded Pine Forest', '15 Sites with Electric', 'Water Hookups', 'Bathhouse Access'] },
             ].map((item, i) => {
               const Icon = item.icon;

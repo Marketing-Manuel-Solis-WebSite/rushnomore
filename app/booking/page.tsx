@@ -48,8 +48,8 @@ interface PriceBreakdown {
 const ease = [0.16, 1, 0.3, 1];
 
 const TYPES = [
-  { id: 'cabin' as PropertyType, label: 'Cabins', icon: Home, price: 'From $95/night', desc: '16 Presidential Cabins, 2-10 guests', img: '/images/Cabins/CabinJamesMonroe/PhotoMainJamesMonroe.jpeg' },
-  { id: 'rv' as PropertyType, label: 'RV Sites', icon: Truck, price: 'From $53.99/night', desc: 'Full hookups, 30/50 AMP, pull-thru', img: '/images/rv-camper-van.png' },
+  { id: 'cabin' as PropertyType, label: 'Cabins', icon: Home, price: 'Starts at $51.76/night', desc: '16 Presidential Cabins, 2-10 guests', img: '/images/Cabins/CabinJamesMonroe/PhotoMainJamesMonroe.jpeg' },
+  { id: 'rv' as PropertyType, label: 'RV Sites', icon: Truck, price: 'Starts at $41.22/night', desc: 'Full hookups, 30/50 AMP, pull-thru', img: '/images/rv-camper-van.png' },
   { id: 'tent' as PropertyType, label: 'Tent Camping', icon: Tent, price: 'From $35/night', desc: 'Shaded sites under Ponderosa Pines', img: '/images/Wooded-Tent-Area.png' },
 ];
 

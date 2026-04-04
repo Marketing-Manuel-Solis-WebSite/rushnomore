@@ -61,7 +61,7 @@ export default function HomePage() {
                     </span>
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 p-6 z-10 lg:hidden bg-gradient-to-t from-brand-navy/90 to-transparent">
-                    <span className="font-display text-4xl text-white font-bold">From $53.99</span>
+                    <span className="font-display text-4xl text-white font-bold">Starts at $41.22</span>
                     <span className="text-white/70 text-sm block">per night · Full hookups included</span>
                   </div>
                 </div>
@@ -93,7 +93,7 @@ export default function HomePage() {
                     </div>
                     <div className="flex items-center justify-between pt-5 border-t-2 border-brand-gold/20">
                       <div className="hidden lg:block">
-                        <span className="font-display text-4xl text-brand-gold font-bold">From $53.99</span>
+                        <span className="font-display text-4xl text-brand-gold font-bold">Starts at $41.22</span>
                         <span className="text-sm text-brand-stone block font-semibold">per night · 50 AMP from $59.99</span>
                       </div>
                       <span className="inline-flex items-center gap-2 px-7 py-3.5 bg-brand-gold text-white font-bold text-sm rounded-xl shadow-gold group-hover:shadow-gold-lg group-hover:brightness-110 transition-all duration-500 uppercase tracking-wider">
@@ -136,7 +136,7 @@ export default function HomePage() {
                     </div>
                     <div className="flex items-center justify-between pt-5 border-t-2 border-brand-gold/20">
                       <div>
-                        <span className="font-display text-4xl text-brand-gold font-bold">From $95</span>
+                        <span className="font-display text-4xl text-brand-gold font-bold">Starts at $51.76</span>
                         <span className="text-sm text-brand-stone block font-semibold">per night · Up to $335 for luxury</span>
                       </div>
                       <span className="inline-flex items-center gap-2 px-7 py-3.5 bg-brand-gold text-white font-bold text-sm rounded-xl shadow-gold group-hover:shadow-gold-lg group-hover:brightness-110 transition-all duration-500 uppercase tracking-wider">
@@ -154,7 +154,7 @@ export default function HomePage() {
                     </span>
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 p-6 z-10 lg:hidden bg-gradient-to-t from-brand-navy/90 to-transparent">
-                    <span className="font-display text-4xl text-white font-bold">From $95</span>
+                    <span className="font-display text-4xl text-white font-bold">Starts at $51.76</span>
                     <span className="text-white/70 text-sm block">per night · 16 unique cabins</span>
                   </div>
                 </div>
@@ -226,8 +226,8 @@ export default function HomePage() {
                 <p className="text-xs text-white/40 uppercase tracking-wider font-bold">All include full amenity access</p>
               </div>
               {[
-                { type: 'RV Sites', price: 'From $53.99', icon: Truck, href: '/stay/rv-sites' },
-                { type: 'Cabins', price: 'From $95', icon: Home, href: '/stay/cabins' },
+                { type: 'RV Sites', price: 'Starts at $41.22', icon: Truck, href: '/stay/rv-sites' },
+                { type: 'Cabins', price: 'Starts at $51.76', icon: Home, href: '/stay/cabins' },
                 { type: 'Tent', price: 'From $35', icon: Tent, href: '/stay/tent-camping' },
               ].map((item, i) => (
                 <Link key={i} href={item.href} className="flex items-center gap-3 p-4 rounded-xl bg-white/5 backdrop-blur-sm hover:bg-white/10 border border-white/10 hover:border-brand-gold/30 transition-all duration-300 group">
@@ -576,7 +576,7 @@ export default function HomePage() {
         <iframe src={SITE.mapsEmbed} className="w-full h-full border-0" allowFullScreen loading="lazy" title="Rush No More RV Resort location — Sturgis, South Dakota" />
       </section>
 
-      <BookingCTA title="Start Your Black Hills Adventure Today" subtitle="RV from $53.99 | Cabins from $95 | Tent from $35/night" />
+      <BookingCTA title="Start Your Black Hills Adventure Today" subtitle="RV starts at $41.22 | Cabins starts at $51.76 | Tent from $35/night" />
     </>
   );
 }

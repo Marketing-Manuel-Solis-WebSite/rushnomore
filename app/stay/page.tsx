@@ -21,8 +21,8 @@ import {
    TAB DATA
 ═══════════════════════════════════════════════════════════════ */
 const TABS = [
-  { id: 'rv-sites', label: 'RV Sites', icon: Truck, price: 'From $53.99' },
-  { id: 'cabins', label: 'Cabins', icon: Home, price: 'From $95' },
+  { id: 'rv-sites', label: 'RV Sites', icon: Truck, price: 'From $41.22' },
+  { id: 'cabins', label: 'Cabins', icon: Home, price: 'From $51.76' },
   { id: 'tent-camping', label: 'Tent Camping', icon: Tent, price: 'From $35' },
 ] as const;
 
@@ -42,7 +42,7 @@ const RV_FAQS = [
 const CABIN_HIGHLIGHTS = [
   { val: '16', label: 'Unique Cabins', sub: 'Named after Presidents' },
   { val: '2–10', label: 'Guests Per Cabin', sub: 'Economy to luxury suites' },
-  { val: '$95', label: 'Starting From', sub: 'per night' },
+  { val: '$51.76', label: 'Starting From', sub: 'per night' },
   { val: '100%', label: 'Amenity Access', sub: 'Pool, hot tubs & more' },
 ];
 
@@ -556,12 +556,10 @@ export default function StayPage() {
                         <h5 className="text-lg font-display font-bold mb-3">{c.name}</h5>
                         <div className="flex items-center justify-between mb-4">
                           <div>
-                            <span className="font-display text-xl text-brand-gold">$95 – $335</span>
+                            <span className="text-xs text-brand-stone block">starts at</span>
+                            <span className="font-display text-xl text-brand-gold">{c.price || '$51.76'}</span>
                             <span className="text-xs text-brand-stone block">per night</span>
                           </div>
-                          <span className="text-[9px] font-bold uppercase tracking-wider text-brand-stone bg-surface-secondary px-2 py-1 rounded-full">
-                            Rally: from $2,200
-                          </span>
                         </div>
                         <a href={SITE.booking} target="_blank" rel="noopener noreferrer" className="btn-gold w-full text-center text-sm">
                           Reserve <ExternalLink className="w-3.5 h-3.5 ml-1" />
@@ -933,7 +931,7 @@ export default function StayPage() {
         </div>
       </section>
 
-      <BookingCTA title="Ready to Book Your Black Hills Stay?" subtitle="RV from $53.99 | Cabins from $95 | Tent from $35/night — all amenities included." />
+      <BookingCTA title="Ready to Book Your Black Hills Stay?" subtitle="RV starts at $41.22 | Cabins starts at $51.76 | Tent from $35/night — all amenities included. Prices vary by weekday, weekend, Rally & holidays." />
     </>
   );
 }

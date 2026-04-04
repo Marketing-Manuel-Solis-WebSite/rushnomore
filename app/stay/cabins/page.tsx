@@ -54,7 +54,7 @@ export default function CabinsPage() {
             {[
               { val: '16', label: 'Unique Cabins' },
               { val: '2–10', label: 'Guests Per Cabin' },
-              { val: '$95', label: 'Starting At' },
+              { val: '$51.76', label: 'Starting At' },
               { val: '55 mi', label: 'To Mt. Rushmore' },
             ].map((s, i) => (
               <div key={i} className="text-center">
@@ -125,7 +125,8 @@ export default function CabinsPage() {
                       <h4 className="text-lg font-display font-bold mb-3">{c.name}</h4>
                       <div className="flex items-center justify-between mb-4">
                         <div>
-                          <span className="font-display text-xl text-brand-gold">$95 – $335</span>
+                          <span className="text-xs text-brand-stone block">starts at</span>
+                          <span className="font-display text-xl text-brand-gold">{c.price || '$51.76'}</span>
                           <span className="text-xs text-brand-stone block">per night</span>
                         </div>
                       </div>
@@ -208,7 +209,7 @@ export default function CabinsPage() {
             Book Your <span className="text-brand-gold italic">Presidential Cabin</span>
           </h2>
           <p className="text-brand-navy/60 text-lg mb-8 font-medium">
-            16 unique cabins from $95/night in Sturgis, South Dakota — your gateway to Mount Rushmore and the Black Hills.
+            16 unique cabins starting at $51.76/night in Sturgis, South Dakota — your gateway to Mount Rushmore and the Black Hills. Prices vary by weekday, weekend, Rally &amp; holidays.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4">
             <a href={SITE.booking} target="_blank" rel="noopener noreferrer" className="btn-gold text-base px-8 py-4">

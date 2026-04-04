@@ -37,7 +37,7 @@ export interface RVTier {
 
 export interface CabinCategory {
   cat: string;
-  items: { name: string; num: string; sleeps: number; img?: string }[];
+  items: { name: string; num: string; sleeps: number; img?: string; price?: string }[];
 }
 
 export interface Review {
@@ -97,8 +97,8 @@ export const SITE: SiteConfig & { rvStartPrice: string; cabinStartPrice: string;
   mapsEmbed: 'https://maps.google.com/maps?q=rush+no+more+campground&t=m&z=13&output=embed&iwloc=near',
   youtube: 'https://www.youtube.com/embed/qfQcJnSybqQ?rel=0&modestbranding=1',
   tripadvisor: 'https://www.tripadvisor.com/Hotel_Review-g54818-d1631146-Reviews-Rush_No_More_Campground-Sturgis_South_Dakota.html',
-  rvStartPrice: '53.99',
-  cabinStartPrice: '95',
+  rvStartPrice: '41.22',
+  cabinStartPrice: '51.76',
   tentStartPrice: '35',
 };
 
@@ -133,38 +133,42 @@ export const AMENITIES: Amenity[] = [
 ];
 
 export const RV_TIERS: RVTier[] = [
-  { name: 'Standard RV Sites', price: '$53.99', note: '50 AMP = $59.99/night', img: '/images/rv-camper-van.png', badge: '',
-    features: ['Full hook-up sites', 'Water/Electric/30 or 50 AMP', 'Pull thru or back-in', 'Up to 100ft long'] },
-  { name: 'Luxury Sites', price: '$75.99', note: 'per night', img: '/images/vip-site.png', badge: 'POPULAR',
+  { name: 'Water/Electric Back-in', price: '$41.22', note: 'starts at', img: '/images/rv-camper-van.png', badge: '',
+    features: ['Water & electric hookup', '30 AMP service', 'Back-in site', 'Up to 100ft long'] },
+  { name: 'FHU Back-in', price: '$51.72', note: 'starts at', img: '/images/rv-camper-van.png', badge: '',
+    features: ['Full hook-up site', 'Water/Electric/Sewer', 'Back-in site', '30/50 AMP service'] },
+  { name: 'FHU Pull-through', price: '$62.36', note: 'starts at', img: '/images/rv-camper-van.png', badge: '',
+    features: ['Full hook-up site', 'Water/Electric/Sewer', 'Pull-through site', '30/50 AMP service'] },
+  { name: 'Luxury w/out Hot Tub', price: '$62.36', note: 'starts at', img: '/images/vip-site.png', badge: 'POPULAR',
     features: ['Cement slab & gas BBQ', 'Mountain Valley location', 'Full hook-ups included', '30/50 AMP service'] },
-  { name: 'Luxury Spa Sites', price: '$95.99', note: 'per night', img: '/images/Jacuzzi/IMG_7205.jpeg', badge: 'ULTIMATE',
+  { name: 'Luxury w. Hot Tub', price: '$72.93', note: 'starts at', img: '/images/Jacuzzi/IMG_7205.jpeg', badge: 'ULTIMATE',
     features: ['Private hot tub spa!', 'Cement slab & gas BBQ', 'Full hook-ups included', '30/50 AMP service'] },
 ];
 
 export const CABINS: CabinCategory[] = [
   { cat: 'Cabins Sleeping 2', items: [
-    { name: 'The Martin Van Buren', num: '7', sleeps: 2, img: '/images/Cabins/CabinMartinVanBuren/PhotoMainMartinVanBuren.jpeg' },
-    { name: 'The William Henry Harrison', num: '8', sleeps: 2, img: '/images/Cabins/CabinWMHenryHarrison/MainPhotoWMHenryHarrison.jpeg' },
-    { name: 'The Millard Fillmore', num: '14', sleeps: 2 },
+    { name: 'The Martin Van Buren', num: '7', sleeps: 2, price: '$62.86', img: '/images/Cabins/CabinMartinVanBuren/PhotoMainMartinVanBuren.jpeg' },
+    { name: 'The William Henry Harrison', num: '8', sleeps: 2, price: '$62.86', img: '/images/Cabins/CabinWMHenryHarrison/MainPhotoWMHenryHarrison.jpeg' },
+    { name: 'The Millard Fillmore', num: '14', sleeps: 2, price: '$51.76' },
   ]},
   { cat: 'Cabins Sleeping 4', items: [
-    { name: 'Standard Cabins', num: '1,4,5,17-20', sleeps: 4, img: '/images/Cabins/CabinStandar/Cabinstandard.jpeg' },
-    { name: 'The James Madison', num: '6', sleeps: 4, img: '/images/Cabins/CabinTheJamesMadison/PhotoMainTheJamesMadison.jpeg' },
-    { name: 'The John Adams', num: '12', sleeps: 4, img: '/images/Cabins/CabinJohnAdams/PhotoMainJohnAdams.jpeg' },
+    { name: 'Standard Cabins', num: '1,4,5,17-20', sleeps: 4, price: '$95.13', img: '/images/Cabins/CabinStandar/Cabinstandard.jpeg' },
+    { name: 'The James Madison', num: '6', sleeps: 4, price: '$136.56', img: '/images/Cabins/CabinTheJamesMadison/PhotoMainTheJamesMadison.jpeg' },
+    { name: 'The John Adams', num: '12', sleeps: 4, price: '$174', img: '/images/Cabins/CabinJohnAdams/PhotoMainJohnAdams.jpeg' },
   ]},
   { cat: 'Cabins Sleeping 6', items: [
-    { name: 'John Quincy Adams', num: '9', sleeps: 6, img: '/images/Cabins/CabinJohnQuincyAdams/PhotoMainJamesMonroe.jpeg' },
-    { name: 'Andrew Jackson', num: '10', sleeps: 6 },
-    { name: 'Ulysses S. Grant', num: '11', sleeps: 6, img: '/images/Cabins/CabinUlyssesGrant/PhotoMainUlyssesGrant.png' },
-    { name: 'The George Washington', num: '15', sleeps: 6 },
-    { name: 'The Abe Lincoln', num: '16', sleeps: 6 },
+    { name: 'John Quincy Adams', num: '9', sleeps: 6, price: '$100.42', img: '/images/Cabins/CabinJohnQuincyAdams/PhotoMainJamesMonroe.jpeg' },
+    { name: 'Andrew Jackson', num: '10', sleeps: 6, price: '$100.42' },
+    { name: 'Ulysses S. Grant', num: '11', sleeps: 6, price: '$174', img: '/images/Cabins/CabinUlyssesGrant/PhotoMainUlyssesGrant.png' },
+    { name: 'The George Washington', num: '15', sleeps: 6, price: '$126.84' },
+    { name: 'The Abe Lincoln', num: '16', sleeps: 6, price: '$174' },
   ]},
   { cat: 'Cabins Sleeping 7', items: [
-    { name: 'The James Monroe', num: '2', sleeps: 7, img: '/images/Cabins/CabinJamesMonroe/PhotoMainJamesMonroe.jpeg' },
-    { name: 'The Thomas Jefferson', num: '3', sleeps: 7, img: '/images/Cabins/CabinTheThomasJeffersonCabinTheThomasJefferson/PhotoMainTheThomasJefferson.jpeg' },
+    { name: 'The James Monroe', num: '2', sleeps: 7, price: '$121.56', img: '/images/Cabins/CabinJamesMonroe/PhotoMainJamesMonroe.jpeg' },
+    { name: 'The Thomas Jefferson', num: '3', sleeps: 7, price: '$136.35', img: '/images/Cabins/CabinTheThomasJeffersonCabinTheThomasJefferson/PhotoMainTheThomasJefferson.jpeg' },
   ]},
   { cat: 'Cabins Sleeping 10', items: [
-    { name: 'John F. Kennedy', num: '21', sleeps: 10, img: '/images/Cabins/CabinJohnKennedy/PhotoMainJohnFKennedy.jpeg' },
+    { name: 'John F. Kennedy', num: '21', sleeps: 10, price: '$332', img: '/images/Cabins/CabinJohnKennedy/PhotoMainJohnFKennedy.jpeg' },
   ]},
 ];
 

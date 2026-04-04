@@ -517,7 +517,7 @@ export default function ContactPage() {
         <iframe src={SITE.mapsEmbed} className="w-full h-full border-0" allowFullScreen loading="lazy" title="Rush No More location" />
       </section>
 
-      <BookingCTA title="Ready to Book Your Stay?" subtitle="RV from $53.99 | Cabins from $95 | Tent from $35/night" />
+      <BookingCTA title="Ready to Book Your Stay?" subtitle="RV starts at $41.22 | Cabins starts at $51.76 | Tent from $35/night" />
     </>
   );
 }

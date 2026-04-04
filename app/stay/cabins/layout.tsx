@@ -3,7 +3,7 @@ import { seo } from '@/lib/seo';
 
 export const metadata: Metadata = seo({
   title: 'Cabins Near Mount Rushmore — Presidential Cabins in Sturgis, SD',
-  description: '16 unique presidential cabins near Mount Rushmore sleeping 2-10 guests, starting at $95/night. Full kitchens, A/C, private bathrooms & pet-friendly options. Pool, hot tubs, beer garden & 16 free amenities at Rush No More in Sturgis, South Dakota.',
+  description: '16 unique presidential cabins near Mount Rushmore sleeping 2-10 guests, starting at $51.76/night. Full kitchens, A/C, private bathrooms & pet-friendly options. Pool, hot tubs, beer garden & 16 free amenities at Rush No More in Sturgis, South Dakota.',
   path: '/stay/cabins',
   image: '/images/Cabins/CabinUlyssesGrant/PhotoMainUlyssesGrant.png',
   keywords: [

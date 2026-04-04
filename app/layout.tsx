@@ -15,7 +15,7 @@ const josefin = Josefin_Sans({ subsets: ['latin'], variable: '--font-josefin', d
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.rushnomore.com'),
   title: { default: 'Rush No More — #1 RV Park & Camping Near Mount Rushmore | Sturgis, SD', template: '%s | Rush No More — Black Hills, SD' },
-  description: 'Top-rated campground near Sturgis, SD — RV sites from $53.99, presidential cabins from $95 & tent camping from $35/night. Heated pool, hot tubs, beer garden & 16 free amenities. Only 55 mi to Mount Rushmore. Sturgis Rally HQ since 2014. Book today!',
+  description: 'Top-rated campground near Sturgis, SD — RV sites starts at $41.22, presidential cabins starts at $51.76 & tent camping from $35/night. Heated pool, hot tubs, beer garden & 16 free amenities. Only 55 mi to Mount Rushmore. Sturgis Rally HQ since 2014. Book today!',
   keywords: [
     'rv park near mount rushmore', 'camping near mount rushmore', 'cabins near mount rushmore',
     'sturgis rally campground', 'black hills camping', 'rv resort sturgis south dakota',

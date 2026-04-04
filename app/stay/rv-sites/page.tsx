@@ -56,7 +56,7 @@ export default function RVSitesPage() {
             {[
               { val: '200+', label: 'RV Sites' },
               { val: '100ft', label: 'Max Length' },
-              { val: '$53.99', label: 'Starting At' },
+              { val: '$41.22', label: 'Starting At' },
               { val: '55 mi', label: 'To Mt. Rushmore' },
             ].map((s, i) => (
               <div key={i} className="text-center">
@@ -81,17 +81,17 @@ export default function RVSitesPage() {
         <div className="max-w-7xl mx-auto px-4 relative z-10">
           <div className="text-center mb-14">
             <span className="inline-block px-5 py-2 bg-brand-gold text-white text-xs font-black uppercase tracking-[0.2em] rounded-full shadow-gold mb-5">
-              Three Tiers — One Great Resort
+              Five Options — One Great Resort
             </span>
             <h2 className="text-3xl md:text-4xl mb-3">
               Choose Your <span className="text-brand-gold italic">RV Experience</span>
             </h2>
             <p className="text-brand-navy/60 text-lg max-w-2xl mx-auto font-medium">
-              From standard full-hookup sites to private hot tub spa sites — every tier includes free access to all 16 resort amenities.
+              From water/electric sites to private hot tub spa sites — every option includes free access to all 16 resort amenities. Prices vary by weekday, weekend, Rally &amp; holidays.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {RV_TIERS.map((tier, i) => (
               <motion.div
                 key={i}
@@ -110,8 +110,9 @@ export default function RVSitesPage() {
                   <div className="absolute inset-0 bg-cover bg-center transition-transform duration-[1.2s] ease-out group-hover:scale-110" style={{ backgroundImage: `url('${tier.img}')` }} />
                   <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/60 via-transparent to-transparent" />
                   <div className="absolute bottom-4 left-4 z-10">
-                    <span className="font-display text-3xl text-white font-bold">{tier.price}</span>
                     <span className="text-white/70 text-sm block">{tier.note}</span>
+                    <span className="font-display text-3xl text-white font-bold">{tier.price}</span>
+                    <span className="text-white/70 text-sm block">per night</span>
                   </div>
                 </div>
                 <div className="p-6">
@@ -227,7 +228,7 @@ export default function RVSitesPage() {
             Ready to <span className="text-brand-gold italic">Book?</span>
           </h2>
           <p className="text-brand-navy/60 text-lg mb-8 font-medium">
-            Secure your RV site at the Black Hills&apos; top-rated resort. Standard sites from $53.99/night, Luxury from $75.99, Luxury Spa from $95.99.
+            Secure your RV site at the Black Hills&apos; top-rated resort. Prices vary by weekday, weekend, Rally &amp; holidays. Water/Electric from $41.22/night, FHU from $51.72, Luxury from $62.36.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4">
             <a href={SITE.booking} target="_blank" rel="noopener noreferrer" className="btn-gold text-base px-8 py-4">

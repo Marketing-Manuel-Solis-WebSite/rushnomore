@@ -28,30 +28,37 @@ RESORT INFO:
 
 ACCOMMODATIONS:
 
-1. Standard RV Sites — From $53.99/night
-   - Full hook-ups (Water/Electric/Sewer)
-   - 30 AMP ($53.99) or 50 AMP ($59.99)
-   - Pull-through or back-in, up to 100ft
-   - Open year-round
+RV SITES (prices vary by weekday, weekend, Rally & holidays — starts at):
+1. Water/Electric Back-in — Starts at $41.22/night
+   - Water & electric hookup, 30 AMP
+   - Back-in site, up to 100ft
 
-2. Luxury RV Sites — $75.99/night
+2. FHU Back-in — Starts at $51.72/night
+   - Full hook-ups (Water/Electric/Sewer)
+   - Back-in site, 30/50 AMP
+
+3. FHU Pull-through — Starts at $62.36/night
+   - Full hook-ups (Water/Electric/Sewer)
+   - Pull-through site, 30/50 AMP
+
+4. Luxury w/out Hot Tub — Starts at $62.36/night
    - Cement slab with gas BBQ grill
    - Mountain Valley location
    - Full hook-ups, 30/50 AMP
-   - Seasonal: May 1 – October 1
 
-3. Luxury Spa RV Sites — $95.99/night
+5. Luxury w. Hot Tub — Starts at $72.93/night
    - Private hot tub spa!
    - Cement slab with gas BBQ
    - Full hook-ups, 30/50 AMP
-   - Seasonal: May 1 – October 1
 
-4. Presidential Cabins — $95 to $335/night
+6. Presidential Cabins (prices vary by weekday, weekend, Rally & holidays — starts at):
    - 16 unique cabins named after US Presidents
    - Sleep 2 to 10 guests
-   - Options: economy, standard, family, luxury suites
-   - Some have full kitchens, A/C, heating, private bathrooms
-   - Rally rates: from $2,200 (10-day minimum)
+   - Cabin 14: starts at $51.76 | Cabins 7-8: starts at $62.86
+   - Cabins 1,4,5,17-20: starts at $95.13 | Cabins 9-10: starts at $100.42
+   - Cabin 2: starts at $121.56 | Cabin 15: starts at $126.84
+   - Cabin 3: starts at $136.35 | Cabin 6: starts at $136.56
+   - Cabins 11,12,16: starts at $174 | Cabin 21: starts at $332
 
 5. Tent Camping — From $35/night (based on 2 people)
    - Electric hookup: +$5/night

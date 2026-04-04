@@ -29,7 +29,7 @@ const AREAS = [
     icon: Truck,
     title: 'RV Sites',
     desc: 'Full hookup sites with 30/50 AMP, pull-throughs up to 100 ft. Standard, Luxury with cement slab & BBQ, and Luxury Spa with private hot tub.',
-    price: 'From $53.99',
+    price: 'Starts at $41.22',
     href: '/stay/rv-sites',
     features: ['Full Hook-ups (W/E/S)', '30 & 50 AMP Service', 'Pull-Through up to 100ft', 'Private Hot Tub (Spa)'],
   },
@@ -37,7 +37,7 @@ const AREAS = [
     icon: Home,
     title: 'Presidential Cabins',
     desc: '16 unique cabins each named after a US President. From economy units for couples to luxury suites sleeping up to 10 guests.',
-    price: 'From $95',
+    price: 'Starts at $51.76',
     href: '/stay/cabins',
     features: ['Sleeps 2-10 Guests', 'Full Kitchens Available', 'A/C & Heating', 'Private Bathrooms'],
   },
@@ -191,8 +191,8 @@ export default function MapPage() {
                 <p className="text-xs text-white/40 uppercase tracking-wider font-bold">Book now to secure your site</p>
               </div>
               {[
-                { type: 'RV Sites', price: 'From $53.99', icon: Truck, href: '/stay/rv-sites' },
-                { type: 'Cabins', price: 'From $95', icon: Home, href: '/stay/cabins' },
+                { type: 'RV Sites', price: 'Starts at $41.22', icon: Truck, href: '/stay/rv-sites' },
+                { type: 'Cabins', price: 'Starts at $51.76', icon: Home, href: '/stay/cabins' },
                 { type: 'Tent', price: 'From $35', icon: Tent, href: '/stay/tent-camping' },
               ].map((item, i) => (
                 <Link key={i} href={item.href} className="flex items-center gap-3 p-4 rounded-xl bg-white/5 backdrop-blur-sm hover:bg-white/10 border border-white/10 hover:border-brand-gold/30 transition-all duration-300 group">
@@ -407,7 +407,7 @@ export default function MapPage() {
         </div>
       </section>
 
-      <BookingCTA title="Ready to Book Your Spot?" subtitle="RV from $53.99 | Cabins from $95 | Tent from $35/night — all amenities included." />
+      <BookingCTA title="Ready to Book Your Spot?" subtitle="RV starts at $41.22 | Cabins starts at $51.76 | Tent from $35/night — all amenities included." />
     </>
   );
 }

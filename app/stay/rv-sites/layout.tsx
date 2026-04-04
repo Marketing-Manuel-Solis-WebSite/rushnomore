@@ -3,7 +3,7 @@ import { seo } from '@/lib/seo';
 
 export const metadata: Metadata = seo({
   title: 'RV Park Near Mount Rushmore — Full Hookup RV Sites in Sturgis, SD',
-  description: '200+ full-hookup RV sites near Mount Rushmore starting at $53.99/night. 30/50 AMP, pull-throughs up to 100ft, luxury sites with cement slabs & gas BBQ, and Luxury Spa sites with private hot tubs. Pool, beer garden & 16 free amenities at Rush No More in Sturgis, SD.',
+  description: '200+ full-hookup RV sites near Mount Rushmore starting at $41.22/night. 30/50 AMP, pull-throughs up to 100ft, luxury sites with cement slabs & gas BBQ, and Luxury Spa sites with private hot tubs. Pool, beer garden & 16 free amenities at Rush No More in Sturgis, SD.',
   path: '/stay/rv-sites',
   image: '/images/RushMore-rv-camper-van.png',
   keywords: [
