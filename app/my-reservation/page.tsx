@@ -125,7 +125,7 @@ export default function MyReservationPage() {
             {/* Warm hero — not navy */}
             <section className="relative pt-12 pb-20 md:pt-16 md:pb-28 overflow-hidden">
               <div className="absolute inset-0">
-                <Image src="/images/DSC05580-s.png" alt="" fill className="object-cover" priority />
+                <Image src="/images/DSC05580-s.png" alt="Rush No More RV Resort aerial view" fill className="object-cover" priority />
                 <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-surface-primary" />
               </div>
 

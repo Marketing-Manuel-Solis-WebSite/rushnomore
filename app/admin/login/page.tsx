@@ -2,6 +2,7 @@
 
 import { useState, useEffect, FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Lock, Mail, Eye, EyeOff, Loader2, LogIn, Shield } from 'lucide-react';
@@ -303,13 +304,13 @@ export default function AdminLoginPage() {
           transition={{ delay: 0.6 }}
           className="mt-6 text-center"
         >
-          <a
+          <Link
             href="/"
             className="text-xs text-brand-stone/60 hover:text-brand-gold transition-colors duration-200 inline-flex items-center gap-1"
           >
             <span>&larr;</span>
             <span>Back to {SITE.short}</span>
-          </a>
+          </Link>
         </motion.div>
       </motion.div>
     </div>

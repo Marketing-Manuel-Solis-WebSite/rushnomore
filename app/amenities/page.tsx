@@ -8,7 +8,7 @@ import { SITE, AMENITIES, REVIEWS } from '@/data/site';
 import { BookingCTA, SectionHeader } from '@/components/ui';
 import { FadeIn } from '@/components/motion';
 import { JsonLd } from '@/components/seo/JsonLd';
-import { breadcrumbSchema } from '@/lib/seo';
+import { breadcrumbSchema, faqSchema } from '@/lib/seo';
 import {
   ExternalLink, Star, ArrowRight,
   Beer, Waves, ShowerHead, WashingMachine, Wifi, PawPrint, Bike, Fuel,
@@ -108,6 +108,14 @@ export default function AmenitiesPage() {
   return (
     <>
       <JsonLd data={breadcrumbSchema([{ name: 'Home', url: '/' }, { name: 'Amenities', url: '/amenities' }])} />
+      <JsonLd data={faqSchema([
+        { q: 'Are amenities free at Rush No More?', a: 'Yes! All 16 amenities are included free with every reservation — RV, cabin, or tent. This includes the heated pool, hot tubs, beer garden, game room, nature trails, bathhouses, Wi-Fi, and more.' },
+        { q: 'Does Rush No More have a swimming pool?', a: 'Yes! We have a heated swimming pool open seasonally (May through September) that is free for all registered guests.' },
+        { q: 'Is Rush No More pet friendly?', a: 'Absolutely! We welcome well-behaved pets. We have designated pet-friendly areas and ask that all pets be kept on leashes in common areas.' },
+        { q: 'Does Rush No More have a beer garden?', a: 'Yes! Our on-site beer garden serves craft beers, cocktails, and beverages. It is open weekends during regular season and all 10 days during the Sturgis Rally.' },
+        { q: 'Is there Wi-Fi at Rush No More?', a: 'Yes, free Wi-Fi is available throughout the campground for all registered guests.' },
+        { q: 'Are campfires allowed at Rush No More?', a: 'Wood fires are NOT allowed as we back up to Forest Service land. However, propane campfire rentals and charcoal grills are available and permitted.' },
+      ])} />
 
       {/* ═══════════════════════════════════════════════════════════════
           HERO — Full-screen video background

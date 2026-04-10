@@ -27,7 +27,7 @@ const CABIN_IMAGES = {
     '/images/Cabins/CabinJamesMonroe/IMG_7792.jpeg',
   ],
   'The John Quincy Adams': [
-    '/images/Cabins/CabinJohnQuincyAdams/PhotoMainJamesMonroe.jpeg',
+    '/images/Cabins/CabinJohnQuincyAdams/PhotoMainJohnQuincyAdams.jpeg',
     '/images/Cabins/CabinJohnQuincyAdams/IMG_7785.jpeg',
     '/images/Cabins/CabinJohnQuincyAdams/IMG_8466.jpeg',
     '/images/Cabins/CabinJohnQuincyAdams/IMG_8467.jpeg',

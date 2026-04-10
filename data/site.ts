@@ -37,7 +37,7 @@ export interface RVTier {
 
 export interface CabinCategory {
   cat: string;
-  items: { name: string; num: string; sleeps: number; img?: string; price?: string }[];
+  items: { name: string; num: string; sleeps: number; img?: string; price?: string; images?: string[] }[];
 }
 
 export interface Review {
@@ -133,11 +133,11 @@ export const AMENITIES: Amenity[] = [
 ];
 
 export const RV_TIERS: RVTier[] = [
-  { name: 'Water/Electric Back-in', price: '$41.22', note: 'starts at', img: '/images/rv-camper-van.png', badge: '',
+  { name: 'Water/Electric Back-in', price: '$41.22', note: 'starts at', img: '/images/WaterElectric Back-in.png', badge: '',
     features: ['Water & electric hookup', '30 AMP service', 'Back-in site', 'Up to 100ft long'] },
-  { name: 'FHU Back-in', price: '$51.72', note: 'starts at', img: '/images/rv-camper-van.png', badge: '',
+  { name: 'FHU Back-in', price: '$51.76', note: 'starts at', img: '/images/FHU Back-in.png', badge: '',
     features: ['Full hook-up site', 'Water/Electric/Sewer', 'Back-in site', '30/50 AMP service'] },
-  { name: 'FHU Pull-through', price: '$62.36', note: 'starts at', img: '/images/rv-camper-van.png', badge: '',
+  { name: 'FHU Pull-through', price: '$62.36', note: 'starts at', img: '/images/FHU Pull-through.png', badge: '',
     features: ['Full hook-up site', 'Water/Electric/Sewer', 'Pull-through site', '30/50 AMP service'] },
   { name: 'Luxury w/out Hot Tub', price: '$62.36', note: 'starts at', img: '/images/vip-site.png', badge: 'POPULAR',
     features: ['Cement slab & gas BBQ', 'Mountain Valley location', 'Full hook-ups included', '30/50 AMP service'] },
@@ -145,30 +145,41 @@ export const RV_TIERS: RVTier[] = [
     features: ['Private hot tub spa!', 'Cement slab & gas BBQ', 'Full hook-ups included', '30/50 AMP service'] },
 ];
 
+// Shared interior sets — cabins that look the same inside
+const STANDARD_CABIN_INTERIOR = [
+  '/images/Cabins/CabinTheJamesMadison/IMG_8481.jpeg',
+  '/images/Cabins/CabinTheJamesMadison/IMG_8492.jpeg',
+];
+const CABIN_9_10_INTERIOR = [
+  '/images/Cabins/CabinJohnQuincyAdams/IMG_7785.jpeg',
+  '/images/Cabins/CabinJohnQuincyAdams/IMG_8466.jpeg',
+  '/images/Cabins/CabinJohnQuincyAdams/IMG_8467.jpeg',
+];
+
 export const CABINS: CabinCategory[] = [
   { cat: 'Cabins Sleeping 2', items: [
-    { name: 'The Martin Van Buren', num: '7', sleeps: 2, price: '$62.86', img: '/images/Cabins/CabinMartinVanBuren/PhotoMainMartinVanBuren.jpeg' },
-    { name: 'The William Henry Harrison', num: '8', sleeps: 2, price: '$62.86', img: '/images/Cabins/CabinWMHenryHarrison/MainPhotoWMHenryHarrison.jpeg' },
-    { name: 'The Millard Fillmore', num: '14', sleeps: 2, price: '$51.76' },
+    { name: 'The Martin Van Buren', num: '7', sleeps: 2, price: '$62.86', img: '/images/Cabins/CabinMartinVanBuren/PhotoMainMartinVanBuren.jpeg', images: ['/images/Cabins/CabinMartinVanBuren/PhotoMainMartinVanBuren.jpeg'] },
+    { name: 'The William Henry Harrison', num: '8', sleeps: 2, price: '$62.86', img: '/images/Cabins/CabinWMHenryHarrison/MainPhotoWMHenryHarrison.jpeg', images: ['/images/Cabins/CabinWMHenryHarrison/MainPhotoWMHenryHarrison.jpeg'] },
+    { name: 'The Millard Fillmore', num: '14', sleeps: 2, price: '$51.76', img: '/images/Cabins/CabinMillardFillmore/PhotoMainMillardFilmore.jpeg', images: ['/images/Cabins/CabinMillardFillmore/PhotoMainMillardFilmore.jpeg', '/images/Cabins/CabinMillardFillmore/Cabin 14 bed.jpeg'] },
   ]},
   { cat: 'Cabins Sleeping 4', items: [
-    { name: 'Standard Cabins', num: '1,4,5,17-20', sleeps: 4, price: '$95.13', img: '/images/Cabins/CabinStandar/Cabinstandard.jpeg' },
-    { name: 'The James Madison', num: '6', sleeps: 4, price: '$136.56', img: '/images/Cabins/CabinTheJamesMadison/PhotoMainTheJamesMadison.jpeg' },
-    { name: 'The John Adams', num: '12', sleeps: 4, price: '$174', img: '/images/Cabins/CabinJohnAdams/PhotoMainJohnAdams.jpeg' },
+    { name: 'Standard Cabins', num: '1,4,5,17-20', sleeps: 4, price: '$95.13', img: '/images/Cabins/CabinStandar/Cabinstandard.jpeg', images: ['/images/Cabins/CabinStandar/Cabinstandard.jpeg', ...STANDARD_CABIN_INTERIOR] },
+    { name: 'The James Madison', num: '6', sleeps: 4, price: '$136.56', img: '/images/Cabins/CabinTheJamesMadison/PhotoMainTheJamesMadison.jpeg', images: ['/images/Cabins/CabinTheJamesMadison/PhotoMainTheJamesMadison.jpeg', '/images/Cabins/CabinTheJamesMadison/IMG_8481.jpeg', '/images/Cabins/CabinTheJamesMadison/IMG_8492.jpeg'] },
+    { name: 'The John Adams', num: '12', sleeps: 4, price: '$174', img: '/images/Cabins/CabinJohnAdams/PhotoMainJohnAdams.jpeg', images: ['/images/Cabins/CabinJohnAdams/PhotoMainJohnAdams.jpeg', '/images/Cabins/CabinJohnAdams/IMG_8438.jpeg', '/images/Cabins/CabinJohnAdams/IMG_8442.jpeg', '/images/Cabins/CabinJohnAdams/IMG_8469.jpeg'] },
   ]},
   { cat: 'Cabins Sleeping 6', items: [
-    { name: 'John Quincy Adams', num: '9', sleeps: 6, price: '$100.42', img: '/images/Cabins/CabinJohnQuincyAdams/PhotoMainJamesMonroe.jpeg' },
-    { name: 'Andrew Jackson', num: '10', sleeps: 6, price: '$100.42' },
-    { name: 'Ulysses S. Grant', num: '11', sleeps: 6, price: '$174', img: '/images/Cabins/CabinUlyssesGrant/PhotoMainUlyssesGrant.png' },
-    { name: 'The George Washington', num: '15', sleeps: 6, price: '$126.84' },
-    { name: 'The Abe Lincoln', num: '16', sleeps: 6, price: '$174' },
+    { name: 'John Quincy Adams', num: '9', sleeps: 6, price: '$100.42', img: '/images/Cabins/CabinJohnQuincyAdams/PhotoMainJohnQuincyAdams.jpeg', images: ['/images/Cabins/CabinJohnQuincyAdams/PhotoMainJohnQuincyAdams.jpeg', ...CABIN_9_10_INTERIOR] },
+    { name: 'Andrew Jackson', num: '10', sleeps: 6, price: '$100.42', img: '/images/Cabins/CabinJohnQuincyAdams/PhotoMainJohnQuincyAdams.jpeg', images: ['/images/Cabins/CabinJohnQuincyAdams/PhotoMainJohnQuincyAdams.jpeg', ...CABIN_9_10_INTERIOR] },
+    { name: 'Ulysses S. Grant', num: '11', sleeps: 6, price: '$174', img: '/images/Cabins/CabinUlyssesGrant/PhotoMainUlyssesGrant.png', images: ['/images/Cabins/CabinUlyssesGrant/PhotoMainUlyssesGrant.png'] },
+    { name: 'The George Washington', num: '15', sleeps: 6, price: '$126.84', img: '/images/Cabins/CabinGeorgeWashington/PhotoMainGeorgeWashington.jpeg', images: ['/images/Cabins/CabinGeorgeWashington/PhotoMainGeorgeWashington.jpeg', '/images/Cabins/CabinGeorgeWashington/IMG_8451.jpeg'] },
+    { name: 'The Abe Lincoln', num: '16', sleeps: 6, price: '$174', img: '/images/Cabins/CabinAbeLincoln/PhotoMainAbeLicoln.jpeg', images: ['/images/Cabins/CabinAbeLincoln/PhotoMainAbeLicoln.jpeg', '/images/Cabins/CabinAbeLincoln/IMG_8486.jpeg', '/images/Cabins/CabinAbeLincoln/IMG_8488.jpeg', '/images/Cabins/CabinAbeLincoln/IMG_8496.jpeg'] },
   ]},
   { cat: 'Cabins Sleeping 7', items: [
-    { name: 'The James Monroe', num: '2', sleeps: 7, price: '$121.56', img: '/images/Cabins/CabinJamesMonroe/PhotoMainJamesMonroe.jpeg' },
-    { name: 'The Thomas Jefferson', num: '3', sleeps: 7, price: '$136.35', img: '/images/Cabins/CabinTheThomasJeffersonCabinTheThomasJefferson/PhotoMainTheThomasJefferson.jpeg' },
+    { name: 'The James Monroe', num: '2', sleeps: 7, price: '$121.56', img: '/images/Cabins/CabinJamesMonroe/PhotoMainJamesMonroe.jpeg', images: ['/images/Cabins/CabinJamesMonroe/PhotoMainJamesMonroe.jpeg', '/images/Cabins/CabinJamesMonroe/IMG_7688.jpeg', '/images/Cabins/CabinJamesMonroe/IMG_7689.jpeg', '/images/Cabins/CabinJamesMonroe/IMG_7788.jpeg', '/images/Cabins/CabinJamesMonroe/IMG_7790.jpeg', '/images/Cabins/CabinJamesMonroe/IMG_7791.jpeg', '/images/Cabins/CabinJamesMonroe/IMG_7792.jpeg'] },
+    { name: 'The Thomas Jefferson', num: '3', sleeps: 7, price: '$136.35', img: '/images/Cabins/CabinTheThomasJeffersonCabinTheThomasJefferson/PhotoMainTheThomasJefferson.jpeg', images: ['/images/Cabins/CabinTheThomasJeffersonCabinTheThomasJefferson/PhotoMainTheThomasJefferson.jpeg', '/images/Cabins/CabinTheThomasJeffersonCabinTheThomasJefferson/IMG_8483.jpeg', '/images/Cabins/CabinTheThomasJeffersonCabinTheThomasJefferson/IMG_8493.jpeg'] },
   ]},
   { cat: 'Cabins Sleeping 10', items: [
-    { name: 'John F. Kennedy', num: '21', sleeps: 10, price: '$332', img: '/images/Cabins/CabinJohnKennedy/PhotoMainJohnFKennedy.jpeg' },
+    { name: 'John F. Kennedy', num: '21', sleeps: 10, price: '$332', img: '/images/Cabins/CabinJohnKennedy/PhotoMainJohnFKennedy.jpeg', images: ['/images/Cabins/CabinJohnKennedy/PhotoMainJohnFKennedy.jpeg'] },
   ]},
 ];
 

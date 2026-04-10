@@ -221,6 +221,7 @@ export default function CabinsPage() {
           </div>
         </div>
       </section>
+
     </>
   );
 }

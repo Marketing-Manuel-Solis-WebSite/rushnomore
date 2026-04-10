@@ -27,7 +27,7 @@ const cols = {
   Info: [
     { label: 'About Us', href: '/about' },
     { label: 'Contact', href: '/contact' },
-{ label: 'Policies', href: '/policies' },
+    { label: 'Policies', href: '/policies' },
     { label: 'ADA', href: '/ada' },
     { label: 'Legal', href: '/legal' },
   ],

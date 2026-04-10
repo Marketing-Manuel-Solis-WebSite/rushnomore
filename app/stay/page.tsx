@@ -14,8 +14,11 @@ import {
   Truck, Home, Tent, Users, Waves, Beer, ShieldCheck, Wifi, PawPrint,
   CheckCircle, Sparkles, Flame, TreePine, ShowerHead, Cable,
   Mountain, MapPin, Zap, Navigation, Quote, Clock,
-  ChevronDown, HelpCircle,
+  ChevronDown, HelpCircle, X, ChevronLeft, ChevronRight, Camera,
+  Thermometer,
 } from 'lucide-react';
+
+type CabinItem = { name: string; num: string; sleeps: number; img?: string; price?: string; images?: string[] };
 
 /* ═══════════════════════════════════════════════════════════════
    TAB DATA
@@ -80,6 +83,14 @@ export default function StayPage() {
 
   const [activeTab, setActiveTab] = useState('rv-sites');
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [selectedCabin, setSelectedCabin] = useState<CabinItem | null>(null);
+  const [imgIdx, setImgIdx] = useState(0);
+
+  const openCabin = (cabin: CabinItem) => {
+    setSelectedCabin(cabin);
+    setImgIdx(0);
+  };
+  const cabinImages = selectedCabin?.images ?? [];
 
   useEffect(() => {
     heroVideoRef.current?.play().catch(() => {});
@@ -564,6 +575,14 @@ export default function StayPage() {
                         <a href={SITE.booking} target="_blank" rel="noopener noreferrer" className="btn-gold w-full text-center text-sm">
                           Reserve <ExternalLink className="w-3.5 h-3.5 ml-1" />
                         </a>
+                        {c.images && c.images.length > 0 && (
+                          <button
+                            onClick={() => openCabin(c)}
+                            className="w-full flex items-center justify-center gap-1.5 text-sm mt-2 px-4 py-2.5 border-2 border-brand-gold/20 text-brand-gold rounded-xl hover:bg-brand-gold/5 hover:border-brand-gold/40 transition-all font-bold"
+                          >
+                            <Camera className="w-3.5 h-3.5" /> View Details
+                          </button>
+                        )}
                       </div>
                     </motion.div>
                   ))}
@@ -932,6 +951,135 @@ export default function StayPage() {
       </section>
 
       <BookingCTA title="Ready to Book Your Black Hills Stay?" subtitle="RV starts at $41.22 | Cabins starts at $51.76 | Tent from $35/night — all amenities included. Prices vary by weekday, weekend, Rally & holidays." />
+
+      {/* ═══ CABIN DETAIL MODAL ═══ */}
+      <AnimatePresence>
+        {selectedCabin && cabinImages.length > 0 && (
+          <motion.div
+            key="cabin-modal-backdrop"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-50 flex items-end md:items-center justify-center bg-black/70 backdrop-blur-sm"
+            onClick={() => setSelectedCabin(null)}
+          >
+            <motion.div
+              key="cabin-modal"
+              initial={{ opacity: 0, y: 80 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 80 }}
+              transition={{ duration: 0.25, ease: 'easeOut' }}
+              className="w-full md:w-auto md:min-w-[500px] md:max-w-2xl bg-white rounded-t-2xl md:rounded-2xl max-h-[88vh] md:max-h-[85vh] overflow-hidden shadow-2xl flex flex-col md:mx-4"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Mobile drag handle */}
+              <div className="flex justify-center pt-2 pb-1 md:hidden shrink-0">
+                <div className="w-10 h-1 bg-gray-300 rounded-full" />
+              </div>
+
+              {/* Scrollable content */}
+              <div className="overflow-y-auto flex-1 overscroll-contain">
+                {/* Close button */}
+                <button
+                  onClick={() => setSelectedCabin(null)}
+                  className="absolute top-3 right-3 z-20 w-9 h-9 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-colors md:top-4 md:right-4"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+
+                {/* Image viewer */}
+                <div className="relative aspect-[16/10] bg-surface-secondary overflow-hidden md:rounded-t-2xl">
+                  <div
+                    className="absolute inset-0 bg-cover bg-center transition-all duration-300"
+                    style={{ backgroundImage: `url('${cabinImages[imgIdx]}')` }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+
+                  {/* Navigation arrows */}
+                  {cabinImages.length > 1 && (
+                    <>
+                      {imgIdx > 0 && (
+                        <button
+                          onClick={() => setImgIdx(imgIdx - 1)}
+                          className="absolute left-2 top-1/2 -translate-y-1/2 w-9 h-9 bg-black/40 hover:bg-black/60 text-white rounded-full flex items-center justify-center transition-colors"
+                        >
+                          <ChevronLeft className="w-5 h-5" />
+                        </button>
+                      )}
+                      {imgIdx < cabinImages.length - 1 && (
+                        <button
+                          onClick={() => setImgIdx(imgIdx + 1)}
+                          className="absolute right-2 top-1/2 -translate-y-1/2 w-9 h-9 bg-black/40 hover:bg-black/60 text-white rounded-full flex items-center justify-center transition-colors"
+                        >
+                          <ChevronRight className="w-5 h-5" />
+                        </button>
+                      )}
+                    </>
+                  )}
+
+                  {/* Image counter */}
+                  <span className="absolute bottom-2 left-2 bg-black/50 text-white text-[11px] font-bold px-2.5 py-1 rounded-full">
+                    {imgIdx + 1} / {cabinImages.length}
+                  </span>
+                </div>
+
+                {/* Thumbnails */}
+                {cabinImages.length > 1 && (
+                  <div className="flex gap-2 px-4 py-2.5 overflow-x-auto bg-surface-primary/50">
+                    {cabinImages.map((img, i) => (
+                      <button
+                        key={i}
+                        onClick={() => setImgIdx(i)}
+                        className={`flex-shrink-0 w-14 h-14 md:w-16 md:h-16 rounded-lg overflow-hidden border-2 transition-all ${
+                          i === imgIdx ? 'border-brand-gold shadow-gold' : 'border-transparent opacity-50 hover:opacity-90'
+                        }`}
+                      >
+                        <div className="w-full h-full bg-cover bg-center" style={{ backgroundImage: `url('${img}')` }} />
+                      </button>
+                    ))}
+                  </div>
+                )}
+
+                {/* Cabin info */}
+                <div className="px-5 pb-5 pt-3">
+                  <div className="flex items-center justify-between gap-3 mb-3">
+                    <div className="min-w-0">
+                      <span className="text-[11px] font-bold text-brand-gold uppercase tracking-widest">Cabin {selectedCabin.num}</span>
+                      <h3 className="text-xl font-display font-bold text-brand-navy leading-tight">{selectedCabin.name}</h3>
+                    </div>
+                    <div className="text-right flex-shrink-0">
+                      <span className="font-display text-xl text-brand-gold font-bold">{selectedCabin.price || '$51.76'}</span>
+                      <span className="text-[11px] text-brand-stone block">per night</span>
+                    </div>
+                  </div>
+
+                  <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 mb-4 text-sm text-brand-navy/60 font-medium">
+                    <span className="flex items-center gap-1.5">
+                      <Users className="w-4 h-4 text-brand-gold" /> Sleeps {selectedCabin.sleeps}
+                    </span>
+                    <span className="flex items-center gap-1.5">
+                      <Home className="w-4 h-4 text-brand-gold" /> Private Bath
+                    </span>
+                    <span className="flex items-center gap-1.5">
+                      <Thermometer className="w-4 h-4 text-brand-gold" /> A/C & Heat
+                    </span>
+                  </div>
+
+                  <a
+                    href={SITE.booking}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-gold w-full text-center text-sm py-3"
+                  >
+                    Reserve This Cabin <ExternalLink className="w-3.5 h-3.5 ml-1.5" />
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }

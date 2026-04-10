@@ -8,7 +8,7 @@ import { ATTRACTIONS, ITINERARY, SITE, REVIEWS, type Attraction } from '@/data/s
 import { BookingCTA, SectionHeader } from '@/components/ui';
 import { FadeIn, ParallaxHero, StaggerChildren, StaggerItem } from '@/components/motion';
 import { JsonLd } from '@/components/seo/JsonLd';
-import { breadcrumbSchema } from '@/lib/seo';
+import { breadcrumbSchema, faqSchema } from '@/lib/seo';
 import {
   ExternalLink, MapPin, Clock, Star, Lightbulb, ArrowRight, ArrowDown,
   Mountain, TreePine, Route, Calendar, Compass, ChevronRight, Play, Pause,
@@ -170,6 +170,13 @@ export default function ExplorePage() {
   return (
     <>
       <JsonLd data={breadcrumbSchema([{ name: 'Home', url: '/' }, { name: 'Explore the Black Hills', url: '/explore' }])} />
+      <JsonLd data={faqSchema([
+        { q: 'How far is Rush No More from Mount Rushmore?', a: 'Rush No More is approximately 55 miles (about 1 hour drive) from Mount Rushmore National Memorial, making it a perfect base camp for day trips.' },
+        { q: 'What is the closest attraction to Rush No More?', a: 'Sturgis Main Street is just 5 miles away (7 minutes). Historic Deadwood is only 12 miles (15 minutes) from our campground.' },
+        { q: 'Can I visit all Black Hills attractions in one trip?', a: 'We recommend 4-6 days to see the major attractions. Our 6-day itinerary covers Mount Rushmore, Crazy Horse, Deadwood, Spearfish Canyon, Custer State Park, and more.' },
+        { q: 'Is Rush No More a good base for exploring the Black Hills?', a: 'Yes! Our location in Sturgis gives you easy I-90 access and central positioning for all major Black Hills attractions — from Deadwood (12 mi) to Mount Rushmore (55 mi) to Custer State Park (70 mi).' },
+        { q: 'What scenic drives are near Rush No More?', a: 'Spearfish Canyon (25 mi), Needles Highway (65 mi), Iron Mountain Road, and the Wildlife Loop in Custer State Park are all accessible day trips from our campground.' },
+      ])} />
 
       {/* ═══════════════════════════════════════════════
           SECTION 1: CINEMATIC VIDEO HERO

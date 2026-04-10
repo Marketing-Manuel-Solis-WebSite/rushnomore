@@ -44,14 +44,14 @@ export function Header() {
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
           <div className="flex items-center gap-6 font-bold tracking-wide">
             <span className="flex items-center gap-2 transition-colors cursor-default">
-              <MapPin className="w-4 h-4 text-yellow-500" />
+              <MapPin className="w-4 h-4 text-brand-gold" />
               {SITE.address}
             </span>
             <a 
               href={`tel:${SITE.phoneTel}`} 
-              className="flex items-center gap-2 hover:text-yellow-400 transition-colors"
+              className="flex items-center gap-2 hover:text-brand-gold-light transition-colors"
             >
-              <Phone className="w-4 h-4 text-yellow-500" />
+              <Phone className="w-4 h-4 text-brand-gold" />
               {SITE.phone}
             </a>
           </div>
@@ -59,7 +59,7 @@ export function Header() {
             <div className="bg-white/10 px-3 py-0.5 rounded-md backdrop-blur-sm border border-white/10">
                <WeatherWidget />
             </div>
-            <span className="text-yellow-500 text-xs font-black uppercase tracking-widest flex items-center gap-2">
+            <span className="text-brand-gold text-xs font-black uppercase tracking-widest flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
               Open {SITE.hours}
             </span>
@@ -135,9 +135,10 @@ export function Header() {
                         <div className="h-0.5 w-full bg-brand-gold" />
                         <div className="py-1">
                           {item.children.map((c) => (
-                            <Link 
-                              key={c.href} 
-                              href={c.href} 
+                            <Link
+                              key={c.href}
+                              href={c.href}
+                              role="menuitem"
                               className="block px-4 py-2.5 text-sm text-gray-700 hover:text-brand-navy hover:bg-gray-50 transition-colors font-medium border-l-2 border-transparent hover:border-brand-gold"
                             >
                               {c.label}
@@ -158,7 +159,7 @@ export function Header() {
               href={SITE.booking}
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden sm:flex items-center gap-2 bg-brand-gold hover:bg-yellow-500 text-white text-xs md:text-sm font-bold py-2.5 px-5 rounded-full shadow-md hover:shadow-lg transition-all duration-300 uppercase tracking-wide"
+              className="hidden sm:flex items-center gap-2 bg-brand-gold hover:bg-brand-gold-dark text-white text-xs md:text-sm font-bold py-2.5 px-5 rounded-full shadow-md hover:shadow-lg transition-all duration-300 uppercase tracking-wide"
             >
               <CalendarDays className="w-3.5 h-3.5" />
               <span>Book Now</span>

@@ -8,7 +8,7 @@ import { SITE, RALLY_RV, REVIEWS } from '@/data/site';
 import { BookingCTA, SectionHeader } from '@/components/ui';
 import { FadeIn } from '@/components/motion';
 import { JsonLd } from '@/components/seo/JsonLd';
-import { eventSchema, breadcrumbSchema } from '@/lib/seo';
+import { eventSchema, breadcrumbSchema, faqSchema } from '@/lib/seo';
 import {
   ExternalLink, Star, ArrowRight, ChevronDown,
   MapPin, Users, Music, Beer, Car, Calendar,
@@ -65,6 +65,7 @@ export default function EventsPage() {
         description: 'Rush No More RV Resort is your perfect Sturgis Rally base camp — RV sites, cabins & tent camping just 5 miles from Main Street Sturgis. Beer garden, pool, hot tubs & 16 amenities.',
         startDate: '2026-08-02', endDate: '2026-08-18',
         image: '/images/BikeRally/IMG_9865.JPG',
+        price: '899',
       })} />
       <JsonLd data={eventSchema({
         name: 'Dakota Rods & Classics Car Show 2026',
@@ -73,6 +74,14 @@ export default function EventsPage() {
         image: '/images/car_show_RNM.png',
       })} />
       <JsonLd data={breadcrumbSchema([{ name: 'Home', url: '/' }, { name: 'Events', url: '/events' }])} />
+      <JsonLd data={faqSchema([
+        { q: 'When is the 2026 Sturgis Motorcycle Rally?', a: 'The 2026 Sturgis Motorcycle Rally runs from August 2-18, 2026. Rush No More is located just 5 miles from Main Street Sturgis.' },
+        { q: 'How far is Rush No More from the Sturgis Rally?', a: 'Rush No More is only 5 miles (7 minutes) from Main Street Sturgis, making it one of the closest campgrounds to the rally action.' },
+        { q: 'How early should I book for the Sturgis Rally?', a: 'We recommend booking 6-12 months in advance for the Sturgis Rally as sites sell out quickly. Rally rates apply for the event period.' },
+        { q: 'What are Rally rates at Rush No More?', a: 'Rally rates start at $899 for standard 30A hookup sites, $999 for 50A, $1,499 for luxury sites, and $2,499 for luxury spa sites with private hot tub.' },
+        { q: 'When is the Dakota Rods & Classics Car Show?', a: 'The Dakota Rods & Classics Car Show is September 12, 2026 at Rush No More. Free admission with classic cars, live music, food vendors, and beer garden.' },
+        { q: 'Can I host a wedding at Rush No More?', a: 'Yes! Our large outdoor pavilion with full commercial kitchen accommodates groups of 20-200 guests. Cabins, RV sites & tent camping allow all guests to stay on-site.' },
+      ])} />
 
       {/* ═══════════════════════════════════════════════════════════════
           HERO — Full-screen video background

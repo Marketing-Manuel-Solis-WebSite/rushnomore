@@ -5,7 +5,27 @@ import { NextResponse } from 'next/server';
 import { db } from '@/lib/firebase';
 import { collection, getDocs, doc, updateDoc, addDoc, query, where } from 'firebase/firestore';
 // Mapping: cabin name → { folder, images (PhotoMain first) }
+// Shared interior images for cabins that look the same inside
+const STANDARD_INTERIOR = [
+  '/images/Cabins/CabinTheJamesMadison/IMG_8481.jpeg',
+  '/images/Cabins/CabinTheJamesMadison/IMG_8492.jpeg',
+];
+const CABIN_9_10_INTERIOR = [
+  '/images/Cabins/CabinJohnQuincyAdams/IMG_7785.jpeg',
+  '/images/Cabins/CabinJohnQuincyAdams/IMG_8466.jpeg',
+  '/images/Cabins/CabinJohnQuincyAdams/IMG_8467.jpeg',
+];
+
 const CABIN_IMAGES: Record<string, string[]> = {
+  // Cabins 1,4,5,17-20 — same interior (Standard Cabins)
+  'The George Washington': [
+    '/images/Cabins/CabinTheThomasJeffersonCabinTheThomasJefferson/PhotoMainTheThomasJefferson.jpeg',
+    ...STANDARD_INTERIOR,
+  ],
+  'The James Madison': [
+    '/images/Cabins/CabinTheJamesMadison/PhotoMainTheJamesMadison.jpeg',
+    ...STANDARD_INTERIOR,
+  ],
   'The James Monroe': [
     '/images/Cabins/CabinJamesMonroe/PhotoMainJamesMonroe.jpeg',
     '/images/Cabins/CabinJamesMonroe/IMG_7688.jpeg',
@@ -15,29 +35,80 @@ const CABIN_IMAGES: Record<string, string[]> = {
     '/images/Cabins/CabinJamesMonroe/IMG_7791.jpeg',
     '/images/Cabins/CabinJamesMonroe/IMG_7792.jpeg',
   ],
-  'The John Quincy Adams': [
-    '/images/Cabins/CabinJohnQuincyAdams/PhotoMainJamesMonroe.jpeg',
-    '/images/Cabins/CabinJohnQuincyAdams/IMG_7785.jpeg',
-    '/images/Cabins/CabinJohnQuincyAdams/IMG_8466.jpeg',
-    '/images/Cabins/CabinJohnQuincyAdams/IMG_8467.jpeg',
+  'The Ulysses Grant': [
+    '/images/Cabins/CabinUlyssesGrant/PhotoMainUlyssesGrant.png',
+    ...STANDARD_INTERIOR,
   ],
+  'The Rutherford Hayes': [
+    '/images/Cabins/CabinJamesMonroe/IMG_7790.jpeg',
+    ...STANDARD_INTERIOR,
+  ],
+  'The James Garfield': [
+    '/images/Cabins/CabinJohnQuincyAdams/IMG_7785.jpeg',
+    ...STANDARD_INTERIOR,
+  ],
+  'The Chester Arthur': [
+    '/images/Cabins/CabinTheThomasJeffersonCabinTheThomasJefferson/IMG_8493.jpeg',
+    ...STANDARD_INTERIOR,
+  ],
+
+  // Cabins 7-8 — same interior (no interior images available yet)
   'The Martin Van Buren': [
     '/images/Cabins/CabinMartinVanBuren/PhotoMainMartinVanBuren.jpeg',
   ],
   'The William Harrison': [
     '/images/Cabins/CabinWMHenryHarrison/MainPhotoWMHenryHarrison.jpeg',
   ],
-  'The James Madison': [
-    '/images/Cabins/CabinTheJamesMadison/PhotoMainTheJamesMadison.jpeg',
-    '/images/Cabins/CabinTheJamesMadison/IMG_8481.jpeg',
-    '/images/Cabins/CabinTheJamesMadison/IMG_8492.jpeg',
+
+  // Cabins 9-10 — same interior
+  'The John Tyler': [
+    '/images/Cabins/CabinJamesMonroe/PhotoMainJamesMonroe.jpeg',
+    ...CABIN_9_10_INTERIOR,
   ],
+  'The James Polk': [
+    '/images/Cabins/CabinTheJamesMadison/IMG_8481.jpeg',
+    ...CABIN_9_10_INTERIOR,
+  ],
+
+  // Unique cabins
   'The Thomas Jefferson': [
     '/images/Cabins/CabinTheThomasJeffersonCabinTheThomasJefferson/PhotoMainTheThomasJefferson.jpeg',
     '/images/Cabins/CabinTheThomasJeffersonCabinTheThomasJefferson/IMG_8483.jpeg',
     '/images/Cabins/CabinTheThomasJeffersonCabinTheThomasJefferson/IMG_8493.jpeg',
   ],
-  'The Ulysses Grant': [
+  'The John Quincy Adams': [
+    '/images/Cabins/CabinJohnQuincyAdams/PhotoMainJohnQuincyAdams.jpeg',
+    '/images/Cabins/CabinJohnQuincyAdams/IMG_7785.jpeg',
+    '/images/Cabins/CabinJohnQuincyAdams/IMG_8466.jpeg',
+    '/images/Cabins/CabinJohnQuincyAdams/IMG_8467.jpeg',
+  ],
+  'The Zachary Taylor': [
+    '/images/Cabins/CabinWMHenryHarrison/MainPhotoWMHenryHarrison.jpeg',
+  ],
+  'The Millard Fillmore': [
+    '/images/Cabins/CabinMartinVanBuren/PhotoMainMartinVanBuren.jpeg',
+    '/images/Cabins/CabinJohnAdams/IMG_8438.jpeg',
+    '/images/Cabins/CabinJohnAdams/IMG_8442.jpeg',
+    '/images/Cabins/CabinJohnAdams/IMG_8469.jpeg',
+  ],
+  'The Franklin Pierce': [
+    '/images/Cabins/CabinTheThomasJeffersonCabinTheThomasJefferson/IMG_8483.jpeg',
+  ],
+  'The James Buchanan': [
+    '/images/Cabins/CabinMillardFillmore/PhotoMainMillardFilmore.jpeg',
+    '/images/Cabins/CabinMillardFillmore/Cabin 14 bed.jpeg',
+  ],
+  'The Abraham Lincoln': [
+    '/images/Cabins/CabinGeorgeWashington/PhotoMainGeorgeWashington.jpeg',
+    '/images/Cabins/CabinGeorgeWashington/IMG_8451.jpeg',
+  ],
+  'The Andrew Johnson': [
+    '/images/Cabins/CabinAbeLincoln/PhotoMainAbeLicoln.jpeg',
+    '/images/Cabins/CabinAbeLincoln/IMG_8486.jpeg',
+    '/images/Cabins/CabinAbeLincoln/IMG_8488.jpeg',
+    '/images/Cabins/CabinAbeLincoln/IMG_8496.jpeg',
+  ],
+  'The John F. Kennedy': [
     '/images/Cabins/CabinUlyssesGrant/PhotoMainUlyssesGrant.png',
   ],
 };
