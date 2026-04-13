@@ -1080,7 +1080,7 @@ export default function ExplorePage() {
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex gap-0.5">
                       {Array.from({ length: 5 }, (_, j) => (
-                        <Star key={j} className={`w-4 h-4 ${j < review.rating ? 'text-brand-gold fill-brand-gold' : 'text-white/20'}`} />
+                        <Star key={j} className={`w-4 h-4 ${j < review.rating ? 'text-brand-gold fill-brand-gold' : 'text-white/40'}`} />
                       ))}
                     </div>
                     {review.source && (

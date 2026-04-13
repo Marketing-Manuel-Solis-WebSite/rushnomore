@@ -27,7 +27,7 @@ export function BookingBar() {
           <div className="max-w-7xl mx-auto flex items-center justify-between">
             <div className="hidden sm:block">
               <p className="text-white font-display text-lg">Your Black Hills adventure starts here</p>
-              <p className="text-white/50 text-xs uppercase tracking-wider">From $35/night &middot; RV &middot; Cabins &middot; Tent</p>
+              <p className="text-white/60 text-xs uppercase tracking-wider">From $35/night &middot; RV &middot; Cabins &middot; Tent</p>
             </div>
             <div className="flex items-center gap-3 w-full sm:w-auto">
               <a href={SITE.booking} target="_blank" rel="noopener noreferrer" className="btn-gold flex-1 sm:flex-initial text-center text-sm">

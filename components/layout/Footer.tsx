@@ -63,7 +63,7 @@ export function Footer() {
               height={120}
               className="mb-6 brightness-0 invert"
             />
-            <div className="space-y-2 text-sm text-white/50">
+            <div className="space-y-2 text-sm text-white/60">
               <div className="flex items-start gap-2">
                 <MapPin className="w-4 h-4 text-brand-gold mt-0.5 flex-shrink-0" />
                 {SITE.address}
@@ -96,7 +96,7 @@ export function Footer() {
                   <li key={l.href}>
                     <Link
                       href={l.href}
-                      className="text-sm text-white/45 hover:text-white hover:pl-1.5 transition-all duration-200"
+                      className="text-sm text-white/60 hover:text-white hover:pl-1.5 transition-all duration-200"
                     >
                       {l.label}
                     </Link>
@@ -109,8 +109,8 @@ export function Footer() {
 
         {/* ── Bottom bar ── */}
         <div className="border-t border-white/[0.06] pt-6 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-xs text-white/25">&copy; {new Date().getFullYear()} {SITE.name}. All rights reserved.</p>
-          <div className="flex gap-5 text-xs text-white/25">
+          <p className="text-xs text-white/40">&copy; {new Date().getFullYear()} {SITE.name}. All rights reserved.</p>
+          <div className="flex gap-5 text-xs text-white/40">
             <Link href="/policies" className="hover:text-white/50 transition-colors">Policies</Link>
             <Link href="/legal" className="hover:text-white/50 transition-colors">Legal</Link>
             <Link href="/ada" className="hover:text-white/50 transition-colors">Accessibility</Link>

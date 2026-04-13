@@ -2,19 +2,26 @@ import { Metadata } from 'next';
 import { seo } from '@/lib/seo';
 
 export const metadata: Metadata = seo({
-  title: 'Sturgis Rally Campground 2026 — Car Show, Weddings & Group Events',
-  description: 'Official Sturgis Motorcycle Rally campground 2026 (Aug 2-18): RV sites from $899, cabins & tent camping just 5 miles from Main Street. Dakota Rods & Classics Car Show Sep 12. Weddings, reunions & group events for 20-200 guests at Rush No More in Sturgis, SD.',
+  title: 'Sturgis Rally Campground 2026 (Aug 2–18) — RV Sites, Cabins & Tent Camping',
+  description: 'Book your Sturgis Motorcycle Rally 2026 campsite (August 2–18): RV sites from $899/10 days, cabins & tent camping just 5 miles from Main Street Sturgis. Rush No More is the ultimate rally headquarters — beer garden, hot tubs, live music. Dakota Rods & Classics Car Show September 12, 2026. Weddings, reunions & group events for 20–200 guests. Book early — we sell out every year.',
   path: '/events',
   image: '/images/BikeRally/IMG_9865.JPG',
   keywords: [
-    'sturgis rally campground', 'sturgis rally campground 2026',
-    'sturgis motorcycle rally lodging', 'sturgis rally rv sites',
-    'sturgis rally base camp', 'rally rates 2026',
-    'car show sturgis sd', 'dakota rods classics car show',
-    'wedding venue black hills', 'group events sturgis south dakota',
-    'sturgis rally accommodations', 'camping near sturgis rally',
-    'sturgis rally 2026 dates', 'motorcycle rally south dakota',
-    'event venue sturgis sd', 'reunion venue black hills',
+    'sturgis rally campground 2026', 'sturgis motorcycle rally campground',
+    'sturgis rally rv sites 2026', 'sturgis rally accommodations 2026',
+    'where to stay sturgis rally 2026', 'sturgis rally lodging 2026',
+    'sturgis motorcycle rally lodging', 'sturgis rally base camp',
+    'camping near sturgis rally', 'sturgis rally rv park',
+    'sturgis rally tent camping', 'sturgis rally cabin rentals',
+    'sturgis rally rates 2026', 'sturgis rally reservations',
+    'best campground sturgis rally', 'motorcycle rally south dakota 2026',
+    'sturgis rally camping with pool', 'sturgis rally beer garden',
+    'car show sturgis sd 2026', 'dakota rods classics car show 2026',
+    'wedding venue black hills outdoor', 'wedding venue sturgis sd',
+    'group events sturgis south dakota', 'reunion venue black hills',
+    'corporate retreat black hills', 'event venue near mount rushmore',
+    'outdoor wedding venue south dakota', 'group camping south dakota',
+    'sturgis rally 2026 dates august', 'motorcycle rally campground south dakota',
   ],
 });
 

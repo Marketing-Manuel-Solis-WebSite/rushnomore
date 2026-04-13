@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MessageSquare, X, Send, Loader2, Bot, User, Phone, ExternalLink, ChevronDown } from 'lucide-react';
+import { MessageSquare, X, Send, Loader2, Bot, User, Phone, ExternalLink } from 'lucide-react';
 import { SITE } from '@/data/site';
 import DOMPurify from 'dompurify';
 
@@ -12,7 +12,7 @@ interface ChatMessage {
 }
 
 const QUICK_QUESTIONS = [
-  'What kind of Rv sites do you have?',
+  'What kind of RV sites do you have?',
   'What are the cabin prices?',
   'How far is Mount Rushmore?',
   'Do you allow pets?',
@@ -172,7 +172,7 @@ export function AIChatWidget() {
                 </div>
                 <div>
                   <h4 className="font-bold text-sm leading-tight font-display">Rush No More</h4>
-                  <p className="text-[10px] text-white/50 font-medium uppercase tracking-wider">AI Assistant • Online</p>
+                  <p className="text-[10px] text-white/60 font-medium uppercase tracking-wider">AI Assistant • Online</p>
                 </div>
               </div>
               <div className="flex items-center gap-2 relative z-10">
@@ -221,7 +221,8 @@ export function AIChatWidget() {
                         <button
                           key={i}
                           onClick={() => sendMessage(q)}
-                          className="text-xs px-3 py-1.5 bg-white border border-brand-gold/20 text-brand-navy rounded-full hover:bg-brand-gold/10 hover:border-brand-gold/40 transition-all duration-200 font-medium"
+                          disabled={isLoading}
+                          className="text-xs px-3 py-1.5 bg-white border border-brand-gold/20 text-brand-navy rounded-full hover:bg-brand-gold/10 hover:border-brand-gold/40 transition-all duration-200 font-medium disabled:opacity-50 disabled:cursor-not-allowed"
                         >
                           {q}
                         </button>

@@ -1,14 +1,14 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Star, ArrowRight, MapPin, Clock, ExternalLink, Users, Beer, Waves, ShowerHead, WashingMachine, Wifi, PawPrint, Bike, Fuel, Flame, Gamepad2, BookOpen, TreePine, Store, Utensils, Cable, ShieldCheck } from 'lucide-react';
+import { Star, ArrowRight, MapPin, Clock, ExternalLink, Beer, Waves, ShowerHead, WashingMachine, Wifi, PawPrint, Bike, Fuel, Flame, Gamepad2, BookOpen, TreePine, Store, Utensils, Cable, ShieldCheck, Coffee } from 'lucide-react';
 import Link from 'next/link';
 import type { Attraction, Review, Amenity, RVTier } from '@/data/site';
 import { SITE } from '@/data/site';
 
 /* ─── Amenity Icon Map (resolved inside client component) ─── */
 const amenityIconMap: Record<string, React.ComponentType<{ className?: string }>> = {
-  Beer, Waves, ShowerHead, WashingMachine, Wifi, PawPrint, Bike, Fuel, Flame, Gamepad2, BookOpen, TreePine, Store, Utensils, Cable, ShieldCheck,
+  Beer, Waves, ShowerHead, WashingMachine, Wifi, PawPrint, Bike, Fuel, Flame, Gamepad2, BookOpen, TreePine, Store, Utensils, Cable, ShieldCheck, Coffee,
 };
 
 /* ─── Attraction Card ─── */

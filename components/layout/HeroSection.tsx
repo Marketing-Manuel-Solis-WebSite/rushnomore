@@ -17,7 +17,7 @@ export function HeroSection() {
   }, []);
 
   return (
-    <section className="relative min-h-[100vh] flex items-center justify-center overflow-hidden bg-brand-navy">
+    <section className="relative min-h-[100dvh] flex items-center justify-center overflow-hidden bg-brand-navy">
       {/* Video background - visible desde el inicio */}
       <video
         ref={videoRef}

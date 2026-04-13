@@ -185,7 +185,7 @@ export function Header() {
               exit="closed"
               variants={mobileMenuVariants}
             >
-              <div className="flex flex-col p-4 space-y-1 h-[calc(100vh-64px)] overflow-y-auto bg-gray-50/50">
+              <div className="flex flex-col p-4 space-y-1 h-[calc(100dvh-64px)] overflow-y-auto bg-gray-50/50">
                 {NAV.map((item, idx) => (
                   <motion.div 
                     key={item.href}

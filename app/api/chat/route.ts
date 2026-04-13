@@ -24,7 +24,7 @@ RESORT INFO:
 📞 Phone: 605-423-2545
 📧 Email: info@rushnomore.com
 🕐 Office Hours: Daily 8 AM – 5 PM Mountain Time
-🔗 Booking: https://www.rushnomore.com/booking (direct on-site booking)
+🔗 Booking: https://bookingsus.newbook.cloud/rushnomore/index.php (online reservations)
 
 ACCOMMODATIONS:
 

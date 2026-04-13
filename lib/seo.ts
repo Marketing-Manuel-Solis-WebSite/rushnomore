@@ -23,11 +23,15 @@ export function seo(o: { title: string; description: string; path: string; image
   const url = `${DOMAIN}${o.path}`;
   const full = o.path === '/' ? o.title : `${o.title} | Rush No More`;
   const img = o.image || OG_IMAGE;
+  const altText = `Rush No More RV Resort & Campground — ${o.title.split('—')[0].trim()} — Black Hills, Sturgis South Dakota`;
   return {
     title: full,
     description: o.description,
     keywords: o.keywords,
-    alternates: { canonical: url },
+    alternates: {
+      canonical: url,
+      languages: { 'en-US': url },
+    },
     openGraph: {
       title: full,
       description: o.description,
@@ -35,13 +39,13 @@ export function seo(o: { title: string; description: string; path: string; image
       siteName: BUSINESS_NAME,
       locale: 'en_US',
       type: 'website',
-      images: [{ url: img, width: 1400, height: 900, alt: 'Rush No More RV Resort — Black Hills, South Dakota' }],
+      images: [{ url: img, width: 1400, height: 900, alt: altText }],
     },
     twitter: {
       card: 'summary_large_image',
       title: full,
       description: o.description,
-      images: [img],
+      images: [{ url: img, alt: altText }],
     },
   };
 }
@@ -78,6 +82,8 @@ export function organizationSchema() {
     geo: GEO,
     sameAs: [
       'https://www.tripadvisor.com/Hotel_Review-g54818-d1631146-Reviews-Rush_No_More_Campground-Sturgis_South_Dakota.html',
+      'https://www.google.com/maps/place/Rush+No+More+Campground',
+      'https://www.facebook.com/RushNoMoreCampground',
     ],
     contactPoint: [
       {
@@ -233,6 +239,8 @@ export function campgroundSchema() {
     publicAccess: false,
     sameAs: [
       'https://www.tripadvisor.com/Hotel_Review-g54818-d1631146-Reviews-Rush_No_More_Campground-Sturgis_South_Dakota.html',
+      'https://www.google.com/maps/place/Rush+No+More+Campground',
+      'https://www.facebook.com/RushNoMoreCampground',
     ],
     additionalProperty: [
       { '@type': 'PropertyValue', name: 'Max RV Length', value: '100 feet' },
@@ -240,7 +248,17 @@ export function campgroundSchema() {
       { '@type': 'PropertyValue', name: 'Distance to Mount Rushmore', value: '55 miles' },
       { '@type': 'PropertyValue', name: 'Distance to Sturgis Main Street', value: '5 miles' },
       { '@type': 'PropertyValue', name: 'Distance to Deadwood', value: '12 miles' },
+      { '@type': 'PropertyValue', name: 'Distance to Crazy Horse Memorial', value: '60 miles' },
+      { '@type': 'PropertyValue', name: 'Distance to Custer State Park', value: '70 miles' },
+      { '@type': 'PropertyValue', name: 'Distance to Spearfish Canyon', value: '25 miles' },
       { '@type': 'PropertyValue', name: 'Interstate Access', value: 'I-90 Exit 37' },
+      { '@type': 'PropertyValue', name: 'Total RV Sites', value: '200+' },
+      { '@type': 'PropertyValue', name: 'Total Cabins', value: '16' },
+      { '@type': 'PropertyValue', name: 'Total Tent Sites', value: '20+' },
+      { '@type': 'PropertyValue', name: 'Elevation', value: '3,400 feet' },
+      { '@type': 'PropertyValue', name: 'Season', value: 'Year-round (RV), May-October (Luxury/Pool)' },
+      { '@type': 'PropertyValue', name: 'Rally Years Hosted', value: '84+' },
+      { '@type': 'PropertyValue', name: 'Founded', value: '2014' },
     ],
   };
 }

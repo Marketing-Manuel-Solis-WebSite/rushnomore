@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 import { SITE, REVIEWS } from '@/data/site';
 import { BookingCTA } from '@/components/ui';
 import { FadeIn } from '@/components/motion';
-import { submitContactForm, trackEvent } from '@/lib/booking';
+import { trackEvent } from '@/lib/booking';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { faqSchema, breadcrumbSchema } from '@/lib/seo';
 import {
@@ -40,12 +40,20 @@ export default function ContactPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('loading');
-    const result = await submitContactForm(form);
-    if (result.success) {
-      setStatus('success');
-      trackEvent('form_submit', { form_type: 'contact' });
-      setForm({ name: '', email: '', phone: '', subject: '', message: '' });
-    } else {
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
+      if (res.ok) {
+        setStatus('success');
+        trackEvent('form_submit', { form_type: 'contact' });
+        setForm({ name: '', email: '', phone: '', subject: '', message: '' });
+      } else {
+        setStatus('error');
+      }
+    } catch {
       setStatus('error');
     }
   };
@@ -207,7 +215,7 @@ export default function ContactPage() {
                   </div>
                 </motion.div>
               ) : (
-                <div className="bg-white rounded-3xl shadow-lodge-lg border border-surface-muted/50 p-8 md:p-10">
+                <form onSubmit={handleSubmit} className="bg-white rounded-3xl shadow-lodge-lg border border-surface-muted/50 p-8 md:p-10">
                   {/* Subject quick select */}
                   <div className="mb-8">
                     <label className="text-sm font-bold text-brand-navy mb-3 block uppercase tracking-wider">What can we help you with?</label>
@@ -301,7 +309,7 @@ export default function ContactPage() {
                     )}
 
                     <button
-                      onClick={handleSubmit}
+                      type="submit"
                       disabled={status === 'loading'}
                       className="btn-gold w-full text-base py-4"
                     >
@@ -316,7 +324,7 @@ export default function ContactPage() {
                       We typically respond within 24 hours. For urgent matters, please call us.
                     </p>
                   </div>
-                </div>
+                </form>
               )}
             </div>
 
