@@ -21,6 +21,9 @@ export const metadata: Metadata = seo({
     'bike wash station campground', 'propane campfire campground south dakota',
     'campground with camp store black hills', 'best amenities campground south dakota',
     '24 hour security campground sturgis', 'campground with picnic area black hills',
+    // Rapid City + emerging
+    'campground with pool near rapid city', 'rv park with pool rapid city sd',
+    'campground with hot tub near rapid city', 'rv park amenities rapid city area',
   ],
 });
 

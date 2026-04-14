@@ -8,7 +8,7 @@ import { SITE, REVIEWS, STATS } from '@/data/site';
 import { BookingCTA } from '@/components/ui';
 import { FadeIn } from '@/components/motion';
 import { JsonLd } from '@/components/seo/JsonLd';
-import { faqSchema, breadcrumbSchema } from '@/lib/seo';
+import { faqSchema, breadcrumbSchema, videoSchema } from '@/lib/seo';
 import {
   ExternalLink, Star, ArrowRight, Phone,
   Heart, Award, ThumbsUp, ShieldCheck, Sparkles,
@@ -48,6 +48,7 @@ export default function AboutPage() {
     <>
       <JsonLd data={faqSchema(FAQS)} />
       <JsonLd data={breadcrumbSchema([{ name: 'Home', url: '/' }, { name: 'About', url: '/about' }])} />
+      <JsonLd data={videoSchema({ name: 'About Rush No More RV Resort & Campground', description: 'Take a virtual tour of Rush No More RV Resort — the top-rated campground near Mount Rushmore in Sturgis, South Dakota. See our RV sites, presidential cabins, pool, beer garden & 16 free amenities.', thumbnailUrl: '/images/Aereal-2_1400.png', contentUrl: '/videos/RNM-about.mp4', uploadDate: '2025-01-01' })} />
 
       {/* HERO */}
       <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-brand-navy">

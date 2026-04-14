@@ -16,6 +16,9 @@ export const metadata: Metadata = seo({
     'black hills campground reviews', 'rush no more history',
     'most popular campground sturgis sd', 'award winning rv park south dakota',
     'recommended campground black hills', 'campground with best reviews sturgis',
+    // Photo/gallery + brand intent
+    'rush no more photos', 'rush no more campground photos',
+    'rush no more campground pictures', 'rush no more campground reviews photos',
   ],
 });
 

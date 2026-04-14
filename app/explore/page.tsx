@@ -8,7 +8,7 @@ import { ATTRACTIONS, ITINERARY, SITE, REVIEWS, type Attraction } from '@/data/s
 import { BookingCTA, SectionHeader } from '@/components/ui';
 import { FadeIn, ParallaxHero, StaggerChildren, StaggerItem } from '@/components/motion';
 import { JsonLd } from '@/components/seo/JsonLd';
-import { breadcrumbSchema, faqSchema } from '@/lib/seo';
+import { breadcrumbSchema, faqSchema, videoSchema, touristDestinationSchema } from '@/lib/seo';
 import {
   ExternalLink, MapPin, Clock, Star, Lightbulb, ArrowRight, ArrowDown,
   Mountain, TreePine, Route, Calendar, Compass, ChevronRight, Play, Pause,
@@ -170,6 +170,8 @@ export default function ExplorePage() {
   return (
     <>
       <JsonLd data={breadcrumbSchema([{ name: 'Home', url: '/' }, { name: 'Explore the Black Hills', url: '/explore' }])} />
+      <JsonLd data={touristDestinationSchema()} />
+      <JsonLd data={videoSchema({ name: 'Explore the Black Hills from Rush No More', description: 'Discover the best Black Hills attractions near Rush No More campground in Sturgis, SD — Mount Rushmore, Deadwood, Crazy Horse, Spearfish Canyon, Custer State Park & more.', thumbnailUrl: '/images/DSC05580-s.png', contentUrl: '/videos/RNM-explore.mp4', uploadDate: '2025-01-01' })} />
       <JsonLd data={faqSchema([
         { q: 'How far is Rush No More from Mount Rushmore?', a: 'Rush No More is approximately 55 miles (about 1 hour drive) from Mount Rushmore National Memorial, making it a perfect base camp for day trips.' },
         { q: 'What is the closest attraction to Rush No More?', a: 'Sturgis Main Street is just 5 miles away (7 minutes). Historic Deadwood is only 12 miles (15 minutes) from our campground.' },

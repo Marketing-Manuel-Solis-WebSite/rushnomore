@@ -4,6 +4,8 @@ import { motion } from 'framer-motion';
 import { SITE } from '@/data/site';
 import { BookingCTA } from '@/components/ui';
 import { FadeIn, ParallaxHero } from '@/components/motion';
+import { JsonLd } from '@/components/seo/JsonLd';
+import { breadcrumbSchema } from '@/lib/seo';
 import {
   Accessibility, CheckCircle, Eye, Keyboard, Smartphone, Monitor,
   Volume2, MousePointer, Phone, Mail, MapPin, Heart, Shield, Globe
@@ -30,6 +32,8 @@ const PROPERTY_FEATURES = [
 export default function ADAPage() {
   return (
     <>
+      <JsonLd data={breadcrumbSchema([{ name: 'Home', url: '/' }, { name: 'ADA Accessibility', url: '/ada' }])} />
+
       {/* ═══ HERO ═══ */}
       <section className="relative min-h-[50vh] flex items-center justify-center overflow-hidden bg-brand-navy">
         <div className="absolute inset-0 bg-cover bg-center opacity-20" style={{ backgroundImage: "url('/images/Aereal-2_1400.png')" }} />

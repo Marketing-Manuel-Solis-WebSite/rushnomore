@@ -8,7 +8,7 @@ import { SITE, RALLY_RV, REVIEWS } from '@/data/site';
 import { BookingCTA, SectionHeader } from '@/components/ui';
 import { FadeIn } from '@/components/motion';
 import { JsonLd } from '@/components/seo/JsonLd';
-import { eventSchema, breadcrumbSchema, faqSchema } from '@/lib/seo';
+import { eventSchema, breadcrumbSchema, faqSchema, videoSchema } from '@/lib/seo';
 import {
   ExternalLink, Star, ArrowRight, ChevronDown,
   MapPin, Users, Music, Beer, Car, Calendar,
@@ -74,6 +74,7 @@ export default function EventsPage() {
         image: '/images/car_show_RNM.png',
       })} />
       <JsonLd data={breadcrumbSchema([{ name: 'Home', url: '/' }, { name: 'Events', url: '/events' }])} />
+      <JsonLd data={videoSchema({ name: 'Events at Rush No More — Sturgis Rally & Car Show', description: 'Experience the Sturgis Motorcycle Rally 2026 and Dakota Rods & Classics Car Show at Rush No More RV Resort. Beer garden, live music, and the ultimate rally base camp.', thumbnailUrl: '/images/BikeRally/IMG_9865.JPG', contentUrl: '/videos/RNM-events.mp4', uploadDate: '2025-01-01' })} />
       <JsonLd data={faqSchema([
         { q: 'When is the 2026 Sturgis Motorcycle Rally?', a: 'The 2026 Sturgis Motorcycle Rally runs from August 2-18, 2026. Rush No More is located just 5 miles from Main Street Sturgis.' },
         { q: 'How far is Rush No More from the Sturgis Rally?', a: 'Rush No More is only 5 miles (7 minutes) from Main Street Sturgis, making it one of the closest campgrounds to the rally action.' },

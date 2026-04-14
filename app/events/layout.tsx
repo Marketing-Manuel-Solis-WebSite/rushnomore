@@ -22,6 +22,11 @@ export const metadata: Metadata = seo({
     'corporate retreat black hills', 'event venue near mount rushmore',
     'outdoor wedding venue south dakota', 'group camping south dakota',
     'sturgis rally 2026 dates august', 'motorcycle rally campground south dakota',
+    // Emerging queries with real traffic
+    'sturgis 2026 camping', 'sturgis 2026 campground reservations',
+    'sturgis rally camping prices 2026', 'sturgis rally camping with pool',
+    'sturgis rally campground near main street', 'sturgis sd campgrounds',
+    'campground sturgis south dakota', 'rv park sturgis sd',
   ],
 });
 

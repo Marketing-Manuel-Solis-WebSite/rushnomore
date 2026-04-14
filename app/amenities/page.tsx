@@ -8,7 +8,7 @@ import { SITE, AMENITIES, REVIEWS } from '@/data/site';
 import { BookingCTA, SectionHeader } from '@/components/ui';
 import { FadeIn } from '@/components/motion';
 import { JsonLd } from '@/components/seo/JsonLd';
-import { breadcrumbSchema, faqSchema } from '@/lib/seo';
+import { breadcrumbSchema, faqSchema, videoSchema } from '@/lib/seo';
 import {
   ExternalLink, Star, ArrowRight,
   Beer, Waves, ShowerHead, WashingMachine, Wifi, PawPrint, Bike, Fuel,
@@ -108,6 +108,7 @@ export default function AmenitiesPage() {
   return (
     <>
       <JsonLd data={breadcrumbSchema([{ name: 'Home', url: '/' }, { name: 'Amenities', url: '/amenities' }])} />
+      <JsonLd data={videoSchema({ name: 'Rush No More Amenities Tour — Pool, Hot Tubs, Beer Garden & More', description: '16 free resort amenities at Rush No More campground near Mount Rushmore — heated pool, hot tub spas, beer garden, game room, nature trails, modern bathhouses & more. No resort fees.', thumbnailUrl: '/images/Pool/PoolWithPeople.jpeg', contentUrl: '/videos/rushnomore-amenities.mp4', uploadDate: '2025-01-01' })} />
       <JsonLd data={faqSchema([
         { q: 'Are amenities free at Rush No More?', a: 'Yes! All 16 amenities are included free with every reservation — RV, cabin, or tent. This includes the heated pool, hot tubs, beer garden, game room, nature trails, bathhouses, Wi-Fi, and more.' },
         { q: 'Does Rush No More have a swimming pool?', a: 'Yes! We have a heated swimming pool open seasonally (May through September) that is free for all registered guests.' },

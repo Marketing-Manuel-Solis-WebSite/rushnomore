@@ -23,6 +23,10 @@ export const metadata: Metadata = seo({
     'mammoth site hot springs sd', '1880 train black hills',
     'sylvan lake swimming custer', 'iron mountain road south dakota',
     'wildlife loop road custer', 'bridal veil falls spearfish canyon',
+    // Rapid City + Badlands
+    'things to do near rapid city sd', 'day trips from rapid city south dakota',
+    'black hills attractions near rapid city', 'badlands national park day trip',
+    'mount rushmore from rapid city', 'rapid city to deadwood drive',
   ],
 });
 

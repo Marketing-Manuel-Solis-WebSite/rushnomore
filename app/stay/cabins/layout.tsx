@@ -23,6 +23,13 @@ export const metadata: Metadata = seo({
     'cabin near crazy horse memorial', 'cabin near deadwood casino',
     'cabin near custer state park', 'cabin near spearfish canyon',
     'cabin near needles highway', 'cabin vacation sturgis sd',
+    // Rapid City + Sturgis direct matches (real queries)
+    'cabins in sturgis sd', 'cabins near rapid city sd',
+    'cabin rentals rapid city area', 'cabins near rapid city south dakota',
+    // Price intent
+    'cabin prices sturgis sd', 'cabin rates near mount rushmore',
+    'cheap cabins sturgis south dakota', 'affordable cabins black hills sd',
+    'cabin rental prices black hills',
   ],
 });
 

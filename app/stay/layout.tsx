@@ -22,6 +22,10 @@ export const metadata: Metadata = seo({
     'multi night stay near mount rushmore', 'weekly rv rates black hills',
     'monthly rv rates south dakota', 'long term rv stay sturgis sd',
     'vacation lodging black hills', 'place to stay near crazy horse memorial',
+    // Rapid City + Badlands
+    'camping near rapid city sd', 'where to stay near rapid city sd',
+    'rv park near rapid city', 'lodging near rapid city south dakota',
+    'campground near badlands national park',
   ],
 });
 

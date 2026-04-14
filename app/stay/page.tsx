@@ -8,7 +8,7 @@ import { SITE, RV_TIERS, CABINS, REVIEWS } from '@/data/site';
 import { BookingCTA } from '@/components/ui';
 import { FadeIn } from '@/components/motion';
 import { JsonLd } from '@/components/seo/JsonLd';
-import { faqSchema, breadcrumbSchema } from '@/lib/seo';
+import { faqSchema, breadcrumbSchema, accommodationListSchema, offerCatalogSchema, videoSchema } from '@/lib/seo';
 import {
   ExternalLink, Star, ArrowRight, ArrowDown, Phone,
   Truck, Home, Tent, Users, Waves, Beer, ShieldCheck, Wifi, PawPrint,
@@ -132,6 +132,9 @@ export default function StayPage() {
     <>
       <JsonLd data={faqSchema(RV_FAQS)} />
       <JsonLd data={breadcrumbSchema([{ name: 'Home', url: '/' }, { name: 'Stay', url: '/stay' }])} />
+      <JsonLd data={accommodationListSchema()} />
+      <JsonLd data={offerCatalogSchema()} />
+      <JsonLd data={videoSchema({ name: 'Accommodations at Rush No More — RV Sites, Cabins & Tent Camping', description: 'Explore accommodations at Rush No More near Mount Rushmore — 200+ full-hookup RV sites, 16 presidential cabins & shaded tent camping in Sturgis, SD. Pool, hot tubs, beer garden included.', thumbnailUrl: '/images/GeneralImagesPark/IMG_7386.jpeg', contentUrl: '/videos/RNM-stay.mp4', uploadDate: '2025-01-01' })} />
 
       {/* ═══════════════════════════════════════════════════════════════
           HERO — Video Background

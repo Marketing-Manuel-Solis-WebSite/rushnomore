@@ -16,6 +16,9 @@ export const metadata: Metadata = seo({
     'rush no more address 21137 brimstone', 'sturgis sd campground map',
     'black hills campground location', 'rv park easy interstate access south dakota',
     'campground near sturgis main street', 'where is rush no more campground',
+    // Rapid City directions
+    'campground between rapid city and sturgis', 'rv park near rapid city directions',
+    'how to get to rush no more from rapid city', 'campground near rapid city off i-90',
   ],
 });
 

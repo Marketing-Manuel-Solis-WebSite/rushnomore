@@ -83,7 +83,11 @@ export function organizationSchema() {
     sameAs: [
       'https://www.tripadvisor.com/Hotel_Review-g54818-d1631146-Reviews-Rush_No_More_Campground-Sturgis_South_Dakota.html',
       'https://www.google.com/maps/place/Rush+No+More+Campground',
-      'https://www.facebook.com/RushNoMoreCampground',
+      'https://www.facebook.com/people/Rush-No-More-RV-Resort-Cabins-Campgrounds-Black-Hills-Sturgis-SD/61586104841430/',
+      'https://www.instagram.com/rushnomorervpark/',
+      'https://www.youtube.com/@RushNoMoreCampground',
+      'https://www.tiktok.com/@rushnomore.campground',
+      'https://www.yelp.com/biz/rush-no-more-rv-resort-and-campground-sturgis',
     ],
     contactPoint: [
       {
@@ -240,7 +244,11 @@ export function campgroundSchema() {
     sameAs: [
       'https://www.tripadvisor.com/Hotel_Review-g54818-d1631146-Reviews-Rush_No_More_Campground-Sturgis_South_Dakota.html',
       'https://www.google.com/maps/place/Rush+No+More+Campground',
-      'https://www.facebook.com/RushNoMoreCampground',
+      'https://www.facebook.com/people/Rush-No-More-RV-Resort-Cabins-Campgrounds-Black-Hills-Sturgis-SD/61586104841430/',
+      'https://www.instagram.com/rushnomorervpark/',
+      'https://www.youtube.com/@RushNoMoreCampground',
+      'https://www.tiktok.com/@rushnomore.campground',
+      'https://www.yelp.com/biz/rush-no-more-rv-resort-and-campground-sturgis',
     ],
     additionalProperty: [
       { '@type': 'PropertyValue', name: 'Max RV Length', value: '100 feet' },
@@ -251,6 +259,8 @@ export function campgroundSchema() {
       { '@type': 'PropertyValue', name: 'Distance to Crazy Horse Memorial', value: '60 miles' },
       { '@type': 'PropertyValue', name: 'Distance to Custer State Park', value: '70 miles' },
       { '@type': 'PropertyValue', name: 'Distance to Spearfish Canyon', value: '25 miles' },
+      { '@type': 'PropertyValue', name: 'Distance to Rapid City', value: '30 miles' },
+      { '@type': 'PropertyValue', name: 'Distance to Badlands National Park', value: '75 miles' },
       { '@type': 'PropertyValue', name: 'Interstate Access', value: 'I-90 Exit 37' },
       { '@type': 'PropertyValue', name: 'Total RV Sites', value: '200+' },
       { '@type': 'PropertyValue', name: 'Total Cabins', value: '16' },
@@ -421,5 +431,164 @@ export function videoSchema(video: { name: string; description: string; thumbnai
     contentUrl: `${DOMAIN}${video.contentUrl}`,
     uploadDate: video.uploadDate || '2025-01-01',
     publisher: { '@type': 'Organization', name: BUSINESS_NAME, logo: { '@type': 'ImageObject', url: `${DOMAIN}/images/RushNoMore-logo.png` } },
+  };
+}
+
+/* ─── ItemList schema — carousel / list rich result for accommodation types ─── */
+export function accommodationListSchema() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'Accommodations at Rush No More RV Resort & Campground',
+    description: 'Choose from 200+ RV sites, 16 presidential cabins, and 20+ shaded tent sites near Mount Rushmore in Sturgis, South Dakota.',
+    numberOfItems: 3,
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Full Hookup RV Sites',
+        url: `${DOMAIN}/stay/rv-sites`,
+        image: `${DOMAIN}/images/rv-camper-van.png`,
+        description: '200+ full-hookup RV sites with 30/50 AMP, water & sewer. Pull-throughs up to 100ft. Luxury sites with cement slab, gas BBQ & private hot tub available. From $41.22/night.',
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Presidential Cabins',
+        url: `${DOMAIN}/stay/cabins`,
+        image: `${DOMAIN}/images/Cabins/CabinUlyssesGrant/PhotoMainUlyssesGrant.png`,
+        description: '16 unique cabins named after US Presidents — sleeping 2-10 guests. A/C, heating, private bathrooms. Economy, standard, family & luxury options. From $51.76/night.',
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: 'Tent Camping',
+        url: `${DOMAIN}/stay/tent-camping`,
+        image: `${DOMAIN}/images/tent_camping_RNM.png`,
+        description: '20+ spacious tent sites under Ponderosa pines with modern bathhouse access. 15 sites with 20 AMP electric hookup. From $35/night.',
+      },
+    ],
+  };
+}
+
+/* ─── OfferCatalog schema — for Google Shopping / Offers rich results ─── */
+export function offerCatalogSchema() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'OfferCatalog',
+    name: 'Rush No More Camping & Lodging Rates',
+    description: 'Accommodation rates at Rush No More RV Resort near Mount Rushmore — RV sites, presidential cabins & tent camping in Sturgis, SD.',
+    itemListElement: [
+      {
+        '@type': 'Offer',
+        itemOffered: { '@type': 'LodgingReservation', name: 'Water/Electric Back-in RV Site' },
+        name: 'Water/Electric Back-in RV Site',
+        description: 'Water & electric hookup, 30 AMP, back-in site up to 100ft',
+        price: '41.22',
+        priceCurrency: 'USD',
+        priceValidUntil: '2026-12-31',
+        availability: 'https://schema.org/InStock',
+        url: `${DOMAIN}/stay/rv-sites`,
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: { '@type': 'LodgingReservation', name: 'Full Hookup Pull-through RV Site' },
+        name: 'Full Hookup Pull-through RV Site',
+        description: 'Full hookup (water/electric/sewer), 30/50 AMP, pull-through',
+        price: '62.36',
+        priceCurrency: 'USD',
+        priceValidUntil: '2026-12-31',
+        availability: 'https://schema.org/InStock',
+        url: `${DOMAIN}/stay/rv-sites`,
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: { '@type': 'LodgingReservation', name: 'Luxury Spa RV Site with Private Hot Tub' },
+        name: 'Luxury Spa RV Site with Private Hot Tub',
+        description: 'Private hot tub spa, cement slab, gas BBQ, full hookups, 30/50 AMP',
+        price: '72.93',
+        priceCurrency: 'USD',
+        priceValidUntil: '2026-12-31',
+        availability: 'https://schema.org/InStock',
+        url: `${DOMAIN}/stay/rv-sites`,
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: { '@type': 'LodgingReservation', name: 'Economy Presidential Cabin (Sleeps 2)' },
+        name: 'Economy Presidential Cabin (Sleeps 2)',
+        description: 'Cozy cabin named after a US President, A/C & heating, private bathroom',
+        price: '51.76',
+        priceCurrency: 'USD',
+        priceValidUntil: '2026-12-31',
+        availability: 'https://schema.org/InStock',
+        url: `${DOMAIN}/stay/cabins`,
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: { '@type': 'LodgingReservation', name: 'Family Presidential Cabin (Sleeps 6-7)' },
+        name: 'Family Presidential Cabin (Sleeps 6-7)',
+        description: 'Spacious family cabin, full kitchen, A/C & heating',
+        price: '100.42',
+        priceCurrency: 'USD',
+        priceValidUntil: '2026-12-31',
+        availability: 'https://schema.org/InStock',
+        url: `${DOMAIN}/stay/cabins`,
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: { '@type': 'LodgingReservation', name: 'Presidential Suite JFK (Sleeps 10)' },
+        name: 'Presidential Suite JFK (Sleeps 10)',
+        description: 'The John F. Kennedy — our largest cabin for groups and families',
+        price: '332.00',
+        priceCurrency: 'USD',
+        priceValidUntil: '2026-12-31',
+        availability: 'https://schema.org/InStock',
+        url: `${DOMAIN}/stay/cabins`,
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: { '@type': 'LodgingReservation', name: 'Basic Tent Site' },
+        name: 'Basic Tent Site',
+        description: 'Shaded tent site under Ponderosa pines with bathhouse access',
+        price: '35.00',
+        priceCurrency: 'USD',
+        priceValidUntil: '2026-12-31',
+        availability: 'https://schema.org/InStock',
+        url: `${DOMAIN}/stay/tent-camping`,
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: { '@type': 'LodgingReservation', name: 'Electric Tent Site' },
+        name: 'Electric Tent Site',
+        description: 'Shaded tent site with 20 AMP electric hookup and bathhouse access',
+        price: '40.00',
+        priceCurrency: 'USD',
+        priceValidUntil: '2026-12-31',
+        availability: 'https://schema.org/InStock',
+        url: `${DOMAIN}/stay/tent-camping`,
+      },
+    ],
+  };
+}
+
+/* ─── TouristDestination schema — for explore page ─── */
+export function touristDestinationSchema() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'TouristDestination',
+    name: 'Black Hills, South Dakota',
+    description: 'The Black Hills of South Dakota — home to Mount Rushmore, Crazy Horse Memorial, Deadwood, Custer State Park, Spearfish Canyon & more. Rush No More RV Resort in Sturgis is the perfect base camp.',
+    touristType: ['Adventure Tourism', 'Nature Tourism', 'Cultural Tourism', 'Family Tourism'],
+    geo: GEO,
+    includesAttraction: [
+      { '@type': 'TouristAttraction', name: 'Mount Rushmore National Memorial', description: 'Iconic sculpture of four US Presidents carved into granite — 55 miles from Rush No More' },
+      { '@type': 'TouristAttraction', name: 'Crazy Horse Memorial', description: 'The world\'s largest mountain carving in progress — 60 miles from Rush No More' },
+      { '@type': 'TouristAttraction', name: 'Historic Deadwood', description: 'Gold rush-era town with casinos, history & entertainment — 12 miles from Rush No More' },
+      { '@type': 'TouristAttraction', name: 'Spearfish Canyon', description: 'One of America\'s most scenic canyons with waterfalls & hiking — 25 miles from Rush No More' },
+      { '@type': 'TouristAttraction', name: 'Custer State Park', description: '71,000-acre park with bison herds, wildlife & scenic drives — 70 miles from Rush No More' },
+      { '@type': 'TouristAttraction', name: 'Needles Highway', description: 'Stunning scenic drive through granite spires & tunnels — 65 miles from Rush No More' },
+      { '@type': 'TouristAttraction', name: 'Bear Country USA', description: 'Drive-through wildlife park with bears, wolves & elk — 55 miles from Rush No More' },
+      { '@type': 'TouristAttraction', name: 'Wind Cave National Park', description: 'One of the longest caves in the world with unique boxwork formations — 75 miles from Rush No More' },
+    ],
   };
 }

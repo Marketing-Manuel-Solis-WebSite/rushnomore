@@ -26,6 +26,13 @@ export const metadata: Metadata = seo({
     'rv park near crazy horse memorial', 'rv park near custer state park',
     'rv park near spearfish canyon', 'rv park near needles highway',
     'rv park with 100 ft sites', 'extra long rv sites south dakota',
+    // Rapid City target
+    'rv park near rapid city sd', 'rv parks near rapid city south dakota',
+    'rv campground rapid city area', 'full hookup rv park near rapid city',
+    // Price intent
+    'rv park prices sturgis sd', 'rv site rates near mount rushmore',
+    'how much rv camping sturgis', 'rv park nightly rates black hills',
+    'private rv lots for rent south dakota', 'private rv sites sturgis',
   ],
 });
 

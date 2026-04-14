@@ -8,7 +8,7 @@ import { BookingCTA } from '@/components/ui';
 import { FadeIn } from '@/components/motion';
 import { trackEvent } from '@/lib/booking';
 import { JsonLd } from '@/components/seo/JsonLd';
-import { faqSchema, breadcrumbSchema } from '@/lib/seo';
+import { faqSchema, breadcrumbSchema, videoSchema } from '@/lib/seo';
 import {
   MapPin, Phone, Mail, Send, CheckCircle, Loader2,
   ExternalLink, Star, ArrowRight, Clock, MessageSquare,
@@ -62,6 +62,7 @@ export default function ContactPage() {
     <>
       <JsonLd data={faqSchema(FAQS)} />
       <JsonLd data={breadcrumbSchema([{ name: 'Home', url: '/' }, { name: 'Contact', url: '/contact' }])} />
+      <JsonLd data={videoSchema({ name: 'Contact Rush No More RV Resort', description: 'Get in touch with Rush No More RV Resort & Campground in Sturgis, SD — call 605-423-2545, email info@rushnomore.com. Just off I-90 Exit 37, 5 miles from Sturgis Main Street.', thumbnailUrl: '/images/PeoplePlaying/IMG_7078.jpeg', contentUrl: '/videos/rushnomore-contact.mp4', uploadDate: '2025-01-01' })} />
 
       {/* ═══════════════════════════════════════════════════════════════
           HERO — Video Background

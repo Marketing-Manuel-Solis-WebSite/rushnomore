@@ -16,6 +16,9 @@ export const metadata: Metadata = seo({
     'reserve rv site black hills', 'reserve cabin sturgis sd',
     'rush no more check in time', 'rush no more office hours',
     'campground i-90 exit 37 sturgis', 'rv park near interstate south dakota',
+    // Rapid City + emerging queries
+    'campground near rapid city sd phone', 'rv park near rapid city contact',
+    'sturgis sd campgrounds', 'rv parks black hills sd',
   ],
 });
 

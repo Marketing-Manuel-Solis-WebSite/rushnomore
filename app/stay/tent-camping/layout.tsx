@@ -3,7 +3,7 @@ import { seo } from '@/lib/seo';
 
 export const metadata: Metadata = seo({
   title: 'Tent Camping Near Mount Rushmore — Shaded Sites from $35/Night | Black Hills, SD',
-  description: 'Tent camping from $35/night under Ponderosa pines near Mount Rushmore at Rush No More in Sturgis, SD. 20+ spacious sites — 15 with 20 AMP electric hookup ($40/night). Modern bathhouses, heated pool, hot tub spas, beer garden & 16 free amenities included. Perfect base camp for Mount Rushmore (55 mi), Deadwood (12 mi) & Custer State Park (70 mi). Book your Black Hills camping adventure.',
+  description: 'Tent camping from $35/night under Ponderosa pines near Mount Rushmore at Rush No More in Sturgis, SD — just 30 miles from Rapid City. 20+ spacious sites — 15 with 20 AMP electric hookup ($40/night). Modern bathhouses, heated pool, hot tub spas, beer garden & 16 free amenities included. Perfect base camp for Mount Rushmore (55 mi), Deadwood (12 mi) & Custer State Park (70 mi). Book your Black Hills camping adventure.',
   path: '/stay/tent-camping',
   image: '/images/tent_camping_RNM.png',
   keywords: [
@@ -23,6 +23,10 @@ export const metadata: Metadata = seo({
     'summer tent camping south dakota', 'fall tent camping black hills',
     'camping with kids near mount rushmore', 'couples camping black hills',
     'cheap place to camp near mount rushmore', 'tent camping near i-90 south dakota',
+    // Rapid City — real query driving traffic
+    'tent camping rapid city sd', 'camping near rapid city south dakota',
+    'campground near rapid city', 'tent sites near rapid city sd',
+    'cheap camping rapid city', 'budget camping near rapid city sd',
   ],
 });
 

@@ -4,6 +4,8 @@ import { motion } from 'framer-motion';
 import { SITE } from '@/data/site';
 import { BookingCTA } from '@/components/ui';
 import { FadeIn } from '@/components/motion';
+import { JsonLd } from '@/components/seo/JsonLd';
+import { breadcrumbSchema } from '@/lib/seo';
 import {
   AlertTriangle, Truck, Star, Home, Calendar, Shield, Clock,
   CheckCircle, XCircle, Phone, Mail, Info, ChevronRight,
@@ -69,6 +71,8 @@ const PARK_RULES = [
 export default function PoliciesPage() {
   return (
     <>
+      <JsonLd data={breadcrumbSchema([{ name: 'Home', url: '/' }, { name: 'Policies', url: '/policies' }])} />
+
       {/* ═══ HERO ═══ */}
       <section className="relative min-h-[50vh] flex items-center justify-center overflow-hidden bg-brand-navy">
         <div className="absolute inset-0 bg-cover bg-center opacity-20" style={{ backgroundImage: "url('/images/Aereal-2_1400.png')" }} />
