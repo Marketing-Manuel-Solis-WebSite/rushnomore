@@ -14,72 +14,27 @@ const josefin = Josefin_Sans({ subsets: ['latin'], variable: '--font-josefin', d
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.rushnomore.com'),
-  title: { default: 'Rush No More — #1 RV Park & Camping Near Mount Rushmore | Sturgis, SD', template: '%s | Rush No More — Black Hills, SD' },
-  description: 'Top-rated campground near Sturgis, SD — 200+ full-hookup RV sites from $41.22, 16 presidential cabins from $51.76 & tent camping from $35/night. Heated pool, hot tub spas, beer garden & 16 free amenities. 30 mi from Rapid City, 55 mi to Mount Rushmore, 5 mi to Sturgis, 12 mi to Deadwood. 4.8★ rated, 420+ reviews. Sturgis Rally headquarters since 2014. Open year-round. Book today!',
+  title: { default: 'Rush No More RV Resort & Campground — Sturgis, SD | Near Mount Rushmore', template: '%s | Rush No More — Sturgis, SD' },
+  description: 'RV park, presidential cabins & tent camping in Sturgis, South Dakota — the Black Hills basecamp for Mount Rushmore, Deadwood, Spearfish Canyon & the Sturgis Motorcycle Rally. Full-hookup RV sites from $41, cabins from $51, tent from $35. Heated pool, hot tubs, beer garden. I-90 Exit 37.',
   applicationName: 'Rush No More RV Resort & Campground',
   authors: [{ name: 'Rush No More RV Resort & Campground', url: 'https://www.rushnomore.com' }],
   creator: 'Rush No More RV Resort & Campground',
   publisher: 'Rush No More RV Resort & Campground',
   category: 'Travel & Tourism',
+  alternates: {
+    canonical: '/',
+  },
   keywords: [
-    // Primary — high volume
-    'rv park near mount rushmore', 'camping near mount rushmore', 'cabins near mount rushmore',
-    'sturgis rally campground', 'black hills camping', 'rv resort sturgis south dakota',
-    'tent camping black hills', 'mount rushmore campground', 'black hills rv park',
-    'campground near sturgis sd', 'cabins sturgis south dakota', 'south dakota rv park',
-    // Location modifiers
-    'campground near deadwood sd', 'rv park near deadwood south dakota', 'camping near crazy horse memorial',
-    'rv park near i-90 south dakota', 'campground i-90 exit 37', 'rv resort western south dakota',
-    'campground near custer state park', 'lodging near spearfish canyon',
-    'campground near needles highway', 'rv park near jewel cave',
-    // Rapid City — 30 miles away, major search hub
-    'campground near rapid city sd', 'rv park near rapid city south dakota',
-    'camping near rapid city', 'tent camping rapid city sd',
-    'cabins near rapid city sd', 'rv resort near rapid city',
-    'campground between rapid city and sturgis',
-    // Amenity searches
-    'campground with pool near mount rushmore', 'rv park with pool south dakota',
-    'campground with hot tub sturgis', 'rv park with hot tub south dakota',
-    'campground with beer garden', 'rv park with beer garden sturgis',
-    'pet friendly campground south dakota', 'pet friendly rv park near mount rushmore',
-    'campground with wifi sturgis', 'campground with game room black hills',
-    'rv park with laundry south dakota', 'campground with bathhouse black hills',
-    // Accommodation type
-    'full hookup rv park black hills', '50 amp rv park south dakota', '30 amp rv sites sturgis',
-    'pull through rv sites near mount rushmore', 'big rig friendly rv park south dakota',
-    'luxury rv sites black hills', 'rv sites with private hot tub',
-    'presidential cabins black hills', 'cabin rentals near mount rushmore',
-    'tent camping with electric hookup south dakota', 'shaded tent sites black hills',
-    // Intent — booking
-    'where to stay near mount rushmore', 'best campground near mount rushmore',
-    'top rated rv park south dakota', 'best rv park black hills reviews',
-    'affordable camping near mount rushmore', 'cheap tent camping black hills',
-    'mount rushmore lodging', 'black hills vacation rentals', 'where to camp black hills',
-    'accommodations near mount rushmore', 'black hills lodging',
-    // Sturgis Rally
-    'sturgis motorcycle rally lodging', 'sturgis rally rv park 2026', 'sturgis rally camping 2026',
-    'sturgis rally accommodations', 'where to stay sturgis rally',
-    'sturgis rally base camp', 'camping near sturgis rally',
-    // Family & group
-    'family camping black hills', 'black hills family vacation',
-    'family campground near mount rushmore', 'group camping south dakota',
-    'reunion venue black hills', 'wedding venue sturgis sd',
-    // Seasonal
-    'summer camping black hills', 'fall camping black hills south dakota',
-    'year round rv park south dakota', 'winter rv park south dakota',
-    // Competitor / comparison
-    'best campground sturgis sd', 'top campground near mount rushmore',
-    'highest rated rv park south dakota', 'rush no more campground',
-    'rush no more rv resort', 'rush no more sturgis',
-    // Price/rate intent — growing +550%
-    'rush no more prices', 'rushnomore prices', 'rush no more rates',
-    'rush no more campground rates', 'sturgis campground prices',
-    'rv park prices near mount rushmore', 'cabin prices near mount rushmore',
-    'tent camping prices black hills', 'sturgis rally camping prices 2026',
-    'cheap campground near mount rushmore', 'affordable rv park sturgis sd',
-    // Photo/gallery intent — new queries
-    'rush no more photos', 'rushnomore photos', 'rush no more campground photos',
-    'rush no more campground pictures', 'sturgis campground photos',
+    'rv park near mount rushmore',
+    'campground near sturgis sd',
+    'sturgis rally campground',
+    'cabins near mount rushmore',
+    'tent camping black hills',
+    'black hills rv park',
+    'rv resort sturgis south dakota',
+    'campground near deadwood sd',
+    'rush no more campground',
+    'sturgis sd campgrounds',
   ],
   icons: {
     icon: [
@@ -105,6 +60,7 @@ export const metadata: Metadata = {
     type: 'website',
     siteName: 'Rush No More RV Resort & Campground',
     locale: 'en_US',
+    url: 'https://www.rushnomore.com',
     images: [{ url: '/images/Aereal-2_1400.png', width: 1400, height: 900, alt: 'Aerial view of Rush No More RV Resort & Campground in the Black Hills near Mount Rushmore, Sturgis South Dakota' }],
   },
   twitter: {
@@ -116,12 +72,6 @@ export const metadata: Metadata = {
     'geo.placename': 'Sturgis',
     'geo.position': '44.39857;-103.46825',
     'ICBM': '44.39857, -103.46825',
-    'rating': 'General',
-    'revisit-after': '7 days',
-    'DC.title': 'Rush No More RV Resort & Campground — Sturgis, South Dakota',
-    'DC.description': 'Top-rated RV park, cabins & tent camping near Mount Rushmore in the Black Hills',
-    'DC.subject': 'RV Park, Campground, Cabins, Tent Camping, Mount Rushmore, Black Hills, Sturgis Rally',
-    'classification': 'Travel/Accommodation/Campground',
     'apple-mobile-web-app-title': 'Rush No More',
     'apple-mobile-web-app-capable': 'yes',
     'apple-mobile-web-app-status-bar-style': 'black-translucent',

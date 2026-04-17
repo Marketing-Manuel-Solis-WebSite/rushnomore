@@ -1,0 +1,122 @@
+source_url,target_url,status_code,reason
+# Host canonicalization — all non-www hosts redirect to www
+https://rushnomore.com/:path*,https://www.rushnomore.com/:path*,301,Apex to www canonical
+https://old.rushnomore.com/:path*,https://www.rushnomore.com/:path*,301,Legacy subdomain
+https://m.rushnomore.com/:path*,https://www.rushnomore.com/:path*,301,Legacy mobile subdomain
+https://www2.rushnomore.com/:path*,https://www.rushnomore.com/:path*,301,Legacy staging subdomain
+# WordPress legacy cleanup
+/wp-admin/:path*,/,301,WordPress admin remnant
+/wp-login.php,/,301,WordPress login remnant
+/wp-content/:path*,/,301,WordPress uploads remnant
+/wp-includes/:path*,/,301,WordPress includes remnant
+/xmlrpc.php,/,301,WordPress XML-RPC remnant
+/wp-json/:path*,/,301,WordPress REST API remnant
+/wp-cron.php,/,301,WordPress cron remnant
+/feed,/,301,WordPress feed
+/feed/:path*,/,301,WordPress feed subpaths
+/rss,/,301,WordPress RSS
+/rss.xml,/,301,RSS feed remnant
+/atom.xml,/,301,Atom feed remnant
+/comments/feed/:path*,/,301,WordPress comments feed
+/category/:path*,/,301,WordPress taxonomy
+/tag/:path*,/,301,WordPress taxonomy
+/author/:path*,/,301,WordPress author archives
+/trackback/:path*,/,301,WordPress trackback remnant
+/wlwmanifest.xml,/,301,WordPress Live Writer remnant
+# Legacy HTML / PHP extensions
+/index.html,/,301,Static index legacy
+/index.php,/,301,PHP index legacy
+/home.html,/,301,Static home legacy
+/default.html,/,301,Static default legacy
+# Legacy paths
+/park-map,/map,301,Map renamed
+/parkmap,/map,301,Map naming variant
+/site-map,/map,301,Site-map path
+/public/:path*,/,301,Public dir legacy
+/index/:path*,/,301,Index subpath legacy
+# Accommodation slug canonicalization
+/rv-sites,/stay/rv-sites,301,Canonical under /stay
+/rv-sites/:path*,/stay/rv-sites,301,Canonical under /stay
+/cabins,/stay/cabins,301,Canonical under /stay
+/cabins/:path*,/stay/cabins,301,Canonical under /stay
+/camping,/stay/tent-camping,301,Canonical tent under /stay
+/tent-camping,/stay/tent-camping,301,Canonical under /stay
+/tent-sites,/stay/tent-camping,301,Canonical under /stay
+/accommodations,/stay,301,Accommodations alias
+/lodging,/stay,301,Lodging alias
+/rv-park,/stay/rv-sites,301,Head-term alias
+/rv-resort,/stay/rv-sites,301,Head-term alias
+# Keyword-rich alias URLs → canonical money pages (no duplicates)
+/sturgis-campgrounds,/stay,301,Keyword alias — avoid duplicate content
+/sturgis-sd-campgrounds,/stay,301,Keyword alias
+/rv-park-sturgis-sd,/stay/rv-sites,301,Keyword alias
+/rv-park-sturgis,/stay/rv-sites,301,Keyword alias
+/campground-near-mount-rushmore,/,301,Keyword alias
+/mount-rushmore-camping,/stay,301,Keyword alias
+/black-hills-rv-park,/stay/rv-sites,301,Keyword alias
+/black-hills-campground,/,301,Keyword alias
+/cabins-sturgis-sd,/stay/cabins,301,Keyword alias
+/cabins-sturgis,/stay/cabins,301,Keyword alias
+/cabins-near-mount-rushmore,/stay/cabins,301,Keyword alias
+/tent-camping-black-hills,/stay/tent-camping,301,Keyword alias
+/tent-camping-near-mount-rushmore,/stay/tent-camping,301,Keyword alias
+# Events / rally → new dedicated hubs
+/sturgis-bike-rally,/sturgis-rally-camping,301,Rally keyword alias
+/events/sturgis-rally,/sturgis-rally-camping,301,Old subpath
+/events/sturgis-rally/rates,/rally-rates,301,Old subpath
+/events/car-show,/events#car-show,301,Keep car show on events hub
+/events/weddings,/weddings-groups,301,Weddings dedicated hub
+/classic-car-show,/events#car-show,301,Car show alias
+/sturgis-rally,/sturgis-rally-camping,301,Rally short alias
+/sturgis,/sturgis-rally-camping,301,City alias
+/rally,/sturgis-rally-camping,301,Rally short alias
+/car-show,/events#car-show,301,Car show alias
+/weddings,/weddings-groups,301,Weddings short alias
+/groups,/weddings-groups,301,Groups short alias
+/group-camping,/weddings-groups,301,Group camping alias
+/wedding-venue,/weddings-groups,301,Venue alias
+/monthly-rates,/monthly-rv-sites,301,Long-term alias
+/long-term-rv,/monthly-rv-sites,301,Long-term alias
+/long-term,/monthly-rv-sites,301,Long-term alias
+/workamper,/monthly-rv-sites,301,Workamper alias
+# Explore / attractions / guides
+/things-to-do,/explore,301,Explore canonical
+/things-to-do-near-mount-rushmore,/explore,301,Explore canonical (keyword)
+/things-to-do-near-mount-rushmore-sd,/explore,301,Explore canonical
+/things-to-do-near-sturgis,/explore,301,Explore canonical
+/local-attractions,/explore,301,Explore canonical
+/black-hills,/explore,301,Explore canonical
+/mount-rushmore,/explore#mount-rushmore,301,Explore anchor
+/itineraries,/black-hills-itinerary,301,Itinerary canonical
+/itinerary,/black-hills-itinerary,301,Itinerary canonical
+/black-hills-6-day-itinerary,/black-hills-itinerary,301,Itinerary alias
+/attractions/:path*,/explore,301,Attractions subpath alias
+/deadwood,/deadwood-day-trip,301,Deadwood guide canonical
+/spearfish-canyon,/spearfish-canyon-guide,301,Spearfish guide canonical
+/needles-highway,/needles-highway-guide,301,Needles guide canonical
+/iron-mountain-road,/iron-mountain-road-guide,301,Iron Mountain guide canonical
+/motorcycle-rides,/best-motorcycle-rides-near-sturgis,301,Rides hub canonical
+/scenic-rides,/best-motorcycle-rides-near-sturgis,301,Rides hub canonical
+/rides,/best-motorcycle-rides-near-sturgis,301,Rides hub canonical
+# Map / info
+/park,/map,301,Map alias
+/directions,/map,301,Map alias
+/location,/map,301,Map alias
+/rules,/policies,301,Policies canonical
+/about-us,/about,301,About canonical
+/reviews,/about#reviews,301,About anchor
+/faq,/contact#faq,301,Contact FAQ anchor
+/faqs,/contact#faq,301,Contact FAQ anchor
+/privacy,/legal,301,Legal canonical
+/privacy-policy,/legal,301,Legal canonical
+/terms,/legal,301,Legal canonical
+/terms-of-use,/legal,301,Legal canonical
+/accessibility,/ada,301,ADA canonical
+# Amenity landing aliases
+/pool,/amenities#pool,301,Amenities anchor
+/beer-garden,/amenities#beer-garden,301,Amenities anchor
+/hot-tub,/amenities#hot-tub,301,Amenities anchor
+/hottub,/amenities#hot-tub,301,Amenities anchor
+/game-room,/amenities#game-room,301,Amenities anchor
+# Root alias
+/campground,/,301,Root alias

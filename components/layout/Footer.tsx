@@ -4,31 +4,34 @@ import { SITE } from '@/data/site';
 import { MapPin, Phone, Mail, AlertTriangle } from 'lucide-react';
 
 const cols = {
-  Accommodations: [
-    { label: 'RV Sites', href: '/stay#rv-sites' },
-    { label: 'Cabins', href: '/stay#cabins' },
-    { label: 'Tent Camping', href: '/stay#tent-camping' },
+  Stay: [
+    { label: 'RV Sites', href: '/stay/rv-sites' },
+    { label: 'Presidential Cabins', href: '/stay/cabins' },
+    { label: 'Tent Camping', href: '/stay/tent-camping' },
+    { label: 'Monthly RV Sites', href: '/monthly-rv-sites' },
     { label: 'Amenities', href: '/amenities' },
-    { label: 'Park Map', href: '/map' },
   ],
-  Explore: [
-    { label: 'All Attractions', href: '/explore' },
-    { label: 'Mount Rushmore', href: '/explore#mount-rushmore' },
-    { label: 'Deadwood', href: '/explore#deadwood' },
-    { label: 'Spearfish Canyon', href: '/explore#spearfish-canyon' },
-    { label: '6-Day Itinerary', href: '/explore#itinerary' },
-  ],
-  Events: [
-    { label: 'Sturgis Rally', href: '/events#sturgis-rally' },
-    { label: 'Rally Rates', href: '/events#rally-rates' },
+  'Sturgis Rally': [
+    { label: 'Rally Camping', href: '/sturgis-rally-camping' },
+    { label: 'Rally Rates 2026', href: '/rally-rates' },
+    { label: 'Best Rides Near Sturgis', href: '/best-motorcycle-rides-near-sturgis' },
     { label: 'Car Show', href: '/events#car-show' },
-    { label: 'Weddings', href: '/events#weddings' },
+    { label: 'Weddings & Groups', href: '/weddings-groups' },
+  ],
+  'Black Hills': [
+    { label: 'All Attractions', href: '/explore' },
+    { label: '6-Day Itinerary', href: '/black-hills-itinerary' },
+    { label: 'Deadwood Day Trip', href: '/deadwood-day-trip' },
+    { label: 'Spearfish Canyon', href: '/spearfish-canyon-guide' },
+    { label: 'Needles Highway', href: '/needles-highway-guide' },
+    { label: 'Iron Mountain Road', href: '/iron-mountain-road-guide' },
   ],
   Info: [
     { label: 'About Us', href: '/about' },
+    { label: 'Park Map & Directions', href: '/map' },
     { label: 'Contact', href: '/contact' },
     { label: 'Policies', href: '/policies' },
-    { label: 'ADA', href: '/ada' },
+    { label: 'ADA / Accessibility', href: '/ada' },
     { label: 'Legal', href: '/legal' },
   ],
 };

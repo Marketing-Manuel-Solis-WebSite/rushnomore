@@ -1,7 +1,9 @@
 import { MetadataRoute } from 'next';
 
 export default function robots(): MetadataRoute.Robots {
-  const blocked = ['/api/', '/_next/', '/admin/', '/book/', '/booking/', '/my-reservation/', '/thanks/'];
+  // Intentionally does NOT block /_next/ — Googlebot needs /_next/static/ (JS, CSS, fonts)
+  // to render the page. Next.js emits no indexable HTML under /_next/ anyway.
+  const blocked = ['/api/', '/admin/', '/book/', '/booking/', '/my-reservation/', '/thanks/'];
 
   return {
     rules: [
@@ -21,13 +23,13 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: 'Googlebot-Image',
         allow: ['/', '/images/'],
-        disallow: ['/api/', '/_next/', '/admin/'],
+        disallow: ['/api/', '/admin/'],
       },
       // Google Video crawler
       {
         userAgent: 'Googlebot-Video',
         allow: ['/', '/videos/'],
-        disallow: ['/api/', '/_next/', '/admin/'],
+        disallow: ['/api/', '/admin/'],
       },
       // Bing
       {

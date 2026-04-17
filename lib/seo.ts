@@ -19,9 +19,16 @@ const ADDRESS = {
 const GEO = { '@type': 'GeoCoordinates' as const, latitude: 44.39857, longitude: -103.46825 };
 
 /* ─── Page-level metadata ─── */
-export function seo(o: { title: string; description: string; path: string; image?: string; keywords?: string[] }): Metadata {
+export function seo(o: {
+  title: string;
+  description: string;
+  path: string;
+  image?: string;
+  keywords?: string[];
+  noindex?: boolean;
+}): Metadata {
   const url = `${DOMAIN}${o.path}`;
-  const full = o.path === '/' ? o.title : `${o.title} | Rush No More`;
+  const full = o.title;
   const img = o.image || OG_IMAGE;
   const altText = `Rush No More RV Resort & Campground — ${o.title.split('—')[0].trim()} — Black Hills, Sturgis South Dakota`;
   return {
@@ -30,8 +37,10 @@ export function seo(o: { title: string; description: string; path: string; image
     keywords: o.keywords,
     alternates: {
       canonical: url,
-      languages: { 'en-US': url },
     },
+    ...(o.noindex
+      ? { robots: { index: false, follow: false, googleBot: { index: false, follow: false } } }
+      : {}),
     openGraph: {
       title: full,
       description: o.description,
