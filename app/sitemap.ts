@@ -85,6 +85,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
       images: [`${B}/images/BikeRally/IMG_9865.JPG`],
     },
 
+    // ─── Paid / SEO landing pages ───
+    {
+      url: `${B}/rv-park-near-mount-rushmore`,
+      lastModified: now,
+      changeFrequency: 'weekly',
+      priority: 0.90,
+      images: [
+        `${B}/images/Aereal-2_1400.png`,
+        `${B}/images/rv-camper-van.png`,
+        `${B}/images/vip-site.png`,
+      ],
+    },
+
     // ─── Groups / weddings / long-term ───
     {
       url: `${B}/weddings-groups`,

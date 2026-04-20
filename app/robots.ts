@@ -3,7 +3,10 @@ import { MetadataRoute } from 'next';
 export default function robots(): MetadataRoute.Robots {
   // Intentionally does NOT block /_next/ — Googlebot needs /_next/static/ (JS, CSS, fonts)
   // to render the page. Next.js emits no indexable HTML under /_next/ anyway.
-  const blocked = ['/api/', '/admin/', '/book/', '/booking/', '/my-reservation/', '/thanks/'];
+  // Disabled routes (/book, /booking, /my-reservation, /thanks) are redirected to / by
+  // middleware.ts; leaving them crawlable lets Google follow the 301 and drop the old URLs
+  // from the index instead of flagging them as "Blocked by robots.txt" in Search Console.
+  const blocked = ['/api/', '/admin/'];
 
   return {
     rules: [
