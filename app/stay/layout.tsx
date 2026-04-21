@@ -2,8 +2,8 @@ import { Metadata } from 'next';
 import { seo } from '@/lib/seo';
 
 export const metadata: Metadata = seo({
-  title: 'Stay Near Mount Rushmore — RV Sites from $41, Cabins from $51, Tent from $35',
-  description: 'Book your Black Hills vacation at Rush No More in Sturgis, SD: 200+ full-hookup RV sites from $41.22/night (30/50 AMP, pull-throughs up to 100ft), 16 unique presidential cabins from $51.76/night (sleep 2–10), & tent camping from $35/night under Ponderosa pines. Heated pool, hot tub spas, beer garden & 16 free amenities. 55 mi from Mount Rushmore, 12 mi from Deadwood, 5 mi from Sturgis. Open year-round.',
+  title: 'Stay Near Mount Rushmore — RV, Cabins & Tents | Rush No More',
+  description: 'Rush No More in Sturgis, SD — 200+ RV sites from $41, 16 cabins from $51, tent camping from $35. Pool, hot tubs, beer garden. 55 mi to Mount Rushmore, 12 mi to Deadwood.',
   path: '/stay',
   image: '/images/GeneralImagesPark/IMG_7386.jpeg',
   keywords: [

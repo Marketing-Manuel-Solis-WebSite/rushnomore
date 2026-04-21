@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { seo } from '@/lib/seo';
 
 export const metadata: Metadata = seo({
-  title: '6-Day Black Hills Itinerary — Mount Rushmore, Deadwood, Spearfish Canyon',
+  title: '6-Day Black Hills Itinerary — Rushmore, Deadwood & More',
   description: 'Complete 6-day Black Hills itinerary from Rush No More in Sturgis, SD. Day-by-day plan covering Mount Rushmore, Deadwood, Spearfish Canyon, Crazy Horse, Custer State Park, Needles Highway, Wind Cave and more. Drive times, highlights and insider tips included.',
   path: '/black-hills-itinerary',
   image: '/images/DSC05580-s.png',

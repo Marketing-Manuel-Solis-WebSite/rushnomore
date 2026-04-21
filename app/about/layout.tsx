@@ -2,8 +2,8 @@ import { Metadata } from 'next';
 import { seo } from '@/lib/seo';
 
 export const metadata: Metadata = seo({
-  title: 'About Rush No More — 4.8★ Award-Winning Campground Near Mount Rushmore',
-  description: 'Rush No More RV Resort & Campground — Sturgis, SD. 4.8★ with 420+ reviews on TripAdvisor & Google. Family-owned since 2014 with 200+ full-hookup RV sites, 16 presidential cabins & shaded tent camping. Heated pool, hot tub spas, beer garden & 16 free amenities. Official Sturgis Rally headquarters. 55 miles from Mount Rushmore, 12 miles from Deadwood, 5 miles from Sturgis. Meet the team behind the Black Hills\' top-rated campground.',
+  title: 'About Rush No More — 4.8★ Campground Near Mount Rushmore',
+  description: 'Family-owned Rush No More in Sturgis, SD — 4.8★ (420+ reviews). 200+ RV sites, 16 cabins, shaded tent camping. Pool, hot tubs & beer garden. 55 mi to Mount Rushmore, 12 mi to Deadwood.',
   path: '/about',
   image: '/images/GeneralImagesPark/IMG_7379.jpeg',
   keywords: [

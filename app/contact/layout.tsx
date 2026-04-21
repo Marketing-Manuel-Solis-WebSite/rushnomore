@@ -2,8 +2,8 @@ import { Metadata } from 'next';
 import { seo } from '@/lib/seo';
 
 export const metadata: Metadata = seo({
-  title: 'Contact Us — Phone 605-423-2545 | Email & Directions | Rush No More Sturgis, SD',
-  description: 'Contact Rush No More RV Resort: call 605-423-2545, email info@rushnomore.com, or visit 21137 Brimstone Place, Sturgis SD 57785. Just off I-90 Exit 37 — less than 2 minutes from the interstate. Office open daily 8 AM–5 PM Mountain Time. We respond within 24 hours. Book RV sites, cabins & tent camping near Mount Rushmore, Deadwood & Crazy Horse Memorial.',
+  title: 'Contact Us — 605-423-2545 | Rush No More Sturgis, SD',
+  description: 'Contact Rush No More RV Resort: call 605-423-2545, email info@rushnomore.com, or visit 21137 Brimstone Place, Sturgis SD. I-90 Exit 37. Office open daily 8 AM–5 PM MT.',
   path: '/contact',
   image: '/images/PeoplePlaying/IMG_7078.jpeg',
   keywords: [

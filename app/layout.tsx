@@ -14,15 +14,15 @@ const josefin = Josefin_Sans({ subsets: ['latin'], variable: '--font-josefin', d
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.rushnomore.com'),
-  title: { default: 'Rush No More RV Resort & Campground — Sturgis, SD | Near Mount Rushmore', template: '%s | Rush No More — Sturgis, SD' },
-  description: 'RV park, presidential cabins & tent camping in Sturgis, South Dakota — the Black Hills basecamp for Mount Rushmore, Deadwood, Spearfish Canyon & the Sturgis Motorcycle Rally. Full-hookup RV sites from $41, cabins from $51, tent from $35. Heated pool, hot tubs, beer garden. I-90 Exit 37.',
+  title: { default: 'Rush No More RV Resort & Campground — Sturgis, SD', template: '%s' },
+  description: 'RV park, cabins & tent camping in Sturgis, SD — Black Hills basecamp for Mount Rushmore, Deadwood & the Sturgis Rally. RV from $41, cabins $51, tents $35. I-90 Exit 37.',
   applicationName: 'Rush No More RV Resort & Campground',
   authors: [{ name: 'Rush No More RV Resort & Campground', url: 'https://www.rushnomore.com' }],
   creator: 'Rush No More RV Resort & Campground',
   publisher: 'Rush No More RV Resort & Campground',
   category: 'Travel & Tourism',
   alternates: {
-    canonical: '/',
+    canonical: 'https://www.rushnomore.com/',
   },
   keywords: [
     'rv park near mount rushmore',

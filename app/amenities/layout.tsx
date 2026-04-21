@@ -2,8 +2,8 @@ import { Metadata } from 'next';
 import { seo } from '@/lib/seo';
 
 export const metadata: Metadata = seo({
-  title: '16 Free Amenities — Pool, Hot Tubs, Beer Garden, Game Room & More | No Resort Fees',
-  description: '16 free resort amenities at Rush No More campground near Mount Rushmore — no resort fees ever. Heated swimming pool, hot tub spas, beer garden & bar, game room, nature trails, modern bathhouses, laundromat, free Wi-Fi, pet-friendly dog run, bike wash station, propane campfire rentals, cafe, camp library, camp store, picnic pavilions & 24/7 gated security. Sturgis, SD — 55 mi to Mount Rushmore.',
+  title: '16 Free Amenities — Pool, Hot Tubs & Beer Garden | Rush No More',
+  description: '16 free amenities at Rush No More — pool, hot tubs, beer garden, game room, trails, bathhouses, Wi-Fi, dog run, bike wash, cafe & more. No resort fees. Sturgis, SD.',
   path: '/amenities',
   image: '/images/Pool/PoolWithPeople.jpeg',
   keywords: [

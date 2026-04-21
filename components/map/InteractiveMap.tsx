@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef, useCallback } from 'react';
+import Image from 'next/image';
 import { ZoomIn, ZoomOut, RotateCcw } from 'lucide-react';
 
 export function InteractiveMap() {
@@ -123,11 +124,15 @@ export function InteractiveMap() {
             transition: isDragging ? 'none' : 'transform 0.3s ease-out',
           }}
         >
-          <img
+          <Image
             src="/images/RushNoMoreMap.jpg"
             alt="Rush No More Campground Map — Full site map showing RV sites, cabins, tent areas, pool, beer garden and all amenities"
+            width={1600}
+            height={1200}
             className="w-full h-full object-contain select-none pointer-events-none"
             draggable={false}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
+            priority
           />
         </div>
       </div>

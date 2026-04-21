@@ -2,8 +2,8 @@ import { Metadata } from 'next';
 import { seo } from '@/lib/seo';
 
 export const metadata: Metadata = seo({
-  title: 'Things to Do Near Mount Rushmore — Black Hills Attractions, Day Trips & 6-Day Itinerary',
-  description: 'Explore 9 top Black Hills attractions from Rush No More campground in Sturgis: Mount Rushmore (55 mi), Deadwood (12 mi), Crazy Horse Memorial (60 mi), Custer State Park (70 mi), Spearfish Canyon (25 mi), Needles Highway, Bear Country USA & Wind Cave. Complete 6-day itinerary with distances, drive times & insider tips. Your perfect Black Hills base camp.',
+  title: 'Things to Do Near Mount Rushmore — Black Hills Attractions',
+  description: 'Top Black Hills attractions from Rush No More: Mount Rushmore (55 mi), Deadwood (12 mi), Crazy Horse, Custer State Park, Spearfish Canyon & Needles Highway. 6-day itinerary.',
   path: '/explore',
   image: '/images/GeneralImagesPark/IMG_7383.jpeg',
   keywords: [

@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { seo } from '@/lib/seo';
 
 export const metadata: Metadata = seo({
-  title: 'Iron Mountain Road Guide (US-16A) — Pigtail Bridges & Framed Rushmore Views',
+  title: 'Iron Mountain Road Guide — Pigtail Bridges & Rushmore Views',
   description: 'Iron Mountain Road (US-16A) guide from Rush No More — 17 miles of pigtail bridges and three tunnels that frame Mount Rushmore through the granite. Route, tunnel sizes, motorcycle tips and how to loop with Needles Highway.',
   path: '/iron-mountain-road-guide',
   image: '/images/DSC05580-s.png',

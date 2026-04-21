@@ -2,8 +2,8 @@ import { Metadata } from 'next';
 import { seo } from '@/lib/seo';
 
 export const metadata: Metadata = seo({
-  title: 'ADA Accessible Campground Near Mount Rushmore — Wheelchair Friendly RV Park & Cabins',
-  description: 'ADA-compliant RV park & campground near Mount Rushmore. Rush No More offers wheelchair-accessible RV sites, ADA bathhouses, accessible cabins & paved pathways. Pool with accessible entry, ramp access & disability-friendly facilities in Sturgis, SD. Call 605-423-2545 for accessibility questions.',
+  title: 'ADA Accessible Campground Near Mount Rushmore | Rush No More',
+  description: 'ADA-compliant campground near Mount Rushmore. Rush No More offers wheelchair-accessible RV sites, ADA bathhouses, accessible cabins & paved paths in Sturgis, SD. Call 605-423-2545.',
   path: '/ada',
   keywords: [
     'ada accessible campground south dakota', 'wheelchair accessible rv park mount rushmore',

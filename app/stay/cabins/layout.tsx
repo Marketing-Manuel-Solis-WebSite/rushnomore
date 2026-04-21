@@ -2,8 +2,8 @@ import { Metadata } from 'next';
 import { seo } from '@/lib/seo';
 
 export const metadata: Metadata = seo({
-  title: 'Cabins Near Mount Rushmore — 16 Presidential Cabins from $51/Night | Sturgis, SD',
-  description: '16 unique presidential cabins near Mount Rushmore at Rush No More in Sturgis, SD. Sleep 2–10 guests from $51.76/night. Economy, standard, family & luxury options. Full kitchens, A/C & heating, private bathrooms, pet-friendly. Free heated pool, hot tub spas, beer garden & 16 amenities. Named after US Presidents — The George Washington, Thomas Jefferson, Abe Lincoln & more. 55 miles from Mount Rushmore.',
+  title: 'Cabins Near Mount Rushmore — 16 Cabins from $51 | Rush No More',
+  description: '16 presidential cabins near Mount Rushmore at Rush No More, Sturgis SD — from $51.76. Sleep 2–10, A/C, private baths, pet-friendly. Free pool, hot tubs & beer garden.',
   path: '/stay/cabins',
   image: '/images/Cabins/CabinUlyssesGrant/PhotoMainUlyssesGrant.png',
   keywords: [

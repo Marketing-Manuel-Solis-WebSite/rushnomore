@@ -32,7 +32,7 @@ export function seo(o: {
   const img = o.image || OG_IMAGE;
   const altText = `Rush No More RV Resort & Campground — ${o.title.split('—')[0].trim()} — Black Hills, Sturgis South Dakota`;
   return {
-    title: full,
+    title: { absolute: full },
     description: o.description,
     keywords: o.keywords,
     alternates: {

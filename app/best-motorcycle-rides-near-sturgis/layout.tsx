@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { seo } from '@/lib/seo';
 
 export const metadata: Metadata = seo({
-  title: 'Best Motorcycle Rides Near Sturgis — Needles, Iron Mountain, Spearfish Canyon',
+  title: 'Best Motorcycle Rides Near Sturgis — Scenic Black Hills Routes',
   description: 'The classic Black Hills motorcycle rides from Sturgis, SD — Needles Highway, Iron Mountain Road, Spearfish Canyon, Boulder Canyon and Vanocker Canyon. Route notes, highlights and tips from Rush No More, your rally basecamp 5 miles from Main Street Sturgis.',
   path: '/best-motorcycle-rides-near-sturgis',
   image: '/images/BikeRally/IMG_9865.JPG',

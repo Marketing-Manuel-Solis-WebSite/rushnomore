@@ -2,8 +2,8 @@ import { Metadata } from 'next';
 import { seo } from '@/lib/seo';
 
 export const metadata: Metadata = seo({
-  title: 'Tent Camping Near Mount Rushmore — Shaded Sites from $35/Night | Black Hills, SD',
-  description: 'Tent camping from $35/night under Ponderosa pines near Mount Rushmore at Rush No More in Sturgis, SD — just 30 miles from Rapid City. 20+ spacious sites — 15 with 20 AMP electric hookup ($40/night). Modern bathhouses, heated pool, hot tub spas, beer garden & 16 free amenities included. Perfect base camp for Mount Rushmore (55 mi), Deadwood (12 mi) & Custer State Park (70 mi). Book your Black Hills camping adventure.',
+  title: 'Tent Camping Near Mount Rushmore — Shaded Sites from $35 | Rush No More',
+  description: 'Tent camping from $35/night under Ponderosa pines at Rush No More in Sturgis, SD. 20+ sites, 15 with 20 AMP ($40). Bathhouses, pool, hot tubs. 55 mi to Mount Rushmore.',
   path: '/stay/tent-camping',
   image: '/images/tent_camping_RNM.png',
   keywords: [

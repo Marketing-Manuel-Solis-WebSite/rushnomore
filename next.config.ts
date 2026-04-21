@@ -4,9 +4,14 @@ const nextConfig: NextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
+  // Suppress X-Powered-By: Next.js leak for reconnaissance hardening
+  poweredByHeader: false,
+  // Compression at the Next runtime (Vercel/CDN usually overrides, but harmless)
+  compress: true,
   images: {
     formats: ['image/avif', 'image/webp'],
     remotePatterns: [],
+    minimumCacheTTL: 31536000,
   },
   async headers() {
     return [
@@ -15,22 +20,28 @@ const nextConfig: NextConfig = {
         headers: [
           { key: 'X-Content-Type-Options', value: 'nosniff' },
           { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
-          { key: 'X-XSS-Protection', value: '1; mode=block' },
           { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
-          { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' },
+          { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=(), interest-cohort=()' },
+          { key: 'Cross-Origin-Opener-Policy', value: 'same-origin' },
+          { key: 'Cross-Origin-Resource-Policy', value: 'same-site' },
+          // Hide server identity to reduce attack-surface reconnaissance
+          { key: 'X-Powered-By', value: '' },
+          { key: 'Server', value: '' },
           {
             key: 'Content-Security-Policy',
             value: [
               "default-src 'self'",
-              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://googleads.g.doubleclick.net https://www.googleadservices.com https://generativelanguage.googleapis.com",
+              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://googleads.g.doubleclick.net https://www.googleadservices.com https://generativelanguage.googleapis.com https://va.vercel-scripts.com",
               "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
               "font-src 'self' https://fonts.gstatic.com",
               "img-src 'self' data: blob: https:",
-              "connect-src 'self' https://*.googleapis.com https://*.google.com https://*.google-analytics.com https://*.doubleclick.net https://*.firebaseio.com https://*.firebase.google.com https://api.stripe.com https://generativelanguage.googleapis.com wss://*.firebaseio.com",
+              "connect-src 'self' https://*.googleapis.com https://*.google.com https://*.google-analytics.com https://*.doubleclick.net https://*.firebaseio.com https://*.firebase.google.com https://api.stripe.com https://generativelanguage.googleapis.com https://vitals.vercel-insights.com wss://*.firebaseio.com",
               "frame-src 'self' https://js.stripe.com https://hooks.stripe.com https://www.youtube.com https://youtube.com https://maps.google.com https://www.google.com https://maps.googleapis.com https://td.doubleclick.net",
               "object-src 'none'",
               "base-uri 'self'",
               "form-action 'self' https://checkout.stripe.com",
+              "frame-ancestors 'self'",
+              "upgrade-insecure-requests",
             ].join('; '),
           },
           {
@@ -38,6 +49,36 @@ const nextConfig: NextConfig = {
             value: 'max-age=63072000; includeSubDomains; preload',
           },
         ],
+      },
+      // ─── Aggressive caching for immutable static assets (1 year) ───
+      {
+        source: '/_next/static/:path*',
+        headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }],
+      },
+      {
+        source: '/images/:path*',
+        headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }],
+      },
+      {
+        source: '/videos/:path*',
+        headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }],
+      },
+      {
+        source: '/fonts/:path*',
+        headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }],
+      },
+      {
+        source: '/:all*(svg|jpg|jpeg|png|gif|webp|avif|ico|woff|woff2|ttf|otf|eot)',
+        headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }],
+      },
+      // ─── Sitemap / robots: short cache to keep SEO refreshes quick ───
+      {
+        source: '/sitemap.xml',
+        headers: [{ key: 'Cache-Control', value: 'public, max-age=3600, s-maxage=86400' }],
+      },
+      {
+        source: '/robots.txt',
+        headers: [{ key: 'Cache-Control', value: 'public, max-age=3600, s-maxage=86400' }],
       },
       // X-Robots-Tag for routes that should never be indexed (defense-in-depth)
       {
@@ -101,6 +142,18 @@ const nextConfig: NextConfig = {
       { source: '/park-map', destination: '/map', permanent: true },
       { source: '/parkmap', destination: '/map', permanent: true },
       { source: '/site-map', destination: '/map', permanent: true },
+      // Specific /public/* mappings (fix GA-tracked orphans) then catch-all
+      { source: '/public/classic-car-show', destination: '/events#car-show', permanent: true },
+      { source: '/public/car-show', destination: '/events#car-show', permanent: true },
+      { source: '/public/maps', destination: '/map', permanent: true },
+      { source: '/public/map', destination: '/map', permanent: true },
+      { source: '/public/services', destination: '/amenities', permanent: true },
+      { source: '/public/amenities', destination: '/amenities', permanent: true },
+      { source: '/public/cabins', destination: '/stay/cabins', permanent: true },
+      { source: '/public/rv-sites', destination: '/stay/rv-sites', permanent: true },
+      { source: '/public/tent-camping', destination: '/stay/tent-camping', permanent: true },
+      { source: '/public/about', destination: '/about', permanent: true },
+      { source: '/public/contact', destination: '/contact', permanent: true },
       { source: '/public/:path*', destination: '/', permanent: true },
       { source: '/index/:path*', destination: '/', permanent: true },
 

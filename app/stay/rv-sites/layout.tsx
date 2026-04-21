@@ -2,8 +2,8 @@ import { Metadata } from 'next';
 import { seo } from '@/lib/seo';
 
 export const metadata: Metadata = seo({
-  title: 'RV Park Near Mount Rushmore — 200+ Full Hookup Sites from $41/Night | Sturgis, SD',
-  description: '200+ full-hookup RV sites near Mount Rushmore at Rush No More in Sturgis, SD. Starting at $41.22/night. 30/50 AMP service, pull-throughs up to 100ft, luxury sites with cement slabs & gas BBQ grills, and Luxury Spa sites with private hot tub. Heated pool, beer garden & 16 free amenities. Big rig friendly. Open year-round. Just off I-90 Exit 37. 55 mi from Mount Rushmore, 12 mi from Deadwood.',
+  title: 'RV Park Near Mount Rushmore — 200+ Sites from $41 | Rush No More',
+  description: '200+ full-hookup RV sites near Mount Rushmore at Rush No More, Sturgis SD — from $41.22. 30/50 AMP, pull-throughs up to 100ft, luxury spa sites with private hot tubs. I-90 Exit 37.',
   path: '/stay/rv-sites',
   image: '/images/RushMore-rv-camper-van.png',
   keywords: [

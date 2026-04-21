@@ -2,8 +2,8 @@ import { Metadata } from 'next';
 import { seo } from '@/lib/seo';
 
 export const metadata: Metadata = seo({
-  title: 'Campground Rules, Cancellation & Pet Policies — Rush No More RV Resort',
-  description: 'Cancellation policies, check-in/check-out times (check-in 2 PM, check-out 11 AM), pet rules, quiet hours, fire rules & campground regulations for RV sites, cabins and tent camping at Rush No More near Mount Rushmore. Sturgis Rally & holiday reservation policies. No wood fires — propane and charcoal only.',
+  title: 'Campground Rules & Cancellation Policy | Rush No More',
+  description: 'Cancellation policy, check-in 2 PM / check-out 11 AM, pet rules, quiet hours & fire rules at Rush No More. No wood fires — propane & charcoal only. Sturgis Rally & holiday policies.',
   path: '/policies',
   keywords: [
     'rush no more cancellation policy', 'campground rules sturgis sd',

@@ -2,8 +2,8 @@ import { Metadata } from 'next';
 import { seo } from '@/lib/seo';
 
 export const metadata: Metadata = seo({
-  title: 'Sturgis Rally Campground 2026 (Aug 2–18) — RV Sites, Cabins & Tent Camping',
-  description: 'Book your Sturgis Motorcycle Rally 2026 campsite (August 2–18): RV sites from $899/10 days, cabins & tent camping just 5 miles from Main Street Sturgis. Rush No More is the ultimate rally headquarters — beer garden, hot tubs, live music. Dakota Rods & Classics Car Show September 12, 2026. Weddings, reunions & group events for 20–200 guests. Book early — we sell out every year.',
+  title: 'Sturgis Rally Campground 2026 — RV, Cabins & Tents | Rush No More',
+  description: 'Sturgis Rally 2026 (Aug 2–18) campsite bookings at Rush No More — RV from $899/10 days, cabins & tents. 5 mi from Main Street. Car show Sept 12. Group events 20–200. Book early.',
   path: '/events',
   image: '/images/BikeRally/IMG_9865.JPG',
   keywords: [

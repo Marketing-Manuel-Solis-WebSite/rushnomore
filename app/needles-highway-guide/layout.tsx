@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { seo } from '@/lib/seo';
 
 export const metadata: Metadata = seo({
-  title: 'Needles Highway Guide (SD-87) — Granite Spires, Tunnels & the Needles Eye',
+  title: 'Needles Highway Guide — Granite Spires & the Needles Eye',
   description: 'Needles Highway (SD-87) guide from Rush No More — 14 miles of granite spires, narrow one-lane tunnels and the iconic Needles Eye in Custer State Park. Tunnel dimensions, best timing, RV restrictions and how to loop with Iron Mountain Road.',
   path: '/needles-highway-guide',
   image: '/images/GeneralImagesPark/IMG_7383.jpeg',
