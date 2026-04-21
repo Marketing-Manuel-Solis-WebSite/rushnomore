@@ -13,7 +13,7 @@ const ADA_FAQS = [
   { q: 'Do you have ADA-compliant bathrooms and showers?', a: 'Yes. Our modern bathhouses include ADA-compliant restroom and shower facilities with grab bars, roll-in showers, and accessible fixtures.' },
   { q: 'Can I bring a service animal?', a: 'Absolutely. Service animals are welcome throughout the entire property and are not subject to our standard pet policy.' },
   { q: 'Is the pool accessible?', a: 'Yes, the pool area is reachable via paved pathways. Please ask staff for assistance with pool entry if needed.' },
-  { q: 'How do I request accommodations for my stay?', a: 'Call us at 605-423-2545 or email info@rushnomore.com before booking. Our team will walk you through the best site and cabin options for your specific needs.' },
+  { q: 'How do I request accommodations for my stay?', a: 'Call us at 605-423-2545 or email rushnomoresd@gmail.com before booking. Our team will walk you through the best site and cabin options for your specific needs.' },
 ];
 import {
   Accessibility, CheckCircle, Eye, Keyboard, Smartphone, Monitor,

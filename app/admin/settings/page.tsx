@@ -38,11 +38,11 @@ const DEFAULTS: SiteSettings = {
   rallyName: 'Sturgis Motorcycle Rally 2026',
   cancellationWindowDays: { standard: 14, premium: 30 },
   phone: '605-423-2545',
-  email: 'info@rushnomore.com',
+  email: 'rushnomoresd@gmail.com',
   checkInTime: '15:00',
   checkOutTime: '11:00',
   emailNotifications: true,
-  adminEmail: 'info@rushnomore.com',
+  adminEmail: 'rushnomoresd@gmail.com',
 };
 
 export default function SettingsPage() {

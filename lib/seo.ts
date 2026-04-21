@@ -4,7 +4,7 @@ const DOMAIN = 'https://www.rushnomore.com';
 const OG_IMAGE = '/images/Aereal-2_1400.png';
 const BUSINESS_NAME = 'Rush No More RV Resort & Campground';
 const PHONE = '+1-605-423-2545';
-const EMAIL = 'info@rushnomore.com';
+const EMAIL = 'rushnomoresd@gmail.com';
 const BOOKING_URL = 'https://bookingsus.newbook.cloud/rushnomore/index.php';
 
 const ADDRESS = {

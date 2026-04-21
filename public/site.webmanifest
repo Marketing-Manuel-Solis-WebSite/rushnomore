@@ -69,7 +69,7 @@
     {
       "name": "Contact Us",
       "short_name": "Contact",
-      "description": "Call 605-423-2545 or email info@rushnomore.com",
+      "description": "Call 605-423-2545 or email rushnomoresd@gmail.com",
       "url": "/contact?utm_source=pwa&utm_medium=shortcut",
       "icons": [{ "src": "/favicon-32x32.png", "sizes": "32x32" }]
     },

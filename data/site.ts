@@ -89,7 +89,7 @@ export const SITE: SiteConfig & { rvStartPrice: string; cabinStartPrice: string;
   short: 'Rush No More',
   phone: '605-423-2545',
   phoneTel: '+16054232545',
-  email: 'info@rushnomore.com',
+  email: 'rushnomoresd@gmail.com',
   address: '21137 Brimstone Place, Sturgis, SD 57785',
   booking: 'https://bookingsus.newbook.cloud/rushnomore/index.php',
   hours: 'Daily 8 AM - 5 PM MT',

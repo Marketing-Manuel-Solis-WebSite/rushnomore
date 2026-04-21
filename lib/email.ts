@@ -7,8 +7,11 @@ import type { Reservation, Property } from './types';
 import { Resend } from 'resend';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
-const FROM_EMAIL = 'reservations@rushnomore.com';
-const ADMIN_EMAIL = 'info@rushnomore.com';
+// NOTE: booking system is currently disabled via middleware.ts, so this file
+// is never executed in production. When re-enabling, configure Resend with a
+// verified sending domain and update FROM_EMAIL accordingly.
+const FROM_EMAIL = process.env.RESEND_FROM_EMAIL || 'rushnomoresd@gmail.com';
+const ADMIN_EMAIL = 'rushnomoresd@gmail.com';
 
 export async function sendConfirmationEmail(reservation: Reservation) {
   const { guestName, guestEmail, confirmationNumber, propertyName,
