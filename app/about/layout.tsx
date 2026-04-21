@@ -16,9 +16,17 @@ export const metadata: Metadata = seo({
     'black hills campground reviews', 'rush no more history',
     'most popular campground sturgis sd', 'award winning rv park south dakota',
     'recommended campground black hills', 'campground with best reviews sturgis',
+    // Long-tail brand intent
+    'rush no more owners', 'rush no more yelp', 'rush no more facebook',
+    'rush no more instagram', 'rush no more youtube', 'rush no more tiktok',
+    'rush no more founded', 'rush no more since 2014', 'rush no more 84 rallies',
+    'rush no more 420 reviews', 'rush no more 4.8 stars',
+    'who owns rush no more', 'is rush no more worth it',
+    'rush no more vs other sturgis campgrounds', 'rush no more vs koa sturgis',
     // Photo/gallery + brand intent
     'rush no more photos', 'rush no more campground photos',
     'rush no more campground pictures', 'rush no more campground reviews photos',
+    'rush no more aerial view', 'rush no more drone photo',
   ],
 });
 

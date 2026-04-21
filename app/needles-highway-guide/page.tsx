@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { BookingCTA } from '@/components/ui';
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 import { JsonLd } from '@/components/seo/JsonLd';
-import { faqSchema } from '@/lib/seo';
+import { faqSchema, articleSchema, speakableSchema, breadcrumbSchema } from '@/lib/seo';
 import { Clock, MapPin, Mountain, AlertTriangle } from 'lucide-react';
 
 const FAQ = [
@@ -17,6 +17,22 @@ export default function Page() {
   return (
     <>
       <JsonLd data={faqSchema(FAQ)} />
+      <JsonLd data={breadcrumbSchema([
+        { name: 'Home', url: '/' },
+        { name: 'Explore', url: '/explore' },
+        { name: 'Needles Highway Guide', url: '/needles-highway-guide' },
+      ])} />
+      <JsonLd data={articleSchema({
+        headline: 'Needles Highway Guide — Granite Spires & the Needles Eye',
+        description: 'Complete Needles Highway (SD-87) guide — 14 miles through Custer State Park with narrow tunnels, granite spires and the famous Needles Eye. Tunnel sizes, timing, RV restrictions.',
+        image: '/images/GeneralImagesPark/IMG_7383.jpeg',
+        url: '/needles-highway-guide',
+        datePublished: '2025-01-15',
+        dateModified: '2026-04-01',
+        wordCount: 850,
+        keywords: ['needles highway', 'sd-87', 'needles eye', 'custer state park', 'cathedral spires', 'black hills scenic drives', 'motorcycle rides black hills'],
+      })} />
+      <JsonLd data={speakableSchema('/needles-highway-guide', ['h1', 'h2'])} />
       <Breadcrumbs items={[{ name: 'Needles Highway Guide', url: '/needles-highway-guide' }]} />
 
       <section className="relative py-20 bg-brand-navy text-white overflow-hidden">

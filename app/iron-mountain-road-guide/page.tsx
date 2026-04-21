@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { BookingCTA } from '@/components/ui';
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 import { JsonLd } from '@/components/seo/JsonLd';
-import { faqSchema } from '@/lib/seo';
+import { faqSchema, articleSchema, speakableSchema, breadcrumbSchema } from '@/lib/seo';
 import { Clock, MapPin, AlertTriangle } from 'lucide-react';
 
 const FAQ = [
@@ -17,6 +17,22 @@ export default function Page() {
   return (
     <>
       <JsonLd data={faqSchema(FAQ)} />
+      <JsonLd data={breadcrumbSchema([
+        { name: 'Home', url: '/' },
+        { name: 'Explore', url: '/explore' },
+        { name: 'Iron Mountain Road Guide', url: '/iron-mountain-road-guide' },
+      ])} />
+      <JsonLd data={articleSchema({
+        headline: 'Iron Mountain Road Guide — Pigtail Bridges & Rushmore Views',
+        description: 'The complete Iron Mountain Road (US-16A) guide from Rush No More — 17 miles, three pigtail bridges, three tunnels framing Mount Rushmore. Route, tunnel sizes, photography tips.',
+        image: '/images/DSC05580-s.png',
+        url: '/iron-mountain-road-guide',
+        datePublished: '2025-01-15',
+        dateModified: '2026-04-01',
+        wordCount: 900,
+        keywords: ['iron mountain road', 'us-16a', 'pigtail bridges', 'mount rushmore drive', 'black hills scenic drives', 'custer state park', 'motorcycle ride sturgis'],
+      })} />
+      <JsonLd data={speakableSchema('/iron-mountain-road-guide', ['h1', '.lead', 'h2'])} />
       <Breadcrumbs items={[{ name: 'Iron Mountain Road Guide', url: '/iron-mountain-road-guide' }]} />
 
       <section className="relative py-20 bg-brand-navy text-white overflow-hidden">

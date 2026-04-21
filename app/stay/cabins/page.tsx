@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { SITE, CABINS } from '@/data/site';
 import { JsonLd } from '@/components/seo/JsonLd';
-import { faqSchema, breadcrumbSchema } from '@/lib/seo';
+import { faqSchema, breadcrumbSchema, serviceSchema, vacationRentalSchema, speakableSchema } from '@/lib/seo';
 import {
   ExternalLink, ArrowRight, Home, CheckCircle, Users,
   MapPin, Phone, TreePine, Waves, Beer, ShieldCheck,
@@ -35,6 +35,26 @@ export default function CabinsPage() {
     <>
       <JsonLd data={breadcrumbSchema([{ name: 'Home', url: '/' }, { name: 'Stay', url: '/stay' }, { name: 'Cabins', url: '/stay/cabins' }])} />
       <JsonLd data={faqSchema(FAQS)} />
+      <JsonLd data={serviceSchema({
+        name: 'Presidential Cabins at Rush No More',
+        description: '16 unique cabins near Mount Rushmore — named after US Presidents, sleeping 2-10 guests, A/C & heating, private bathrooms, pet-friendly.',
+        url: '/stay/cabins',
+        image: '/images/Cabins/CabinUlyssesGrant/PhotoMainUlyssesGrant.png',
+        priceMin: '51.76',
+        priceMax: '332.00',
+        serviceType: 'Cabin Rental',
+      })} />
+      <JsonLd data={vacationRentalSchema({
+        name: 'Presidential Cabins — Rush No More',
+        description: 'Presidential cabin rentals near Mount Rushmore. 16 unique cabins, sleep 2-10, A/C & heating, private bathrooms.',
+        url: '/stay/cabins',
+        image: '/images/Cabins/CabinUlyssesGrant/PhotoMainUlyssesGrant.png',
+        price: '51.76',
+        bedrooms: 1,
+        occupancy: 10,
+        amenities: ['Air Conditioning', 'Heating', 'Private Bathroom', 'Pet Friendly', 'Free Wi-Fi', 'Pool Access', 'Hot Tub Access'],
+      })} />
+      <JsonLd data={speakableSchema('/stay/cabins', ['h1', 'h2'])} />
 
       {/* ═══ HERO ═══ */}
       <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden bg-brand-navy">

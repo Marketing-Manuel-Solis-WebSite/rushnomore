@@ -17,8 +17,11 @@ service cloud.firestore {
     }
 
     // ─── reservations ───
-    // Public: can create (booking flow), can read single doc (confirmation page)
-    // Admin: full read/write/update
+    // Public: can create (booking flow), can read single doc (confirmation page).
+    // Admin: full read/write/update.
+    // NOTE: booking API is currently disabled via middleware.ts. When re-enabled,
+    // these rules keep the public create + single-doc read flow working. Tightening
+    // to admin-only would require routing all reservation reads through /api.
     match /reservations/{reservationId} {
       allow create: if true;
       allow read: if true;
@@ -44,8 +47,9 @@ service cloud.firestore {
     }
 
     // ─── chat_questions ───
-    // Public: can create (AI chat widget saves questions)
-    // Admin: can read (dashboard analytics)
+    // Public: can create (fallback when Firebase Admin SDK is not configured).
+    // When admin creds are set, /api/chat writes via Admin SDK and bypasses rules.
+    // Admin: can read (dashboard analytics).
     match /chat_questions/{questionId} {
       allow create: if true;
       allow read: if isAdmin();
@@ -53,8 +57,9 @@ service cloud.firestore {
     }
 
     // ─── contacts ───
-    // Public: can create (contact form submissions)
-    // Admin: can read (to review/respond)
+    // Public: can create (fallback when Firebase Admin SDK is not configured).
+    // When admin creds are set, /api/contact writes via Admin SDK and bypasses rules.
+    // Admin: can read (to review/respond).
     match /contacts/{contactId} {
       allow create: if true;
       allow read: if isAdmin();

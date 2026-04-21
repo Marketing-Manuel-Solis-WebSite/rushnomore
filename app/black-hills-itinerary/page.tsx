@@ -2,11 +2,43 @@ import Link from 'next/link';
 import { ITINERARY } from '@/data/site';
 import { BookingCTA } from '@/components/ui';
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
+import { JsonLd } from '@/components/seo/JsonLd';
+import { articleSchema, breadcrumbSchema, howToSchema, speakableSchema } from '@/lib/seo';
 import { ArrowRight, MapPin, Clock } from 'lucide-react';
 
 export default function Page() {
   return (
     <>
+      <JsonLd data={breadcrumbSchema([
+        { name: 'Home', url: '/' },
+        { name: 'Explore', url: '/explore' },
+        { name: '6-Day Black Hills Itinerary', url: '/black-hills-itinerary' },
+      ])} />
+      <JsonLd data={articleSchema({
+        headline: '6-Day Black Hills Itinerary — Mount Rushmore, Deadwood & More',
+        description: 'Complete 6-day Black Hills itinerary from Rush No More in Sturgis — Mount Rushmore, Deadwood, Spearfish Canyon, Crazy Horse, Custer State Park, Needles Highway and Wind Cave. Day-by-day plan.',
+        image: '/images/DSC05580-s.png',
+        url: '/black-hills-itinerary',
+        datePublished: '2025-01-15',
+        dateModified: '2026-04-01',
+        wordCount: 1200,
+        keywords: ['black hills itinerary', '6 day black hills', 'mount rushmore itinerary', 'black hills vacation plan', 'sturgis day trips', 'custer state park itinerary', 'deadwood itinerary', 'family black hills trip'],
+      })} />
+      <JsonLd data={howToSchema({
+        name: 'How to Spend 6 Days in the Black Hills from Rush No More',
+        description: 'Step-by-step 6-day plan covering every major Black Hills attraction from a single basecamp — Rush No More RV Resort in Sturgis.',
+        image: '/images/DSC05580-s.png',
+        totalTime: 'P6D',
+        estimatedCost: { value: '400', currency: 'USD' },
+        supply: ['Camera', 'Hiking shoes', 'Sunscreen', 'Water', 'Custer State Park 7-day license'],
+        tool: ['Car or motorcycle', 'GPS or map app'],
+        steps: ITINERARY.map((day) => ({
+          name: `Day ${day.day}: ${day.title}`,
+          text: `${day.sub}. Highlights: ${day.items.join('; ')}.`,
+          url: '/black-hills-itinerary',
+        })),
+      })} />
+      <JsonLd data={speakableSchema('/black-hills-itinerary', ['h1', 'h2', 'article h3'])} />
       <Breadcrumbs items={[{ name: 'Black Hills 6-Day Itinerary', url: '/black-hills-itinerary' }]} />
 
       <section className="relative bg-brand-navy text-white py-20 md:py-28 overflow-hidden">

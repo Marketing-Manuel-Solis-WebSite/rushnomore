@@ -16,9 +16,17 @@ export const metadata: Metadata = seo({
     'reserve rv site black hills', 'reserve cabin sturgis sd',
     'rush no more check in time', 'rush no more office hours',
     'campground i-90 exit 37 sturgis', 'rv park near interstate south dakota',
+    // Long-tail intent queries
+    'rush no more 605-423-2545', 'rush no more info email',
+    'rush no more customer service', 'rush no more bilingual staff',
+    'rush no more spanish staff', 'campground front desk sturgis',
+    'rush no more 21137 brimstone place', 'rush no more check out time',
+    'how far is rush no more from sturgis', 'how far is rush no more from deadwood',
+    'how far is rush no more from mount rushmore', 'rush no more driving directions',
     // Rapid City + emerging queries
     'campground near rapid city sd phone', 'rv park near rapid city contact',
     'sturgis sd campgrounds', 'rv parks black hills sd',
+    'rapid city airport to rush no more',
   ],
 });
 

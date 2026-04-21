@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { BookingCTA } from '@/components/ui';
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 import { JsonLd } from '@/components/seo/JsonLd';
-import { faqSchema } from '@/lib/seo';
+import { faqSchema, articleSchema, speakableSchema, breadcrumbSchema } from '@/lib/seo';
 import { Clock, MapPin, ArrowRight, Coins, Landmark, Ghost, Utensils } from 'lucide-react';
 
 const FAQ = [
@@ -17,6 +17,22 @@ export default function Page() {
   return (
     <>
       <JsonLd data={faqSchema(FAQ)} />
+      <JsonLd data={breadcrumbSchema([
+        { name: 'Home', url: '/' },
+        { name: 'Explore', url: '/explore' },
+        { name: 'Deadwood Day Trip', url: '/deadwood-day-trip' },
+      ])} />
+      <JsonLd data={articleSchema({
+        headline: 'Deadwood Day Trip from Sturgis — Casinos & Gold Rush History',
+        description: 'Complete Deadwood day-trip guide from Rush No More — 12 miles and 15 minutes away. Adams Museum, gold panning, Mt. Moriah Cemetery, Trial of Jack McCall & 80+ gaming halls.',
+        image: '/images/Cabins/CabinJamesMonroe/PhotoMainJamesMonroe.jpeg',
+        url: '/deadwood-day-trip',
+        datePublished: '2025-01-15',
+        dateModified: '2026-04-01',
+        wordCount: 900,
+        keywords: ['deadwood day trip', 'deadwood south dakota', 'deadwood casinos', 'gold panning black hills', 'mt moriah cemetery', 'wild bill hickok', 'trial of jack mccall', 'adams museum deadwood'],
+      })} />
+      <JsonLd data={speakableSchema('/deadwood-day-trip', ['h1', 'h2'])} />
       <Breadcrumbs items={[{ name: 'Deadwood Day Trip', url: '/deadwood-day-trip' }]} />
 
       <section className="relative py-20 bg-brand-navy text-white overflow-hidden">

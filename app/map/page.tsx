@@ -8,7 +8,7 @@ import { SITE } from '@/data/site';
 import { BookingCTA } from '@/components/ui';
 import { InteractiveMapWrapper } from './InteractiveMapWrapper';
 import { JsonLd } from '@/components/seo/JsonLd';
-import { breadcrumbSchema, localBusinessSchema } from '@/lib/seo';
+import { breadcrumbSchema, localBusinessSchema, placeSchema, speakableSchema, reservationActionSchema } from '@/lib/seo';
 import {
   MapPin, Phone, Mail, Navigation, ExternalLink, ArrowRight,
   Truck, Home, Tent, Waves, Beer, ShieldCheck, TreePine,
@@ -72,6 +72,9 @@ export default function MapPage() {
     <>
       <JsonLd data={breadcrumbSchema([{ name: 'Home', url: '/' }, { name: 'Map & Directions', url: '/map' }])} />
       <JsonLd data={localBusinessSchema()} />
+      <JsonLd data={placeSchema()} />
+      <JsonLd data={reservationActionSchema()} />
+      <JsonLd data={speakableSchema('/map', ['h1', 'h2', '[data-speakable="address"]'])} />
 
       {/* ═══════════════════════════════════════════════════════════════
           HERO — Video background

@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 import { SITE, RV_TIERS } from '@/data/site';
 import { BookingCTA } from '@/components/ui';
 import { JsonLd } from '@/components/seo/JsonLd';
-import { faqSchema, breadcrumbSchema } from '@/lib/seo';
+import { faqSchema, breadcrumbSchema, serviceSchema, speakableSchema } from '@/lib/seo';
 import {
   ExternalLink, ArrowRight, Truck, CheckCircle, Star, Users,
   Waves, Beer, ShieldCheck, Wifi, Zap, TreePine, ShowerHead,
@@ -37,6 +37,16 @@ export default function RVSitesPage() {
     <>
       <JsonLd data={breadcrumbSchema([{ name: 'Home', url: '/' }, { name: 'Stay', url: '/stay' }, { name: 'RV Sites', url: '/stay/rv-sites' }])} />
       <JsonLd data={faqSchema(FAQS)} />
+      <JsonLd data={serviceSchema({
+        name: 'RV Sites at Rush No More — Full Hookup 30/50 AMP',
+        description: '200+ full-hookup RV sites (water/electric/sewer, 30/50 AMP) near Mount Rushmore. Pull-throughs up to 100 ft, luxury sites with cement slab and gas BBQ, and Luxury Spa sites with private hot tub.',
+        url: '/stay/rv-sites',
+        image: '/images/RushMore-rv-camper-van.png',
+        priceMin: '41.22',
+        priceMax: '72.93',
+        serviceType: 'RV Park Site Rental',
+      })} />
+      <JsonLd data={speakableSchema('/stay/rv-sites', ['h1', 'h2'])} />
 
       {/* ═══ HERO ═══ */}
       <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden bg-brand-navy">

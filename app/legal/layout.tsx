@@ -9,6 +9,11 @@ export const metadata: Metadata = seo({
     'rush no more privacy policy', 'campground terms of use',
     'rush no more legal notices', 'rv resort privacy policy south dakota',
     'campground booking terms', 'rush no more data policy',
+    'rush no more terms and conditions', 'campground cookie policy',
+    'campground data retention policy', 'rv park gdpr',
+    'rush no more copyright notice', 'campground ccpa',
+    'rv resort liability terms', 'rush no more user agreement',
+    'sturgis campground privacy', 'rv park terms south dakota',
   ],
 });
 

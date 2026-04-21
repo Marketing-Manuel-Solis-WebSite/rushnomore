@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { BookingCTA } from '@/components/ui';
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 import { JsonLd } from '@/components/seo/JsonLd';
-import { faqSchema } from '@/lib/seo';
+import { faqSchema, articleSchema, speakableSchema, breadcrumbSchema } from '@/lib/seo';
 import { Clock, MapPin, Droplet, Fish, Leaf, Camera } from 'lucide-react';
 
 const FAQ = [
@@ -17,6 +17,22 @@ export default function Page() {
   return (
     <>
       <JsonLd data={faqSchema(FAQ)} />
+      <JsonLd data={breadcrumbSchema([
+        { name: 'Home', url: '/' },
+        { name: 'Explore', url: '/explore' },
+        { name: 'Spearfish Canyon Guide', url: '/spearfish-canyon-guide' },
+      ])} />
+      <JsonLd data={articleSchema({
+        headline: 'Spearfish Canyon Guide — Waterfalls, Fly Fishing & Fall Foliage',
+        description: 'Spearfish Canyon Scenic Byway guide — 20 miles along US-14A with Bridal Veil Falls, Roughlock Falls, trout fishing and world-class fall foliage. Route, trailheads, best seasons.',
+        image: '/images/rv-camper-van.png',
+        url: '/spearfish-canyon-guide',
+        datePublished: '2025-01-15',
+        dateModified: '2026-04-01',
+        wordCount: 800,
+        keywords: ['spearfish canyon', 'us-14a scenic byway', 'bridal veil falls', 'roughlock falls', 'spearfish creek fly fishing', 'black hills fall foliage', 'black hills waterfalls'],
+      })} />
+      <JsonLd data={speakableSchema('/spearfish-canyon-guide', ['h1', 'h2'])} />
       <Breadcrumbs items={[{ name: 'Spearfish Canyon Guide', url: '/spearfish-canyon-guide' }]} />
 
       <section className="relative py-20 bg-brand-navy text-white overflow-hidden">

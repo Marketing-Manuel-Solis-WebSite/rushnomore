@@ -5,7 +5,17 @@ import { SITE } from '@/data/site';
 import { BookingCTA } from '@/components/ui';
 import { FadeIn } from '@/components/motion';
 import { JsonLd } from '@/components/seo/JsonLd';
-import { breadcrumbSchema } from '@/lib/seo';
+import { breadcrumbSchema, faqSchema } from '@/lib/seo';
+
+const POLICY_FAQS = [
+  { q: 'What is your cancellation policy for RV and tent sites?', a: '14+ days before arrival: full refund minus $25 admin fee. 7–14 days: 50% refund. Less than 7 days: no refund. No-shows forfeit the entire reservation.' },
+  { q: 'What is the cabin cancellation policy?', a: 'Cabins and luxury sites: 30+ days = full refund minus $25. 14–30 days = 75%. 7–14 days = 50%. Less than 7 days = no refund.' },
+  { q: 'Are Sturgis Rally reservations refundable?', a: 'No. All rally and holiday reservations (Memorial Day, July 4th, Labor Day, Sturgis Rally) are non-refundable with full prepayment required at booking.' },
+  { q: 'What are your check-in and check-out times?', a: 'Check-in is at 3:00 PM. Check-out is by 11:00 AM. Late check-outs may be arranged at the office when space allows.' },
+  { q: 'Can I have a wood fire?', a: 'No. Rush No More backs up to National Forest Service land, so wood fires are not allowed anywhere on the property. Propane campfire rentals and charcoal grills are permitted.' },
+  { q: 'Are pets allowed?', a: 'Yes. Dogs are welcome on leash throughout the park. Please clean up after your pet and keep them quiet during quiet hours (10 PM – 7 AM).' },
+  { q: 'How many vehicles can I bring per site?', a: 'A maximum of two vehicles per site is included. Additional vehicles can be parked for $10 per day.' },
+];
 import {
   AlertTriangle, Truck, Star, Home, Calendar, Shield, Clock,
   CheckCircle, XCircle, Phone, Mail, Info, ChevronRight,
@@ -72,6 +82,7 @@ export default function PoliciesPage() {
   return (
     <>
       <JsonLd data={breadcrumbSchema([{ name: 'Home', url: '/' }, { name: 'Policies', url: '/policies' }])} />
+      <JsonLd data={faqSchema(POLICY_FAQS)} />
 
       {/* ═══ HERO ═══ */}
       <section className="relative min-h-[50vh] flex items-center justify-center overflow-hidden bg-brand-navy">
@@ -226,6 +237,23 @@ export default function PoliciesPage() {
                 <Mail className="w-4 h-4 mr-2" /> Email Us
               </a>
             </div>
+          </FadeIn>
+
+          {/* ═══ Related info pages — internal linking ═══ */}
+          <FadeIn className="mt-12">
+            <nav aria-label="Related information" className="border-t border-surface-muted pt-8 max-w-4xl mx-auto">
+              <h2 className="text-sm font-bold uppercase tracking-wider text-brand-stone mb-4 text-center">Related Information</h2>
+              <ul className="grid grid-cols-2 md:grid-cols-4 gap-3 text-sm">
+                <li><a href="/legal" className="text-brand-gold hover:underline font-medium">Legal &amp; Privacy</a></li>
+                <li><a href="/ada" className="text-brand-gold hover:underline font-medium">ADA &amp; Accessibility</a></li>
+                <li><a href="/contact" className="text-brand-gold hover:underline font-medium">Contact Us</a></li>
+                <li><a href="/about" className="text-brand-gold hover:underline font-medium">About Rush No More</a></li>
+                <li><a href="/amenities" className="text-brand-gold hover:underline font-medium">Free Amenities</a></li>
+                <li><a href="/stay" className="text-brand-gold hover:underline font-medium">Accommodations</a></li>
+                <li><a href="/rally-rates" className="text-brand-gold hover:underline font-medium">Rally Rates</a></li>
+                <li><a href="/sturgis-rally-camping" className="text-brand-gold hover:underline font-medium">Rally Camping</a></li>
+              </ul>
+            </nav>
           </FadeIn>
         </div>
       </section>

@@ -1,35 +1,72 @@
 'use client';
 
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
+import Image from 'next/image';
 import { SITE } from '@/data/site';
 import { MapPin, Mountain, TreePine, Phone } from 'lucide-react';
 
 export function HeroSection() {
   const videoRef = useRef<HTMLVideoElement>(null);
+  // Defer video load until after first paint + respect reduced motion / save-data.
+  const [showVideo, setShowVideo] = useState(false);
 
   useEffect(() => {
+    // Respect user preferences for reduced motion + data saver
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    type NavConnection = { saveData?: boolean };
+    const saveData = (navigator as Navigator & { connection?: NavConnection }).connection?.saveData;
+    if (prefersReducedMotion || saveData) return;
+
+    // Defer until the browser is idle so we don't block LCP
+    const start = () => setShowVideo(true);
+    const ric = (window as Window & { requestIdleCallback?: (cb: () => void) => number }).requestIdleCallback;
+    if (typeof ric === 'function') {
+      ric(start);
+    } else {
+      setTimeout(start, 600);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!showVideo) return;
     const v = videoRef.current;
     if (!v) return;
-    
     v.play().catch(() => {
-      // Si falla, el fallback del poster se mostrará
+      // If autoplay fails, the poster shows as fallback
     });
-  }, []);
+  }, [showVideo]);
 
   return (
     <section className="relative min-h-[100dvh] flex items-center justify-center overflow-hidden bg-brand-navy">
-      {/* Video background - visible desde el inicio */}
-      <video
-        ref={videoRef}
-        className="absolute inset-0 w-full h-full object-cover"
-        src="/videos/rushnomore-video.mp4"
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="auto"
-        poster="/images/DSC05580-s.png"
+      {/* LCP element: optimized image served as AVIF/WebP via next/image, with
+          priority + fetchPriority=high so the browser fetches it before
+          anything else. */}
+      <Image
+        src="/images/DSC05580-s.png"
+        alt=""
+        fill
+        priority
+        fetchPriority="high"
+        sizes="100vw"
+        quality={75}
+        className="object-cover"
+        aria-hidden="true"
       />
+      {/* Video background — lazy-loaded after first paint */}
+      {showVideo && (
+        <video
+          ref={videoRef}
+          className="absolute inset-0 w-full h-full object-cover"
+          src="/videos/rushnomore-video.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          poster="/images/DSC05580-s.png"
+          aria-hidden="true"
+        />
+      )}
 
       {/* Overlay negro más fuerte para mejor legibilidad */}
       <div className="absolute inset-0 bg-black/30" />

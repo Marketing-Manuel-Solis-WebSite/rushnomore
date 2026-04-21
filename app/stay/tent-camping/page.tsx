@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { SITE } from '@/data/site';
 import { JsonLd } from '@/components/seo/JsonLd';
-import { faqSchema, breadcrumbSchema } from '@/lib/seo';
+import { faqSchema, breadcrumbSchema, serviceSchema, speakableSchema } from '@/lib/seo';
 import {
   ExternalLink, ArrowRight, Tent, CheckCircle,
   TreePine, Zap, Waves, ShowerHead, Cable, ShieldCheck,
@@ -36,6 +36,16 @@ export default function TentCampingPage() {
     <>
       <JsonLd data={breadcrumbSchema([{ name: 'Home', url: '/' }, { name: 'Stay', url: '/stay' }, { name: 'Tent Camping', url: '/stay/tent-camping' }])} />
       <JsonLd data={faqSchema(FAQS)} />
+      <JsonLd data={serviceSchema({
+        name: 'Tent Camping at Rush No More',
+        description: '20+ shaded tent sites under Ponderosa pines near Mount Rushmore. 15 with 20 AMP electric. Bathhouse access, pool, hot tubs included.',
+        url: '/stay/tent-camping',
+        image: '/images/tent_camping_RNM.png',
+        priceMin: '35.00',
+        priceMax: '40.00',
+        serviceType: 'Tent Campsite Rental',
+      })} />
+      <JsonLd data={speakableSchema('/stay/tent-camping', ['h1', 'h2'])} />
 
       {/* ═══ HERO ═══ */}
       <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden bg-brand-navy">

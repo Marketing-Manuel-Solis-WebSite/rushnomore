@@ -10,7 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: B,
       lastModified: now,
-      changeFrequency: 'weekly',
+      changeFrequency: 'daily',
       priority: 1.0,
       images: [
         `${B}/images/Aereal-2_1400.png`,
@@ -19,6 +19,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
         `${B}/images/Cabins/CabinUlyssesGrant/PhotoMainUlyssesGrant.png`,
         `${B}/images/rv-camper-van.png`,
         `${B}/images/tent_camping_RNM.png`,
+      ],
+      videos: [
+        {
+          thumbnail_loc: `${B}/images/Aereal-2_1400.png`,
+          title: 'Rush No More RV Resort & Campground — Sturgis, SD',
+          description: 'Tour Rush No More RV Resort near Mount Rushmore — 200+ RV sites, 16 cabins, tent camping, pool, beer garden & 16 free amenities.',
+          content_loc: `${B}/videos/rushnomore-video.mp4`,
+          family_friendly: 'yes',
+          live: 'no',
+          requires_subscription: 'no',
+          tag: 'rv park,campground,mount rushmore,sturgis,black hills',
+        },
       ],
     },
 
@@ -34,6 +46,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
         `${B}/images/Cabins/CabinUlyssesGrant/PhotoMainUlyssesGrant.png`,
         `${B}/images/tent_camping_RNM.png`,
         `${B}/images/vip-site.png`,
+      ],
+      videos: [
+        {
+          thumbnail_loc: `${B}/images/GeneralImagesPark/IMG_7386.jpeg`,
+          title: 'Stay at Rush No More — RV, Cabins & Tent Camping',
+          description: 'See your accommodation options at Rush No More RV Resort — 200+ RV sites, 16 cabins, tent camping near Mount Rushmore.',
+          content_loc: `${B}/videos/RNM-stay.mp4`,
+          family_friendly: 'yes',
+          live: 'no',
+        },
       ],
     },
     {
@@ -124,6 +146,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
         `${B}/images/GeneralImagesPark/IMG_7383.jpeg`,
         `${B}/images/DSC05580-s.png`,
       ],
+      videos: [
+        {
+          thumbnail_loc: `${B}/images/GeneralImagesPark/IMG_7383.jpeg`,
+          title: 'Explore the Black Hills — Mount Rushmore, Deadwood & More',
+          description: 'Black Hills attractions from Rush No More: Mount Rushmore, Crazy Horse, Deadwood, Spearfish Canyon, Needles Highway & Custer State Park.',
+          content_loc: `${B}/videos/RNM-explore.mp4`,
+          family_friendly: 'yes',
+          live: 'no',
+        },
+      ],
     },
     {
       url: `${B}/events`,
@@ -134,6 +166,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
         `${B}/images/BikeRally/IMG_9865.JPG`,
         `${B}/images/car_show_RNM.png`,
         `${B}/images/EventCenter/IMG_7513.jpeg`,
+      ],
+      videos: [
+        {
+          thumbnail_loc: `${B}/images/BikeRally/IMG_9865.JPG`,
+          title: 'Events at Rush No More — Sturgis Rally, Car Show & Weddings',
+          description: 'Events at Rush No More: Sturgis Motorcycle Rally (Aug 2–18, 2026), Dakota Rods & Classics Car Show (Sept 12, 2026), weddings & group events.',
+          content_loc: `${B}/videos/RNM-events.mp4`,
+          family_friendly: 'yes',
+          live: 'no',
+        },
       ],
     },
     {
@@ -146,6 +188,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
         `${B}/images/BeerGarden/IMG_7326.jpeg`,
         `${B}/images/Jacuzzi/IMG_7205.jpeg`,
         `${B}/images/RecRoom/GamesRoom.jpeg`,
+      ],
+      videos: [
+        {
+          thumbnail_loc: `${B}/images/Pool/PoolWithPeople.jpeg`,
+          title: '16 Free Amenities at Rush No More RV Resort',
+          description: 'Tour the 16 free amenities at Rush No More — heated pool, hot tubs, beer garden, game room, nature trails, bike wash & more.',
+          content_loc: `${B}/videos/rushnomore-amenities.mp4`,
+          family_friendly: 'yes',
+          live: 'no',
+        },
       ],
     },
 
@@ -200,6 +252,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.70,
       images: [`${B}/images/PeoplePlaying/IMG_7078.jpeg`],
+      videos: [
+        {
+          thumbnail_loc: `${B}/images/PeoplePlaying/IMG_7078.jpeg`,
+          title: 'Contact Rush No More RV Resort',
+          description: 'Get in touch with Rush No More in Sturgis, SD — call 605-423-2545, email info@rushnomore.com.',
+          content_loc: `${B}/videos/rushnomore-contact.mp4`,
+          family_friendly: 'yes',
+          live: 'no',
+        },
+      ],
     },
     {
       url: `${B}/map`,
@@ -210,6 +272,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
         `${B}/images/RushNoMoreMap.jpg`,
         `${B}/images/Aereal-2_1400.png`,
       ],
+      videos: [
+        {
+          thumbnail_loc: `${B}/images/RushNoMoreMap.jpg`,
+          title: 'Rush No More Campground Map & Directions',
+          description: 'Interactive campground map of Rush No More in Sturgis, SD. Directions from I-90 Exit 37.',
+          content_loc: `${B}/videos/RNM-map.mp4`,
+          family_friendly: 'yes',
+          live: 'no',
+        },
+      ],
     },
     {
       url: `${B}/about`,
@@ -219,6 +291,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
       images: [
         `${B}/images/GeneralImagesPark/IMG_7379.jpeg`,
         `${B}/images/Aereal-2_1400.png`,
+      ],
+      videos: [
+        {
+          thumbnail_loc: `${B}/images/GeneralImagesPark/IMG_7379.jpeg`,
+          title: 'About Rush No More — Family-Owned Black Hills Campground',
+          description: 'Meet the family behind Rush No More — the 4.8★ award-winning RV resort near Mount Rushmore in Sturgis, South Dakota.',
+          content_loc: `${B}/videos/RNM-about.mp4`,
+          family_friendly: 'yes',
+          live: 'no',
+        },
       ],
     },
 

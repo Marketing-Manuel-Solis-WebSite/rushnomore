@@ -8,10 +8,38 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   // Compression at the Next runtime (Vercel/CDN usually overrides, but harmless)
   compress: true,
+  // React strict mode surfaces unsafe lifecycles in development
+  reactStrictMode: true,
+  // Treat trailing slashes consistently so we don't generate duplicate URLs
+  trailingSlash: false,
+  // Tree-shake large icon/motion libraries.
+  // optimizePackageImports handles lucide-react/framer-motion/recharts automatically
+  // in Next.js 15 — no custom modularizeImports needed (that can break when
+  // upstream ESM paths change).
+  experimental: {
+    optimizePackageImports: [
+      'lucide-react',
+      'framer-motion',
+      'recharts',
+      'date-fns',
+      '@vercel/analytics',
+      '@vercel/speed-insights',
+    ],
+    scrollRestoration: true,
+    // Minimize the amount of React each route ships
+    optimizeServerReact: true,
+  },
   images: {
     formats: ['image/avif', 'image/webp'],
     remotePatterns: [],
     minimumCacheTTL: 31536000,
+    // Tight device sizes keep responsive srcsets small
+    deviceSizes: [360, 640, 750, 828, 1080, 1200, 1440, 1920, 2048],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    // Block SVGs from being processed to avoid XSS via crafted SVGs
+    dangerouslyAllowSVG: false,
+    // Inline so images render in <img>, not forced-download
+    contentDispositionType: 'inline',
   },
   async headers() {
     return [
@@ -20,10 +48,41 @@ const nextConfig: NextConfig = {
         headers: [
           { key: 'X-Content-Type-Options', value: 'nosniff' },
           { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
+          { key: 'X-DNS-Prefetch-Control', value: 'on' },
+          // Blocks Adobe Flash / Acrobat cross-domain policy lookups — legacy vector
+          { key: 'X-Permitted-Cross-Domain-Policies', value: 'none' },
+          // Explicitly disable legacy XSS filter (deprecated in Chrome 78+, buggy elsewhere)
+          { key: 'X-XSS-Protection', value: '0' },
           { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
-          { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=(), interest-cohort=()' },
+          {
+            key: 'Permissions-Policy',
+            value: [
+              'accelerometer=()',
+              'autoplay=(self)',
+              'camera=()',
+              'display-capture=()',
+              'encrypted-media=()',
+              'fullscreen=(self)',
+              'geolocation=()',
+              'gyroscope=()',
+              'magnetometer=()',
+              'microphone=()',
+              'midi=()',
+              'payment=(self "https://js.stripe.com" "https://checkout.stripe.com")',
+              'picture-in-picture=(self)',
+              'publickey-credentials-get=()',
+              'screen-wake-lock=()',
+              'sync-xhr=()',
+              'usb=()',
+              'web-share=(self)',
+              'xr-spatial-tracking=()',
+              'interest-cohort=()',
+              'browsing-topics=()',
+            ].join(', '),
+          },
           { key: 'Cross-Origin-Opener-Policy', value: 'same-origin' },
           { key: 'Cross-Origin-Resource-Policy', value: 'same-site' },
+          { key: 'Origin-Agent-Cluster', value: '?1' },
           // Hide server identity to reduce attack-surface reconnaissance
           { key: 'X-Powered-By', value: '' },
           { key: 'Server', value: '' },
@@ -31,12 +90,22 @@ const nextConfig: NextConfig = {
             key: 'Content-Security-Policy',
             value: [
               "default-src 'self'",
-              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://googleads.g.doubleclick.net https://www.googleadservices.com https://generativelanguage.googleapis.com https://va.vercel-scripts.com",
+              // Scripts: Vercel + Google analytics/tag + Stripe. 'unsafe-inline' is required by
+              // GTM bootstrap and Next's runtime chunks; 'unsafe-eval' is required by some
+              // chart/motion libs. Keep them scoped to script-src only.
+              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://ssl.google-analytics.com https://googleads.g.doubleclick.net https://www.googleadservices.com https://generativelanguage.googleapis.com https://va.vercel-scripts.com https://vercel.live https://js.stripe.com",
+              "script-src-elem 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://ssl.google-analytics.com https://googleads.g.doubleclick.net https://www.googleadservices.com https://generativelanguage.googleapis.com https://va.vercel-scripts.com https://vercel.live https://js.stripe.com",
+              "worker-src 'self' blob:",
+              // Styles: Google Fonts + Next.js inline styles
               "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
-              "font-src 'self' https://fonts.gstatic.com",
-              "img-src 'self' data: blob: https:",
-              "connect-src 'self' https://*.googleapis.com https://*.google.com https://*.google-analytics.com https://*.doubleclick.net https://*.firebaseio.com https://*.firebase.google.com https://api.stripe.com https://generativelanguage.googleapis.com https://vitals.vercel-insights.com wss://*.firebaseio.com",
-              "frame-src 'self' https://js.stripe.com https://hooks.stripe.com https://www.youtube.com https://youtube.com https://maps.google.com https://www.google.com https://maps.googleapis.com https://td.doubleclick.net",
+              "style-src-elem 'self' 'unsafe-inline' https://fonts.googleapis.com",
+              "font-src 'self' data: https://fonts.gstatic.com",
+              "img-src 'self' data: blob: https: https://www.google-analytics.com https://www.googletagmanager.com https://www.google.com https://ssl.gstatic.com",
+              "media-src 'self' blob:",
+              "manifest-src 'self'",
+              "connect-src 'self' https://*.googleapis.com https://*.google.com https://*.google-analytics.com https://*.analytics.google.com https://*.doubleclick.net https://*.firebaseio.com https://*.firebase.google.com https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://firestore.googleapis.com https://api.stripe.com https://generativelanguage.googleapis.com https://vitals.vercel-insights.com https://vercel.live wss://*.firebaseio.com wss://ws-us3.pusher.com",
+              "frame-src 'self' https://js.stripe.com https://hooks.stripe.com https://checkout.stripe.com https://www.youtube.com https://youtube.com https://www.youtube-nocookie.com https://maps.google.com https://www.google.com https://maps.googleapis.com https://td.doubleclick.net https://vercel.live",
+              "child-src 'self' https://js.stripe.com blob:",
               "object-src 'none'",
               "base-uri 'self'",
               "form-action 'self' https://checkout.stripe.com",
@@ -79,6 +148,40 @@ const nextConfig: NextConfig = {
       {
         source: '/robots.txt',
         headers: [{ key: 'Cache-Control', value: 'public, max-age=3600, s-maxage=86400' }],
+      },
+      // ─── PWA / misc static ─────────────────────────────────────
+      {
+        source: '/site.webmanifest',
+        headers: [
+          { key: 'Cache-Control', value: 'public, max-age=604800, must-revalidate' },
+          { key: 'Content-Type', value: 'application/manifest+json; charset=utf-8' },
+        ],
+      },
+      {
+        source: '/.well-known/:path*',
+        headers: [
+          { key: 'Cache-Control', value: 'public, max-age=86400' },
+          { key: 'Content-Type', value: 'text/plain; charset=utf-8' },
+        ],
+      },
+      {
+        source: '/humans.txt',
+        headers: [
+          { key: 'Cache-Control', value: 'public, max-age=604800' },
+          { key: 'Content-Type', value: 'text/plain; charset=utf-8' },
+        ],
+      },
+      // ─── /api/* — never cached, never indexed, never framed ────
+      {
+        source: '/api/:path*',
+        headers: [
+          { key: 'Cache-Control', value: 'no-store, no-cache, must-revalidate, private' },
+          { key: 'Pragma', value: 'no-cache' },
+          { key: 'X-Robots-Tag', value: 'noindex, nofollow, noarchive, nosnippet' },
+          { key: 'X-Content-Type-Options', value: 'nosniff' },
+          { key: 'X-Frame-Options', value: 'DENY' },
+          { key: 'Referrer-Policy', value: 'no-referrer' },
+        ],
       },
       // X-Robots-Tag for routes that should never be indexed (defense-in-depth)
       {

@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { BookingCTA } from '@/components/ui';
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
+import { JsonLd } from '@/components/seo/JsonLd';
+import { articleSchema, breadcrumbSchema, speakableSchema } from '@/lib/seo';
 import { Bike, Clock, MapPin, ArrowRight, Mountain } from 'lucide-react';
 
 const RIDES = [
@@ -57,6 +59,22 @@ const RIDES = [
 export default function Page() {
   return (
     <>
+      <JsonLd data={breadcrumbSchema([
+        { name: 'Home', url: '/' },
+        { name: 'Explore', url: '/explore' },
+        { name: 'Best Motorcycle Rides Near Sturgis', url: '/best-motorcycle-rides-near-sturgis' },
+      ])} />
+      <JsonLd data={articleSchema({
+        headline: 'Best Motorcycle Rides Near Sturgis — Scenic Black Hills Routes',
+        description: 'The classic Black Hills motorcycle rides from Sturgis — Needles Highway, Iron Mountain Road, Spearfish Canyon, Boulder Canyon and Vanocker Canyon. Route notes and tips from your Sturgis Rally basecamp.',
+        image: '/images/BikeRally/IMG_9865.JPG',
+        url: '/best-motorcycle-rides-near-sturgis',
+        datePublished: '2025-01-15',
+        dateModified: '2026-04-01',
+        wordCount: 1000,
+        keywords: ['best motorcycle rides sturgis', 'needles highway motorcycle', 'iron mountain road ride', 'spearfish canyon motorcycle', 'black hills motorcycle routes', 'sturgis rally rides', 'vanocker canyon', 'boulder canyon ride'],
+      })} />
+      <JsonLd data={speakableSchema('/best-motorcycle-rides-near-sturgis', ['h1', 'h2'])} />
       <Breadcrumbs items={[{ name: 'Best Rides Near Sturgis', url: '/best-motorcycle-rides-near-sturgis' }]} />
 
       <section className="relative py-20 md:py-28 bg-brand-navy text-white overflow-hidden">

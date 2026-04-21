@@ -24,12 +24,22 @@ export function seo(o: {
   description: string;
   path: string;
   image?: string;
+  imageWidth?: number;
+  imageHeight?: number;
   keywords?: string[];
   noindex?: boolean;
+  ogType?: 'website' | 'article' | 'profile';
+  publishedTime?: string;
+  modifiedTime?: string;
+  section?: string;
+  tags?: string[];
 }): Metadata {
   const url = `${DOMAIN}${o.path}`;
   const full = o.title;
   const img = o.image || OG_IMAGE;
+  const imgUrl = img.startsWith('http') ? img : `${DOMAIN}${img}`;
+  const imgW = o.imageWidth ?? 1400;
+  const imgH = o.imageHeight ?? 900;
   const altText = `Rush No More RV Resort & Campground — ${o.title.split('—')[0].trim()} — Black Hills, Sturgis South Dakota`;
   return {
     title: { absolute: full },
@@ -37,24 +47,65 @@ export function seo(o: {
     keywords: o.keywords,
     alternates: {
       canonical: url,
+      languages: {
+        'en-US': url,
+        'x-default': url,
+      },
     },
     ...(o.noindex
       ? { robots: { index: false, follow: false, googleBot: { index: false, follow: false } } }
-      : {}),
+      : {
+          robots: {
+            index: true,
+            follow: true,
+            googleBot: {
+              index: true,
+              follow: true,
+              'max-snippet': -1,
+              'max-image-preview': 'large',
+              'max-video-preview': -1,
+              noimageindex: false,
+            },
+          },
+        }),
     openGraph: {
       title: full,
       description: o.description,
       url,
       siteName: BUSINESS_NAME,
       locale: 'en_US',
-      type: 'website',
-      images: [{ url: img, width: 1400, height: 900, alt: altText }],
+      type: o.ogType || 'website',
+      ...(o.ogType === 'article'
+        ? {
+            publishedTime: o.publishedTime,
+            modifiedTime: o.modifiedTime || o.publishedTime,
+            section: o.section,
+            tags: o.tags,
+            authors: [`${DOMAIN}/about`],
+          }
+        : {}),
+      countryName: 'United States',
+      images: [
+        {
+          url: imgUrl,
+          secureUrl: imgUrl,
+          width: imgW,
+          height: imgH,
+          alt: altText,
+          type: imgUrl.endsWith('.png') ? 'image/png' : imgUrl.endsWith('.webp') ? 'image/webp' : 'image/jpeg',
+        },
+      ],
     },
+    // `twitter:*` is read by LinkedIn, Discord, Slack, iMessage, WhatsApp and
+    // most other chat/social scrapers as a fallback when they can't find
+    // Open Graph. We keep the card type for those previews, but we do NOT set
+    // site/creator handles because Rush No More has no X/Twitter account —
+    // emitting a fake handle would fail verification in preview tools.
     twitter: {
       card: 'summary_large_image',
       title: full,
       description: o.description,
-      images: [{ url: img, alt: altText }],
+      images: [{ url: imgUrl, alt: altText }],
     },
   };
 }
@@ -599,5 +650,263 @@ export function touristDestinationSchema() {
       { '@type': 'TouristAttraction', name: 'Bear Country USA', description: 'Drive-through wildlife park with bears, wolves & elk — 55 miles from Rush No More' },
       { '@type': 'TouristAttraction', name: 'Wind Cave National Park', description: 'One of the longest caves in the world with unique boxwork formations — 75 miles from Rush No More' },
     ],
+  };
+}
+
+/* ─── Article / BlogPosting schema — for guide pages (itinerary, rides, etc.) ─── */
+export function articleSchema(article: {
+  headline: string;
+  description: string;
+  image: string;
+  url: string;
+  datePublished: string;
+  dateModified?: string;
+  wordCount?: number;
+  keywords?: string[];
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    '@id': `${DOMAIN}${article.url}#article`,
+    mainEntityOfPage: { '@type': 'WebPage', '@id': `${DOMAIN}${article.url}` },
+    headline: article.headline,
+    description: article.description,
+    image: [article.image.startsWith('http') ? article.image : `${DOMAIN}${article.image}`],
+    datePublished: article.datePublished,
+    dateModified: article.dateModified || article.datePublished,
+    author: {
+      '@type': 'Organization',
+      name: BUSINESS_NAME,
+      url: DOMAIN,
+      logo: { '@type': 'ImageObject', url: `${DOMAIN}/images/RushNoMore-logo.png` },
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: BUSINESS_NAME,
+      logo: { '@type': 'ImageObject', url: `${DOMAIN}/images/RushNoMore-logo.png`, width: 512, height: 512 },
+    },
+    inLanguage: 'en-US',
+    isAccessibleForFree: true,
+    wordCount: article.wordCount,
+    keywords: article.keywords?.join(', '),
+    about: {
+      '@type': 'Thing',
+      name: 'Black Hills, South Dakota',
+      sameAs: 'https://en.wikipedia.org/wiki/Black_Hills',
+    },
+  };
+}
+
+/* ─── Service schema — for each accommodation type ─── */
+export function serviceSchema(service: {
+  name: string;
+  description: string;
+  url: string;
+  image: string;
+  priceMin: string;
+  priceMax?: string;
+  serviceType: string;
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    '@id': `${DOMAIN}${service.url}#service`,
+    name: service.name,
+    description: service.description,
+    url: `${DOMAIN}${service.url}`,
+    image: service.image.startsWith('http') ? service.image : `${DOMAIN}${service.image}`,
+    serviceType: service.serviceType,
+    provider: { '@type': 'Organization', '@id': `${DOMAIN}/#campground`, name: BUSINESS_NAME },
+    areaServed: {
+      '@type': 'GeoCircle',
+      geoMidpoint: GEO,
+      geoRadius: '100 mi',
+    },
+    offers: {
+      '@type': 'AggregateOffer',
+      lowPrice: service.priceMin,
+      highPrice: service.priceMax || service.priceMin,
+      priceCurrency: 'USD',
+      availability: 'https://schema.org/InStock',
+      url: BOOKING_URL,
+    },
+    aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.8', reviewCount: '420', bestRating: '5', worstRating: '1' },
+  };
+}
+
+/* ─── Product schema — individual cabins / premium RV sites ─── */
+export function productSchema(product: {
+  name: string;
+  description: string;
+  image: string;
+  url: string;
+  price: string;
+  sku?: string;
+  brand?: string;
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: product.name,
+    description: product.description,
+    image: product.image.startsWith('http') ? product.image : `${DOMAIN}${product.image}`,
+    url: `${DOMAIN}${product.url}`,
+    sku: product.sku,
+    brand: { '@type': 'Brand', name: product.brand || 'Rush No More' },
+    offers: {
+      '@type': 'Offer',
+      price: product.price,
+      priceCurrency: 'USD',
+      availability: 'https://schema.org/InStock',
+      url: BOOKING_URL,
+      priceValidUntil: '2026-12-31',
+      seller: { '@type': 'Organization', name: BUSINESS_NAME },
+    },
+    aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.8', reviewCount: '420' },
+  };
+}
+
+/* ─── HowTo schema — step-by-step itinerary / driving guides ─── */
+export function howToSchema(howTo: {
+  name: string;
+  description: string;
+  image?: string;
+  totalTime?: string; // ISO 8601 duration, e.g. "PT6H"
+  estimatedCost?: { value: string; currency: string };
+  supply?: string[];
+  tool?: string[];
+  steps: { name: string; text: string; image?: string; url?: string }[];
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name: howTo.name,
+    description: howTo.description,
+    image: howTo.image ? (howTo.image.startsWith('http') ? howTo.image : `${DOMAIN}${howTo.image}`) : undefined,
+    totalTime: howTo.totalTime,
+    estimatedCost: howTo.estimatedCost
+      ? { '@type': 'MonetaryAmount', currency: howTo.estimatedCost.currency, value: howTo.estimatedCost.value }
+      : undefined,
+    supply: howTo.supply?.map(s => ({ '@type': 'HowToSupply', name: s })),
+    tool: howTo.tool?.map(t => ({ '@type': 'HowToTool', name: t })),
+    step: howTo.steps.map((s, i) => ({
+      '@type': 'HowToStep',
+      position: i + 1,
+      name: s.name,
+      text: s.text,
+      url: s.url ? `${DOMAIN}${s.url}` : undefined,
+      image: s.image ? (s.image.startsWith('http') ? s.image : `${DOMAIN}${s.image}`) : undefined,
+    })),
+  };
+}
+
+/* ─── SpeakableSpecification — Google Assistant voice search ─── */
+export function speakableSchema(url: string, cssSelectors: string[] = ['h1', '[data-speakable]']) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    '@id': `${DOMAIN}${url}`,
+    url: `${DOMAIN}${url}`,
+    speakable: {
+      '@type': 'SpeakableSpecification',
+      cssSelector: cssSelectors,
+    },
+  };
+}
+
+/* ─── Place schema — campground as a Place with geo + photo ─── */
+export function placeSchema() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Place',
+    '@id': `${DOMAIN}/#place`,
+    name: BUSINESS_NAME,
+    url: DOMAIN,
+    address: ADDRESS,
+    geo: GEO,
+    hasMap: 'https://maps.app.goo.gl/sBHGqk1yV4c2Tx1z9',
+    photo: [
+      `${DOMAIN}/images/Aereal-2_1400.png`,
+      `${DOMAIN}/images/Pool/PoolWithPeople.jpeg`,
+    ],
+    containedInPlace: {
+      '@type': 'AdministrativeArea',
+      name: 'Black Hills',
+      containedInPlace: {
+        '@type': 'State',
+        name: 'South Dakota',
+        containedInPlace: { '@type': 'Country', name: 'United States' },
+      },
+    },
+  };
+}
+
+/* ─── TravelAction — let Google surface "book now" actions ─── */
+export function reservationActionSchema() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ReserveAction',
+    target: {
+      '@type': 'EntryPoint',
+      urlTemplate: BOOKING_URL,
+      actionPlatform: [
+        'http://schema.org/DesktopWebPlatform',
+        'http://schema.org/MobileWebPlatform',
+      ],
+    },
+    result: { '@type': 'LodgingReservation', name: 'Rush No More Reservation' },
+  };
+}
+
+/* ─── ItemList schema — "related pages" / site navigation hint ─── */
+export function relatedPagesSchema(pages: { name: string; url: string; description?: string }[]) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    itemListElement: pages.map((p, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      url: `${DOMAIN}${p.url}`,
+      name: p.name,
+      description: p.description,
+    })),
+  };
+}
+
+/* ─── VacationRental schema (Google 2024+) — for cabin listings ─── */
+export function vacationRentalSchema(rental: {
+  name: string;
+  description: string;
+  image: string;
+  url: string;
+  price: string;
+  bedrooms?: number;
+  occupancy?: number;
+  amenities?: string[];
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'VacationRental',
+    name: rental.name,
+    description: rental.description,
+    image: rental.image.startsWith('http') ? rental.image : `${DOMAIN}${rental.image}`,
+    url: `${DOMAIN}${rental.url}`,
+    brand: { '@type': 'Brand', name: BUSINESS_NAME },
+    address: ADDRESS,
+    geo: GEO,
+    containsPlace: rental.bedrooms
+      ? { '@type': 'Accommodation', numberOfBedrooms: rental.bedrooms, occupancy: { '@type': 'QuantitativeValue', maxValue: rental.occupancy } }
+      : undefined,
+    amenityFeature: rental.amenities?.map(a => ({ '@type': 'LocationFeatureSpecification', name: a, value: true })),
+    offers: {
+      '@type': 'Offer',
+      price: rental.price,
+      priceCurrency: 'USD',
+      availability: 'https://schema.org/InStock',
+      url: BOOKING_URL,
+    },
+    checkinTime: '14:00',
+    checkoutTime: '11:00',
+    aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.8', reviewCount: '420' },
   };
 }

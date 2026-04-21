@@ -96,8 +96,69 @@ export default function robots(): MetadataRoute.Robots {
         disallow: '/',
       },
       {
+        userAgent: 'OAI-SearchBot',
+        disallow: '/',
+      },
+      {
         userAgent: 'Google-Extended',
         disallow: '/',
+      },
+      {
+        userAgent: 'anthropic-ai',
+        disallow: '/',
+      },
+      {
+        userAgent: 'Claude-Web',
+        disallow: '/',
+      },
+      {
+        userAgent: 'ClaudeBot',
+        disallow: '/',
+      },
+      {
+        userAgent: 'PerplexityBot',
+        disallow: '/',
+      },
+      {
+        userAgent: 'Bytespider',
+        disallow: '/',
+      },
+      {
+        userAgent: 'cohere-ai',
+        disallow: '/',
+      },
+      {
+        userAgent: 'FacebookBot',
+        disallow: '/',
+      },
+      {
+        userAgent: 'ImagesiftBot',
+        disallow: '/',
+      },
+      {
+        userAgent: 'Omgilibot',
+        disallow: '/',
+      },
+      // Aggressive SEO crawlers — slow them down to protect TTFB
+      {
+        userAgent: 'AhrefsBot',
+        crawlDelay: 10,
+        disallow: '/api/',
+      },
+      {
+        userAgent: 'SemrushBot',
+        crawlDelay: 10,
+        disallow: '/api/',
+      },
+      {
+        userAgent: 'MJ12bot',
+        crawlDelay: 10,
+        disallow: '/api/',
+      },
+      {
+        userAgent: 'DotBot',
+        crawlDelay: 10,
+        disallow: '/api/',
       },
     ],
     sitemap: 'https://www.rushnomore.com/sitemap.xml',

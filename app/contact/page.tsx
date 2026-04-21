@@ -27,6 +27,8 @@ const FAQS = [
 
 export default function ContactPage() {
   const [form, setForm] = useState({ name: '', email: '', phone: '', subject: '', message: '' });
+  // Honeypot — real users never fill this. Hidden via CSS.
+  const [website, setWebsite] = useState('');
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -44,7 +46,7 @@ export default function ContactPage() {
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, website }),
       });
       if (res.ok) {
         setStatus('success');
@@ -217,6 +219,22 @@ export default function ContactPage() {
                 </motion.div>
               ) : (
                 <form onSubmit={handleSubmit} className="bg-white rounded-3xl shadow-lodge-lg border border-surface-muted/50 p-8 md:p-10">
+                  {/* Honeypot — real users never fill this; bots often do */}
+                  <div
+                    aria-hidden="true"
+                    style={{ position: 'absolute', left: '-10000px', top: 'auto', width: 1, height: 1, overflow: 'hidden' }}
+                  >
+                    <label htmlFor="website">Website</label>
+                    <input
+                      id="website"
+                      name="website"
+                      type="text"
+                      tabIndex={-1}
+                      autoComplete="off"
+                      value={website}
+                      onChange={(e) => setWebsite(e.target.value)}
+                    />
+                  </div>
                   {/* Subject quick select */}
                   <div className="mb-8">
                     <label className="text-sm font-bold text-brand-navy mb-3 block uppercase tracking-wider">What can we help you with?</label>

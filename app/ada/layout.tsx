@@ -13,6 +13,16 @@ export const metadata: Metadata = seo({
     'disability friendly campground mount rushmore', 'accessible pool campground south dakota',
     'wheelchair accessible tent camping black hills', 'ada bathhouse campground sturgis',
     'accessible campground near sturgis', 'mobility friendly rv park south dakota',
+    // Long-tail + device-specific
+    'wheelchair accessible cabins mount rushmore', 'rollator friendly campground',
+    'accessible shower campground black hills', 'roll-in shower rv park sd',
+    'scooter accessible campground sturgis', 'service animal friendly campground',
+    'grab bars campground sturgis', 'accessible parking rv park',
+    'low step cabin sturgis', 'paved pathways campground mount rushmore',
+    'hearing impaired friendly campground', 'visually impaired rv resort',
+    'senior friendly campground black hills', 'wheelchair ramp cabin south dakota',
+    // Assistive tech / WCAG
+    'wcag 2.1 aa campground website', 'rush no more accessibility statement',
   ],
 });
 

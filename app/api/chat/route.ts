@@ -1,8 +1,13 @@
 import { NextResponse } from 'next/server';
+import { adminDb } from '@/lib/firebaseAdmin';
+import { FieldValue } from 'firebase-admin/firestore';
 import { db } from '@/lib/firebase';
 import { collection, addDoc, Timestamp } from 'firebase/firestore';
 import { chatLimiter, checkRateLimit, getRequestIP } from '@/lib/rateLimit';
 import { sanitizeInput } from '@/lib/sanitize';
+
+export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
 
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 const GEMINI_MODEL = 'gemini-2.0-flash-lite';
@@ -105,20 +110,41 @@ The resort is family-owned, has a 4.8-star rating, has hosted 84+ Sturgis Rallie
 
 export async function POST(request: Request) {
   try {
+    // Content-Type check — reject anything other than JSON
+    const contentType = request.headers.get('content-type') || '';
+    if (!contentType.toLowerCase().includes('application/json')) {
+      return NextResponse.json({ error: 'Unsupported Media Type' }, { status: 415 });
+    }
+
+    // Body-size guard (64 KB) before we .json() so we don't parse giant payloads
+    const contentLength = Number(request.headers.get('content-length') || '0');
+    if (contentLength > 65536) {
+      return NextResponse.json({ error: 'Payload too large' }, { status: 413 });
+    }
+
     // Rate limiting
     const ip = getRequestIP(request);
     const { allowed, retryAfter } = await checkRateLimit(chatLimiter, ip);
     if (!allowed) {
       return NextResponse.json(
         { reply: `I'm receiving too many messages right now. Please try again in ${retryAfter} seconds, or call us at 605-423-2545.` },
-        { status: 429 }
+        { status: 429, headers: { 'Retry-After': String(retryAfter) } }
       );
     }
 
-    const { message, history } = await request.json();
+    let parsed: unknown;
+    try {
+      parsed = await request.json();
+    } catch {
+      return NextResponse.json({ error: 'Invalid JSON' }, { status: 400 });
+    }
+    if (!parsed || typeof parsed !== 'object') {
+      return NextResponse.json({ error: 'Invalid body' }, { status: 400 });
+    }
+    const { message, history } = parsed as { message?: unknown; history?: unknown };
 
     // Validate and limit message size
-    if (!message || typeof message !== 'string' || message.trim().length === 0) {
+    if (typeof message !== 'string' || message.trim().length === 0) {
       return NextResponse.json({ error: 'Message is required' }, { status: 400 });
     }
 
@@ -132,13 +158,25 @@ export async function POST(request: Request) {
 
     // Save question to Firebase — sanitize before storing
     const sanitizedMessage = sanitizeInput(message);
+    const userAgent = request.headers.get('user-agent')?.slice(0, 500) || '';
     try {
-      await addDoc(collection(db, 'chat_questions'), {
-        question: sanitizedMessage,
-        timestamp: Timestamp.now(),
-        page: '',
-        userAgent: '',
-      });
+      const adminInst = adminDb();
+      if (adminInst) {
+        await adminInst.collection('chat_questions').add({
+          question: sanitizedMessage,
+          ip,
+          userAgent,
+          timestamp: FieldValue.serverTimestamp(),
+        });
+      } else {
+        // Fallback: admin SDK not configured → write via client SDK.
+        await addDoc(collection(db, 'chat_questions'), {
+          question: sanitizedMessage,
+          ip,
+          userAgent,
+          timestamp: Timestamp.now(),
+        });
+      }
     } catch (firebaseErr) {
       console.error('Firebase save error (non-blocking):', firebaseErr);
     }
@@ -146,12 +184,12 @@ export async function POST(request: Request) {
     // Build conversation for Gemini
     const contents: Array<{ role: string; parts: Array<{ text: string }> }> = [];
 
-    // Add history if provided — sanitize each entry
-    if (history && Array.isArray(history)) {
+    // Add history if provided — sanitize each entry (hard cap at 20 to prevent bloat)
+    if (Array.isArray(history) && history.length <= 20) {
       for (const msg of history.slice(-6)) {
-        // Only allow valid role values and string content
-        const role = msg.role;
-        const content = msg.content;
+        if (!msg || typeof msg !== 'object') continue;
+        const role = (msg as { role?: unknown }).role;
+        const content = (msg as { content?: unknown }).content;
         if (
           (role === 'user' || role === 'assistant') &&
           typeof content === 'string' &&
@@ -172,28 +210,42 @@ export async function POST(request: Request) {
       parts: [{ text: message }],
     });
 
-    const geminiResponse = await fetch(GEMINI_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        system_instruction: {
-          parts: [{ text: SYSTEM_CONTEXT }],
-        },
-        contents,
-        generationConfig: {
-          temperature: 0.7,
-          topP: 0.9,
-          topK: 40,
-          maxOutputTokens: 500,
-        },
-        safetySettings: [
-          { category: 'HARM_CATEGORY_HARASSMENT', threshold: 'BLOCK_MEDIUM_AND_ABOVE' },
-          { category: 'HARM_CATEGORY_HATE_SPEECH', threshold: 'BLOCK_MEDIUM_AND_ABOVE' },
-          { category: 'HARM_CATEGORY_SEXUALLY_EXPLICIT', threshold: 'BLOCK_MEDIUM_AND_ABOVE' },
-          { category: 'HARM_CATEGORY_DANGEROUS_CONTENT', threshold: 'BLOCK_MEDIUM_AND_ABOVE' },
-        ],
-      }),
-    });
+    // 15-second timeout prevents hung Gemini calls from holding serverless functions
+    const abort = new AbortController();
+    const timeout = setTimeout(() => abort.abort(), 15000);
+    let geminiResponse: Response;
+    try {
+      geminiResponse = await fetch(GEMINI_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        signal: abort.signal,
+        body: JSON.stringify({
+          system_instruction: {
+            parts: [{ text: SYSTEM_CONTEXT }],
+          },
+          contents,
+          generationConfig: {
+            temperature: 0.7,
+            topP: 0.9,
+            topK: 40,
+            maxOutputTokens: 500,
+          },
+          safetySettings: [
+            { category: 'HARM_CATEGORY_HARASSMENT', threshold: 'BLOCK_MEDIUM_AND_ABOVE' },
+            { category: 'HARM_CATEGORY_HATE_SPEECH', threshold: 'BLOCK_MEDIUM_AND_ABOVE' },
+            { category: 'HARM_CATEGORY_SEXUALLY_EXPLICIT', threshold: 'BLOCK_MEDIUM_AND_ABOVE' },
+            { category: 'HARM_CATEGORY_DANGEROUS_CONTENT', threshold: 'BLOCK_MEDIUM_AND_ABOVE' },
+          ],
+        }),
+      });
+    } catch (err) {
+      if ((err as Error).name === 'AbortError') {
+        return NextResponse.json({ error: 'AI service timeout' }, { status: 504 });
+      }
+      throw err;
+    } finally {
+      clearTimeout(timeout);
+    }
 
     if (!geminiResponse.ok) {
       const errorData = await geminiResponse.text();
@@ -211,4 +263,8 @@ export async function POST(request: Request) {
     console.error('Chat API error:', e);
     return NextResponse.json({ error: 'Server error' }, { status: 500 });
   }
+}
+
+export async function GET() {
+  return NextResponse.json({ error: 'Method Not Allowed' }, { status: 405, headers: { Allow: 'POST' } });
 }

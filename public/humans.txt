@@ -1,0 +1,11 @@
+/* TEAM */
+  Team: Rush No More RV Resort & Campground
+  Contact: info [at] rushnomore.com
+  Phone: +1-605-423-2545
+  Location: Sturgis, SD, USA
+
+/* SITE */
+  Last update: 2026
+  Standards: HTML5, CSS3, TypeScript
+  Components: Next.js, React, Tailwind CSS
+  Software: Vercel, Firebase, Stripe

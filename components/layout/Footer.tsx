@@ -64,6 +64,8 @@ export function Footer() {
               alt={SITE.short}
               width={260}
               height={120}
+              loading="lazy"
+              sizes="260px"
               className="mb-6 brightness-0 invert"
             />
             <div className="space-y-2 text-sm text-white/60">

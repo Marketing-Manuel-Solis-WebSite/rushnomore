@@ -12,6 +12,7 @@
 
 import { cert, getApps, initializeApp, type App } from 'firebase-admin/app';
 import { getAuth, type DecodedIdToken } from 'firebase-admin/auth';
+import { getFirestore, type Firestore } from 'firebase-admin/firestore';
 
 function getAdminApp(): App {
   if (getApps().length > 0) {
@@ -39,6 +40,27 @@ function getAdminApp(): App {
 
 const adminApp = getAdminApp();
 const adminAuth = getAuth(adminApp);
+let _adminDb: Firestore | null = null;
+
+/** True only if Firebase Admin SDK credentials are fully configured. */
+export function isAdminConfigured(): boolean {
+  return Boolean(
+    process.env.FIREBASE_PROJECT_ID &&
+    process.env.FIREBASE_CLIENT_EMAIL &&
+    process.env.FIREBASE_PRIVATE_KEY
+  );
+}
+
+/**
+ * Server-side Firestore that bypasses security rules. Use for trusted writes only.
+ * Returns null if admin credentials are not configured — callers MUST check and
+ * fall back to the client SDK to avoid runtime crashes on misconfigured deploys.
+ */
+export function adminDb(): Firestore | null {
+  if (!isAdminConfigured()) return null;
+  if (!_adminDb) _adminDb = getFirestore(adminApp);
+  return _adminDb;
+}
 
 /**
  * Verify a Firebase ID token from the Authorization header.

@@ -5,7 +5,16 @@ import { SITE } from '@/data/site';
 import { BookingCTA } from '@/components/ui';
 import { FadeIn, ParallaxHero } from '@/components/motion';
 import { JsonLd } from '@/components/seo/JsonLd';
-import { breadcrumbSchema } from '@/lib/seo';
+import { breadcrumbSchema, faqSchema } from '@/lib/seo';
+
+const ADA_FAQS = [
+  { q: 'Are there ADA-accessible RV sites at Rush No More?', a: 'Yes. We have designated accessible RV sites with level access. Our Luxury and Luxury Spa sites are on level cement slabs which work well for guests with mobility needs.' },
+  { q: 'Are the cabins wheelchair accessible?', a: 'Several of our presidential cabins can accommodate guests with mobility needs. Please call 605-423-2545 before booking so we can recommend the best cabin for your needs.' },
+  { q: 'Do you have ADA-compliant bathrooms and showers?', a: 'Yes. Our modern bathhouses include ADA-compliant restroom and shower facilities with grab bars, roll-in showers, and accessible fixtures.' },
+  { q: 'Can I bring a service animal?', a: 'Absolutely. Service animals are welcome throughout the entire property and are not subject to our standard pet policy.' },
+  { q: 'Is the pool accessible?', a: 'Yes, the pool area is reachable via paved pathways. Please ask staff for assistance with pool entry if needed.' },
+  { q: 'How do I request accommodations for my stay?', a: 'Call us at 605-423-2545 or email info@rushnomore.com before booking. Our team will walk you through the best site and cabin options for your specific needs.' },
+];
 import {
   Accessibility, CheckCircle, Eye, Keyboard, Smartphone, Monitor,
   Volume2, MousePointer, Phone, Mail, MapPin, Heart, Shield, Globe
@@ -33,6 +42,7 @@ export default function ADAPage() {
   return (
     <>
       <JsonLd data={breadcrumbSchema([{ name: 'Home', url: '/' }, { name: 'ADA Accessibility', url: '/ada' }])} />
+      <JsonLd data={faqSchema(ADA_FAQS)} />
 
       {/* ═══ HERO ═══ */}
       <section className="relative min-h-[50vh] flex items-center justify-center overflow-hidden bg-brand-navy">
@@ -179,6 +189,23 @@ export default function ADAPage() {
               <Mail className="w-5 h-5 text-brand-gold" />
               <span className="text-sm font-bold text-brand-navy">{SITE.email}</span>
             </div>
+          </FadeIn>
+
+          {/* ═══ Related info pages — internal linking ═══ */}
+          <FadeIn className="mt-14">
+            <nav aria-label="Related information" className="border-t border-surface-muted pt-8">
+              <h2 className="text-sm font-bold uppercase tracking-wider text-brand-stone mb-4 text-center">Related Information</h2>
+              <ul className="grid grid-cols-2 md:grid-cols-4 gap-3 text-sm">
+                <li><a href="/policies" className="text-brand-gold hover:underline font-medium">Campground Policies</a></li>
+                <li><a href="/legal" className="text-brand-gold hover:underline font-medium">Legal &amp; Privacy</a></li>
+                <li><a href="/contact" className="text-brand-gold hover:underline font-medium">Contact Us</a></li>
+                <li><a href="/about" className="text-brand-gold hover:underline font-medium">About Rush No More</a></li>
+                <li><a href="/map" className="text-brand-gold hover:underline font-medium">Map &amp; Directions</a></li>
+                <li><a href="/amenities" className="text-brand-gold hover:underline font-medium">Free Amenities</a></li>
+                <li><a href="/stay/cabins" className="text-brand-gold hover:underline font-medium">Accessible Cabins</a></li>
+                <li><a href="/stay/rv-sites" className="text-brand-gold hover:underline font-medium">Accessible RV Sites</a></li>
+              </ul>
+            </nav>
           </FadeIn>
         </div>
       </section>

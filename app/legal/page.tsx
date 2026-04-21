@@ -175,6 +175,23 @@ export default function LegalPage() {
               Last updated: January 1, 2026. &copy; {new Date().getFullYear()} {SITE.name}. All rights reserved.
             </p>
           </FadeIn>
+
+          {/* ═══ Related info pages — internal linking for PageRank flow ═══ */}
+          <FadeIn className="mt-12">
+            <nav aria-label="Related information" className="border-t border-surface-muted pt-8">
+              <h2 className="text-sm font-bold uppercase tracking-wider text-brand-stone mb-4">Related Information</h2>
+              <ul className="grid grid-cols-2 md:grid-cols-4 gap-3 text-sm">
+                <li><a href="/policies" className="text-brand-gold hover:underline font-medium">Campground Policies</a></li>
+                <li><a href="/ada" className="text-brand-gold hover:underline font-medium">ADA &amp; Accessibility</a></li>
+                <li><a href="/contact" className="text-brand-gold hover:underline font-medium">Contact Us</a></li>
+                <li><a href="/about" className="text-brand-gold hover:underline font-medium">About Rush No More</a></li>
+                <li><a href="/map" className="text-brand-gold hover:underline font-medium">Map &amp; Directions</a></li>
+                <li><a href="/amenities" className="text-brand-gold hover:underline font-medium">Amenities</a></li>
+                <li><a href="/stay" className="text-brand-gold hover:underline font-medium">Accommodations</a></li>
+                <li><a href="/rally-rates" className="text-brand-gold hover:underline font-medium">Sturgis Rally Rates</a></li>
+              </ul>
+            </nav>
+          </FadeIn>
         </div>
       </section>
 
