@@ -3,7 +3,7 @@ import { SITE, RALLY_RV } from '@/data/site';
 import { BookingCTA } from '@/components/ui';
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 import { JsonLd } from '@/components/seo/JsonLd';
-import { faqSchema } from '@/lib/seo';
+import { faqSchema, breadcrumbSchema, articleSchema, eventSchema, speakableSchema } from '@/lib/seo';
 import { CheckCircle, ExternalLink, Phone, ArrowRight, Info } from 'lucide-react';
 
 const RATES_FAQ = [
@@ -18,6 +18,42 @@ export default function Page() {
   return (
     <>
       <JsonLd data={faqSchema(RATES_FAQ)} />
+      <JsonLd data={breadcrumbSchema([
+        { name: 'Home', url: '/' },
+        { name: 'Sturgis Rally Camping', url: '/sturgis-rally-camping' },
+        { name: 'Rally Rates 2026', url: '/rally-rates' },
+      ])} />
+      <JsonLd data={articleSchema({
+        headline: 'Sturgis Motorcycle Rally Rates 2026 — RV, Cabin & Tent Pricing',
+        description:
+          'Complete 2026 Sturgis Motorcycle Rally rate table at Rush No More — 10-night rally packages, pre-rally per-night pricing, full hookups, luxury and luxury-spa sites, presidential cabins and tent sites. 5 miles from Main Street Sturgis.',
+        image: '/images/BikeRally/IMG_9865.JPG',
+        url: '/rally-rates',
+        datePublished: '2025-09-01',
+        dateModified: '2026-04-22',
+        wordCount: 600,
+        keywords: [
+          'sturgis rally rates 2026',
+          'sturgis motorcycle rally pricing',
+          'rally camping rates sturgis',
+          'rv sites rally rates',
+          'sturgis rally cabin rates',
+          '10 night rally package',
+          'pre-rally rates sturgis',
+          'sturgis 2026 reservations',
+        ],
+      })} />
+      <JsonLd data={eventSchema({
+        name: '85th Sturgis Motorcycle Rally — Camping at Rush No More',
+        description:
+          'Camp at Rush No More — 5 miles from Main Street Sturgis — for the 2026 Sturgis Motorcycle Rally. RV, presidential cabin and tent options. Full hookups, luxury sites, on-site beer garden and bike wash.',
+        startDate: '2026-08-02',
+        endDate: '2026-08-18',
+        image: '/images/BikeRally/IMG_9865.JPG',
+        price: '650',
+        url: 'https://www.rushnomore.com/rally-rates',
+      })} />
+      <JsonLd data={speakableSchema('/rally-rates', ['h1', 'h2'])} />
 
       <Breadcrumbs
         items={[

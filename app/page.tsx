@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { SITE, AMENITIES, REVIEWS, STATS } from '@/data/site';
 import { BookingCTA } from '@/components/ui';
 import { HeroSection } from '@/components/layout/HeroSection';
-import { ExternalLink, MapPin, Mountain, TreePine, Tent, Home, Truck, Phone, Star, ArrowRight, Users, Zap, Waves, Beer, ShieldCheck, Wifi, PawPrint, Clock, Navigation, Award, Heart, ThumbsUp, CheckCircle, Flame, Bike, Gamepad2, Quote } from 'lucide-react';
+import { ExternalLink, MapPin, Mountain, TreePine, Tent, Home, Truck, Phone, Star, ArrowRight, Users, Zap, Waves, Beer, ShieldCheck, Wifi, PawPrint, Clock, Navigation, Award, Heart, ThumbsUp, CheckCircle, Flame, Bike, Gamepad2, Quote, Calendar, Route } from 'lucide-react';
 
 export default function HomePage() {
   return (
@@ -566,6 +566,240 @@ export default function HomePage() {
             <a href={SITE.tripadvisor} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3 bg-brand-navy text-white font-bold rounded-xl hover:bg-brand-navy/90 transition-all duration-300 text-sm uppercase tracking-wider shadow-lodge">
               Read More on TripAdvisor <ExternalLink className="w-4 h-4" />
             </a>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ PLAN YOUR TRIP — GUIDES & RALLY HUB (internal linking SEO) ═══ */}
+      <section
+        aria-labelledby="plan-your-trip-heading"
+        className="py-24 md:py-28 bg-white relative overflow-hidden"
+      >
+        <div className="absolute top-0 right-0 w-96 h-96 bg-brand-gold/4 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-brand-navy/4 rounded-full blur-3xl" />
+
+        <div className="max-w-7xl mx-auto px-4 relative z-10">
+          <div className="text-center mb-14">
+            <span className="inline-block px-5 py-2 bg-brand-gold text-white text-xs font-black uppercase tracking-[0.2em] rounded-full shadow-gold mb-5">
+              ★ Plan Your Trip ★
+            </span>
+            <h2 id="plan-your-trip-heading" className="mb-3">
+              Free <span className="text-brand-gold italic">Black Hills</span> Guides
+            </h2>
+            <p className="text-brand-navy/70 text-lg max-w-2xl mx-auto font-medium">
+              Routes, itineraries and rally insider info — written by the team that has hosted
+              campers in Sturgis for 84+ Sturgis Motorcycle Rallies.
+            </p>
+            <div className="w-32 h-1.5 bg-gold-gradient rounded-full mt-5 mx-auto" />
+          </div>
+
+          {/* Sturgis Rally cluster */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <Link
+              href="/sturgis-rally-camping"
+              className="group block rounded-2xl overflow-hidden border-2 border-brand-gold/15 hover:border-brand-gold/40 hover:-translate-y-1 hover:shadow-gold-lg transition-all duration-500 bg-surface-primary"
+              aria-label="Sturgis Motorcycle Rally camping at Rush No More"
+            >
+              <div className="relative aspect-[16/10] overflow-hidden">
+                <div
+                  className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                  style={{ backgroundImage: "url('/images/BikeRally/IMG_9865.JPG')" }}
+                  role="img"
+                  aria-label="Motorcycles at Rush No More during the Sturgis Rally"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-brand-navy via-brand-navy/30 to-transparent" />
+                <div className="absolute top-3 left-3">
+                  <span className="px-3 py-1.5 bg-brand-gold text-white rounded-full text-[10px] font-black uppercase tracking-wider">
+                    Rally HQ
+                  </span>
+                </div>
+                <div className="absolute bottom-4 left-4 right-4">
+                  <h3 className="text-xl md:text-2xl font-display text-white font-bold">
+                    Sturgis Rally Camping
+                  </h3>
+                </div>
+              </div>
+              <div className="p-5">
+                <p className="text-brand-navy/70 text-sm mb-4 leading-relaxed font-medium">
+                  Everything you need for the Sturgis Motorcycle Rally — Aug 2 to 18, 2026. RV, cabin
+                  and tent options 5 miles from Main Street.
+                </p>
+                <span className="text-brand-gold font-bold text-sm flex items-center gap-1.5 group-hover:gap-2.5 transition-all uppercase tracking-wider">
+                  Read Rally Guide <ArrowRight className="w-4 h-4" />
+                </span>
+              </div>
+            </Link>
+
+            <Link
+              href="/rally-rates"
+              className="group block rounded-2xl overflow-hidden border-2 border-brand-gold/15 hover:border-brand-gold/40 hover:-translate-y-1 hover:shadow-gold-lg transition-all duration-500 bg-surface-primary"
+              aria-label="2026 Sturgis Rally rates and reservations"
+            >
+              <div className="relative aspect-[16/10] overflow-hidden">
+                <div
+                  className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                  style={{ backgroundImage: "url('/images/vip-site.png')" }}
+                  role="img"
+                  aria-label="Rush No More luxury RV site for Sturgis Rally guests"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-brand-navy via-brand-navy/30 to-transparent" />
+                <div className="absolute bottom-4 left-4 right-4">
+                  <h3 className="text-xl md:text-2xl font-display text-white font-bold">
+                    Sturgis Rally Rates 2026
+                  </h3>
+                </div>
+              </div>
+              <div className="p-5">
+                <p className="text-brand-navy/70 text-sm mb-4 leading-relaxed font-medium">
+                  Full rate table for Rally week. Tent, RV and presidential cabin pricing — book
+                  before sites are claimed.
+                </p>
+                <span className="text-brand-gold font-bold text-sm flex items-center gap-1.5 group-hover:gap-2.5 transition-all uppercase tracking-wider">
+                  See Rally Rates <ArrowRight className="w-4 h-4" />
+                </span>
+              </div>
+            </Link>
+
+            <Link
+              href="/best-motorcycle-rides-near-sturgis"
+              className="group block rounded-2xl overflow-hidden border-2 border-brand-gold/15 hover:border-brand-gold/40 hover:-translate-y-1 hover:shadow-gold-lg transition-all duration-500 bg-surface-primary"
+              aria-label="Best motorcycle rides near Sturgis, South Dakota"
+            >
+              <div className="relative aspect-[16/10] overflow-hidden">
+                <div
+                  className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                  style={{ backgroundImage: "url('/images/DSC05580-s.png')" }}
+                  role="img"
+                  aria-label="Iron Mountain Road framing Mount Rushmore in the Black Hills"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-brand-navy via-brand-navy/30 to-transparent" />
+                <div className="absolute bottom-4 left-4 right-4">
+                  <h3 className="text-xl md:text-2xl font-display text-white font-bold">
+                    Best Rides Near Sturgis
+                  </h3>
+                </div>
+              </div>
+              <div className="p-5">
+                <p className="text-brand-navy/70 text-sm mb-4 leading-relaxed font-medium">
+                  Needles Highway, Iron Mountain Road, Spearfish Canyon and more — the routes that
+                  earn the Black Hills its reputation.
+                </p>
+                <span className="text-brand-gold font-bold text-sm flex items-center gap-1.5 group-hover:gap-2.5 transition-all uppercase tracking-wider">
+                  Explore the Rides <ArrowRight className="w-4 h-4" />
+                </span>
+              </div>
+            </Link>
+          </div>
+
+          {/* Scenic & itinerary cluster */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <Link
+              href="/black-hills-itinerary"
+              className="group block rounded-2xl p-6 bg-surface-primary border border-brand-gold/15 hover:border-brand-gold/40 hover:-translate-y-1 hover:shadow-gold transition-all duration-300"
+            >
+              <Calendar className="w-9 h-9 text-brand-gold mb-3" />
+              <h3 className="font-display text-xl font-bold text-brand-navy mb-2">
+                6-Day Black Hills Itinerary
+              </h3>
+              <p className="text-sm text-brand-navy/70 font-medium mb-3">
+                Day-by-day plan from Mount Rushmore to Custer State Park, Deadwood and the Badlands.
+              </p>
+              <span className="text-brand-gold text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 group-hover:gap-2.5 transition-all">
+                Open Itinerary <ArrowRight className="w-3.5 h-3.5" />
+              </span>
+            </Link>
+            <Link
+              href="/needles-highway-guide"
+              className="group block rounded-2xl p-6 bg-surface-primary border border-brand-gold/15 hover:border-brand-gold/40 hover:-translate-y-1 hover:shadow-gold transition-all duration-300"
+            >
+              <Mountain className="w-9 h-9 text-brand-gold mb-3" />
+              <h3 className="font-display text-xl font-bold text-brand-navy mb-2">
+                Needles Highway Guide
+              </h3>
+              <p className="text-sm text-brand-navy/70 font-medium mb-3">
+                Granite spires, the Needles Eye and one-lane tunnels — what to expect and how to
+                ride it.
+              </p>
+              <span className="text-brand-gold text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 group-hover:gap-2.5 transition-all">
+                Read Guide <ArrowRight className="w-3.5 h-3.5" />
+              </span>
+            </Link>
+            <Link
+              href="/spearfish-canyon-guide"
+              className="group block rounded-2xl p-6 bg-surface-primary border border-brand-gold/15 hover:border-brand-gold/40 hover:-translate-y-1 hover:shadow-gold transition-all duration-300"
+            >
+              <TreePine className="w-9 h-9 text-brand-gold mb-3" />
+              <h3 className="font-display text-xl font-bold text-brand-navy mb-2">
+                Spearfish Canyon Guide
+              </h3>
+              <p className="text-sm text-brand-navy/70 font-medium mb-3">
+                Bridal Veil Falls, Roughlock Falls and a 20-mile fall-foliage byway — 25 miles from
+                camp.
+              </p>
+              <span className="text-brand-gold text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 group-hover:gap-2.5 transition-all">
+                Read Guide <ArrowRight className="w-3.5 h-3.5" />
+              </span>
+            </Link>
+          </div>
+
+          {/* Long-stay & event clusters */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <Link
+              href="/iron-mountain-road-guide"
+              className="group block rounded-2xl p-6 bg-surface-primary border border-brand-gold/15 hover:border-brand-gold/40 hover:-translate-y-1 hover:shadow-gold transition-all duration-300"
+            >
+              <Route className="w-9 h-9 text-brand-gold mb-3" />
+              <h3 className="font-display text-xl font-bold text-brand-navy mb-2">
+                Iron Mountain Road Guide
+              </h3>
+              <p className="text-sm text-brand-navy/70 font-medium mb-3">
+                Pigtail bridges, three tunnels framing Mount Rushmore — the engineering-as-art ride.
+              </p>
+              <span className="text-brand-gold text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 group-hover:gap-2.5 transition-all">
+                Read Guide <ArrowRight className="w-3.5 h-3.5" />
+              </span>
+            </Link>
+            <Link
+              href="/deadwood-day-trip"
+              className="group block rounded-2xl p-6 bg-surface-primary border border-brand-gold/15 hover:border-brand-gold/40 hover:-translate-y-1 hover:shadow-gold transition-all duration-300"
+            >
+              <Navigation className="w-9 h-9 text-brand-gold mb-3" />
+              <h3 className="font-display text-xl font-bold text-brand-navy mb-2">
+                Deadwood Day Trip
+              </h3>
+              <p className="text-sm text-brand-navy/70 font-medium mb-3">
+                Twelve miles to historic Deadwood — Wild West history, Adams Museum and 80+ gaming
+                halls.
+              </p>
+              <span className="text-brand-gold text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 group-hover:gap-2.5 transition-all">
+                Plan Day Trip <ArrowRight className="w-3.5 h-3.5" />
+              </span>
+            </Link>
+            <Link
+              href="/monthly-rv-sites"
+              className="group block rounded-2xl p-6 bg-surface-primary border border-brand-gold/15 hover:border-brand-gold/40 hover:-translate-y-1 hover:shadow-gold transition-all duration-300"
+            >
+              <Truck className="w-9 h-9 text-brand-gold mb-3" />
+              <h3 className="font-display text-xl font-bold text-brand-navy mb-2">
+                Monthly RV Sites
+              </h3>
+              <p className="text-sm text-brand-navy/70 font-medium mb-3">
+                Long-term RV stays in the Black Hills — full hookups, monthly pricing and
+                workamper-friendly.
+              </p>
+              <span className="text-brand-gold text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 group-hover:gap-2.5 transition-all">
+                See Long-Term Rates <ArrowRight className="w-3.5 h-3.5" />
+              </span>
+            </Link>
+          </div>
+
+          <div className="text-center mt-12">
+            <Link
+              href="/explore"
+              className="inline-flex items-center gap-2 px-8 py-3.5 border-2 border-brand-navy text-brand-navy font-bold rounded-xl hover:bg-brand-navy hover:text-white transition-all duration-300 uppercase tracking-wider text-sm"
+            >
+              Browse Every Black Hills Attraction <ArrowRight className="w-5 h-5" />
+            </Link>
           </div>
         </div>
       </section>

@@ -3,7 +3,7 @@ import { BookingCTA } from '@/components/ui';
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { faqSchema, articleSchema, speakableSchema, breadcrumbSchema } from '@/lib/seo';
-import { Clock, MapPin, Droplet, Fish, Leaf, Camera } from 'lucide-react';
+import { Clock, MapPin, Droplet, Fish, Leaf } from 'lucide-react';
 
 const FAQ = [
   { q: 'How long is the Spearfish Canyon Byway?', a: 'The scenic byway runs about 20 miles along US-14A through the canyon. Allow 1–2 hours for the drive plus stops at the falls.' },

@@ -3,8 +3,8 @@ import { SITE } from '@/data/site';
 import { BookingCTA } from '@/components/ui';
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 import { JsonLd } from '@/components/seo/JsonLd';
-import { faqSchema } from '@/lib/seo';
-import { CheckCircle, Phone, ArrowRight, Truck, Zap, Wifi, Shield, Snowflake, Sun } from 'lucide-react';
+import { faqSchema, breadcrumbSchema, articleSchema, serviceSchema, speakableSchema } from '@/lib/seo';
+import { Phone, ArrowRight, Truck, Zap, Wifi, Shield, Snowflake, Sun } from 'lucide-react';
 
 const FAQ = [
   { q: 'Are monthly rates available year-round?', a: 'The RV park is open year-round. Monthly rates are available in shoulder and off-season windows; rally-week dates (early August) are excluded. Call for current monthly availability.' },
@@ -19,6 +19,42 @@ export default function Page() {
   return (
     <>
       <JsonLd data={faqSchema(FAQ)} />
+      <JsonLd data={breadcrumbSchema([
+        { name: 'Home', url: '/' },
+        { name: 'Stay', url: '/stay' },
+        { name: 'Monthly RV Sites', url: '/monthly-rv-sites' },
+      ])} />
+      <JsonLd data={articleSchema({
+        headline: 'Monthly RV Sites in Sturgis, SD — Long-Term RV Living in the Black Hills',
+        description:
+          'Long-term, full-hookup RV sites at Rush No More in Sturgis, SD. Year-round operation, 30/50 AMP, gated security, snowbird and workamper-friendly — 12 miles to Deadwood, 55 to Mount Rushmore.',
+        image: '/images/rv-camper-van.png',
+        url: '/monthly-rv-sites',
+        datePublished: '2025-08-01',
+        dateModified: '2026-04-22',
+        wordCount: 600,
+        keywords: [
+          'monthly rv sites sturgis',
+          'long term rv sites south dakota',
+          'snowbird rv park black hills',
+          'workamper rv site sturgis',
+          'extended stay rv sites',
+          'monthly rv rates sturgis sd',
+          'year round rv park black hills',
+          'monthly campground sturgis',
+        ],
+      })} />
+      <JsonLd data={serviceSchema({
+        name: 'Monthly RV Sites — Long-Term Stays at Rush No More',
+        description:
+          'Full-hookup monthly RV sites at Rush No More in Sturgis, SD. Year-round operation with 30/50 AMP service, free Wi-Fi, gated security and access to all 16 free amenities.',
+        url: '/monthly-rv-sites',
+        image: '/images/rv-camper-van.png',
+        priceMin: '600',
+        priceMax: '1200',
+        serviceType: 'Long-term RV Site Rental',
+      })} />
+      <JsonLd data={speakableSchema('/monthly-rv-sites', ['h1', 'h2'])} />
       <Breadcrumbs items={[{ name: 'Monthly RV Sites', url: '/monthly-rv-sites' }]} />
 
       <section className="bg-brand-navy text-white py-16 md:py-20">
@@ -110,6 +146,17 @@ export default function Page() {
               See RV Site Types <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
+        </div>
+      </section>
+
+      <section className="py-12 bg-white border-t border-brand-gold/10">
+        <div className="max-w-4xl mx-auto px-4 flex flex-wrap gap-3 justify-center">
+          <Link href="/stay/rv-sites" className="px-5 py-2.5 border border-brand-navy/20 rounded-full text-sm font-bold hover:bg-brand-navy hover:text-white transition-all">RV Site Types</Link>
+          <Link href="/stay/cabins" className="px-5 py-2.5 border border-brand-navy/20 rounded-full text-sm font-bold hover:bg-brand-navy hover:text-white transition-all">Presidential Cabins</Link>
+          <Link href="/sturgis-rally-camping" className="px-5 py-2.5 border border-brand-navy/20 rounded-full text-sm font-bold hover:bg-brand-navy hover:text-white transition-all">Rally Camping</Link>
+          <Link href="/rally-rates" className="px-5 py-2.5 border border-brand-navy/20 rounded-full text-sm font-bold hover:bg-brand-navy hover:text-white transition-all">Rally Rates 2026</Link>
+          <Link href="/amenities" className="px-5 py-2.5 border border-brand-navy/20 rounded-full text-sm font-bold hover:bg-brand-navy hover:text-white transition-all">All Amenities</Link>
+          <Link href="/policies" className="px-5 py-2.5 border border-brand-navy/20 rounded-full text-sm font-bold hover:bg-brand-navy hover:text-white transition-all">Policies</Link>
         </div>
       </section>
 

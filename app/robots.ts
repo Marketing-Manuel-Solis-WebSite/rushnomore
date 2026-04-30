@@ -82,63 +82,71 @@ export default function robots(): MetadataRoute.Robots {
         allow: '/',
         disallow: ['/api/', '/admin/'],
       },
-      // Block AI scrapers that don't respect content
+      // ─── AI bot policy ───
+      // Google-Extended powers Google AI Overviews / Gemini — for a tourism
+      // business, appearing in those answers is high-intent free traffic.
+      // ALLOW it. We do allow OAI-SearchBot (ChatGPT search results — also
+      // surfaces our brand) and PerplexityBot (Perplexity search citations).
+      // We BLOCK pure training-set scrapers (CCBot, Bytespider, cohere-ai)
+      // since they take content for training without driving any visits.
+      // GPTBot / ChatGPT-User / Anthropic / Claude bots are allowed because
+      // ChatGPT and Claude routinely cite reservations / hours / locations
+      // when answering travel queries.
       {
-        userAgent: 'CCBot',
-        disallow: '/',
+        userAgent: 'Google-Extended',
+        allow: '/',
+        disallow: ['/api/', '/admin/'],
       },
       {
         userAgent: 'GPTBot',
-        disallow: '/',
+        allow: '/',
+        disallow: ['/api/', '/admin/'],
       },
       {
         userAgent: 'ChatGPT-User',
-        disallow: '/',
+        allow: '/',
+        disallow: ['/api/', '/admin/'],
       },
       {
         userAgent: 'OAI-SearchBot',
-        disallow: '/',
-      },
-      {
-        userAgent: 'Google-Extended',
-        disallow: '/',
+        allow: '/',
+        disallow: ['/api/', '/admin/'],
       },
       {
         userAgent: 'anthropic-ai',
-        disallow: '/',
+        allow: '/',
+        disallow: ['/api/', '/admin/'],
       },
       {
         userAgent: 'Claude-Web',
-        disallow: '/',
+        allow: '/',
+        disallow: ['/api/', '/admin/'],
       },
       {
         userAgent: 'ClaudeBot',
-        disallow: '/',
+        allow: '/',
+        disallow: ['/api/', '/admin/'],
       },
       {
         userAgent: 'PerplexityBot',
-        disallow: '/',
+        allow: '/',
+        disallow: ['/api/', '/admin/'],
       },
       {
-        userAgent: 'Bytespider',
-        disallow: '/',
+        userAgent: 'Applebot-Extended',
+        allow: '/',
+        disallow: ['/api/', '/admin/'],
       },
-      {
-        userAgent: 'cohere-ai',
-        disallow: '/',
-      },
-      {
-        userAgent: 'FacebookBot',
-        disallow: '/',
-      },
-      {
-        userAgent: 'ImagesiftBot',
-        disallow: '/',
-      },
-      {
-        userAgent: 'Omgilibot',
-        disallow: '/',
-      },
+      // Pure training-set scrapers with no search-driven traffic value — block
+      { userAgent: 'CCBot', disallow: '/' },
+      { userAgent: 'Bytespider', disallow: '/' },
+      { userAgent: 'cohere-ai', disallow: '/' },
+      { userAgent: 'FacebookBot', disallow: '/' },
+      { userAgent: 'ImagesiftBot', disallow: '/' },
+      { userAgent: 'Omgilibot', disallow: '/' },
+      { userAgent: 'PetalBot', disallow: '/' },
+      { userAgent: 'Diffbot', disallow: '/' },
+      { userAgent: 'YouBot', disallow: '/' },
       // Aggressive SEO crawlers — slow them down to protect TTFB
       {
         userAgent: 'AhrefsBot',

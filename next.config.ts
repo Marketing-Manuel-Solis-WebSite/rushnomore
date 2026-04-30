@@ -217,12 +217,17 @@ const nextConfig: NextConfig = {
 
       // ─── WordPress legacy cleanup (assume prior WP install) ────
       { source: '/wp-admin/:path*', destination: '/', permanent: true },
+      { source: '/wp-admin', destination: '/', permanent: true },
       { source: '/wp-login.php', destination: '/', permanent: true },
       { source: '/wp-content/:path*', destination: '/', permanent: true },
       { source: '/wp-includes/:path*', destination: '/', permanent: true },
       { source: '/xmlrpc.php', destination: '/', permanent: true },
       { source: '/wp-json/:path*', destination: '/', permanent: true },
       { source: '/wp-cron.php', destination: '/', permanent: true },
+      // Generic wp-*.php matchers (wp-config, wp-load, wp-mail, wp-settings, etc.)
+      { source: '/wp-:slug.php', destination: '/', permanent: true },
+      { source: '/wordpress/:path*', destination: '/', permanent: true },
+      { source: '/wordpress', destination: '/', permanent: true },
       { source: '/feed', destination: '/', permanent: true },
       { source: '/feed/:path*', destination: '/', permanent: true },
       { source: '/rss', destination: '/', permanent: true },
@@ -234,12 +239,30 @@ const nextConfig: NextConfig = {
       { source: '/author/:path*', destination: '/', permanent: true },
       { source: '/trackback/:path*', destination: '/', permanent: true },
       { source: '/wlwmanifest.xml', destination: '/', permanent: true },
+      // WP default pages that show up as 404s in GSC
+      { source: '/sample-page', destination: '/', permanent: true },
+      { source: '/hello-world', destination: '/', permanent: true },
+      { source: '/coming-soon', destination: '/', permanent: true },
+      // RNMWP staging/legacy folder paths reported as 404 in GSC
+      { source: '/RNMWP/:path*', destination: '/', permanent: true },
+      { source: '/RNMWP', destination: '/', permanent: true },
+      { source: '/rnmwp/:path*', destination: '/', permanent: true },
 
-      // ─── Legacy HTML extensions ────────────────────────────────
+      // ─── Legacy HTML / PHP extensions ──────────────────────────
       { source: '/index.html', destination: '/', permanent: true },
       { source: '/index.php', destination: '/', permanent: true },
       { source: '/home.html', destination: '/', permanent: true },
+      { source: '/home.php', destination: '/', permanent: true },
       { source: '/default.html', destination: '/', permanent: true },
+      { source: '/default.htm', destination: '/', permanent: true },
+      // Specific legacy .php endpoints reported as 404 in GSC
+      { source: '/rushnomorerates.php', destination: '/stay', permanent: true },
+      { source: '/reservations.php', destination: '/stay', permanent: true },
+      { source: '/contact.php', destination: '/contact', permanent: true },
+      { source: '/about.php', destination: '/about', permanent: true },
+      { source: '/cabins.php', destination: '/stay/cabins', permanent: true },
+      { source: '/rvsites.php', destination: '/stay/rv-sites', permanent: true },
+      { source: '/tentsites.php', destination: '/stay/tent-camping', permanent: true },
 
       // ─── Legacy paths ──────────────────────────────────────────
       { source: '/park-map', destination: '/map', permanent: true },
@@ -257,8 +280,72 @@ const nextConfig: NextConfig = {
       { source: '/public/tent-camping', destination: '/stay/tent-camping', permanent: true },
       { source: '/public/about', destination: '/about', permanent: true },
       { source: '/public/contact', destination: '/contact', permanent: true },
+      { source: '/public/policies', destination: '/policies', permanent: true },
+      { source: '/public/rules-and-policies', destination: '/policies', permanent: true },
+      { source: '/public/work-camping', destination: '/monthly-rv-sites', permanent: true },
       { source: '/public/:path*', destination: '/', permanent: true },
       { source: '/index/:path*', destination: '/', permanent: true },
+
+      // ─── Specific legacy WordPress slugs reported as 404 in GSC ─
+      // Work-camping legacy paths
+      { source: '/work-camping', destination: '/monthly-rv-sites', permanent: true },
+      { source: '/workcamping', destination: '/monthly-rv-sites', permanent: true },
+      { source: '/workamping', destination: '/monthly-rv-sites', permanent: true },
+      // Legal / privacy legacy slugs
+      { source: '/legal-pages', destination: '/legal', permanent: true },
+      { source: '/legal-notices', destination: '/legal', permanent: true },
+      { source: '/privacy-policy-2', destination: '/legal', permanent: true },
+      { source: '/release-and-consent', destination: '/legal', permanent: true },
+      { source: '/release', destination: '/legal', permanent: true },
+      // Policy / rules legacy slugs
+      { source: '/rules-and-policies', destination: '/policies', permanent: true },
+      { source: '/rally-policies', destination: '/policies#rally', permanent: true },
+      { source: '/rally-policies_dev', destination: '/policies#rally', permanent: true },
+      { source: '/policies/:path*', destination: '/policies', permanent: true },
+      { source: '/ada-compliance', destination: '/ada', permanent: true },
+      // Common typo / legacy "local attractions"
+      { source: '/local-atractions', destination: '/explore', permanent: true },
+      { source: '/local-attractions', destination: '/explore', permanent: true },
+      { source: '/local-attractions/:path*', destination: '/explore', permanent: true },
+      { source: '/thingstodo', destination: '/explore', permanent: true },
+      { source: '/thingstodo/:path*', destination: '/explore', permanent: true },
+      // Legacy rate / cabin / RV pages
+      { source: '/cabin-rates', destination: '/stay/cabins', permanent: true },
+      { source: '/cabin-rates-rally', destination: '/rally-rates', permanent: true },
+      { source: '/cabin-rates-bike-rally-2021', destination: '/rally-rates', permanent: true },
+      { source: '/cabins-2', destination: '/stay/cabins', permanent: true },
+      { source: '/cabins2', destination: '/stay/cabins', permanent: true },
+      { source: '/cabins2-rally', destination: '/rally-rates', permanent: true },
+      { source: '/cabins6-rally', destination: '/rally-rates', permanent: true },
+      { source: '/cabins7-rally', destination: '/rally-rates', permanent: true },
+      { source: '/rallyrates', destination: '/rally-rates', permanent: true },
+      { source: '/rally-rates/:path*', destination: '/rally-rates', permanent: true },
+      { source: '/rates', destination: '/stay', permanent: true },
+      { source: '/rates/:path*', destination: '/stay', permanent: true },
+      { source: '/rvandtentsites', destination: '/stay', permanent: true },
+      { source: '/reservations', destination: '/stay', permanent: true },
+      { source: '/reservations/:path*', destination: '/stay', permanent: true },
+      // Legacy event / theme slugs
+      { source: '/sunday-acoustic-jam', destination: '/events', permanent: true },
+      { source: '/black-hills-bluegrass-festival', destination: '/events', permanent: true },
+      { source: '/live-music', destination: '/events', permanent: true },
+      { source: '/dt_slideshow/:path*', destination: '/', permanent: true },
+      { source: '/dt_slideshow', destination: '/', permanent: true },
+      { source: '/dt_gallery/:path*', destination: '/', permanent: true },
+      { source: '/dt_gallery', destination: '/', permanent: true },
+      { source: '/amenities-and-features-rush-no-more-cabins-and-campground', destination: '/amenities', permanent: true },
+      { source: '/services', destination: '/amenities', permanent: true },
+      { source: '/services/:path*', destination: '/amenities', permanent: true },
+      // /aboutus legacy
+      { source: '/aboutus', destination: '/about', permanent: true },
+      { source: '/our-story', destination: '/about', permanent: true },
+      { source: '/contact-us', destination: '/contact', permanent: true },
+      // Spam / scraper landers reported in GSC
+      { source: '/lander', destination: '/', permanent: true },
+      { source: '/lander/:path*', destination: '/', permanent: true },
+      // Stale send-mail
+      { source: '/send-mail', destination: '/contact', permanent: true },
+      { source: '/sendmail', destination: '/contact', permanent: true },
 
       // ─── Accommodation slug canonicalization ───────────────────
       { source: '/rv-sites', destination: '/stay/rv-sites', permanent: true },
