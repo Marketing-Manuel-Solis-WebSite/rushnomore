@@ -8,6 +8,7 @@ import { JsonLd } from '@/components/seo/JsonLd';
 import { campgroundSchema, lodgingSchema, websiteSchema, organizationSchema } from '@/lib/seo';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import { UtilityPoleIcon } from 'lucide-react';
 
 const playfair = Playfair_Display({
   subsets: ['latin'],

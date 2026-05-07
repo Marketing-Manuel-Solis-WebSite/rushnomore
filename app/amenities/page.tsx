@@ -471,12 +471,12 @@ export default function AmenitiesPage() {
           {/* Mosaic grid */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
             {[
-              { img: '/images/Pool/PoolGeneral.jpeg', label: 'Heated Pool', span: 'col-span-2 row-span-2', aspect: 'aspect-square' },
+              { img: '/images/Pool/PoolSunDay.jpeg', label: 'Sunny Pool Days', span: 'col-span-2 row-span-2', aspect: 'aspect-square' },
               { img: '/images/BeerGarden/IMG_7358.jpg', label: 'Beer Garden', span: '', aspect: 'aspect-[4/3]' },
-              { img: '/images/Jacuzzi/IMG_7205.jpeg', label: 'Hot Tub Spa', span: '', aspect: 'aspect-[4/3]' },
-              { img: '/images/GamesKids/Basketball.jpeg', label: 'Basketball Court', span: '', aspect: 'aspect-[4/3]' },
+              { img: '/images/Jacuzzi/JacuzziRNM.jpeg', label: 'Hot Tub Spa', span: '', aspect: 'aspect-[4/3]' },
+              { img: '/images/CommonAreas/basketball.jpeg', label: 'Basketball Court', span: '', aspect: 'aspect-[4/3]' },
               { img: '/images/Store/FrontStore.jpeg', label: 'Camp Store', span: '', aspect: 'aspect-[4/3]' },
-              { img: '/images/CommonAreas/IMG_7029.jpeg', label: 'Common Areas', span: 'col-span-2', aspect: 'aspect-[21/9]' },
+              { img: '/images/CommonAreas/IMG_0355.jpeg', label: 'Resort Common Areas', span: 'col-span-2', aspect: 'aspect-[21/9]' },
               { img: '/images/GeneralImagesPark/IMG_7379.jpeg', label: 'Park Grounds', span: 'col-span-2', aspect: 'aspect-[21/9]' },
             ].map((item, i) => (
               <motion.div
@@ -739,9 +739,11 @@ export default function AmenitiesPage() {
               {
                 category: 'Pool & Hot Tubs',
                 photos: [
-                  { src: '/images/Pool/PoolGeneral.jpeg', alt: 'Rush No More heated swimming pool' },
-                  { src: '/images/Pool/PoolWithPeople.jpeg', alt: 'Guests enjoying the pool at Rush No More' },
-                  { src: '/images/Jacuzzi/IMG_7205.jpeg', alt: 'Hot tub spa at Rush No More' },
+                  { src: '/images/Pool/PoolGeneral.jpeg', alt: 'Heated swimming pool at Rush No More RV Resort in Sturgis, SD' },
+                  { src: '/images/Pool/PoolSunDay.jpeg', alt: 'Sunny day poolside at Rush No More campground near Mount Rushmore' },
+                  { src: '/images/Pool/PoolWithPeople.jpeg', alt: 'Guests enjoying the heated pool at Rush No More in the Black Hills' },
+                  { src: '/images/Jacuzzi/JacuzziRNM.jpeg', alt: 'Outdoor hot tub spa at Rush No More RV Resort, Sturgis South Dakota' },
+                  { src: '/images/Jacuzzi/IMG_7205.jpeg', alt: 'Private hot tub spa at Luxury Spa RV site, Rush No More' },
                 ],
               },
               {
@@ -755,9 +757,9 @@ export default function AmenitiesPage() {
               {
                 category: 'Fun & Recreation',
                 photos: [
-                  { src: '/images/GamesKids/Basketball.jpeg', alt: 'Basketball court at Rush No More' },
-                  { src: '/images/GamesKids/ToboganKids.jpeg', alt: 'Kids playground slide area' },
-                  { src: '/images/RecRoom/GamesRoom.jpeg', alt: 'Game room with arcade games and pool tables' },
+                  { src: '/images/CommonAreas/basketball.jpeg', alt: 'Outdoor basketball court at Rush No More RV Resort, Sturgis SD' },
+                  { src: '/images/GamesKids/ToboganKids.jpeg', alt: 'Kids playground slide and play area at Rush No More campground' },
+                  { src: '/images/RecRoom/GamesRoom.jpeg', alt: 'Indoor game room with arcade games and pool tables at Rush No More' },
                 ],
               },
               {
@@ -770,9 +772,10 @@ export default function AmenitiesPage() {
               {
                 category: 'Our Grounds',
                 photos: [
-                  { src: '/images/CommonAreas/IMG_7029.jpeg', alt: 'Rush No More resort common areas' },
-                  { src: '/images/CommonAreas/IMG_7435.jpeg', alt: 'Scenic grounds and landscaping' },
-                  { src: '/images/GeneralImagesPark/IMG_7379.jpeg', alt: 'Rush No More park panoramic view' },
+                  { src: '/images/CommonAreas/IMG_0355.jpeg', alt: 'Rush No More RV Resort common gathering area in Sturgis, South Dakota' },
+                  { src: '/images/CommonAreas/IMG_7029.jpeg', alt: 'Resort common areas and seating at Rush No More near Mount Rushmore' },
+                  { src: '/images/CommonAreas/IMG_7435.jpeg', alt: 'Scenic grounds and landscaping at Rush No More in the Black Hills' },
+                  { src: '/images/GeneralImagesPark/IMG_7379.jpeg', alt: 'Panoramic view of Rush No More RV park and campground grounds' },
                 ],
               },
             ].map((group, gi) => (

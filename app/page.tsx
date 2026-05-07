@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { SITE, AMENITIES, REVIEWS, STATS } from '@/data/site';
 import { BookingCTA } from '@/components/ui';
 import { HeroSection } from '@/components/layout/HeroSection';
@@ -53,7 +54,14 @@ export default function HomePage() {
             <Link href="/stay/rv-sites" className="group block relative rounded-3xl overflow-hidden shadow-lodge-lg hover:shadow-gold-lg transition-all duration-700 border-2 border-transparent hover:border-brand-gold/30">
               <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[480px] md:min-h-[540px]">
                 <div className="relative overflow-hidden min-h-[320px] lg:min-h-full">
-                  <div className="absolute inset-0 bg-cover bg-center transition-transform duration-[1.2s] ease-out group-hover:scale-110" style={{ backgroundImage: "url('/images/RushMore-rv-camper-van.png')" }} />
+                  <Image
+                    src="/images/RushMore-rv-camper-van.png"
+                    alt="RV camper at Rush No More — full hookup RV park near Mount Rushmore in Sturgis, SD"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-110"
+                    loading="lazy"
+                  />
                   <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/70 via-brand-navy/20 to-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-brand-navy/10 lg:to-brand-navy/40" />
                   <div className="absolute top-5 left-5 z-10">
                     <span className="inline-flex items-center gap-2 px-4 py-2 bg-white/15 backdrop-blur-md text-white rounded-full text-xs font-black uppercase tracking-wider border border-white/20 shadow-lodge">
@@ -146,7 +154,14 @@ export default function HomePage() {
                   </div>
                 </div>
                 <div className="relative overflow-hidden min-h-[320px] lg:min-h-full order-1 lg:order-2">
-                  <div className="absolute inset-0 bg-cover bg-center transition-transform duration-[1.2s] ease-out group-hover:scale-110" style={{ backgroundImage: "url('/images/Cabins/CabinUlyssesGrant/PhotoMainUlyssesGrant.png')" }} />
+                  <Image
+                    src="/images/Cabins/CabinUlyssesGrant/PhotoMainUlyssesGrant.png"
+                    alt="Ulysses S. Grant presidential cabin at Rush No More — log cabin rental near Mount Rushmore"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-110"
+                    loading="lazy"
+                  />
                   <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/70 via-brand-navy/20 to-transparent lg:bg-gradient-to-l lg:from-transparent lg:via-brand-navy/10 lg:to-brand-navy/40" />
                   <div className="absolute top-5 right-5 z-10">
                     <span className="inline-flex items-center gap-2 px-4 py-2 bg-white/15 backdrop-blur-md text-white rounded-full text-xs font-black uppercase tracking-wider border border-white/20 shadow-lodge">
@@ -165,7 +180,14 @@ export default function HomePage() {
             <Link href="/stay/tent-camping" className="group block relative rounded-3xl overflow-hidden shadow-lodge-lg hover:shadow-gold-lg transition-all duration-700 border-2 border-transparent hover:border-brand-gold/30">
               <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[480px] md:min-h-[540px]">
                 <div className="relative overflow-hidden min-h-[320px] lg:min-h-full">
-                  <div className="absolute inset-0 bg-cover bg-center transition-transform duration-[1.2s] ease-out group-hover:scale-110" style={{ backgroundImage: "url('/images/tent_camping_RNM.png')" }} />
+                  <Image
+                    src="/images/tent_camping_RNM.png"
+                    alt="Tent camping under Ponderosa pines at Rush No More in the Black Hills, South Dakota"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-110"
+                    loading="lazy"
+                  />
                   <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/70 via-brand-navy/20 to-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-brand-navy/10 lg:to-brand-navy/40" />
                   <div className="absolute top-5 left-5 z-10">
                     <span className="inline-flex items-center gap-2 px-4 py-2 bg-white/15 backdrop-blur-md text-white rounded-full text-xs font-black uppercase tracking-wider border border-white/20 shadow-lodge">
@@ -292,19 +314,47 @@ export default function HomePage() {
             <div className="relative">
               <div className="grid grid-cols-2 gap-3 md:gap-4">
                 <div className="space-y-3 md:space-y-4">
-                  <div className="aspect-[3/4] rounded-2xl overflow-hidden shadow-lodge-lg group border-2 border-white">
-                    <div className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style={{ backgroundImage: "url('/images/DSC05580-s.png')" }} />
+                  <div className="aspect-[3/4] rounded-2xl overflow-hidden shadow-lodge-lg group border-2 border-white relative">
+                    <Image
+                      src="/images/DSC05580-s.png"
+                      alt="Mount Rushmore National Memorial — 55 miles from Rush No More RV Resort"
+                      fill
+                      sizes="(max-width: 1024px) 50vw, 25vw"
+                      className="object-cover transition-transform duration-700 group-hover:scale-110"
+                      loading="lazy"
+                    />
                   </div>
-                  <div className="aspect-square rounded-2xl overflow-hidden shadow-lodge-lg group border-2 border-white">
-                    <div className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style={{ backgroundImage: "url('/images/rv-camper-van.png')" }} />
+                  <div className="aspect-square rounded-2xl overflow-hidden shadow-lodge-lg group border-2 border-white relative">
+                    <Image
+                      src="/images/rv-camper-van.png"
+                      alt="RV camper van at Rush No More RV park near Sturgis, South Dakota"
+                      fill
+                      sizes="(max-width: 1024px) 50vw, 25vw"
+                      className="object-cover transition-transform duration-700 group-hover:scale-110"
+                      loading="lazy"
+                    />
                   </div>
                 </div>
                 <div className="space-y-3 md:space-y-4 pt-10">
-                  <div className="aspect-square rounded-2xl overflow-hidden shadow-lodge-lg group border-2 border-white">
-                    <div className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style={{ backgroundImage: "url('/images/Cabins/CabinTheThomasJeffersonCabinTheThomasJefferson/PhotoMainTheThomasJefferson.jpeg')" }} />
+                  <div className="aspect-square rounded-2xl overflow-hidden shadow-lodge-lg group border-2 border-white relative">
+                    <Image
+                      src="/images/Cabins/CabinTheThomasJeffersonCabinTheThomasJefferson/PhotoMainTheThomasJefferson.jpeg"
+                      alt="Thomas Jefferson presidential cabin at Rush No More in the Black Hills"
+                      fill
+                      sizes="(max-width: 1024px) 50vw, 25vw"
+                      className="object-cover transition-transform duration-700 group-hover:scale-110"
+                      loading="lazy"
+                    />
                   </div>
-                  <div className="aspect-[3/4] rounded-2xl overflow-hidden shadow-lodge-lg group border-2 border-white">
-                    <div className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style={{ backgroundImage: "url('/images/Wooded-Tent-Area.png')" }} />
+                  <div className="aspect-[3/4] rounded-2xl overflow-hidden shadow-lodge-lg group border-2 border-white relative">
+                    <Image
+                      src="/images/Wooded-Tent-Area.png"
+                      alt="Shaded tent camping area under Ponderosa pines at Rush No More"
+                      fill
+                      sizes="(max-width: 1024px) 50vw, 25vw"
+                      className="object-cover transition-transform duration-700 group-hover:scale-110"
+                      loading="lazy"
+                    />
                   </div>
                 </div>
               </div>
@@ -358,15 +408,21 @@ export default function HomePage() {
               <p className="text-brand-navy/70 text-lg leading-relaxed font-medium mb-6">Take a drone tour of our beautiful resort and see why thousands choose Rush No More as their Black Hills home base.</p>
               <div className="grid grid-cols-3 gap-3">
                 {[
-                  { img: '/images/vip-site.png', label: 'Luxury Sites' },
-                  { img: '/images/Jacuzzi/IMG_7205.jpeg', label: 'Spa Sites' },
-                  { img: '/images/Aereal-2_1400.png', label: 'Aerial View' },
+                  { img: '/images/vip-site.png', label: 'Luxury Sites', alt: 'Rush No More luxury RV site with cement slab and gas BBQ' },
+                  { img: '/images/Jacuzzi/JacuzziRNM.jpeg', label: 'Hot Tub Spa', alt: 'Outdoor hot tub spa at Rush No More RV Resort in Sturgis, SD' },
+                  { img: '/images/Aereal-2_1400.png', label: 'Aerial View', alt: 'Aerial drone view of Rush No More RV Resort and campground in the Black Hills' },
                 ].map((thumb, i) => (
-                  <div key={i} className="aspect-square rounded-xl overflow-hidden shadow-lodge group border border-brand-gold/10">
-                    <div className="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-110 relative" style={{ backgroundImage: `url('${thumb.img}')` }}>
-                      <div className="absolute inset-0 bg-brand-navy/40 flex items-end p-2">
-                        <span className="text-[10px] text-white font-bold uppercase tracking-wider">{thumb.label}</span>
-                      </div>
+                  <div key={i} className="aspect-square rounded-xl overflow-hidden shadow-lodge group border border-brand-gold/10 relative">
+                    <Image
+                      src={thumb.img}
+                      alt={thumb.alt}
+                      fill
+                      sizes="(max-width: 768px) 33vw, 12vw"
+                      className="object-cover transition-transform duration-500 group-hover:scale-110"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-brand-navy/40 flex items-end p-2">
+                      <span className="text-[10px] text-white font-bold uppercase tracking-wider">{thumb.label}</span>
                     </div>
                   </div>
                 ))}

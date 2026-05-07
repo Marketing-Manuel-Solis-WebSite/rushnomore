@@ -791,29 +791,45 @@ export default function StayPage() {
                 </a>
               </div>
               <div className="space-y-4">
-                <div className="aspect-[16/10] rounded-2xl overflow-hidden shadow-lodge-lg group border-2 border-white">
-                  <div className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105" style={{ backgroundImage: "url('/images/CommonAreas/IMG_7030.jpeg')" }} />
+                <div className="aspect-[16/10] rounded-2xl overflow-hidden shadow-lodge-lg group border-2 border-white relative">
+                  <Image
+                    src="/images/CommonAreas/IMG_0355.jpeg"
+                    alt="Common gathering area at Rush No More tent camping in the Black Hills"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    loading="lazy"
+                  />
                 </div>
-                <div className="aspect-[16/10] rounded-2xl overflow-hidden shadow-lodge-lg group border-2 border-white">
-                  <div className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105" style={{ backgroundImage: "url('/images/CommonAreas/IMG_8211.jpeg')" }} />
+                <div className="aspect-[16/10] rounded-2xl overflow-hidden shadow-lodge-lg group border-2 border-white relative">
+                  <Image
+                    src="/images/CommonAreas/IMG_8211.jpeg"
+                    alt="Resort common areas with pine forest setting at Rush No More"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    loading="lazy"
+                  />
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="aspect-square rounded-xl overflow-hidden shadow-lodge-lg border-2 border-white relative">
                     <Image
-                      src="/images/GeneralImagesPark/IMG_7381.jpeg"
-                      alt="Scenic park grounds at Rush No More resort"
+                      src="/images/Pool/PoolSunDay.jpeg"
+                      alt="Sunny day at the heated pool, Rush No More near Mount Rushmore"
                       fill
                       className="object-cover transition-transform duration-700 hover:scale-110"
                       sizes="(max-width: 768px) 50vw, 20vw"
+                      loading="lazy"
                     />
                   </div>
                   <div className="aspect-square rounded-xl overflow-hidden shadow-lodge-lg border-2 border-white relative">
                     <Image
                       src="/images/Pool/PoolSide.jpeg"
-                      alt="Resort pool area with lounge chairs"
+                      alt="Resort poolside lounge chairs at Rush No More RV Resort"
                       fill
                       className="object-cover transition-transform duration-700 hover:scale-110"
                       sizes="(max-width: 768px) 50vw, 20vw"
+                      loading="lazy"
                     />
                   </div>
                 </div>

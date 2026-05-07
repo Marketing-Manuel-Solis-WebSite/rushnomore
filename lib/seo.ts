@@ -195,7 +195,11 @@ export function campgroundSchema() {
     image: [
       `${DOMAIN}/images/Aereal-2_1400.png`,
       `${DOMAIN}/images/Pool/PoolWithPeople.jpeg`,
+      `${DOMAIN}/images/Pool/PoolSunDay.jpeg`,
+      `${DOMAIN}/images/Jacuzzi/JacuzziRNM.jpeg`,
       `${DOMAIN}/images/BeerGarden/IMG_7326.jpeg`,
+      `${DOMAIN}/images/CommonAreas/IMG_0355.jpeg`,
+      `${DOMAIN}/images/CommonAreas/basketball.jpeg`,
       `${DOMAIN}/images/GeneralImagesPark/IMG_7379.jpeg`,
       `${DOMAIN}/images/EventCenter/IMG_7513.jpeg`,
       `${DOMAIN}/images/Cabins/CabinUlyssesGrant/PhotoMainUlyssesGrant.png`,
@@ -828,6 +832,10 @@ export function placeSchema() {
     photo: [
       `${DOMAIN}/images/Aereal-2_1400.png`,
       `${DOMAIN}/images/Pool/PoolWithPeople.jpeg`,
+      `${DOMAIN}/images/Pool/PoolSunDay.jpeg`,
+      `${DOMAIN}/images/Jacuzzi/JacuzziRNM.jpeg`,
+      `${DOMAIN}/images/CommonAreas/IMG_0355.jpeg`,
+      `${DOMAIN}/images/CommonAreas/basketball.jpeg`,
     ],
     containedInPlace: {
       '@type': 'AdministrativeArea',

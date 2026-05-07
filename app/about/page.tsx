@@ -277,12 +277,12 @@ export default function AboutPage() {
 
           <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
             {[
-              { src: '/images/PeoplePlaying/IMG_7078.jpeg', alt: 'Guests enjoying outdoor activities at Rush No More' },
-              { src: '/images/CommonAreas/IMG_7030.jpeg', alt: 'Common area gathering space at the resort' },
-              { src: '/images/PeoplePlaying/IMG_7608.jpeg', alt: 'Family fun at Rush No More campground' },
-              { src: '/images/BeerGarden/IMG_7327.jpg', alt: 'Beer garden socializing at Rush No More' },
-              { src: '/images/GeneralImagesPark/IMG_7382.jpeg', alt: 'Beautiful grounds and scenery at the park' },
-              { src: '/images/PeoplePlaying/IMG_8325.jpeg', alt: 'Guests making memories at Rush No More resort' },
+              { src: '/images/PeoplePlaying/IMG_7078.jpeg', alt: 'Guests enjoying outdoor activities at Rush No More RV Resort, Sturgis SD' },
+              { src: '/images/CommonAreas/IMG_0355.jpeg', alt: 'Resort common gathering area at Rush No More near Mount Rushmore' },
+              { src: '/images/CommonAreas/basketball.jpeg', alt: 'Outdoor basketball court for guests at Rush No More campground' },
+              { src: '/images/BeerGarden/IMG_7327.jpg', alt: 'Beer garden socializing at Rush No More RV Resort in the Black Hills' },
+              { src: '/images/GeneralImagesPark/IMG_7382.jpeg', alt: 'Beautiful grounds and Black Hills scenery at Rush No More' },
+              { src: '/images/PeoplePlaying/IMG_8325.jpeg', alt: 'Guests making memories at Rush No More family campground' },
             ].map((photo, i) => (
               <motion.div
                 key={i}

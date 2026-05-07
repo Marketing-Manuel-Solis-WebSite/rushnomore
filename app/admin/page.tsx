@@ -20,7 +20,7 @@ interface Stats {
   reservations: { newToday: number; checkInsToday: number; checkOutsToday: number; pendingPayment: number };
 }
 
-export default function AdminDashboard() {
+ export default function AdminDashboard() {
   const [stats, setStats] = useState<Stats | null>(null);
   const [loading, setLoading] = useState(true);
   const [revenueData, setRevenueData] = useState<{month: string; amount: number}[]>([]);

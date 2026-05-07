@@ -45,7 +45,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       images: [
         `${B}/images/Aereal-2_1400.png`,
         `${B}/images/Pool/PoolWithPeople.jpeg`,
+        `${B}/images/Pool/PoolSunDay.jpeg`,
+        `${B}/images/Jacuzzi/JacuzziRNM.jpeg`,
         `${B}/images/BeerGarden/IMG_7326.jpeg`,
+        `${B}/images/CommonAreas/IMG_0355.jpeg`,
+        `${B}/images/CommonAreas/basketball.jpeg`,
         `${B}/images/Cabins/CabinUlyssesGrant/PhotoMainUlyssesGrant.png`,
         `${B}/images/rv-camper-van.png`,
         `${B}/images/tent_camping_RNM.png`,
@@ -214,8 +218,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.85,
       images: [
         `${B}/images/Pool/PoolWithPeople.jpeg`,
+        `${B}/images/Pool/PoolSunDay.jpeg`,
         `${B}/images/BeerGarden/IMG_7326.jpeg`,
+        `${B}/images/Jacuzzi/JacuzziRNM.jpeg`,
         `${B}/images/Jacuzzi/IMG_7205.jpeg`,
+        `${B}/images/CommonAreas/basketball.jpeg`,
+        `${B}/images/CommonAreas/IMG_0355.jpeg`,
         `${B}/images/RecRoom/GamesRoom.jpeg`,
       ],
       videos: [
