@@ -30,11 +30,10 @@ const RALLY_FACTS = [
 
 const RALLY_AMENITIES = [
   { icon: Beer, t: 'On-Site Beer Garden', d: 'Cold drinks and rally atmosphere on the property — open extended hours during rally.' },
-  { icon: Shield, t: '24/7 Gated Security', d: 'Your rig and bike stay safe while you ride the Hills.' },
-  { icon: Bike, t: 'Bike Wash Station', d: 'Dedicated wash bay for keeping your ride clean after dusty Black Hills days.' },
+  { icon: Shield, t: 'Friendly On-Site Staff', d: 'On-site staff during business hours with after-hours on-call assistance.' },
   { icon: MapPin, t: '5 Miles to Main Street', d: 'Roll into Sturgis in about 7 minutes — close to the action, peaceful at night.' },
   { icon: Star, t: '10+ Years Hosting Rally', d: 'Rally-savvy staff and a proven base camp with a strong repeat-rider community.' },
-  { icon: CheckCircle, t: 'All 16 Amenities Included', d: 'Heated pool, hot tubs, game room, laundry, Wi-Fi, propane sales, camp store and more.' },
+  { icon: CheckCircle, t: 'All Resort Amenities Included', d: 'Heated pool, hot tubs, game room, laundry, Wi-Fi, propane sales, camp store and more.' },
 ];
 
 const RALLY_RIDES = [
@@ -50,7 +49,7 @@ const RALLY_FAQ = [
   { q: 'When did the Sturgis Rally start?', a: 'The first rally was held in 1938 by the Jackpine Gypsies Motorcycle Club. It has been held annually ever since and grown into the international event it is today.' },
   { q: 'How far is Rush No More from Main Street Sturgis?', a: 'Rush No More sits 5 miles from Main Street Sturgis — about a 7-minute ride. Close enough to roll in any time, far enough that the campground stays peaceful at night.' },
   { q: 'What rides start from Rush No More?', a: 'From camp you can reach Iron Mountain Road, Needles Highway, Spearfish Canyon and Deadwood within minutes. Mount Rushmore and Custer State Park are also short rides away.' },
-  { q: 'Where should I stay for Sturgis Rally?', a: 'Rush No More has been a premier rally base camp for over a decade — RV sites, presidential cabins, tent camping, an on-site beer garden, pool, hot tubs, bike wash and 24/7 gated security. See our Rally Camping page to book.' },
+  { q: 'Where should I stay for Sturgis Rally?', a: 'Rush No More has been a premier rally base camp for over a decade — RV sites, presidential cabins, tent camping, an on-site beer garden, pool, hot tubs and friendly on-site staff. See our Rally Camping page to book.' },
   { q: 'When should I book for the rally?', a: 'Book 6–12 months in advance. Rush No More sells out every year, and rally-ready sites go quickly for the following August.' },
   { q: 'Are non-riders welcome at the rally?', a: 'Yes. Sturgis Rally is family-friendly during the day — Main Street, vendor expos, food trucks, live music and Black Hills sightseeing make it a great trip for spouses, friends and kids.' },
   { q: 'Is there an on-site rally event at Rush No More?', a: 'Yes — Rush No More hosts an annual Charity Auction Night during rally to benefit the Combat Veterans Motorcycle Association SD 30-1, with silent auction, live auction and raffles. See the event details on this page.' },
@@ -167,8 +166,8 @@ export default function Page() {
             </p>
             <p>
               Rush No More has been a <strong>premier rally headquarters for more than a decade</strong>.
-              Just 5 miles from Main Street, our 200+ RV sites, 16 presidential cabins, shaded tent
-              camping, on-site beer garden, pool, hot tubs and bike wash give riders the perfect mix of
+              Just 5 miles from Main Street, our 200+ RV sites, 20 presidential cabins, shaded tent
+              camping, on-site beer garden, pool and hot tubs give riders the perfect mix of
               proximity and peace.
             </p>
           </div>

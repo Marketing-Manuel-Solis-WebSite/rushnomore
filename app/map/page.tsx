@@ -36,7 +36,7 @@ const AREAS = [
   {
     icon: Home,
     title: 'Presidential Cabins',
-    desc: '16 unique cabins each named after a US President. From economy units for couples to luxury suites sleeping up to 10 guests.',
+    desc: '20 unique cabins — 19 named after a US President plus the JFK House. From economy units for couples to luxury suites sleeping up to 10 guests.',
     price: 'Starts at $51.76',
     href: '/stay/cabins',
     features: ['Sleeps 2-10 Guests', 'Full Kitchens Available', 'A/C & Heating', 'Private Bathrooms'],
@@ -52,10 +52,10 @@ const AREAS = [
   {
     icon: Beer,
     title: 'Amenities & Recreation',
-    desc: 'Pool, hot tubs, beer garden, game room, playground, bathhouses, laundry, camp store, nature trails, and 24/7 security — all included free.',
+    desc: 'Pool, hot tubs, beer garden, game room, playground, bathhouses, laundry, camp store, nature trails, and friendly on-site staff — all included free.',
     price: 'All Included',
     href: '/amenities',
-    features: ['Pool & Hot Tubs', 'Beer Garden & Bar', 'Game Room & Trails', '24/7 Security'],
+    features: ['Pool & Hot Tubs', 'Beer Garden & Bar', 'Game Room & Trails', 'On-Site Staff'],
   },
 ];
 
@@ -117,7 +117,7 @@ export default function MapPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            Navigate our campground map to find RV sites, cabins, tent areas, the pool, beer garden, and all 16 amenities.
+            Navigate our campground map to find RV sites, cabins, tent areas, the pool, beer garden, and all resort amenities.
           </motion.p>
 
           <motion.div

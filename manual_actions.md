@@ -160,3 +160,50 @@ Use curl or a browser to verify:
 - [ ] `/` source includes `<link rel="canonical" href="https://www.rushnomore.com/"/>`
 - [ ] No console errors on any page
 - [ ] Booking link on every page still opens NewBook — do not regress the conversion path
+
+---
+
+## NewBook (bookingsus.newbook.cloud) — date-search content fixes
+
+These corrections live in the **external NewBook booking system**, not in this codebase. The
+on-site cabin pages were updated, but the date-search flow still pulls from NewBook and shows
+the wrong info. Update the following inside NewBook:
+
+### Cabin descriptions / occupancy / beds
+- [ ] **Cabin 11 ("studio cabin & bath")** — update description: cabin has a **full kitchen**, a
+      **futon** and **2 Queen beds** (one in the loft — note "loft access requires stairs" so
+      guests with mobility issues know). Sleeps **6** (not 7). Match site's "Find Your Perfect
+      Cabin" section.
+- [ ] **Cabin 12** — remove any "loft" mention. Single-level. Beds: **1 Queen + futon in living
+      room**. Sleeps **4** (not 6).
+- [ ] **Cabin 3** — bed configuration: **Bunk = Queen on bottom + Twin on top**, **Full bed** in
+      same room, plus a separate front room (confirm whether that bed is Queen and update —
+      sheet sets are the source of truth).
+- [ ] **Cabin 2** — sleeps **6** (not 7).
+- [ ] **Cabin 6** — confirm listing shows it has a **private bathroom & shower** (currently not
+      visible in the date-search results).
+
+### Typo
+- [ ] "Rustic Cabin For 4" description — change "we have 9 **Cabin**" → "we have 9 **Cabins**"
+      (and confirm the count of 9 is accurate, including bathroom-equipped units).
+
+### Pricing (optional — owner suggestion)
+- [ ] Cabin 10 is bigger than Cabin 9 (sitting area). The on-site page now lists Cabin 10 at
+      **$110.42** (Cabin 9 stays at $100.42). Mirror this $10 differential in NewBook if
+      desired.
+
+---
+
+## Site copy aligned with reality (already updated in code)
+
+The following claims were corrected on the website and should be kept honest in any future
+marketing copy / NewBook listings / printed materials:
+
+- ❌ "Bike Wash Station" — **removed**, we don't have one.
+- ❌ "High-speed internet across the entire resort" → ✅ "Complimentary Wi-Fi throughout the resort"
+- ❌ "Pet Friendly — dog run included" → ✅ "Well-behaved pets welcome at most sites and select cabins"
+- ❌ "Full Hookups (W/E/S) at every RV site" → ✅ "Hookup options — water-electric and full-hookup sites available"
+- ❌ "24/7 Gated Security — gated entry, patrol and emergency assistance" → ✅ "Friendly on-site staff during business hours, after-hours on-call assistance"
+- ❌ "Round-the-clock security patrol" (tent camping) → ✅ "On-site staff with after-hours on-call"
+- ❌ "16 Presidential Cabins" → ✅ "20 Presidential Cabins" (19 named after Presidents + the JFK House)
+- ❌ Hero video showing RV entering under archway (resembles neighbor's driveway) → ✅ Replaced with aerial resort image

@@ -115,7 +115,7 @@ export async function sendPreArrivalEmail(reservation: Reservation) {
         <p><strong>Confirmation:</strong> ${reservation.confirmationNumber}</p>
         <h3>What to Expect</h3>
         <p>Our friendly team will escort you to your site upon arrival.</p>
-        <p>Don't forget to check out our pool, hot tubs, beer garden, and 16 free amenities — all included!</p>
+        <p>Don't forget to check out our pool, hot tubs, beer garden, and free resort amenities — all included!</p>
         <p>📞 Questions? Call 605-423-2545</p>
       </div>
     `,

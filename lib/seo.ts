@@ -190,7 +190,7 @@ export function campgroundSchema() {
     url: DOMAIN,
     telephone: PHONE,
     email: EMAIL,
-    description: 'Top-rated RV resort, presidential cabins & tent camping in Sturgis, SD — 5 miles from Main Street Sturgis, gateway to Mount Rushmore & the Black Hills. Pool, hot tubs, beer garden, game room & 16 free amenities.',
+    description: 'Top-rated RV resort, presidential cabins & tent camping in Sturgis, SD — 5 miles from Main Street Sturgis, gateway to Mount Rushmore & the Black Hills. Pool, hot tubs, beer garden, game room & free resort amenities.',
     slogan: 'Your Black Hills adventure starts here',
     image: [
       `${DOMAIN}/images/Aereal-2_1400.png`,
@@ -226,9 +226,9 @@ export function campgroundSchema() {
     amenityFeature: [
       'Heated Swimming Pool', 'Multiple Hot Tub Spas', 'Beer Garden & Bar',
       'Game Room', 'Nature Trails', 'Modern Bathhouses', 'Laundromat',
-      'Free Wi-Fi', 'Pet Friendly', 'Bike Wash Station', 'Propane Sales',
+      'Free Wi-Fi', 'Pet Friendly', 'Propane Sales',
       'Propane Campfires & Charcoal Grills', 'Camp Library', 'Camp Store', 'Picnic Pavilions',
-      '24/7 Gated Security',
+      'On-Site Staff',
     ].map(name => ({ '@type': 'LocationFeatureSpecification', name, value: true })),
     availableLanguage: ['English', 'Spanish'],
     numberOfRooms: 236,
@@ -299,7 +299,7 @@ export function campgroundSchema() {
     },
     containsPlace: [
       { '@type': 'CampingPitch', name: 'RV Sites', description: '200+ full-hookup RV sites with 30/50 AMP, water & sewer', numberOfRooms: 200 },
-      { '@type': 'Accommodation', name: 'Presidential Cabins', description: '16 unique cabins named after US Presidents, sleeping 2-10 guests', numberOfRooms: 16 },
+      { '@type': 'Accommodation', name: 'Presidential Cabins', description: '20 unique cabins — 19 named after US Presidents plus the JFK House, sleeping 2-10 guests', numberOfRooms: 20 },
       { '@type': 'CampingPitch', name: 'Tent Sites', description: '20+ shaded tent sites under Ponderosa pines', numberOfRooms: 20 },
     ],
     tourBookingPage: BOOKING_URL,
@@ -347,7 +347,7 @@ export function lodgingSchema() {
     url: DOMAIN,
     telephone: PHONE,
     email: EMAIL,
-    description: 'Top-rated RV park, presidential cabins & tent camping near Mount Rushmore in Sturgis, South Dakota. 200+ RV sites, 16 cabins & 20+ tent sites with heated pool, hot tubs, beer garden & 16 free amenities.',
+    description: 'Top-rated RV park, presidential cabins & tent camping near Mount Rushmore in Sturgis, South Dakota. 200+ RV sites, 20 cabins & 20+ tent sites with heated pool, hot tubs, beer garden & free resort amenities.',
     image: [
       `${DOMAIN}/images/Aereal-2_1400.png`,
       `${DOMAIN}/images/Cabins/CabinUlyssesGrant/PhotoMainUlyssesGrant.png`,
@@ -370,12 +370,12 @@ export function lodgingSchema() {
     amenityFeature: [
       'Heated Swimming Pool', 'Multiple Hot Tub Spas', 'Beer Garden & Bar',
       'Game Room', 'Nature Trails', 'Modern Bathhouses', 'Laundromat',
-      'Free Wi-Fi', 'Pet Friendly', 'Bike Wash Station', 'Propane Sales',
-      'Camp Library', 'Camp Store', 'Picnic Pavilions', '24/7 Gated Security',
+      'Free Wi-Fi', 'Pet Friendly', 'Propane Sales',
+      'Camp Library', 'Camp Store', 'Picnic Pavilions', 'On-Site Staff',
     ].map(name => ({ '@type': 'LocationFeatureSpecification', name, value: true })),
     makesOffer: [
       { '@type': 'Offer', name: 'RV Sites', price: '41.22', priceCurrency: 'USD', description: '200+ full-hookup RV sites from $41.22/night', url: `${DOMAIN}/stay/rv-sites` },
-      { '@type': 'Offer', name: 'Presidential Cabins', price: '51.76', priceCurrency: 'USD', description: '16 unique presidential cabins from $51.76/night', url: `${DOMAIN}/stay/cabins` },
+      { '@type': 'Offer', name: 'Presidential Cabins', price: '51.76', priceCurrency: 'USD', description: '20 unique presidential cabins from $51.76/night', url: `${DOMAIN}/stay/cabins` },
       { '@type': 'Offer', name: 'Tent Camping', price: '35.00', priceCurrency: 'USD', description: '20+ shaded tent sites from $35/night', url: `${DOMAIN}/stay/tent-camping` },
     ],
     tourBookingPage: BOOKING_URL,
@@ -504,7 +504,7 @@ export function accommodationListSchema() {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
     name: 'Accommodations at Rush No More RV Resort & Campground',
-    description: 'Choose from 200+ RV sites, 16 presidential cabins, and 20+ shaded tent sites near Mount Rushmore in Sturgis, South Dakota.',
+    description: 'Choose from 200+ RV sites, 20 presidential cabins, and 20+ shaded tent sites near Mount Rushmore in Sturgis, South Dakota.',
     numberOfItems: 3,
     itemListElement: [
       {
@@ -521,7 +521,7 @@ export function accommodationListSchema() {
         name: 'Presidential Cabins',
         url: `${DOMAIN}/stay/cabins`,
         image: `${DOMAIN}/images/Cabins/CabinUlyssesGrant/PhotoMainUlyssesGrant.png`,
-        description: '16 unique cabins named after US Presidents — sleeping 2-10 guests. A/C, heating, private bathrooms. Economy, standard, family & luxury options. From $51.76/night.',
+        description: '20 unique cabins (19 named after US Presidents plus the JFK House) — sleeping 2-10 guests. A/C, heating, private bathrooms. Economy, standard, family & luxury options. From $51.76/night.',
       },
       {
         '@type': 'ListItem',

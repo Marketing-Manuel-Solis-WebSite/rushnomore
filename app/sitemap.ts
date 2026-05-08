@@ -60,7 +60,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
           thumbnail_loc: `${B}/images/Aereal-2_1400.png`,
           title: 'Rush No More RV Resort and Campground in Sturgis, SD',
           description:
-            'Tour Rush No More RV Resort near Mount Rushmore — 200 plus RV sites, 16 cabins, tent camping, pool, beer garden and 16 free amenities.',
+            'Tour Rush No More RV Resort near Mount Rushmore — 200 plus RV sites, 20 cabins, tent camping, pool, beer garden and free resort amenities.',
           content_loc: `${B}/videos/rushnomore-video.mp4`,
           family_friendly: 'yes',
           live: 'no',
@@ -88,7 +88,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
           thumbnail_loc: `${B}/images/GeneralImagesPark/IMG_7386.jpeg`,
           title: 'Stay at Rush No More — RV, Cabins and Tent Camping',
           description:
-            'See your accommodation options at Rush No More RV Resort — 200 plus RV sites, 16 cabins, tent camping near Mount Rushmore.',
+            'See your accommodation options at Rush No More RV Resort — 200 plus RV sites, 20 cabins, tent camping near Mount Rushmore.',
           content_loc: `${B}/videos/RNM-stay.mp4`,
           family_friendly: 'yes',
           live: 'no',
@@ -243,9 +243,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
       videos: [
         {
           thumbnail_loc: `${B}/images/Pool/PoolWithPeople.jpeg`,
-          title: '16 Free Amenities at Rush No More RV Resort',
+          title: 'Free Resort Amenities at Rush No More RV Resort',
           description:
-            'Tour the 16 free amenities at Rush No More — heated pool, hot tubs, beer garden, game room, nature trails, bike wash and more.',
+            'Tour the free resort amenities at Rush No More — heated pool, hot tubs, beer garden, game room, nature trails and more.',
           content_loc: `${B}/videos/rushnomore-amenities.mp4`,
           family_friendly: 'yes',
           live: 'no',

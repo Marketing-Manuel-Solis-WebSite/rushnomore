@@ -14,8 +14,7 @@ const RALLY_FAQ = [
   { q: 'How far is Rush No More from Main Street Sturgis?', a: 'Rush No More sits 5 miles (about 7 minutes) from Main Street Sturgis — close enough to ride in at any hour, far enough that the campground stays quiet at night.' },
   { q: 'When should I book for Sturgis Rally?', a: 'Book 6–12 months in advance. We sell out every year, and most rally-ready sites go by early spring for the following August.' },
   { q: 'Is there a minimum-night requirement during rally?', a: 'Yes — rally packages are sold as multi-night bundles (typically 10 nights). See current rally rates on our Rally Rates page for exact pricing.' },
-  { q: 'Can I tent camp during the rally?', a: 'Yes. We hold dedicated tent sites under Ponderosa pines with full bathhouse access, pool privileges and bike-wash use included.' },
-  { q: 'Does Rush No More have a bike wash?', a: 'Yes — a dedicated bike wash station for keeping your ride clean after dusty Black Hills days.' },
+  { q: 'Can I tent camp during the rally?', a: 'Yes. We hold dedicated tent sites under Ponderosa pines with full bathhouse access and pool privileges.' },
   { q: 'Is there food and drink on site during rally?', a: 'Our beer garden runs extended hours through rally with live music, and the cafe opens for all 10 days of rally (weekends only off-season).' },
 ];
 
@@ -24,7 +23,7 @@ export default function Page() {
     <>
       <JsonLd data={eventSchema({
         name: 'Sturgis Motorcycle Rally 2026 — Rush No More Base Camp',
-        description: 'Rush No More is your Sturgis Rally base camp — 5 miles from Main Street Sturgis with RV sites, cabins, tent camping, beer garden, pool and bike wash.',
+        description: 'Rush No More is your Sturgis Rally base camp — 5 miles from Main Street Sturgis with RV sites, cabins, tent camping, beer garden, pool and hot tubs.',
         startDate: '2026-08-02',
         endDate: '2026-08-18',
         image: '/images/BikeRally/IMG_9865.JPG',
@@ -54,7 +53,7 @@ export default function Page() {
           <p className="text-lg md:text-xl text-white/80 max-w-3xl mx-auto mb-8 leading-relaxed font-medium">
             Your Black Hills base camp for the 86th Sturgis Motorcycle Rally — <strong>5 miles from Main Street</strong>,
             full amenities, and over a decade of hosting the world&apos;s largest rally. RV sites, presidential cabins,
-            and tent camping — all with pool, hot tubs, beer garden and bike wash.
+            and tent camping — all with pool, hot tubs and beer garden.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
             <a
@@ -86,7 +85,7 @@ export default function Page() {
             {[
               { icon: MapPin, t: '5 Miles to Main Street', d: 'Ride into Sturgis in under 10 minutes — sleep somewhere peaceful.' },
               { icon: Beer, t: 'On-Site Beer Garden', d: 'Cold drinks, live music and rally camaraderie steps from your site.' },
-              { icon: Shield, t: '24/7 Gated Security', d: 'Your rig and your bike stay safe while you ride the Hills.' },
+              { icon: Shield, t: 'Friendly On-Site Staff', d: 'On-site staff during business hours with after-hours on-call assistance.' },
               { icon: Bike, t: 'Rides in Every Direction', d: 'Needles Highway, Spearfish Canyon, Iron Mountain Road — all in reach.' },
             ].map(({ icon: Icon, t, d }) => (
               <div key={t} className="bg-white rounded-2xl p-6 shadow-lodge border border-brand-gold/10">
@@ -157,7 +156,7 @@ export default function Page() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
               { icon: Truck, t: 'RV Sites for Rally', d: 'Full-hookup pull-throughs, 30/50 AMP, luxury and spa sites available.', href: '/stay/rv-sites' },
-              { icon: Home, t: 'Presidential Cabins', d: '16 cabins named after US Presidents — sleep 2 to 10 guests.', href: '/stay/cabins' },
+              { icon: Home, t: 'Presidential Cabins', d: '20 cabins (19 named after US Presidents plus the JFK House) — sleep 2 to 10 guests.', href: '/stay/cabins' },
               { icon: Tent, t: 'Rally Tent Camping', d: 'Shaded tent sites under Ponderosa pines. Bathhouse + pool access.', href: '/stay/tent-camping' },
             ].map(({ icon: Icon, t, d, href }) => (
               <Link key={href} href={href} className="group block bg-white rounded-2xl p-8 shadow-lodge hover:shadow-gold-lg transition-all border border-brand-gold/10">

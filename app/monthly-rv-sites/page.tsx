@@ -8,7 +8,7 @@ import { Phone, ArrowRight, Truck, Zap, Wifi, Shield, Snowflake, Sun } from 'luc
 
 const FAQ = [
   { q: 'Are monthly rates available year-round?', a: 'The RV park is open year-round. Monthly rates are available in shoulder and off-season windows; rally-week dates (early August) are excluded. Call for current monthly availability.' },
-  { q: 'What&apos;s included with a monthly RV site?', a: 'Full hookups (water/electric/sewer), 30/50 AMP service, Wi-Fi, bathhouse access, laundromat, pool when seasonal, bike wash, beer garden access and 24/7 gated security.' },
+  { q: 'What&apos;s included with a monthly RV site?', a: 'Full hookups (water/electric/sewer), 30/50 AMP service, complimentary Wi-Fi, bathhouse access, laundromat, pool when seasonal, beer garden access and friendly on-site staff.' },
   { q: 'Can I stay through the winter?', a: 'Yes — the park operates year-round for RV guests. Pool and some luxury amenities are seasonal (May–October). Freeze-season water management is handled on site.' },
   { q: 'Is there a minimum stay for monthly rates?', a: 'Monthly rates require a 28-night commitment. For shorter extended stays, weekly rates may apply.' },
   { q: 'Do monthly rates include electric?', a: 'Electric is typically metered and billed separately from the site rate for monthly guests. Call for current billing structure.' },
@@ -27,7 +27,7 @@ export default function Page() {
       <JsonLd data={articleSchema({
         headline: 'Monthly RV Sites in Sturgis, SD — Long-Term RV Living in the Black Hills',
         description:
-          'Long-term, full-hookup RV sites at Rush No More in Sturgis, SD. Year-round operation, 30/50 AMP, gated security, snowbird and workamper-friendly — 12 miles to Deadwood, 55 to Mount Rushmore.',
+          'Long-term, full-hookup RV sites at Rush No More in Sturgis, SD. Year-round operation, 30/50 AMP, friendly on-site staff, snowbird and workamper-friendly — 12 miles to Deadwood, 55 to Mount Rushmore.',
         image: '/images/rv-camper-van.png',
         url: '/monthly-rv-sites',
         datePublished: '2025-08-01',
@@ -47,7 +47,7 @@ export default function Page() {
       <JsonLd data={serviceSchema({
         name: 'Monthly RV Sites — Long-Term Stays at Rush No More',
         description:
-          'Full-hookup monthly RV sites at Rush No More in Sturgis, SD. Year-round operation with 30/50 AMP service, free Wi-Fi, gated security and access to all 16 free amenities.',
+          'Full-hookup monthly RV sites at Rush No More in Sturgis, SD. Year-round operation with 30/50 AMP service, complimentary Wi-Fi, friendly on-site staff and access to free resort amenities.',
         url: '/monthly-rv-sites',
         image: '/images/rv-camper-van.png',
         priceMin: '600',
@@ -77,10 +77,10 @@ export default function Page() {
           <h2 className="text-3xl font-display font-bold text-center mb-10">What Monthly Guests Get</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {[
-              { icon: Truck, t: 'Full Hookups', d: 'Water, electric and sewer at every monthly site.' },
+              { icon: Truck, t: 'Full Hookups', d: 'Water, electric and sewer on full-hookup monthly sites.' },
               { icon: Zap, t: '30 / 50 AMP', d: 'Both amperages available — big rigs welcome.' },
-              { icon: Wifi, t: 'Free Park-Wide Wi-Fi', d: 'Stay connected for work or streaming.' },
-              { icon: Shield, t: '24/7 Gated Security', d: 'Peace of mind for long-term residents.' },
+              { icon: Wifi, t: 'Complimentary Wi-Fi', d: 'Stay connected throughout the resort.' },
+              { icon: Shield, t: 'Friendly On-Site Staff', d: 'On-site staff during business hours with after-hours on-call assistance.' },
               { icon: Sun, t: 'Seasonal Amenities', d: 'Pool, hot tubs and beer garden May–October.' },
               { icon: Snowflake, t: 'Year-Round Operation', d: 'RV sites open through winter with cold-weather protocols.' },
             ].map(({ icon: Icon, t, d }) => (

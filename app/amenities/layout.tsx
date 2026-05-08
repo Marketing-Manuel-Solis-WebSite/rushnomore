@@ -2,8 +2,8 @@ import { Metadata } from 'next';
 import { seo } from '@/lib/seo';
 
 export const metadata: Metadata = seo({
-  title: '16 Free Amenities — Pool, Hot Tubs & Beer Garden | Rush No More',
-  description: '16 free amenities at Rush No More — pool, hot tubs, beer garden, game room, trails, bathhouses, Wi-Fi, dog run, bike wash, cafe & more. No resort fees. Sturgis, SD.',
+  title: 'Free Resort Amenities — Pool, Hot Tubs & Beer Garden | Rush No More',
+  description: 'Free resort amenities at Rush No More — heated pool, hot tubs, beer garden, game room, nature trails, bathhouses, complimentary Wi-Fi, cafe & more. No resort fees. Sturgis, SD.',
   path: '/amenities',
   image: '/images/Pool/PoolWithPeople.jpeg',
   keywords: [
@@ -17,10 +17,10 @@ export const metadata: Metadata = seo({
     'campground with wifi sturgis sd', 'campground with laundry black hills',
     'rv park no resort fees south dakota', 'swimming pool rv park mount rushmore',
     'campground with bar south dakota', 'family friendly amenities campground',
-    'campground with bathhouse south dakota', 'rv park with dog run sturgis',
-    'bike wash station campground', 'propane campfire campground south dakota',
+    'campground with bathhouse south dakota',
+    'propane campfire campground south dakota',
     'campground with camp store black hills', 'best amenities campground south dakota',
-    '24 hour security campground sturgis', 'campground with picnic area black hills',
+    'campground with picnic area black hills',
     // Rapid City + emerging
     'campground with pool near rapid city', 'rv park with pool rapid city sd',
     'campground with hot tub near rapid city', 'rv park amenities rapid city area',

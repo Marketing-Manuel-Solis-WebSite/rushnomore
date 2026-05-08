@@ -62,7 +62,7 @@ export default function EventsPage() {
       {/* Schema */}
       <JsonLd data={eventSchema({
         name: 'Sturgis Motorcycle Rally 2026 at Rush No More',
-        description: 'Rush No More RV Resort is your perfect Sturgis Rally base camp — RV sites, cabins & tent camping just 5 miles from Main Street Sturgis. Beer garden, pool, hot tubs & 16 amenities.',
+        description: 'Rush No More RV Resort is your perfect Sturgis Rally base camp — RV sites, cabins & tent camping just 5 miles from Main Street Sturgis. Beer garden, pool, hot tubs & full resort amenities.',
         startDate: '2026-08-02', endDate: '2026-08-18',
         image: '/images/BikeRally/IMG_9865.JPG',
         price: '899',
@@ -256,7 +256,7 @@ export default function EventsPage() {
                 </p>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mb-6">
-                  {['500,000+ riders annually', 'Live music & entertainment', 'On-site beer garden', 'Bike wash station', 'Scenic rides nearby', '24/7 security'].map((f, i) => (
+                  {['500,000+ riders annually', 'Live music & entertainment', 'On-site beer garden', 'Hot tubs & heated pool', 'Scenic rides nearby', 'On-site staff'].map((f, i) => (
                     <span key={i} className="flex items-center gap-2.5 text-sm text-brand-navy/80 bg-white/80 backdrop-blur-sm px-3 py-2.5 rounded-lg font-medium border border-surface-muted/30 shadow-sm">
                       <CheckCircle className="w-4 h-4 text-brand-gold flex-shrink-0" />{f}
                     </span>
@@ -342,7 +342,7 @@ export default function EventsPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
               { icon: Truck, title: 'RV Sites', price: 'Starts at $41.22', sub: 'per night · Full hookups', img: '/images/GeneralImagesPark/IMG_7382.jpeg', href: '/stay', features: ['30/50 AMP Service', 'Pull-Through up to 100ft', 'Cement Slabs (Luxury)', 'Hot Tub (Luxury Spa)'] },
-              { icon: Home, title: 'Presidential Cabins', price: 'Starts at $51.76', sub: 'per night · 16 unique cabins', img: '/images/Cabins/CabinJamesMonroe/PhotoMainJamesMonroe.jpeg', href: '/stay', features: ['Sleeps 2-10 Guests', 'Full Kitchens', 'A/C & Heating', 'Private Bathrooms'] },
+              { icon: Home, title: 'Presidential Cabins', price: 'Starts at $51.76', sub: 'per night · 20 unique cabins', img: '/images/Cabins/CabinJamesMonroe/PhotoMainJamesMonroe.jpeg', href: '/stay', features: ['Sleeps 2-10 Guests', 'Full Kitchens', 'A/C & Heating', 'Private Bathrooms'] },
               { icon: Tent, title: 'Tent Camping', price: 'From $35', sub: 'per night · Best value', img: '/images/Wooded-Tent-Area.png', href: '/stay', features: ['Shaded Pine Forest', '15 Sites with Electric', 'Water Hookups', 'Bathhouse Access'] },
             ].map((item, i) => {
               const Icon = item.icon;
@@ -454,7 +454,7 @@ export default function EventsPage() {
                     ))}
                     <li className="flex items-center gap-3 text-sm text-brand-navy/80 font-medium">
                       <CheckCircle className="w-5 h-5 text-brand-gold flex-shrink-0" />
-                      All 16 amenities included
+                      All resort amenities included
                     </li>
                   </ul>
 

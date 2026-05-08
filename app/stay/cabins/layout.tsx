@@ -2,8 +2,8 @@ import { Metadata } from 'next';
 import { seo } from '@/lib/seo';
 
 export const metadata: Metadata = seo({
-  title: 'Cabins Near Mount Rushmore — 16 Cabins from $51 | Rush No More',
-  description: '16 presidential cabins near Mount Rushmore at Rush No More, Sturgis SD — from $51.76. Sleep 2–10, A/C, private baths, pet-friendly. Free pool, hot tubs & beer garden.',
+  title: 'Cabins Near Mount Rushmore — 20 Cabins from $51 | Rush No More',
+  description: '20 presidential cabins near Mount Rushmore at Rush No More, Sturgis SD — from $51.76. Sleep 2–10, A/C, private baths, pet-friendly options. Free pool, hot tubs & beer garden.',
   path: '/stay/cabins',
   image: '/images/Cabins/CabinUlyssesGrant/PhotoMainUlyssesGrant.png',
   keywords: [

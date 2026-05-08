@@ -14,7 +14,7 @@ type PropertyType = 'rv' | 'cabin' | 'tent';
 
 const TYPES = [
   { id: 'rv' as PropertyType, label: 'RV Sites', icon: Truck, price: 'Starts at $41.22/night', desc: 'Full hookups, 30/50 AMP' },
-  { id: 'cabin' as PropertyType, label: 'Cabins', icon: Home, price: 'Starts at $51.76/night', desc: '16 Presidential Cabins' },
+  { id: 'cabin' as PropertyType, label: 'Cabins', icon: Home, price: 'Starts at $51.76/night', desc: '20 Presidential Cabins' },
   { id: 'tent' as PropertyType, label: 'Tent Camping', icon: Tent, price: 'From $35/night', desc: 'Shaded pine forest' },
 ];
 
@@ -52,7 +52,7 @@ export default function BookPage() {
             Reserve Your <span className="text-brand-gold italic">Stay</span>
           </h1>
           <p className="text-lg text-white/70 max-w-2xl mx-auto">
-            Check real-time availability and book instantly. All 16 amenities included.
+            Check real-time availability and book instantly. All resort amenities included.
           </p>
         </div>
       </section>

@@ -64,15 +64,14 @@ const FEATURED_AMENITIES = [
   },
 ];
 
-/* ─── Amenity Grid Data (the full 16) ─── */
+/* ─── Amenity Grid Data (the full 15) ─── */
 const AMENITY_GRID = [
   { icon: Waves, title: 'Pool & Hot Tubs', desc: 'Heated pool and spa tubs for ultimate relaxation', tag: 'Most Popular' },
   { icon: Beer, title: 'Beer Garden', desc: 'On-site bar with craft beers, cocktails & live music', tag: 'Fan Favorite' },
   { icon: ShowerHead, title: 'Modern Bathhouses', desc: 'Spotless, fully-equipped shower and restroom facilities', tag: '' },
   { icon: WashingMachine, title: 'Laundromats', desc: 'Coin-operated washers and dryers throughout the park', tag: '' },
-  { icon: Wifi, title: 'Free Wi-Fi', desc: 'High-speed internet access across the entire resort', tag: '' },
-  { icon: PawPrint, title: 'Pet Friendly', desc: 'Bring your furry family members — dog run included', tag: 'Paws Welcome' },
-  { icon: Bike, title: 'Bike Wash Station', desc: 'Professional-grade wash station for motorcycles & bikes', tag: 'Riders Love' },
+  { icon: Wifi, title: 'Free Wi-Fi', desc: 'Complimentary Wi-Fi throughout the resort', tag: '' },
+  { icon: PawPrint, title: 'Pet Friendly', desc: 'Well-behaved pets welcome at most sites and select cabins', tag: 'Paws Welcome' },
   { icon: Fuel, title: 'Propane Sales', desc: 'Convenient on-site propane refill and exchange', tag: '' },
   { icon: Utensils, title: 'Cafe', desc: 'Open weekends & all 10 days of Rally', tag: '' },
   { icon: Gamepad2, title: 'Game Room', desc: 'Arcade games, pool tables, and board games', tag: '' },
@@ -80,8 +79,8 @@ const AMENITY_GRID = [
   { icon: TreePine, title: 'Nature Trails', desc: 'Miles of walking and hiking trails through pine forest', tag: '' },
   { icon: Store, title: 'Camp Store', desc: 'Essentials, snacks, souvenirs, and local goods', tag: '' },
   { icon: Utensils, title: 'Picnic Pavilions', desc: 'Covered and open-air picnic areas with BBQ grills', tag: '' },
-  { icon: Cable, title: 'Full Hookups', desc: 'Water, electric (30/50 AMP), and sewer at every RV site', tag: '' },
-  { icon: ShieldCheck, title: '24/7 Security', desc: 'Gated entry, patrol, and emergency assistance', tag: 'Peace of Mind' },
+  { icon: Cable, title: 'Hookup Options', desc: 'Water-electric and full-hookup (W/E/S) sites available — see RV Sites for details', tag: '' },
+  { icon: ShieldCheck, title: 'On-Site Staff', desc: 'Friendly on-site staff during business hours, with after-hours on-call assistance', tag: '' },
 ];
 
 /* ─── "Day at Rush No More" Timeline ─── */
@@ -108,9 +107,9 @@ export default function AmenitiesPage() {
   return (
     <>
       <JsonLd data={breadcrumbSchema([{ name: 'Home', url: '/' }, { name: 'Amenities', url: '/amenities' }])} />
-      <JsonLd data={videoSchema({ name: 'Rush No More Amenities Tour — Pool, Hot Tubs, Beer Garden & More', description: '16 free resort amenities at Rush No More campground near Mount Rushmore — heated pool, hot tub spas, beer garden, game room, nature trails, modern bathhouses & more. No resort fees.', thumbnailUrl: '/images/Pool/PoolWithPeople.jpeg', contentUrl: '/videos/rushnomore-amenities.mp4', uploadDate: '2025-01-01' })} />
+      <JsonLd data={videoSchema({ name: 'Rush No More Amenities Tour — Pool, Hot Tubs, Beer Garden & More', description: 'Free resort amenities at Rush No More campground near Mount Rushmore — heated pool, hot tub spas, beer garden, game room, nature trails, modern bathhouses & more. No resort fees.', thumbnailUrl: '/images/Pool/PoolWithPeople.jpeg', contentUrl: '/videos/rushnomore-amenities.mp4', uploadDate: '2025-01-01' })} />
       <JsonLd data={faqSchema([
-        { q: 'Are amenities free at Rush No More?', a: 'Yes! All 16 amenities are included free with every reservation — RV, cabin, or tent. This includes the heated pool, hot tubs, beer garden, game room, nature trails, bathhouses, Wi-Fi, and more.' },
+        { q: 'Are amenities free at Rush No More?', a: 'Yes! Resort amenities are included free with every reservation — RV, cabin, or tent. This includes the heated pool, hot tubs, beer garden, game room, nature trails, bathhouses, Wi-Fi, and more.' },
         { q: 'Does Rush No More have a swimming pool?', a: 'Yes! We have a heated swimming pool open seasonally (May through September) that is free for all registered guests.' },
         { q: 'Is Rush No More pet friendly?', a: 'Absolutely! We welcome well-behaved pets. We have designated pet-friendly areas and ask that all pets be kept on leashes in common areas.' },
         { q: 'Does Rush No More have a beer garden?', a: 'Yes! Our on-site beer garden serves craft beers, cocktails, and beverages. It is open weekends during regular season and all 10 days during the Sturgis Rally.' },
@@ -141,7 +140,7 @@ export default function AmenitiesPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            16 Resort Amenities
+            Resort Amenities
           </motion.span>
 
           <motion.h1
@@ -185,10 +184,10 @@ export default function AmenitiesPage() {
             transition={{ duration: 0.5, delay: 0.5 }}
           >
             {[
-              { val: '16', label: 'Amenities' },
+              { val: '15', label: 'Amenities' },
               { val: '100%', label: 'Included Free' },
               { val: '4.8★', label: 'Guest Rating' },
-              { val: '24/7', label: 'Security' },
+              { val: '4.8/5', label: 'TripAdvisor' },
             ].map((s, i) => (
               <div key={i} className="text-center">
                 <span className="font-display text-3xl md:text-4xl text-brand-gold font-bold block">{s.val}</span>
@@ -206,7 +205,7 @@ export default function AmenitiesPage() {
         <div className="max-w-7xl mx-auto px-4 flex flex-wrap items-center justify-center gap-6 md:gap-12">
           <div className="flex items-center gap-3">
             <CheckCircle className="w-6 h-6" />
-            <span className="text-sm font-bold uppercase tracking-wider">All Amenities Included With Every Stay</span>
+            <span className="text-sm font-bold uppercase tracking-wider">Resort Amenities Included With Every Stay</span>
           </div>
           <div className="hidden md:flex items-center gap-8 text-sm font-medium">
             <span className="flex items-center gap-2"><Waves className="w-4 h-4" /> Pool & Hot Tubs</span>
@@ -321,7 +320,7 @@ export default function AmenitiesPage() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════════
-          FULL AMENITIES GRID — All 16
+          FULL AMENITIES GRID
       ═══════════════════════════════════════════════════════════════ */}
       <section id="amenities-grid" className="py-24 md:py-28 bg-white relative overflow-hidden">
         <div className="absolute top-0 left-0 w-80 h-80 bg-brand-gold/3 rounded-full blur-3xl" />
@@ -333,7 +332,7 @@ export default function AmenitiesPage() {
               ★ Complete List ★
             </span>
             <h2 className="mb-5 text-4xl md:text-5xl">
-              All <span className="text-brand-gold italic">16</span> Amenities
+              All <span className="text-brand-gold italic">Resort</span> Amenities
             </h2>
             <p className="text-brand-navy/70 text-lg max-w-2xl mx-auto font-medium">
               Every single amenity is included free with your stay. No hidden fees, no resort charges, no surprises.
@@ -647,7 +646,7 @@ export default function AmenitiesPage() {
             <span className="inline-block px-5 py-2 bg-brand-gold text-white text-xs font-black uppercase tracking-[0.2em] rounded-full shadow-gold mb-5">
               ★ Stay With Us ★
             </span>
-            <h2 className="mb-3">Every Stay Includes <span className="text-brand-gold italic">All 16</span> Amenities</h2>
+            <h2 className="mb-3">Every Stay Includes <span className="text-brand-gold italic">Every</span> Amenity</h2>
             <p className="text-brand-navy/70 text-lg max-w-2xl mx-auto font-medium">Choose your accommodation — amenities are always on the house.</p>
             <div className="w-32 h-1.5 bg-gold-gradient rounded-full mt-5 mx-auto" />
           </div>
@@ -655,7 +654,7 @@ export default function AmenitiesPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
               { icon: Truck, title: 'RV Sites', price: 'Starts at $41.22', sub: 'per night · Full hookups', img: '/images/GeneralImagesPark/IMG_7381.jpeg', href: '/stay/rv-sites', features: ['30/50 AMP Service', 'Pull-Through up to 100ft', 'Cement Slabs (Luxury)', 'Hot Tub (Luxury Spa)'] },
-              { icon: Home, title: 'Presidential Cabins', price: 'Starts at $51.76', sub: 'per night · 16 unique cabins', img: '/images/Cabins/CabinJamesMonroe/PhotoMainJamesMonroe.jpeg', href: '/stay/cabins', features: ['Sleeps 2-10 Guests', 'Full Kitchens', 'A/C & Heating', 'Private Bathrooms'] },
+              { icon: Home, title: 'Presidential Cabins', price: 'Starts at $51.76', sub: 'per night · 20 unique cabins', img: '/images/Cabins/CabinJamesMonroe/PhotoMainJamesMonroe.jpeg', href: '/stay/cabins', features: ['Sleeps 2-10 Guests', 'Full Kitchens', 'A/C & Heating', 'Private Bathrooms'] },
               { icon: Tent, title: 'Tent Camping', price: 'From $35', sub: 'per night · Best value', img: '/images/Wooded-Tent-Area.png', href: '/stay/tent-camping', features: ['Shaded Pine Forest', '15 Sites with Electric', 'Water Hookups', 'Bathhouse Access'] },
             ].map((item, i) => {
               const Icon = item.icon;
@@ -691,7 +690,7 @@ export default function AmenitiesPage() {
                       </div>
                       <div className="flex items-center justify-between pt-4 border-t border-surface-muted">
                         <span className="flex items-center gap-1 text-xs text-brand-stone font-bold uppercase tracking-wider">
-                          <Sparkles className="w-3.5 h-3.5 text-brand-gold" /> All 16 amenities included
+                          <Sparkles className="w-3.5 h-3.5 text-brand-gold" /> All resort amenities included
                         </span>
                         <span className="inline-flex items-center gap-1.5 px-4 py-1.5 bg-brand-gold text-white text-xs font-bold rounded-full group-hover:shadow-gold transition-all uppercase tracking-wider">
                           View <ArrowRight className="w-3.5 h-3.5" />
@@ -812,7 +811,7 @@ export default function AmenitiesPage() {
         </div>
       </section>
 
-      <BookingCTA title="Ready to Enjoy All 16 Amenities?" subtitle="RV starts at $41.22 | Cabins starts at $51.76 | Tent from $35/night — all amenities included free." />
+      <BookingCTA title="Ready to Enjoy Every Amenity?" subtitle="RV starts at $41.22 | Cabins starts at $51.76 | Tent from $35/night — all resort amenities included free." />
     </>
   );
 }

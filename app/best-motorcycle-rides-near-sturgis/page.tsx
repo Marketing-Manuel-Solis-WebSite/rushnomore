@@ -132,7 +132,7 @@ export default function Page() {
           <h2 className="text-3xl font-display font-bold mb-4">Your Basecamp for Every Ride</h2>
           <p className="text-white/70 max-w-2xl mx-auto mb-8">
             Rush No More is 5 miles from Main Street Sturgis and centrally placed for every ride on this page.
-            Return to a gated campground with bike wash, beer garden and hot tubs — every night of rally.
+            Return to a quiet campground with beer garden, hot tubs and a heated pool — every night of rally.
           </p>
           <Link href="/sturgis-rally-camping" className="inline-flex items-center gap-2 px-8 py-4 bg-brand-gold text-white font-bold rounded-xl shadow-gold uppercase tracking-wider">
             Book Rally Camping <ArrowRight className="w-5 h-5" />

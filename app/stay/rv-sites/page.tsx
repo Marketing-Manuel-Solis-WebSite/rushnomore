@@ -14,22 +14,22 @@ import {
 } from 'lucide-react';
 
 const WHY_CHOOSE = [
-  { icon: Zap, title: '30 & 50 AMP Service', desc: 'Every site includes your choice of 30 or 50 AMP electrical hookups.' },
+  { icon: Zap, title: '30 & 50 AMP Service', desc: '30 AMP standard on Water/Electric sites; 30 or 50 AMP on Full-Hookup, Luxury and Luxury Spa sites.' },
   { icon: Navigation, title: 'Pull-Throughs up to 100ft', desc: 'Big rigs welcome — our longest pull-through sites accommodate up to 100 feet.' },
   { icon: Waves, title: 'Pool & Hot Tubs Included', desc: 'Heated pool and multiple hot tub spas are free with every RV site.' },
   { icon: Beer, title: 'On-Site Beer Garden', desc: 'Craft brews, cocktails, and a social atmosphere steps from your site.' },
-  { icon: ShieldCheck, title: '24/7 Gated Security', desc: 'Gated entry with round-the-clock security patrol for your peace of mind.' },
+  { icon: ShieldCheck, title: 'Friendly On-Site Staff', desc: 'Friendly on-site staff during business hours, after-hours on-call assistance and well-lit grounds.' },
   { icon: Wifi, title: 'Free Wi-Fi', desc: 'Stay connected throughout the resort with complimentary Wi-Fi.' },
 ];
 
 const FAQS = [
-  { q: 'What hookups do RV sites include?', a: 'All RV sites at Rush No More include full hookups: water, electric (30 or 50 AMP), and sewer connections. Luxury and Luxury Spa sites add cement slabs and gas BBQ grills.' },
+  { q: 'What hookups do RV sites include?', a: 'Hookups vary by site type. Water/Electric Back-in sites include water and 30 AMP electric. FHU (Full Hook-Up) sites — both back-in and pull-through — add sewer plus 30/50 AMP service. Luxury and Luxury Spa sites add cement slabs and gas BBQ grills on top of full hookups.' },
   { q: 'How long can my RV be?', a: 'We accommodate RVs up to 100 feet with both pull-through and back-in options available.' },
   { q: 'How far is Rush No More from Mount Rushmore?', a: 'Rush No More is approximately 55 miles from Mount Rushmore National Memorial, about a 1-hour scenic drive through the Black Hills.' },
   { q: 'What is the difference between Luxury and Luxury Spa sites?', a: 'Both include cement slabs and gas BBQ grills. Luxury Spa sites add a private hot tub spa right at your site — the ultimate RV glamping experience.' },
   { q: 'Are RV sites open year-round?', a: 'Standard RV sites are open year-round. Luxury and Luxury Spa sites are seasonal (May 1 through October 1).' },
-  { q: 'Is there a dump station?', a: 'Every site has its own sewer hookup, so there is no need for a separate dump station.' },
-  { q: 'Are pets allowed at the RV park?', a: 'Yes! Rush No More is pet-friendly. Dogs and other pets are welcome on leash throughout the resort.' },
+  { q: 'Is there a dump station?', a: 'Full Hook-Up sites have their own sewer connection at the site. Guests on Water/Electric sites can use the on-site dump station — please ask the front desk for directions on arrival.' },
+  { q: 'Are pets allowed at the RV park?', a: 'Yes! Well-behaved pets are welcome at most RV sites. Pets must be on leash, owners must clean up after them, and pets are not to be left unattended.' },
 ];
 
 export default function RVSitesPage() {
@@ -60,7 +60,7 @@ export default function RVSitesPage() {
             Full-Hookup <span className="text-brand-gold italic">RV Sites</span> in the Black Hills
           </h1>
           <p className="text-lg text-white/80 max-w-3xl mx-auto mb-8">
-            200+ premium RV sites with 30/50 AMP, pull-throughs up to 100ft, heated pool, beer garden & 16 free amenities — just 55 miles from Mount Rushmore in Sturgis, South Dakota.
+            200+ premium RV sites with 30/50 AMP, pull-throughs up to 100ft, heated pool, beer garden & free resort amenities — just 55 miles from Mount Rushmore in Sturgis, South Dakota.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10 mb-10">
             {[

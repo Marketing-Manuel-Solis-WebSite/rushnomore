@@ -320,9 +320,9 @@ export default function MyReservationPage() {
                   <h3 className="text-sm font-bold text-brand-navy mb-3 flex items-center gap-2"><Sparkles className="w-4 h-4 text-brand-gold" />What to Expect</h3>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                     {[
-                      { icon: Star, text: '16 free amenities: Pool, Hot Tub, Beer Garden' },
+                      { icon: Star, text: 'Free resort amenities: Pool, Hot Tub, Beer Garden' },
                       { icon: MapPin, text: '5 mi from Sturgis · 55 mi from Mt. Rushmore' },
-                      { icon: Shield, text: 'Gated entry · 24/7 security' },
+                      { icon: Shield, text: 'Friendly on-site staff · After-hours on-call' },
                       { icon: Phone, text: 'Office: 8 AM - 8 PM Mountain Time' },
                     ].map((item, i) => (
                       <div key={i} className="flex items-start gap-2 text-xs text-brand-navy/70">

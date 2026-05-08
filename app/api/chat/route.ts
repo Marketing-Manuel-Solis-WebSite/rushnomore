@@ -57,13 +57,13 @@ RV SITES (prices vary by weekday, weekend, Rally & holidays — starts at):
    - Full hook-ups, 30/50 AMP
 
 6. Presidential Cabins (prices vary by weekday, weekend, Rally & holidays — starts at):
-   - 16 unique cabins named after US Presidents
+   - 20 unique cabins (19 named after US Presidents plus the JFK House)
    - Sleep 2 to 10 guests
    - Cabin 14: starts at $51.76 | Cabins 7-8: starts at $62.86
-   - Cabins 1,4,5,17-20: starts at $95.13 | Cabins 9-10: starts at $100.42
+   - Cabins 1,4,5,17-20: starts at $95.13 | Cabin 9: starts at $100.42 | Cabin 10: starts at $110.42
    - Cabin 2: starts at $121.56 | Cabin 15: starts at $126.84
    - Cabin 3: starts at $136.35 | Cabin 6: starts at $136.56
-   - Cabins 11,12,16: starts at $174 | Cabin 21: starts at $332
+   - Cabins 11,12,16: starts at $174 | Cabin 21 (JFK House): starts at $332
 
 5. Tent Camping — From $35/night (based on 2 people)
    - Electric hookup: +$5/night
@@ -72,7 +72,7 @@ RV SITES (prices vary by weekday, weekend, Rally & holidays — starts at):
    - Shaded Ponderosa pine forest, water hookups nearby, bathhouse access. 15 of 20 sites have electricity. No fire pits included — propane campfire rentals available.
 
 16 FREE AMENITIES (all included with every stay):
-Pool & Hot Tubs, Beer Garden & Bar, Modern Bathhouses, Laundromats, Free Wi-Fi, Pet Friendly (dog run), Bike Wash Station, Propane Sales, Propane Campfire Rentals (NO WOOD FIRES — we back up to Forest Service land, propane and charcoal only), Cafe (open weekends & all 10 days of Rally), Game Room, Camp Library, Nature Trails, Camp Store, Picnic Pavilions, Full Hookups, 24/7 Security (gated entry)
+Pool & Hot Tubs, Beer Garden & Bar, Modern Bathhouses, Laundromats, Complimentary Wi-Fi, Pet Friendly (well-behaved pets welcome at most sites and select cabins), Propane Sales, Propane Campfire Rentals (NO WOOD FIRES — we back up to Forest Service land, propane and charcoal only), Cafe (open weekends & all 10 days of Rally), Game Room, Camp Library, Nature Trails, Camp Store, Picnic Pavilions, Hookup Options (water-electric and full-hookup sites available), Friendly On-Site Staff (during business hours, after-hours on-call assistance)
 
 STURGIS RALLY 2026 (Aug 2-18):
 - Standard 30A Hook-up: $899 (10-day package)
@@ -104,7 +104,7 @@ EVENTS:
 DIRECTIONS:
 From I-90, take Exit 37 toward Sturgis → Turn right onto Brimstone Place → Rush No More is on your right (less than 2 minutes from interstate)
 
-PET POLICY: Dogs welcome on leash. Clean up after pets. Quiet during quiet hours. Dog run available.
+PET POLICY: Well-behaved pets welcome at most sites and select cabins. Dogs must be on leash, owners must clean up after pets, and pets are not to be left unattended. Quiet hours apply.
 
 The resort is family-owned, has a 4.8-star rating, has hosted 84+ Sturgis Rallies, served 4,200+ happy campers, and 34,000+ drinks at the beer garden.`;
 

@@ -6,7 +6,7 @@ import { JsonLd } from '@/components/seo/JsonLd';
 import { faqSchema, campgroundSchema } from '@/lib/seo';
 import {
   MapPin, CheckCircle, Truck, Zap, Wifi, Shield, Phone, ArrowRight,
-  ExternalLink, Waves, Beer, Snowflake, Sun, Mountain, Bike,
+  ExternalLink, Waves, Beer, Snowflake, Sun, Mountain,
 } from 'lucide-react';
 
 const FAQ = [
@@ -32,7 +32,7 @@ const FAQ = [
   },
   {
     q: 'What amenities are included?',
-    a: 'Heated pool, multiple hot tubs, beer garden with live music, game room, free Wi-Fi, modern bathhouses, laundromat, bike wash, camp store, nature trails, picnic pavilions, pet-friendly sites and 24/7 gated security.',
+    a: 'Heated pool, multiple hot tubs, beer garden with live music, game room, complimentary Wi-Fi, modern bathhouses, laundromat, camp store, nature trails, picnic pavilions, pet-friendly options and friendly on-site staff.',
   },
   {
     q: 'Is the RV park open year-round?',
@@ -122,7 +122,7 @@ export default function Page() {
               { icon: Mountain, t: '55 mi to Mount Rushmore', d: 'Centrally located for Mount Rushmore, Crazy Horse, Deadwood and the Black Hills.' },
               { icon: Truck, t: '200+ Full Hookup Sites', d: 'Water, electric, sewer. 30/50 AMP. Pull-throughs up to 100 ft for big rigs.' },
               { icon: Waves, t: 'Pool, Hot Tubs, Beer Garden', d: 'Heated pool, multiple hot tubs, live music, game room — 16+ free amenities.' },
-              { icon: Shield, t: '24/7 Gated Security', d: 'Rest easy knowing your rig, tow vehicle and gear stay safe at every stay.' },
+              { icon: Shield, t: 'Friendly On-Site Staff', d: 'On-site staff during business hours with after-hours on-call assistance.' },
             ].map(({ icon: Icon, t, d }) => (
               <div key={t} className="bg-white rounded-2xl p-6 shadow-lodge border border-brand-gold/10">
                 <div className="w-12 h-12 bg-brand-gold/10 rounded-xl flex items-center justify-center mb-4">
@@ -144,7 +144,7 @@ export default function Page() {
           </h2>
           <p className="text-brand-navy/70 text-center max-w-2xl mx-auto mb-12">
             From affordable water/electric back-ins to luxury spa sites with a private hot tub — every site includes
-            Wi-Fi, bathhouse access and all 16 park amenities.
+            complimentary Wi-Fi, bathhouse access and all resort amenities.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {RV_TIERS.map((r) => (
@@ -196,8 +196,8 @@ export default function Page() {
               </h2>
               <p className="text-brand-navy/75 leading-relaxed mb-6">
                 Snowbirds, workampers and seasonal residents — we offer monthly RV rates in shoulder and off-season
-                windows with full hookups, 30/50 AMP, Wi-Fi and 24/7 gated security. Rally week (early August) is
-                excluded. Call for current monthly availability and rates.
+                windows with full hookups, 30/50 AMP, complimentary Wi-Fi and friendly on-site staff. Rally week
+                (early August) is excluded. Call for current monthly availability and rates.
               </p>
               <div className="flex flex-wrap gap-3">
                 <Link
@@ -267,21 +267,21 @@ export default function Page() {
       <section className="py-20 bg-surface-primary">
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-display font-bold text-center mb-4">
-            Full Hookups &amp; 16+ Free Amenities
+            Hookup Options &amp; Free Resort Amenities
           </h2>
           <p className="text-brand-navy/70 text-center max-w-2xl mx-auto mb-12">
-            Everything you need for a comfortable stay — included at every RV site.
+            Hookup options vary by site — water/electric back-ins, full-hookup back-ins and pull-throughs, plus luxury spa sites with a private hot tub.
           </p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
-              { icon: Truck, t: 'Full Hookups' },
+              { icon: Truck, t: 'Hookup Options' },
               { icon: Zap, t: '30 / 50 AMP' },
               { icon: Waves, t: 'Heated Pool' },
               { icon: Beer, t: 'Beer Garden' },
               { icon: Wifi, t: 'Free Wi-Fi' },
-              { icon: Shield, t: 'Gated Security' },
-              { icon: Bike, t: 'Bike Wash' },
+              { icon: Shield, t: 'On-Site Staff' },
               { icon: Mountain, t: 'Nature Trails' },
+              { icon: Mountain, t: 'Hot Tub Spas' },
             ].map(({ icon: Icon, t }) => (
               <div key={t} className="bg-white rounded-xl p-5 border border-brand-gold/15 text-center">
                 <Icon className="w-6 h-6 text-brand-gold mx-auto mb-2" />
@@ -310,7 +310,7 @@ export default function Page() {
             {[
               { t: 'Sturgis Rally Camping', d: 'RV sites, cabins & tent packages for the Sturgis Motorcycle Rally — 5 miles from Main Street.', href: '/sturgis-rally-camping' },
               { t: 'Black Hills Itinerary', d: 'A 6-day Black Hills itinerary from your base at Rush No More — Mount Rushmore, Deadwood & more.', href: '/black-hills-itinerary' },
-              { t: 'Cabins & Tent Camping', d: '16 Presidential cabins and 20+ shaded tent sites under Ponderosa pines for non-RV travelers.', href: '/stay' },
+              { t: 'Cabins & Tent Camping', d: '20 Presidential cabins and 20+ shaded tent sites under Ponderosa pines for non-RV travelers.', href: '/stay' },
             ].map(({ t, d, href }) => (
               <Link
                 key={href}

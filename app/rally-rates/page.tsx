@@ -8,7 +8,7 @@ import { CheckCircle, ExternalLink, Phone, ArrowRight, Info } from 'lucide-react
 
 const RATES_FAQ = [
   { q: 'Are rally rates per night or a package?', a: 'Rally rates are 10-night packages covering the full rally week. Pre-rally rates are sold per night for arrivals before the rally window begins.' },
-  { q: 'Do rates include all amenities?', a: 'Yes. Every stay includes heated pool, hot tub spas, beer garden access, bathhouses, Wi-Fi, bike wash, game room, nature trails and 24/7 gated security.' },
+  { q: 'Do rates include all amenities?', a: 'Yes. Every stay includes heated pool, hot tub spas, beer garden access, bathhouses, complimentary Wi-Fi, game room, nature trails and friendly on-site staff.' },
   { q: 'What is the deposit and cancellation policy for rally?', a: 'Rally reservations require a larger deposit than standard stays and follow a rally-specific cancellation schedule. See our Policies page for full terms or call 605-423-2545.' },
   { q: 'Can I add extra nights before or after rally?', a: 'Yes — add pre-rally nights at the pre-rally rate. Post-rally availability is limited; book ahead.' },
   { q: 'Do you offer monthly RV rates outside rally?', a: 'Yes. Monthly and extended-stay options are available outside rally. See our Monthly RV Sites page.' },
@@ -46,7 +46,7 @@ export default function Page() {
       <JsonLd data={eventSchema({
         name: '85th Sturgis Motorcycle Rally — Camping at Rush No More',
         description:
-          'Camp at Rush No More — 5 miles from Main Street Sturgis — for the 2026 Sturgis Motorcycle Rally. RV, presidential cabin and tent options. Full hookups, luxury sites, on-site beer garden and bike wash.',
+          'Camp at Rush No More — 5 miles from Main Street Sturgis — for the 2026 Sturgis Motorcycle Rally. RV, presidential cabin and tent options. Full hookups, luxury sites and on-site beer garden.',
         startDate: '2026-08-02',
         endDate: '2026-08-18',
         image: '/images/BikeRally/IMG_9865.JPG',
@@ -125,7 +125,7 @@ export default function Page() {
             <Info className="w-6 h-6 text-brand-gold flex-shrink-0" />
             <div className="text-sm text-brand-navy/80 leading-relaxed">
               <strong className="text-brand-navy">All rates include full amenity access</strong> — heated pool, hot tub spas, beer garden,
-              bike wash, bathhouses, Wi-Fi, game room and 24/7 gated security. Cabin rally rates and tent rally rates available on request —
+              bathhouses, complimentary Wi-Fi, game room and on-site staff. Cabin rally rates and tent rally rates available on request —
               call <a href={`tel:${SITE.phoneTel}`} className="text-brand-gold font-bold hover:underline">{SITE.phone}</a> or book online.
             </div>
           </div>

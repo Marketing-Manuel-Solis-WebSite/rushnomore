@@ -9,7 +9,7 @@ import { faqSchema, breadcrumbSchema, serviceSchema, vacationRentalSchema, speak
 import {
   ExternalLink, ArrowRight, Home, CheckCircle, Users,
   MapPin, Phone, TreePine, Waves, Beer, ShieldCheck,
-  Thermometer, UtensilsCrossed, PawPrint, Flame,
+  Thermometer, UtensilsCrossed, PawPrint, Flame, ShowerHead, Bed,
 } from 'lucide-react';
 
 const CABIN_FEATURES = [
@@ -18,12 +18,12 @@ const CABIN_FEATURES = [
   { icon: PawPrint, title: 'Pet-Friendly Options', desc: 'Bring your furry friends — several cabins welcome pets.' },
   { icon: Waves, title: 'Pool & Hot Tubs', desc: 'All cabin guests enjoy free access to the heated pool and hot tub spas.' },
   { icon: Beer, title: 'Beer Garden & Bar', desc: 'Craft brews and cocktails at our on-site beer garden, steps away.' },
-  { icon: ShieldCheck, title: '24/7 Security', desc: 'Gated entry with round-the-clock patrol for peace of mind.' },
+  { icon: ShieldCheck, title: 'On-Site Staff', desc: 'Friendly on-site staff during business hours with after-hours on-call assistance.' },
 ];
 
 const FAQS = [
-  { q: 'How many cabins does Rush No More have?', a: 'We have 16 unique cabins, each named after a US President. They range from cozy 2-person economy units to spacious suites sleeping up to 10 guests.' },
-  { q: 'Do cabins have bathrooms?', a: 'Yes, every cabin at Rush No More has its own private bathroom.' },
+  { q: 'How many cabins does Rush No More have?', a: 'We have 20 unique cabins — 19 named after US Presidents, plus the JFK House. They range from cozy 2-person economy units to spacious suites sleeping up to 10 guests.' },
+  { q: 'Do cabins have bathrooms?', a: 'Yes, every cabin at Rush No More has its own private bathroom and shower.' },
   { q: 'Are there cabins with kitchens?', a: 'Select larger cabins include full kitchens with refrigerator, stove, and cookware. Smaller economy cabins do not have kitchen facilities.' },
   { q: 'How far are the cabins from Mount Rushmore?', a: 'Rush No More is approximately 55 miles (about 1 hour) from Mount Rushmore National Memorial, making it an easy day trip.' },
   { q: 'Can I bring my dog to a cabin?', a: 'Yes! Several of our cabins are pet-friendly. Please let us know at booking so we can assign a pet-friendly unit.' },
@@ -37,7 +37,7 @@ export default function CabinsPage() {
       <JsonLd data={faqSchema(FAQS)} />
       <JsonLd data={serviceSchema({
         name: 'Presidential Cabins at Rush No More',
-        description: '16 unique cabins near Mount Rushmore — named after US Presidents, sleeping 2-10 guests, A/C & heating, private bathrooms, pet-friendly.',
+        description: '20 unique cabins near Mount Rushmore — 19 named after US Presidents plus the JFK House, sleeping 2-10 guests, A/C & heating, private bathrooms, pet-friendly options.',
         url: '/stay/cabins',
         image: '/images/Cabins/CabinUlyssesGrant/PhotoMainUlyssesGrant.png',
         priceMin: '51.76',
@@ -46,7 +46,7 @@ export default function CabinsPage() {
       })} />
       <JsonLd data={vacationRentalSchema({
         name: 'Presidential Cabins — Rush No More',
-        description: 'Presidential cabin rentals near Mount Rushmore. 16 unique cabins, sleep 2-10, A/C & heating, private bathrooms.',
+        description: 'Presidential cabin rentals near Mount Rushmore. 20 unique cabins (19 named after US Presidents plus the JFK House), sleep 2-10, A/C & heating, private bathrooms.',
         url: '/stay/cabins',
         image: '/images/Cabins/CabinUlyssesGrant/PhotoMainUlyssesGrant.png',
         price: '51.76',
@@ -68,11 +68,11 @@ export default function CabinsPage() {
             Presidential <span className="text-brand-gold italic">Cabin Collection</span>
           </h1>
           <p className="text-lg text-white/80 max-w-3xl mx-auto mb-8">
-            16 unique cabins in Sturgis, South Dakota — each named after a US President. From cozy couples&apos; retreats to spacious family suites sleeping 10, with full access to all resort amenities. Just 55 miles from Mount Rushmore.
+            20 unique cabins in Sturgis, South Dakota — 19 named after US Presidents plus the JFK House. From cozy couples&apos; retreats to spacious family suites sleeping 10, with full access to all resort amenities. Just 55 miles from Mount Rushmore.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10 mb-10">
             {[
-              { val: '16', label: 'Unique Cabins' },
+              { val: '20', label: 'Unique Cabins' },
               { val: '2–10', label: 'Guests Per Cabin' },
               { val: '$51.76', label: 'Starting At' },
               { val: '55 mi', label: 'To Mt. Rushmore' },
@@ -99,7 +99,7 @@ export default function CabinsPage() {
         <div className="max-w-7xl mx-auto px-4 relative z-10">
           <div className="text-center mb-14">
             <span className="inline-block px-5 py-2 bg-brand-gold text-white text-xs font-black uppercase tracking-[0.2em] rounded-full shadow-gold mb-5">
-              16 Presidential Cabins
+              20 Presidential Cabins
             </span>
             <h2 className="text-3xl md:text-4xl mb-3">
               Find Your Perfect <span className="text-brand-gold italic">Cabin</span>
@@ -142,7 +142,22 @@ export default function CabinsPage() {
                       </div>
                     </div>
                     <div className="p-5">
-                      <h4 className="text-lg font-display font-bold mb-3">{c.name}</h4>
+                      <h4 className="text-lg font-display font-bold mb-2">{c.name}</h4>
+                      <div className="flex flex-wrap gap-1.5 mb-3">
+                        {c.bath && (
+                          <span className="inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider bg-brand-gold/10 text-brand-gold px-2 py-1 rounded-full border border-brand-gold/15">
+                            <ShowerHead className="w-3 h-3" /> Private Bath &amp; Shower
+                          </span>
+                        )}
+                        {c.beds && (
+                          <span className="inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider bg-surface-secondary text-brand-navy/70 px-2 py-1 rounded-full border border-surface-muted/50">
+                            <Bed className="w-3 h-3" /> {c.beds}
+                          </span>
+                        )}
+                      </div>
+                      {c.note && (
+                        <p className="text-xs text-brand-navy/60 italic mb-3 leading-snug">{c.note}</p>
+                      )}
                       <div className="flex items-center justify-between mb-4">
                         <div>
                           <span className="text-xs text-brand-stone block">starts at</span>
@@ -170,7 +185,7 @@ export default function CabinsPage() {
               Cabin <span className="text-brand-gold italic">Features & Amenities</span>
             </h2>
             <p className="text-brand-navy/60 text-lg max-w-2xl mx-auto font-medium">
-              Every cabin comes with full access to all 16 resort amenities at no extra charge.
+              Every cabin includes a private bathroom &amp; shower, plus full access to all 16 resort amenities at no extra charge.
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -229,7 +244,7 @@ export default function CabinsPage() {
             Book Your <span className="text-brand-gold italic">Presidential Cabin</span>
           </h2>
           <p className="text-brand-navy/60 text-lg mb-8 font-medium">
-            16 unique cabins starting at $51.76/night in Sturgis, South Dakota — your gateway to Mount Rushmore and the Black Hills. Prices vary by weekday, weekend, Rally &amp; holidays.
+            20 unique cabins starting at $51.76/night in Sturgis, South Dakota — your gateway to Mount Rushmore and the Black Hills. Prices vary by weekday, weekend, Rally &amp; holidays.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4">
             <a href={SITE.booking} target="_blank" rel="noopener noreferrer" className="btn-gold text-base px-8 py-4">

@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { SITE, AMENITIES, REVIEWS, STATS } from '@/data/site';
 import { BookingCTA } from '@/components/ui';
 import { HeroSection } from '@/components/layout/HeroSection';
-import { ExternalLink, MapPin, Mountain, TreePine, Tent, Home, Truck, Phone, Star, ArrowRight, Users, Zap, Waves, Beer, ShieldCheck, Wifi, PawPrint, Clock, Navigation, Award, Heart, ThumbsUp, CheckCircle, Flame, Bike, Gamepad2, Quote, Calendar, Route } from 'lucide-react';
+import { ExternalLink, MapPin, Mountain, TreePine, Tent, Home, Truck, Phone, Star, ArrowRight, Users, Zap, Waves, Beer, ShieldCheck, Wifi, PawPrint, Clock, Navigation, Award, Heart, ThumbsUp, CheckCircle, Flame, Gamepad2, Quote, Calendar, Route } from 'lucide-react';
 
 export default function HomePage() {
   return (
@@ -136,7 +136,7 @@ export default function HomePage() {
                       Each cabin named after a US President — from cozy economy units for couples to <strong className="text-brand-navy">full luxury suites sleeping up to 10 guests</strong>. Perfect for families, reunions, and anyone who wants comfort without sacrificing the outdoors.
                     </p>
                     <div className="grid grid-cols-2 gap-2.5 mb-7">
-                      {['Sleeps 2 to 10 Guests', 'Full Kitchens Available', 'A/C & Heating', 'Private Bathrooms', 'Pet-Friendly Options', '16 Unique Cabins'].map((f, i) => (
+                      {['Sleeps 2 to 10 Guests', 'Full Kitchens Available', 'A/C & Heating', 'Private Bathrooms', 'Pet-Friendly Options', '20 Unique Cabins'].map((f, i) => (
                         <span key={i} className="flex items-center gap-2.5 text-sm text-brand-navy/80 bg-surface-secondary/80 backdrop-blur-sm px-3 py-2 rounded-lg font-medium border border-surface-muted/30">
                           <CheckCircle className="w-4 h-4 text-brand-gold flex-shrink-0" />{f}
                         </span>
@@ -170,7 +170,7 @@ export default function HomePage() {
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 p-6 z-10 lg:hidden bg-gradient-to-t from-brand-navy/90 to-transparent">
                     <span className="font-display text-4xl text-white font-bold">Starts at $51.76</span>
-                    <span className="text-white/70 text-sm block">per night · 16 unique cabins</span>
+                    <span className="text-white/70 text-sm block">per night · 20 unique cabins</span>
                   </div>
                 </div>
               </div>
@@ -293,7 +293,7 @@ export default function HomePage() {
                 {[
                   { icon: Award, text: 'Top-rated on TripAdvisor & Google' },
                   { icon: Heart, text: 'Family-owned, personal service' },
-                  { icon: ShieldCheck, text: '24/7 security & peace of mind' },
+                  { icon: ShieldCheck, text: 'On-site staff with after-hours on-call' },
                   { icon: ThumbsUp, text: '4,200+ happy campers & counting' },
                 ].map((item, i) => (
                   <div key={i} className="flex items-center gap-3 p-3.5 rounded-xl bg-white/70 backdrop-blur-sm border border-brand-gold/15 shadow-lodge hover:shadow-gold hover:-translate-y-0.5 transition-all duration-300">
@@ -451,7 +451,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 relative z-10">
           <div className="text-center mb-14">
             <span className="inline-block px-5 py-2 bg-brand-gold text-white text-xs font-black uppercase tracking-[0.2em] rounded-full shadow-gold mb-5">
-              ★ 16 Amenities ★
+              ★ Resort Amenities ★
             </span>
             <h2 className="mb-3">Everything for the <span className="text-brand-gold italic">Perfect</span> Stay</h2>
             <p className="text-brand-navy/70 text-lg max-w-2xl mx-auto font-medium">All resort amenities included with every stay — no hidden fees.</p>
@@ -479,8 +479,8 @@ export default function HomePage() {
             {[
               { icon: Flame, title: 'Propane Campfires', desc: 'Propane & charcoal only' },
               { icon: Gamepad2, title: 'Game Room', desc: 'Fun for the whole family' },
-              { icon: Bike, title: 'Bike Wash', desc: 'Keep your ride clean' },
-              { icon: ShieldCheck, title: '24/7 Security', desc: 'Safe and secure always' },
+              { icon: TreePine, title: 'Nature Trails', desc: 'Walk the Ponderosa pines' },
+              { icon: ShieldCheck, title: 'On-Site Staff', desc: 'On-call after hours' },
             ].map((a, i) => (
               <div key={i} className="bg-surface-secondary/80 backdrop-blur-sm border border-surface-muted/50 rounded-2xl p-5 text-center hover:bg-white hover:-translate-y-1 hover:shadow-gold hover:border-brand-gold/20 transition-all duration-300 group">
                 <div className="w-12 h-12 bg-brand-gold/10 backdrop-blur-sm rounded-xl flex items-center justify-center mx-auto mb-3 group-hover:bg-brand-gold/20 group-hover:scale-110 transition-all duration-300 border border-brand-gold/10">
@@ -494,7 +494,7 @@ export default function HomePage() {
 
           <div className="text-center mt-10">
             <Link href="/amenities" className="inline-flex items-center gap-2 px-8 py-3.5 border-2 border-brand-navy text-brand-navy font-bold rounded-xl hover:bg-brand-navy hover:text-white transition-all duration-300 uppercase tracking-wider text-sm">
-              View All 16 Amenities <ArrowRight className="w-5 h-5" />
+              View All Amenities <ArrowRight className="w-5 h-5" />
             </Link>
           </div>
         </div>

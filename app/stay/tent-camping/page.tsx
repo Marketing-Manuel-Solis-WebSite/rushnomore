@@ -18,7 +18,7 @@ const TENT_FEATURES = [
   { icon: Waves, title: 'Heated Pool & Hot Tubs', desc: 'Cool off in the heated pool or unwind in the hot tub spas — all free with your tent site.' },
   { icon: ShowerHead, title: 'Modern Bathhouses', desc: 'Clean, well-maintained shower and restroom facilities located near the tent camping area.' },
   { icon: Cable, title: 'Propane Campfire Rentals', desc: 'Rent a propane campfire for your site and enjoy the ambiance. No wood fires allowed in the park.' },
-  { icon: ShieldCheck, title: '24/7 Gated Security', desc: 'Gated entry with round-the-clock security patrol for a safe, peaceful camping experience.' },
+  { icon: ShieldCheck, title: 'Friendly On-Site Staff', desc: 'Friendly on-site staff during business hours, after-hours on-call assistance and well-lit grounds.' },
 ];
 
 const FAQS = [
@@ -27,7 +27,7 @@ const FAQS = [
   { q: 'Are there showers and restrooms near the tent sites?', a: 'Absolutely. Modern, clean bathhouses with hot showers and restrooms are located a short walk from all tent sites.' },
   { q: 'How far is Rush No More from Mount Rushmore?', a: 'We are approximately 55 miles from Mount Rushmore (about 1 hour drive), making it an easy and scenic day trip.' },
   { q: 'Can I have a campfire at my tent site?', a: 'Wood fires are not permitted. However, you can rent a propane campfire unit for your site — all the ambiance with none of the risk.' },
-  { q: 'What amenities do tent campers have access to?', a: 'All 16 resort amenities are included free: heated pool, hot tub spas, beer garden & bar, game room, nature trails, modern bathhouses, free Wi-Fi, camp store, and 24/7 gated security.' },
+  { q: 'What amenities do tent campers have access to?', a: 'All resort amenities are included free: heated pool, hot tub spas, beer garden & bar, game room, nature trails, modern bathhouses, complimentary Wi-Fi, camp store, and friendly on-site staff.' },
   { q: 'Is tent camping available during the Sturgis Rally?', a: 'Yes, tent camping is available during Rally week. Rally rates apply — book early as sites fill up fast.' },
 ];
 
@@ -218,7 +218,7 @@ export default function TentCampingPage() {
             Ready to <span className="text-brand-gold italic">Camp?</span>
           </h2>
           <p className="text-brand-navy/60 text-lg mb-8 font-medium">
-            The Black Hills&apos; best-value tent camping from $35/night — pool, hot tubs, beer garden & 16 amenities included.
+            The Black Hills&apos; best-value tent camping from $35/night — pool, hot tubs, beer garden & free resort amenities included.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4">
             <a href={SITE.booking} target="_blank" rel="noopener noreferrer" className="btn-gold text-base px-8 py-4">

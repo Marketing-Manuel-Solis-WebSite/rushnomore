@@ -69,7 +69,7 @@ const TENT_FEATURES = [
   { icon: Waves, title: 'Full Amenity Access', desc: 'Pool, hot tubs, beer garden, game room — all included with tent sites.' },
   { icon: ShowerHead, title: 'Clean Bathhouses', desc: 'Modern, spotless shower and restroom facilities nearby.' },
   { icon: Cable, title: 'Propane Campfire Rentals', desc: 'Rent a propane campfire for your site. No wood fires allowed.' },
-  { icon: ShieldCheck, title: '24/7 Security', desc: 'Gated entry, patrol, and well-lit grounds for your peace of mind.' },
+  { icon: ShieldCheck, title: 'On-Site Staff', desc: 'Friendly on-site staff during business hours, after-hours on-call assistance and well-lit grounds.' },
 ];
 
 /* ═══════════════════════════════════════════════════════════════
@@ -134,7 +134,7 @@ export default function StayPage() {
       <JsonLd data={breadcrumbSchema([{ name: 'Home', url: '/' }, { name: 'Stay', url: '/stay' }])} />
       <JsonLd data={accommodationListSchema()} />
       <JsonLd data={offerCatalogSchema()} />
-      <JsonLd data={videoSchema({ name: 'Accommodations at Rush No More — RV Sites, Cabins & Tent Camping', description: 'Explore accommodations at Rush No More near Mount Rushmore — 200+ full-hookup RV sites, 16 presidential cabins & shaded tent camping in Sturgis, SD. Pool, hot tubs, beer garden included.', thumbnailUrl: '/images/GeneralImagesPark/IMG_7386.jpeg', contentUrl: '/videos/RNM-stay.mp4', uploadDate: '2025-01-01' })} />
+      <JsonLd data={videoSchema({ name: 'Accommodations at Rush No More — RV Sites, Cabins & Tent Camping', description: 'Explore accommodations at Rush No More near Mount Rushmore — 200+ full-hookup RV sites, 20 presidential cabins & shaded tent camping in Sturgis, SD. Pool, hot tubs, beer garden included.', thumbnailUrl: '/images/GeneralImagesPark/IMG_7386.jpeg', contentUrl: '/videos/RNM-stay.mp4', uploadDate: '2025-01-01' })} />
 
       {/* ═══════════════════════════════════════════════════════════════
           HERO — Video Background
@@ -315,7 +315,7 @@ export default function StayPage() {
                 Choose Your <span className="text-brand-gold italic">RV Experience</span>
               </h3>
               <p className="text-brand-navy/60 text-lg max-w-2xl mx-auto font-medium">
-                From standard full hookups to private hot tub spa sites — all include 16 free amenities.
+                From standard full hookups to private hot tub spa sites — all include free resort amenities.
               </p>
               <div className="w-24 h-1 bg-gold-gradient rounded-full mt-5 mx-auto" />
             </div>
@@ -382,16 +382,16 @@ export default function StayPage() {
                   Everything You Need, <span className="text-brand-gold italic">Nothing Extra</span>
                 </h3>
                 <p className="text-brand-navy/70 text-lg leading-relaxed font-medium mb-8">
-                  Every RV site at Rush No More comes with full hookups and free access to all 16 resort amenities. No hidden fees, no resort charges, no surprises.
+                  Every RV site at Rush No More comes with hookups (water-electric or full hookup, depending on the site type) and free access to all resort amenities. No hidden fees, no resort charges, no surprises.
                 </p>
 
                 <div className="grid grid-cols-2 gap-3 mb-8">
                   {[
-                    'Water, Electric & Sewer', '30 or 50 AMP Service',
+                    'Hookups (W/E or W/E/S)', '30 or 50 AMP Service',
                     'Pull-Through Available', 'Up to 100ft Long',
                     'Pool & Hot Tub Access', 'Beer Garden & Bar',
-                    'Free Wi-Fi', '24/7 Security',
-                    'Pet Friendly', 'Clean Bathhouses',
+                    'Free Wi-Fi', 'Friendly On-Site Staff',
+                    'Pet-Friendly Options', 'Clean Bathhouses',
                     'Game Room & Trails', 'Propane Available',
                   ].map((f, i) => (
                     <span key={i} className="flex items-center gap-2 text-sm text-brand-navy/80 font-medium">
@@ -744,7 +744,7 @@ export default function StayPage() {
 
                   <div className="flex items-center gap-3 mb-6 p-3 bg-brand-gold/5 rounded-xl border border-brand-gold/15">
                     <Sparkles className="w-5 h-5 text-brand-gold flex-shrink-0" />
-                    <span className="text-sm text-brand-navy/80 font-medium">All 16 amenities included — pool, hot tubs, beer garden, game room & more</span>
+                    <span className="text-sm text-brand-navy/80 font-medium">All resort amenities included — pool, hot tubs, beer garden, game room & more</span>
                   </div>
 
                   <a href={SITE.booking} target="_blank" rel="noopener noreferrer" className="btn-gold w-full text-center text-base py-4">
@@ -769,7 +769,7 @@ export default function StayPage() {
                   Our tent sites are nestled in a shaded Ponderosa pine forest with spacious, level ground and the kind of natural beauty that makes the Black Hills unforgettable.
                 </p>
                 <p className="text-brand-navy/60 leading-relaxed font-medium mb-8">
-                  But unlike most campgrounds, you&apos;re not roughing it. Step out of your tent and you have access to a heated pool, hot tubs, a beer garden with craft brews, modern bathhouses, a game room, nature trails, and 24/7 security. It&apos;s the best of both worlds — nature and comfort.
+                  But unlike most campgrounds, you&apos;re not roughing it. Step out of your tent and you have access to a heated pool, hot tubs, a beer garden with craft brews, modern bathhouses, a game room, nature trails, and friendly on-site staff. It&apos;s the best of both worlds — nature and comfort.
                 </p>
                 <div className="grid grid-cols-2 gap-3 mb-8">
                   {[
@@ -778,7 +778,7 @@ export default function StayPage() {
                     { icon: Waves, text: 'Pool & hot tubs' },
                     { icon: Beer, text: 'Beer garden' },
                     { icon: ShowerHead, text: 'Modern bathhouses' },
-                    { icon: ShieldCheck, text: '24/7 security' },
+                    { icon: ShieldCheck, text: 'On-site staff' },
                   ].map((item, i) => (
                     <div key={i} className="flex items-center gap-3 p-3 bg-surface-secondary/80 rounded-xl border border-surface-muted/30">
                       <item.icon className="w-5 h-5 text-brand-gold flex-shrink-0" />
@@ -911,7 +911,7 @@ export default function StayPage() {
           <span className="inline-block px-5 py-2 bg-brand-gold text-white text-xs font-black uppercase tracking-[0.2em] rounded-full shadow-gold mb-5">
             ★ Compare ★
           </span>
-          <h2 className="mb-3 text-white">Every Stay Includes <span className="text-brand-gold italic">All 16</span> Amenities</h2>
+          <h2 className="mb-3 text-white">Every Stay Includes <span className="text-brand-gold italic">Every</span> Amenity</h2>
           <p className="text-white/50 text-lg mb-10 font-medium">No hidden fees, no resort charges.</p>
 
           {/* Resort grounds preview */}
@@ -960,7 +960,7 @@ export default function StayPage() {
                   <h3 className="text-xl font-display font-bold text-white mb-1">{tab.label}</h3>
                   <span className="text-brand-gold font-display text-2xl font-bold block mb-3">{tab.price}</span>
                   <div className="flex items-center gap-1 text-sm text-brand-gold font-bold">
-                    <Sparkles className="w-3.5 h-3.5" /> All 16 amenities included
+                    <Sparkles className="w-3.5 h-3.5" /> All resort amenities included
                   </div>
                 </button>
               );
