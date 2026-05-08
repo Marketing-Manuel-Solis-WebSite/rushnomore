@@ -26,7 +26,7 @@ const VALUES = [
 
 const TEAM_HIGHLIGHTS = [
   'Our staff personally escorts every guest to their site',
-  'On-site team available daily 8 AM – 5 PM',
+  'On-site team available daily 8 AM – 8 PM',
   'Dedicated rally coordinators during Sturgis',
   'Bilingual staff members available',
   'Event planning assistance for groups & weddings',

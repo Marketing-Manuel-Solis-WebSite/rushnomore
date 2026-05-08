@@ -103,7 +103,7 @@ export default function ThanksPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
             {[
               { num: '1', title: 'We Review', desc: 'Our team reads every message personally and prepares a thoughtful response.', icon: Mail },
-              { num: '2', title: 'We Reply', desc: 'Expect a response within 24 hours during business hours (8 AM - 5 PM MT).', icon: Sparkles },
+              { num: '2', title: 'We Reply', desc: 'Expect a response within 24 hours during business hours (8 AM - 8 PM MT).', icon: Sparkles },
               { num: '3', title: 'You Enjoy', desc: 'We help you plan the perfect Black Hills getaway at Rush No More.', icon: CheckCircle },
             ].map((step, i) => {
               const Icon = step.icon;

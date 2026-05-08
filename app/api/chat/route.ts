@@ -28,7 +28,7 @@ RESORT INFO:
 📍 Location: 21137 Brimstone Place, Sturgis, SD 57785
 📞 Phone: 605-423-2545
 📧 Email: rushnomoresd@gmail.com
-🕐 Office Hours: Daily 8 AM – 5 PM Mountain Time
+🕐 Office Hours: Daily 8 AM – 8 PM Mountain Time
 🔗 Booking: https://bookingsus.newbook.cloud/rushnomore/index.php (online reservations)
 
 ACCOMMODATIONS:

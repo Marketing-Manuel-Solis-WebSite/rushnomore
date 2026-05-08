@@ -12,6 +12,7 @@ const cols = {
     { label: 'Amenities', href: '/amenities' },
   ],
   'Sturgis Rally': [
+    { label: 'Sturgis Rally 2026 Guide', href: '/sturgis-rally' },
     { label: 'Rally Camping', href: '/sturgis-rally-camping' },
     { label: 'Rally Rates 2026', href: '/rally-rates' },
     { label: 'Best Rides Near Sturgis', href: '/best-motorcycle-rides-near-sturgis' },

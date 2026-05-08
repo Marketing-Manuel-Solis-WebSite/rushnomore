@@ -220,7 +220,7 @@ export function campgroundSchema() {
         '@type': 'OpeningHoursSpecification',
         dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
         opens: '08:00',
-        closes: '17:00',
+        closes: '20:00',
       },
     ],
     amenityFeature: [
@@ -476,7 +476,7 @@ export function localBusinessSchema() {
       '@type': 'OpeningHoursSpecification',
       dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
       opens: '08:00',
-      closes: '17:00',
+      closes: '20:00',
     },
     priceRange: '$35 - $335',
     aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.8', reviewCount: '420', bestRating: '5' },

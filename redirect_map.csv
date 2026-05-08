@@ -61,15 +61,14 @@ https://www2.rushnomore.com/:path*,https://www.rushnomore.com/:path*,301,Legacy 
 /tent-camping-black-hills,/stay/tent-camping,301,Keyword alias
 /tent-camping-near-mount-rushmore,/stay/tent-camping,301,Keyword alias
 # Events / rally → new dedicated hubs
-/sturgis-bike-rally,/sturgis-rally-camping,301,Rally keyword alias
-/events/sturgis-rally,/sturgis-rally-camping,301,Old subpath
+/sturgis-bike-rally,/sturgis-rally,301,Rally keyword alias
+/events/sturgis-rally,/sturgis-rally,301,Old subpath
 /events/sturgis-rally/rates,/rally-rates,301,Old subpath
 /events/car-show,/events#car-show,301,Keep car show on events hub
 /events/weddings,/weddings-groups,301,Weddings dedicated hub
 /classic-car-show,/events#car-show,301,Car show alias
-/sturgis-rally,/sturgis-rally-camping,301,Rally short alias
-/sturgis,/sturgis-rally-camping,301,City alias
-/rally,/sturgis-rally-camping,301,Rally short alias
+/sturgis,/sturgis-rally,301,City alias
+/rally,/sturgis-rally,301,Rally short alias
 /car-show,/events#car-show,301,Car show alias
 /weddings,/weddings-groups,301,Weddings short alias
 /groups,/weddings-groups,301,Groups short alias

@@ -137,9 +137,9 @@ export default function ContactPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {[
               { icon: MapPin, title: 'Visit Us', content: '21137 Brimstone Place\nSturgis, SD 57785', action: 'Get Directions', href: SITE.maps },
-              { icon: Phone, title: 'Call Us', content: SITE.phone, sub: 'Mon-Sat · 8 AM – 5 PM MT', action: 'Call Now', href: `tel:${SITE.phoneTel}` },
+              { icon: Phone, title: 'Call Us', content: SITE.phone, sub: 'Daily · 8 AM – 8 PM MT', action: 'Call Now', href: `tel:${SITE.phoneTel}` },
               { icon: Mail, title: 'Email Us', content: SITE.email, sub: 'We reply within 24 hours', action: 'Send Email', href: `mailto:${SITE.email}` },
-              { icon: Clock, title: 'Office Hours', content: 'Daily 8 AM – 5 PM', sub: 'Mountain Time', action: 'Book Online', href: SITE.booking },
+              { icon: Clock, title: 'Office Hours', content: 'Daily 8 AM – 8 PM', sub: 'Mountain Time', action: 'Book Online', href: SITE.booking },
             ].map((card, i) => (
               <motion.div
                 key={i}
@@ -426,7 +426,7 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <span className="text-white font-bold text-sm block">{SITE.phone}</span>
-                      <span className="text-white/40 text-xs">Daily 8 AM – 5 PM MT</span>
+                      <span className="text-white/40 text-xs">Daily 8 AM – 8 PM MT</span>
                     </div>
                   </a>
                   <a

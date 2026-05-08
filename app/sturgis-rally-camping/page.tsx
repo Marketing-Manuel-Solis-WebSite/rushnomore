@@ -206,7 +206,10 @@ export default function Page() {
             Spearfish Canyon in 30, and loop Needles Highway + Iron Mountain Road in an afternoon.
           </p>
           <div className="flex flex-wrap gap-3 justify-center">
-            <Link href="/best-motorcycle-rides-near-sturgis" className="px-5 py-3 bg-brand-gold text-white font-bold rounded-xl uppercase tracking-wider text-sm">
+            <Link href="/sturgis-rally" className="px-5 py-3 bg-brand-gold text-white font-bold rounded-xl uppercase tracking-wider text-sm">
+              Full 2026 Rally Guide
+            </Link>
+            <Link href="/best-motorcycle-rides-near-sturgis" className="px-5 py-3 border border-white/30 text-white rounded-xl font-bold uppercase tracking-wider text-sm hover:bg-white/10">
               Top Rides Near Sturgis
             </Link>
             <Link href="/deadwood-day-trip" className="px-5 py-3 border border-white/30 text-white rounded-xl font-bold uppercase tracking-wider text-sm hover:bg-white/10">

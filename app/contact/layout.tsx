@@ -3,7 +3,7 @@ import { seo } from '@/lib/seo';
 
 export const metadata: Metadata = seo({
   title: 'Contact Us — 605-423-2545 | Rush No More Sturgis, SD',
-  description: 'Contact Rush No More RV Resort: call 605-423-2545, email rushnomoresd@gmail.com, or visit 21137 Brimstone Place, Sturgis SD. I-90 Exit 37. Office open daily 8 AM–5 PM MT.',
+  description: 'Contact Rush No More RV Resort: call 605-423-2545, email rushnomoresd@gmail.com, or visit 21137 Brimstone Place, Sturgis SD. I-90 Exit 37. Office open daily 8 AM–8 PM MT.',
   path: '/contact',
   image: '/images/PeoplePlaying/IMG_7078.jpeg',
   keywords: [

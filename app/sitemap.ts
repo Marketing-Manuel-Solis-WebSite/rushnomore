@@ -12,6 +12,7 @@ const LM = {
   rvSites: '2026-04-22',
   cabins: '2026-04-22',
   tentCamping: '2026-04-22',
+  rallyInfo: '2026-05-08',
   rallyHub: '2026-04-22',
   rallyRates: '2026-04-22',
   rvParkRushmore: '2026-04-22',
@@ -123,6 +124,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
 
     // ─── Rally cluster — seasonal high-intent ───
+    {
+      url: `${B}/sturgis-rally`,
+      lastModified: LM.rallyInfo,
+      changeFrequency: 'weekly',
+      priority: 0.95,
+      images: [
+        `${B}/images/BikeRally/IMG_9865.JPG`,
+        `${B}/images/BikeRally/IMG_9866.JPG`,
+        `${B}/images/BikeRally/IMG_9867.JPG`,
+        `${B}/images/BikeRally/IMG_9868.JPG`,
+        `${B}/images/BikeRally/IMG_9869.JPG`,
+      ],
+    },
     {
       url: `${B}/sturgis-rally-camping`,
       lastModified: LM.rallyHub,

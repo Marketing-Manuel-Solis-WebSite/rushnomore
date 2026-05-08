@@ -40,7 +40,7 @@ NAP verification against our schema source of truth:
 - **Address**: `21137 Brimstone Place, Sturgis, SD 57785, US`
 - **Phone**: `605-423-2545`
 - **Website**: `https://www.rushnomore.com`
-- **Hours**: `Daily 8 AM – 5 PM MT`
+- **Hours**: `Daily 8 AM – 8 PM MT`
 - **Category (primary)**: Campground / RV park
 - **Category (secondary)**: Cabin rental agency, Event venue
 

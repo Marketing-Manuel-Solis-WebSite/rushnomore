@@ -241,7 +241,7 @@ function ConfirmationContent() {
               { icon: Star, text: '16 free amenities: Pool, Hot Tub, Beer Garden & more' },
               { icon: MapPin, text: '5 mi from Sturgis · 55 mi from Mount Rushmore' },
               { icon: Shield, text: 'Gated entry · 24/7 security' },
-              { icon: Phone, text: 'Office open daily 8 AM – 5 PM Mountain Time' },
+              { icon: Phone, text: 'Office open daily 8 AM – 8 PM Mountain Time' },
             ].map((item, i) => (
               <div key={i} className="flex items-start gap-2 text-xs text-brand-navy/70">
                 <item.icon className="w-3.5 h-3.5 text-brand-gold flex-shrink-0 mt-0.5" />

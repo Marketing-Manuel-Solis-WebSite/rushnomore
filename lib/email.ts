@@ -54,7 +54,7 @@ export async function sendConfirmationEmail(reservation: Reservation) {
           <p>From I-90, take Exit 37 → Turn right onto Brimstone Place → We're on your right!</p>
 
           <h3 style="color:#0C2340;">Office Hours</h3>
-          <p>📞 605-423-2545 | Daily 8 AM – 5 PM MT</p>
+          <p>📞 605-423-2545 | Daily 8 AM – 8 PM MT</p>
 
           <p style="margin-top:30px;">See you soon!<br><strong>The Rush No More Team</strong></p>
         </div>

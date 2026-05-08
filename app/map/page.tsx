@@ -368,7 +368,7 @@ export default function MapPage() {
                   </div>
                   <div>
                     <a href={`tel:${SITE.phoneTel}`} className="text-sm font-bold text-brand-navy hover:text-brand-gold transition-colors">{SITE.phone}</a>
-                    <p className="text-xs text-brand-stone">Daily 8 AM – 5 PM MT</p>
+                    <p className="text-xs text-brand-stone">Daily 8 AM – 8 PM MT</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
