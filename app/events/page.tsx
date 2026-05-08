@@ -13,7 +13,7 @@ import {
   ExternalLink, Star, ArrowRight, ChevronDown,
   MapPin, Users, Music, Beer, Car, Calendar,
   Bike, Tent, Home, Truck, CheckCircle, Sparkles,
-  Camera, Utensils, Heart, Clock, Quote, Shield,
+  Camera, Utensils, Heart, Clock, Quote, Shield, Phone,
 } from 'lucide-react';
 
 /* ═══════════════════════════════════════════════════════════════
@@ -72,6 +72,12 @@ export default function EventsPage() {
         description: 'Annual Show and Shine at Rush No More RV Resort in Sturgis, SD. Free admission with classic cars, hot rods, live music, food vendors & beer garden.',
         startDate: '2026-09-12', endDate: '2026-09-12',
         image: '/images/car_show_RNM.png',
+      })} />
+      <JsonLd data={eventSchema({
+        name: '86th Sturgis Bike Rally — Charity Auction Night at Rush No More',
+        description: 'Charity Auction Night during the Sturgis Motorcycle Rally — silent auction, live auction and raffles benefiting the Combat Veterans Motorcycle Association SD 30-1. Bar / Beer Garden available.',
+        startDate: '2026-08-11T19:00:00-06:00', endDate: '2026-08-11T23:00:00-06:00',
+        image: '/images/posts/auctionnight.png',
       })} />
       <JsonLd data={breadcrumbSchema([{ name: 'Home', url: '/' }, { name: 'Events', url: '/events' }])} />
       <JsonLd data={videoSchema({ name: 'Events at Rush No More — Sturgis Rally & Car Show', description: 'Experience the Sturgis Motorcycle Rally 2026 and Dakota Rods & Classics Car Show at Rush No More RV Resort. Beer garden, live music, and the ultimate rally base camp.', thumbnailUrl: '/images/BikeRally/IMG_9865.JPG', contentUrl: '/videos/RNM-events.mp4', uploadDate: '2025-01-01' })} />
@@ -171,9 +177,10 @@ export default function EventsPage() {
         <div className="max-w-7xl mx-auto px-4 flex flex-wrap items-center justify-center gap-6 md:gap-12">
           {[
             { icon: Bike, label: 'Sturgis Rally', href: '#sturgis-rally' },
-            { icon: Calendar, label: 'Rally Rates 2026', href: '#rally-rates' },
+            { icon: Heart, label: 'Auction Night', href: '#auction-night' },
+            { icon: Calendar, label: 'Rally Rates', href: '#rally-rates' },
             { icon: Car, label: 'Car Show', href: '#car-show' },
-            { icon: Heart, label: 'Weddings & Groups', href: '#weddings' },
+            { icon: Heart, label: 'Weddings', href: '#weddings' },
           ].map((item, i) => (
             <a key={i} href={item.href} className="flex items-center gap-2 text-sm font-bold uppercase tracking-wider hover:text-white/80 transition-colors">
               <item.icon className="w-4 h-4" /> {item.label}
@@ -298,12 +305,13 @@ export default function EventsPage() {
               <span className="text-xs font-black uppercase tracking-[0.2em] text-brand-gold">Rally Moments</span>
               <div className="h-px flex-1 max-w-[60px] bg-brand-gold/30" />
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
               {[
                 { src: '/images/BikeRally/IMG_9865.JPG', alt: 'Sturgis Rally bikes at Rush No More' },
                 { src: '/images/BikeRally/IMG_9866.JPG', alt: 'Motorcycle lineup during Sturgis Rally' },
                 { src: '/images/BikeRally/IMG_9867.JPG', alt: 'Rally riders gathering at the resort' },
                 { src: '/images/BikeRally/IMG_9868.JPG', alt: 'Sturgis Rally atmosphere at Rush No More' },
+                { src: '/images/BikeRally/IMG_9869.JPG', alt: 'Riders relaxing during Sturgis Rally at Rush No More' },
               ].map((photo, i) => (
                 <motion.div
                   key={i}
@@ -318,7 +326,7 @@ export default function EventsPage() {
                     alt={photo.alt}
                     fill
                     className="object-cover transition-transform duration-700 group-hover:scale-110"
-                    sizes="(max-width: 768px) 50vw, 25vw"
+                    sizes="(max-width: 768px) 50vw, 20vw"
                   />
                 </motion.div>
               ))}
@@ -491,6 +499,89 @@ export default function EventsPage() {
                   {REVIEWS[3].source && <span className="text-[10px] font-bold uppercase tracking-wider text-brand-stone">{REVIEWS[3].source}</span>}
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════════
+          CHARITY AUCTION NIGHT — On-site rally event
+      ═══════════════════════════════════════════════════════════════ */}
+      <section id="auction-night" className="relative py-16 md:py-24 overflow-hidden bg-surface-primary scroll-mt-24">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="text-center mb-12">
+            <span className="inline-block px-5 py-2 bg-brand-gold text-white text-xs font-black uppercase tracking-[0.2em] rounded-full shadow-gold mb-4">
+              ★ Tuesday · August 11 · 7:00 PM ★
+            </span>
+            <h2 className="mb-4 text-4xl md:text-5xl leading-tight">
+              Charity <span className="text-brand-gold italic">Auction Night</span>
+            </h2>
+            <p className="text-brand-navy/70 text-lg max-w-2xl mx-auto font-medium">
+              Annual on-site rally event benefiting the Combat Veterans Motorcycle Association SD 30-1.
+            </p>
+            <div className="w-24 h-1 bg-gold-gradient rounded-full mt-5 mx-auto" />
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+            <div className="relative rounded-3xl overflow-hidden shadow-lodge-xl border-2 border-white aspect-[9/16] max-w-sm mx-auto lg:mx-0">
+              <Image
+                src="/images/posts/auctionnight.png"
+                alt="86th Sturgis Bike Rally Charity Auction Night flyer at Rush No More RV Resort, August 11 at 7 PM"
+                fill
+                sizes="(max-width: 1024px) 90vw, 400px"
+                className="object-cover"
+              />
+            </div>
+
+            <div>
+              <div className="flex items-center gap-3 mb-5">
+                <Heart className="w-8 h-8 text-brand-gold" />
+                <h3 className="text-2xl md:text-3xl font-display font-bold text-brand-navy">
+                  Support Our Veterans
+                </h3>
+              </div>
+
+              <div className="space-y-4 text-brand-navy/80 leading-relaxed mb-6">
+                <p>
+                  Each year during the Sturgis Bike Rally, Rush No More hosts a <strong>Charity
+                  Auction Night</strong> on the property — silent auction, live auction and raffles
+                  with our Bar and Beer Garden open to attendees.
+                </p>
+                <p>
+                  All proceeds benefit the <strong>Combat Veterans Motorcycle Association® SD 30-1</strong>,
+                  supporting local veterans (active &amp; retired), the South Dakota State Veterans Home in
+                  Hot Springs, SD Service Dogs, Disabled American Veterans, active duty members during
+                  deployments, and the National Cemetery in Sturgis (wreaths &amp; flags for veterans).
+                </p>
+              </div>
+
+              <div className="grid grid-cols-2 gap-3 mb-6">
+                <div className="bg-white rounded-xl p-4 border border-brand-gold/15">
+                  <div className="text-xs uppercase font-bold tracking-wider text-brand-stone mb-1">When</div>
+                  <div className="font-display font-bold text-brand-navy">Tuesday, August 11</div>
+                  <div className="text-sm text-brand-navy/70">7:00 PM</div>
+                </div>
+                <div className="bg-white rounded-xl p-4 border border-brand-gold/15">
+                  <div className="text-xs uppercase font-bold tracking-wider text-brand-stone mb-1">Where</div>
+                  <div className="font-display font-bold text-brand-navy">Rush No More RV Resort</div>
+                  <div className="text-sm text-brand-navy/70">21137 Brimstone Pl, Sturgis SD</div>
+                </div>
+              </div>
+
+              <div className="flex flex-wrap gap-2 mb-6">
+                {['Silent Auction', 'Live Auction', 'Raffles', 'Bar / Beer Garden'].map((tag) => (
+                  <span key={tag} className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white border border-brand-gold/30 rounded-full text-xs font-bold text-brand-navy uppercase tracking-wider">
+                    <CheckCircle className="w-3.5 h-3.5 text-brand-gold" /> {tag}
+                  </span>
+                ))}
+              </div>
+
+              <a
+                href={`tel:${SITE.phoneTel}`}
+                className="inline-flex items-center gap-2 px-6 py-3 border-2 border-brand-navy text-brand-navy font-bold rounded-xl hover:bg-brand-navy hover:text-white transition-all uppercase tracking-wider text-sm"
+              >
+                <Phone className="w-4 h-4" /> Call for Details · {SITE.phone}
+              </a>
             </div>
           </div>
         </div>

@@ -546,7 +546,7 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
               { t: 'Spearfish Canyon', d: 'Waterfalls, fly fishing & 20-mile scenic drive', dist: '25 mi', href: '/explore#spearfish-canyon' },
-              { t: 'Sturgis Rally', d: '500,000+ riders every August — we are rally HQ', dist: '5 mi', href: '/explore#sturgis-rally' },
+              { t: 'Sturgis Rally', d: '500,000+ riders every August — we are rally HQ', dist: '5 mi', href: '/sturgis-rally' },
               { t: 'All Attractions', d: 'Browse every Black Hills experience', dist: '', href: '/explore' },
             ].map((item, i) => (
               <Link key={i} href={item.href} className="bg-white/5 backdrop-blur-sm rounded-xl p-6 hover:bg-white/10 transition-all duration-300 group block border border-white/10 hover:border-brand-gold/30">
@@ -622,6 +622,81 @@ export default function HomePage() {
             <a href={SITE.tripadvisor} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3 bg-brand-navy text-white font-bold rounded-xl hover:bg-brand-navy/90 transition-all duration-300 text-sm uppercase tracking-wider shadow-lodge">
               Read More on TripAdvisor <ExternalLink className="w-4 h-4" />
             </a>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ UPCOMING ON-SITE EVENT — Charity Auction Night ═══ */}
+      <section className="py-20 md:py-24 bg-surface-primary relative overflow-hidden">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="text-center mb-10">
+            <span className="inline-block px-5 py-2 bg-brand-gold text-white text-xs font-black uppercase tracking-[0.2em] rounded-full shadow-gold mb-4">
+              ★ Upcoming On-Site Event ★
+            </span>
+            <h2 className="mb-3">
+              Charity <span className="text-brand-gold italic">Auction Night</span>
+            </h2>
+            <p className="text-brand-navy/70 text-lg max-w-2xl mx-auto font-medium">
+              Annual rally event at Rush No More benefiting the Combat Veterans Motorcycle Association SD 30-1.
+            </p>
+            <div className="w-24 h-1.5 bg-gold-gradient rounded-full mt-5 mx-auto" />
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+            <div className="relative rounded-3xl overflow-hidden shadow-lodge-xl border-2 border-white aspect-[9/16] max-w-sm mx-auto lg:mx-0">
+              <Image
+                src="/images/posts/auctionnight.png"
+                alt="86th Sturgis Bike Rally Charity Auction Night flyer at Rush No More RV Resort, Tuesday August 11 at 7 PM"
+                fill
+                sizes="(max-width: 1024px) 90vw, 400px"
+                className="object-cover"
+              />
+            </div>
+
+            <div>
+              <div className="grid grid-cols-2 gap-3 mb-6">
+                <div className="bg-white rounded-xl p-4 border border-brand-gold/15 shadow-lodge">
+                  <div className="text-xs uppercase font-bold tracking-wider text-brand-stone mb-1">When</div>
+                  <div className="font-display font-bold text-brand-navy">Tuesday, August 11</div>
+                  <div className="text-sm text-brand-navy/70">7:00 PM</div>
+                </div>
+                <div className="bg-white rounded-xl p-4 border border-brand-gold/15 shadow-lodge">
+                  <div className="text-xs uppercase font-bold tracking-wider text-brand-stone mb-1">Where</div>
+                  <div className="font-display font-bold text-brand-navy">Rush No More RV Resort</div>
+                  <div className="text-sm text-brand-navy/70">21137 Brimstone Pl, Sturgis SD</div>
+                </div>
+              </div>
+
+              <p className="text-brand-navy/80 text-lg leading-relaxed mb-5 font-medium">
+                Silent auction, live auction and raffles with our Bar &amp; Beer Garden open to attendees.
+                All proceeds support local veterans, the South Dakota State Veterans Home, SD Service Dogs,
+                Disabled American Veterans, active duty members during deployments, and the National
+                Cemetery in Sturgis.
+              </p>
+
+              <div className="flex flex-wrap gap-2 mb-6">
+                {['Silent Auction', 'Live Auction', 'Raffles', 'Bar / Beer Garden'].map((tag) => (
+                  <span key={tag} className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white border border-brand-gold/30 rounded-full text-xs font-bold text-brand-navy uppercase tracking-wider">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+
+              <div className="flex flex-wrap gap-3">
+                <Link
+                  href="/events#auction-night"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-brand-gold text-white font-bold rounded-xl shadow-gold hover:brightness-110 transition-all uppercase tracking-wider text-sm"
+                >
+                  Event Details <ArrowRight className="w-4 h-4" />
+                </Link>
+                <a
+                  href={`tel:${SITE.phoneTel}`}
+                  className="inline-flex items-center gap-2 px-6 py-3 border-2 border-brand-navy text-brand-navy font-bold rounded-xl hover:bg-brand-navy hover:text-white transition-all uppercase tracking-wider text-sm"
+                >
+                  Call {SITE.phone}
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </section>

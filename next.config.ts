@@ -301,7 +301,7 @@ const nextConfig: NextConfig = {
       { source: '/rules-and-policies', destination: '/policies', permanent: true },
       { source: '/rally-policies', destination: '/policies#rally', permanent: true },
       { source: '/rally-policies_dev', destination: '/policies#rally', permanent: true },
-      { source: '/policies/:path*', destination: '/policies', permanent: true },
+      { source: '/policies/:path+', destination: '/policies', permanent: true },
       { source: '/ada-compliance', destination: '/ada', permanent: true },
       // Common typo / legacy "local attractions"
       { source: '/local-atractions', destination: '/explore', permanent: true },
@@ -319,7 +319,7 @@ const nextConfig: NextConfig = {
       { source: '/cabins6-rally', destination: '/rally-rates', permanent: true },
       { source: '/cabins7-rally', destination: '/rally-rates', permanent: true },
       { source: '/rallyrates', destination: '/rally-rates', permanent: true },
-      { source: '/rally-rates/:path*', destination: '/rally-rates', permanent: true },
+      { source: '/rally-rates/:path+', destination: '/rally-rates', permanent: true },
       { source: '/rates', destination: '/stay', permanent: true },
       { source: '/rates/:path*', destination: '/stay', permanent: true },
       { source: '/rvandtentsites', destination: '/stay', permanent: true },
