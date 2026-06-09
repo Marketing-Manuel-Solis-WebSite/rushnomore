@@ -370,10 +370,12 @@ export const ITINERARY: ItineraryDay[] = [
 ];
 
 export const RALLY_RV: RallyRV[] = [
-  { name: 'Standard Hook-up Site (30A)', rally: '$899', pre: '$399', features: ['Water, Sewer, Electric', '30 AMP Service', 'Pull-through or Back-in'] },
-  { name: 'Standard Hook-up Site (50A)', rally: '$999', pre: '$449', features: ['Water, Sewer, Electric', '50 AMP Service', 'Pull-through or Back-in'] },
-  { name: 'Luxury Site', rally: '$1,499', pre: '$650', features: ['Mountain Valley Section', 'Cement Slab & Gas BBQ', 'Full Hook-ups', '50 AMP Service'], popular: true },
-  { name: 'Luxury Spa Site', rally: '$2,499', pre: '$999', features: ['Private Hot Tub Spa!', 'Cement Slab & Gas BBQ', 'Full Hook-ups', '50 AMP Service'] },
+  { name: 'Full Hook-up — Pull-Through (30/50A)', rally: '$1,849.80', pre: '$175', features: ['Water, Sewer, Electric', '30/50 AMP Service', 'Pull-through site'], popular: true },
+  { name: 'Full Hook-up — Back-In (30/50A)', rally: '$1,792.65', pre: '$169', features: ['Water, Sewer, Electric', '30/50 AMP Service', 'Back-in site'] },
+  { name: 'Water & Electric — Back-In (30A)', rally: '$1,510.45', pre: '$140', features: ['Water & Electric only', 'No sewer hookup', '30 AMP Service', 'Back-in site'] },
+  { name: 'Dry Valley — No Hookups', rally: '$940.70', pre: '$89', features: ['No water, electric or sewer', 'Tent or self-contained RV', 'Scenic valley setting'] },
+  { name: 'Luxury Spa Site — Back-In', rally: '$2,472.32', pre: '$250', features: ['Private hot tub spa!', 'Cement slab & gas BBQ', 'Full hook-ups', '50 AMP Service'] },
+  { name: 'Luxury Site — Back-In', rally: '$2,357.11', pre: '$220', features: ['Cement slab & gas BBQ', 'Full hook-ups', 'Mountain Valley section', '50 AMP Service'] },
 ];
 
 export const REVIEWS: Review[] = [

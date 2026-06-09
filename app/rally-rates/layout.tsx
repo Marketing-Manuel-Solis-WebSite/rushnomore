@@ -3,7 +3,7 @@ import { seo } from '@/lib/seo';
 
 export const metadata: Metadata = seo({
   title: 'Sturgis Rally Rates 2026 — RV, Cabin & Tent Pricing | Rush No More',
-  description: '2026 Sturgis Motorcycle Rally rates at Rush No More — standard 30A RV from $899/10 nights, luxury sites from $1,499, luxury spa with private hot tub $2,499. Pre-rally rates from $399. Cabins & tent camping pricing included. 5 mi from Main Street Sturgis.',
+  description: '2026 Sturgis Motorcycle Rally rates at Rush No More — full-hookup RV from $1,792.65/10 nights, luxury sites from $2,357.11, luxury spa with private hot tub from $2,472.32. Dry sites from $940.70. Pre-rally rates from $89/night. Cabins & tent camping pricing included. 5 mi from Main Street Sturgis.',
   path: '/rally-rates',
   image: '/images/BikeRally/IMG_9865.JPG',
   keywords: [

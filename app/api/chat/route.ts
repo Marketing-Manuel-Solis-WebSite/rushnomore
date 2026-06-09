@@ -74,11 +74,13 @@ RV SITES (prices vary by weekday, weekend, Rally & holidays — starts at):
 16 FREE AMENITIES (all included with every stay):
 Pool & Hot Tubs, Beer Garden & Bar, Modern Bathhouses, Laundromats, Complimentary Wi-Fi, Pet Friendly (well-behaved pets welcome at most sites and select cabins), Propane Sales, Propane Campfire Rentals (NO WOOD FIRES — we back up to Forest Service land, propane and charcoal only), Cafe (open weekends & all 10 days of Rally), Game Room, Camp Library, Nature Trails, Camp Store, Picnic Pavilions, Hookup Options (water-electric and full-hookup sites available), Friendly On-Site Staff (during business hours, after-hours on-call assistance)
 
-STURGIS RALLY 2026 (Aug 2-18):
-- Standard 30A Hook-up: $899 (10-day package)
-- Standard 50A Hook-up: $999 (10-day package)
-- Luxury Site: $1,499 (10-day package)
-- Luxury Spa Site: $2,499 (10-day package)
+STURGIS RALLY 2026 (Aug 2-18) — 10-night packages (pre-rally per-night rate in parentheses):
+- Full Hook-up Pull-Through (30/50A): $1,849.80 ($175/night)
+- Full Hook-up Back-In (30/50A): $1,792.65 ($169/night)
+- Water & Electric Back-In (30A, no sewer): $1,510.45 ($140/night)
+- Dry Valley (no hookups): $940.70 ($89/night)
+- Luxury Spa Site Back-In (private hot tub): $2,472.32 ($250/night)
+- Luxury Site Back-In (no spa): $2,357.11 ($220/night)
 - Pre/Post Rally rates also available
 - Resort is 5 miles from Main Street Sturgis
 

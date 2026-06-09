@@ -3,7 +3,7 @@ import { seo } from '@/lib/seo';
 
 export const metadata: Metadata = seo({
   title: 'Sturgis Rally Campground 2026 — RV, Cabins & Tents | Rush No More',
-  description: 'Sturgis Rally 2026 (Aug 2–18) campsite bookings at Rush No More — RV from $899/10 days, cabins & tents. 5 mi from Main Street. Car show Sept 12. Group events 20–200. Book early.',
+  description: 'Sturgis Rally 2026 (Aug 2–18) campsite bookings at Rush No More — RV from $1,792.65/10 days (dry sites $940.70), cabins & tents. 5 mi from Main Street. Car show Sept 12. Group events 20–200. Book early.',
   path: '/events',
   image: '/images/BikeRally/IMG_9865.JPG',
   keywords: [

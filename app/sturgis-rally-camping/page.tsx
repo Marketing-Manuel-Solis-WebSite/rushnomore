@@ -27,7 +27,7 @@ export default function Page() {
         startDate: '2026-08-02',
         endDate: '2026-08-18',
         image: '/images/BikeRally/IMG_9865.JPG',
-        price: '899',
+        price: '940.70',
         url: `https://www.rushnomore.com/sturgis-rally-camping`,
       })} />
       <JsonLd data={faqSchema(RALLY_FAQ)} />

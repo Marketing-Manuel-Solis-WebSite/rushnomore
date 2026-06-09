@@ -3,7 +3,7 @@ import { seo } from '@/lib/seo';
 
 export const metadata: Metadata = seo({
   title: 'Sturgis Rally Camping 2026 — 5 mi from Main Street | Rush No More',
-  description: 'Book your 2026 Sturgis Motorcycle Rally stay (Aug 2–18) at Rush No More. Rally RV sites from $899/10 days, cabins & tent sites 5 miles from Main Street Sturgis. Beer garden, pool, hot tubs. 10+ years as rally HQ — book early, we sell out.',
+  description: 'Book your 2026 Sturgis Motorcycle Rally stay (Aug 2–18) at Rush No More. Rally RV sites from $1,792.65/10 days (dry sites $940.70), cabins & tent sites 5 miles from Main Street Sturgis. Beer garden, pool, hot tubs. 10+ years as rally HQ — book early, we sell out.',
   path: '/sturgis-rally-camping',
   image: '/images/BikeRally/IMG_9865.JPG',
   keywords: [

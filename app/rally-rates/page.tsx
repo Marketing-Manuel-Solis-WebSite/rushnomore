@@ -50,7 +50,7 @@ export default function Page() {
         startDate: '2026-08-02',
         endDate: '2026-08-18',
         image: '/images/BikeRally/IMG_9865.JPG',
-        price: '650',
+        price: '940.70',
         url: 'https://www.rushnomore.com/rally-rates',
       })} />
       <JsonLd data={speakableSchema('/rally-rates', ['h1', 'h2'])} />

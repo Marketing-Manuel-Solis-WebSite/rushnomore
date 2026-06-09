@@ -7,10 +7,25 @@ import { MapPin, Mountain, TreePine, Phone } from 'lucide-react';
 export function HeroSection() {
   return (
     <section className="relative min-h-[100dvh] flex items-center justify-center overflow-hidden bg-brand-navy">
-      {/* LCP element: aerial Mount Rushmore shot. The previous hero video
-          showed an RV entering under an archway that resembled the
-          neighbor's driveway — risk of guests turning into the wrong
-          driveway, so we fall back to the static image. */}
+      {/* Background hero video — resort montage. The aerial image is the
+          LCP/poster fallback and shows until the video can autoplay (or if
+          autoplay is blocked, e.g. on low-power mobile). We use the
+          "perfect day" montage rather than the old archway clip, which
+          resembled the neighbor's driveway and risked misdirecting guests. */}
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+        poster="/images/Aereal-2_1400.png"
+        aria-hidden="true"
+        className="absolute inset-0 w-full h-full object-cover"
+      >
+        <source src="/videos/rush-no-more-perfect-day.mp4" type="video/mp4" />
+      </video>
+
+      {/* LCP / fallback image (shown until the video paints or if it fails) */}
       <Image
         src="/images/Aereal-2_1400.png"
         alt="Aerial view of Rush No More RV Resort and campground in the Black Hills, Sturgis SD"
@@ -19,7 +34,7 @@ export function HeroSection() {
         fetchPriority="high"
         sizes="100vw"
         quality={75}
-        className="object-cover"
+        className="object-cover -z-10"
       />
 
       {/* Overlay negro más fuerte para mejor legibilidad */}
