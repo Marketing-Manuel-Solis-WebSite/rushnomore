@@ -17,7 +17,7 @@ import {
 
 /* ─── Quick Stats ─── */
 const MAP_STATS = [
-  { val: '200+', label: 'RV Sites' },
+  { val: '156', label: 'RV Sites' },
   { val: '16', label: 'Cabins' },
   { val: '20+', label: 'Tent Sites' },
   { val: '16', label: 'Amenities' },

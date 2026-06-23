@@ -57,7 +57,7 @@ export default function Page() {
               { icon: Users, t: 'Groups of 20 to 200', d: 'Pavilion flexes to your headcount — from intimate gatherings to large celebrations.' },
               { icon: Utensils, t: 'Full Commercial Kitchen', d: 'Your caterer can take over, or bring your own for smaller DIY events.' },
               { icon: Camera, t: 'Stunning Photo Spots', d: 'Black Hills backdrops, Ponderosa pines, aerial views and golden-hour magic.' },
-              { icon: Home, t: 'On-Site Lodging', d: '20 presidential cabins, 200+ RV sites and 20+ tent sites — all guests together.' },
+              { icon: Home, t: 'On-Site Lodging', d: '20 presidential cabins, 156 RV sites and 20+ tent sites — all guests together.' },
               { icon: Music, t: 'Live-Music Friendly', d: 'Pavilion wired for bands, DJs and amplified sound systems.' },
               { icon: Beer, t: 'Beer Garden Access', d: 'Your guests enjoy our on-site bar and beer garden throughout the event.' },
             ].map(({ icon: Icon, t, d }) => (

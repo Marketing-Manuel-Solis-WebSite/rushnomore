@@ -134,7 +134,7 @@ export default function StayPage() {
       <JsonLd data={breadcrumbSchema([{ name: 'Home', url: '/' }, { name: 'Stay', url: '/stay' }])} />
       <JsonLd data={accommodationListSchema()} />
       <JsonLd data={offerCatalogSchema()} />
-      <JsonLd data={videoSchema({ name: 'Accommodations at Rush No More — RV Sites, Cabins & Tent Camping', description: 'Explore accommodations at Rush No More near Mount Rushmore — 200+ full-hookup RV sites, 20 presidential cabins & shaded tent camping in Sturgis, SD. Pool, hot tubs, beer garden included.', thumbnailUrl: '/images/GeneralImagesPark/IMG_7386.jpeg', contentUrl: '/videos/RNM-stay.mp4', uploadDate: '2025-01-01' })} />
+      <JsonLd data={videoSchema({ name: 'Accommodations at Rush No More — RV Sites, Cabins & Tent Camping', description: 'Explore accommodations at Rush No More near Mount Rushmore — 156 full-hookup RV sites, 20 presidential cabins & shaded tent camping in Sturgis, SD. Pool, hot tubs, beer garden included.', thumbnailUrl: '/images/GeneralImagesPark/IMG_7386.jpeg', contentUrl: '/videos/RNM-stay.mp4', uploadDate: '2025-01-01' })} />
 
       {/* ═══════════════════════════════════════════════════════════════
           HERO — Video Background
@@ -287,7 +287,7 @@ export default function StayPage() {
             </p>
             <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10">
               {[
-                { val: '200+', label: 'RV Sites' },
+                { val: '156', label: 'RV Sites' },
                 { val: '100ft', label: 'Max Length' },
                 { val: '30/50', label: 'AMP Service' },
                 { val: '365', label: 'Days Open' },

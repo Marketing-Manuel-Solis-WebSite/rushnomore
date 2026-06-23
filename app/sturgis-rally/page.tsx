@@ -166,7 +166,7 @@ export default function Page() {
             </p>
             <p>
               Rush No More has been a <strong>premier rally headquarters for more than a decade</strong>.
-              Just 5 miles from Main Street, our 200+ RV sites, 20 presidential cabins, shaded tent
+              Just 5 miles from Main Street, our 156 RV sites, 20 presidential cabins, shaded tent
               camping, on-site beer garden, pool and hot tubs give riders the perfect mix of
               proximity and peace.
             </p>

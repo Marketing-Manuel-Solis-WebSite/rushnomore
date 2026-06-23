@@ -2,8 +2,8 @@ import { Metadata } from 'next';
 import { seo } from '@/lib/seo';
 
 export const metadata: Metadata = seo({
-  title: 'RV Park Near Mount Rushmore — 200+ Sites from $41 | Rush No More',
-  description: '200+ full-hookup RV sites near Mount Rushmore at Rush No More, Sturgis SD — from $41.22. 30/50 AMP, pull-throughs up to 100ft, luxury spa sites with private hot tubs. I-90 Exit 37.',
+  title: 'RV Park Near Mount Rushmore — 156 Sites from $41 | Rush No More',
+  description: '156 full-hookup RV sites near Mount Rushmore at Rush No More, Sturgis SD — from $41.22. 30/50 AMP, pull-throughs up to 100ft, luxury spa sites with private hot tubs. I-90 Exit 37.',
   path: '/stay/rv-sites',
   image: '/images/RushMore-rv-camper-van.png',
   keywords: [

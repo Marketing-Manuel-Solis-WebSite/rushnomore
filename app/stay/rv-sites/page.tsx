@@ -39,7 +39,7 @@ export default function RVSitesPage() {
       <JsonLd data={faqSchema(FAQS)} />
       <JsonLd data={serviceSchema({
         name: 'RV Sites at Rush No More — Full Hookup 30/50 AMP',
-        description: '200+ full-hookup RV sites (water/electric/sewer, 30/50 AMP) near Mount Rushmore. Pull-throughs up to 100 ft, luxury sites with cement slab and gas BBQ, and Luxury Spa sites with private hot tub.',
+        description: '156 full-hookup RV sites (water/electric/sewer, 30/50 AMP) near Mount Rushmore. Pull-throughs up to 100 ft, luxury sites with cement slab and gas BBQ, and Luxury Spa sites with private hot tub.',
         url: '/stay/rv-sites',
         image: '/images/RushMore-rv-camper-van.png',
         priceMin: '41.22',
@@ -60,11 +60,11 @@ export default function RVSitesPage() {
             Full-Hookup <span className="text-brand-gold italic">RV Sites</span> in the Black Hills
           </h1>
           <p className="text-lg text-white/80 max-w-3xl mx-auto mb-8">
-            200+ premium RV sites with 30/50 AMP, pull-throughs up to 100ft, heated pool, beer garden & free resort amenities — just 55 miles from Mount Rushmore in Sturgis, South Dakota.
+            156 premium RV sites with 30/50 AMP, pull-throughs up to 100ft, heated pool, beer garden & free resort amenities — just 55 miles from Mount Rushmore in Sturgis, South Dakota.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10 mb-10">
             {[
-              { val: '200+', label: 'RV Sites' },
+              { val: '156', label: 'RV Sites' },
               { val: '100ft', label: 'Max Length' },
               { val: '$41.22', label: 'Starting At' },
               { val: '55 mi', label: 'To Mt. Rushmore' },

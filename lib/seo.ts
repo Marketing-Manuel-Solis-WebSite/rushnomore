@@ -231,7 +231,7 @@ export function campgroundSchema() {
       'On-Site Staff',
     ].map(name => ({ '@type': 'LocationFeatureSpecification', name, value: true })),
     availableLanguage: ['English', 'Spanish'],
-    numberOfRooms: 236,
+    numberOfRooms: 192,
     petsAllowed: true,
     smokingAllowed: false,
     starRating: { '@type': 'Rating', ratingValue: '4.8', bestRating: '5' },
@@ -298,7 +298,7 @@ export function campgroundSchema() {
       ],
     },
     containsPlace: [
-      { '@type': 'CampingPitch', name: 'RV Sites', description: '200+ full-hookup RV sites with 30/50 AMP, water & sewer', numberOfRooms: 200 },
+      { '@type': 'CampingPitch', name: 'RV Sites', description: '156 full-hookup RV sites with 30/50 AMP, water & sewer', numberOfRooms: 156 },
       { '@type': 'Accommodation', name: 'Presidential Cabins', description: '20 unique cabins — 19 named after US Presidents plus the JFK House, sleeping 2-10 guests', numberOfRooms: 20 },
       { '@type': 'CampingPitch', name: 'Tent Sites', description: '20+ shaded tent sites under Ponderosa pines', numberOfRooms: 20 },
     ],
@@ -326,7 +326,7 @@ export function campgroundSchema() {
       { '@type': 'PropertyValue', name: 'Distance to Rapid City', value: '30 miles' },
       { '@type': 'PropertyValue', name: 'Distance to Badlands National Park', value: '75 miles' },
       { '@type': 'PropertyValue', name: 'Interstate Access', value: 'I-90 Exit 37' },
-      { '@type': 'PropertyValue', name: 'Total RV Sites', value: '200+' },
+      { '@type': 'PropertyValue', name: 'Total RV Sites', value: '156' },
       { '@type': 'PropertyValue', name: 'Total Cabins', value: '16' },
       { '@type': 'PropertyValue', name: 'Total Tent Sites', value: '20+' },
       { '@type': 'PropertyValue', name: 'Elevation', value: '3,400 feet' },
@@ -347,7 +347,7 @@ export function lodgingSchema() {
     url: DOMAIN,
     telephone: PHONE,
     email: EMAIL,
-    description: 'Top-rated RV park, presidential cabins & tent camping near Mount Rushmore in Sturgis, South Dakota. 200+ RV sites, 20 cabins & 20+ tent sites with heated pool, hot tubs, beer garden & free resort amenities.',
+    description: 'Top-rated RV park, presidential cabins & tent camping near Mount Rushmore in Sturgis, South Dakota. 156 RV sites, 20 cabins & 20+ tent sites with heated pool, hot tubs, beer garden & free resort amenities.',
     image: [
       `${DOMAIN}/images/Aereal-2_1400.png`,
       `${DOMAIN}/images/Cabins/CabinUlyssesGrant/PhotoMainUlyssesGrant.png`,
@@ -365,7 +365,7 @@ export function lodgingSchema() {
     checkoutTime: '11:00',
     petsAllowed: true,
     smokingAllowed: false,
-    numberOfRooms: 236,
+    numberOfRooms: 192,
     availableLanguage: ['English', 'Spanish'],
     amenityFeature: [
       'Heated Swimming Pool', 'Multiple Hot Tub Spas', 'Beer Garden & Bar',
@@ -374,7 +374,7 @@ export function lodgingSchema() {
       'Camp Library', 'Camp Store', 'Picnic Pavilions', 'On-Site Staff',
     ].map(name => ({ '@type': 'LocationFeatureSpecification', name, value: true })),
     makesOffer: [
-      { '@type': 'Offer', name: 'RV Sites', price: '41.22', priceCurrency: 'USD', description: '200+ full-hookup RV sites from $41.22/night', url: `${DOMAIN}/stay/rv-sites` },
+      { '@type': 'Offer', name: 'RV Sites', price: '41.22', priceCurrency: 'USD', description: '156 full-hookup RV sites from $41.22/night', url: `${DOMAIN}/stay/rv-sites` },
       { '@type': 'Offer', name: 'Presidential Cabins', price: '51.76', priceCurrency: 'USD', description: '20 unique presidential cabins from $51.76/night', url: `${DOMAIN}/stay/cabins` },
       { '@type': 'Offer', name: 'Tent Camping', price: '35.00', priceCurrency: 'USD', description: '20+ shaded tent sites from $35/night', url: `${DOMAIN}/stay/tent-camping` },
     ],
@@ -504,7 +504,7 @@ export function accommodationListSchema() {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
     name: 'Accommodations at Rush No More RV Resort & Campground',
-    description: 'Choose from 200+ RV sites, 20 presidential cabins, and 20+ shaded tent sites near Mount Rushmore in Sturgis, South Dakota.',
+    description: 'Choose from 156 RV sites, 20 presidential cabins, and 20+ shaded tent sites near Mount Rushmore in Sturgis, South Dakota.',
     numberOfItems: 3,
     itemListElement: [
       {
@@ -513,7 +513,7 @@ export function accommodationListSchema() {
         name: 'Full Hookup RV Sites',
         url: `${DOMAIN}/stay/rv-sites`,
         image: `${DOMAIN}/images/rv-camper-van.png`,
-        description: '200+ full-hookup RV sites with 30/50 AMP, water & sewer. Pull-throughs up to 100ft. Luxury sites with cement slab, gas BBQ & private hot tub available. From $41.22/night.',
+        description: '156 full-hookup RV sites with 30/50 AMP, water & sewer. Pull-throughs up to 100ft. Luxury sites with cement slab, gas BBQ & private hot tub available. From $41.22/night.',
       },
       {
         '@type': 'ListItem',

@@ -3,7 +3,7 @@ import { seo } from '@/lib/seo';
 
 export const metadata: Metadata = seo({
   title: 'Stay Near Mount Rushmore — RV, Cabins & Tents | Rush No More',
-  description: 'Rush No More in Sturgis, SD — 200+ RV sites from $41, 20 cabins from $51, tent camping from $35. Pool, hot tubs, beer garden. 55 mi to Mount Rushmore, 12 mi to Deadwood.',
+  description: 'Rush No More in Sturgis, SD — 156 RV sites from $41, 20 cabins from $51, tent camping from $35. Pool, hot tubs, beer garden. 55 mi to Mount Rushmore, 12 mi to Deadwood.',
   path: '/stay',
   image: '/images/GeneralImagesPark/IMG_7386.jpeg',
   keywords: [

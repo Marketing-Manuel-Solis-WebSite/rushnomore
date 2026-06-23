@@ -16,7 +16,7 @@ const FAQ = [
   },
   {
     q: 'Do you have full hookup RV sites?',
-    a: 'Yes — we have 200+ RV sites with full hookups (water, electric and sewer), 30 and 50 AMP service, pull-throughs up to 100 ft long, plus luxury sites with cement slabs, gas BBQ and private hot tubs.',
+    a: 'Yes — we have 156 RV sites with full hookups (water, electric and sewer), 30 and 50 AMP service, pull-throughs up to 100 ft long, plus luxury sites with cement slabs, gas BBQ and private hot tubs.',
   },
   {
     q: 'What are your RV site prices?',
@@ -81,7 +81,7 @@ export default function Page() {
           </h1>
           <p className="text-lg md:text-xl text-white/85 max-w-3xl mx-auto mb-8 leading-relaxed font-medium">
             Rush No More RV Resort in Sturgis, SD — your Black Hills base camp for Mount Rushmore, Deadwood,
-            Crazy Horse and Sturgis Rally. <strong>200+ full-hookup RV sites</strong>, pull-throughs up to 100 ft,
+            Crazy Horse and Sturgis Rally. <strong>156 full-hookup RV sites</strong>, pull-throughs up to 100 ft,
             heated pool, hot tubs and beer garden. Nightly, weekly and monthly rates — book online or call today.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
@@ -120,7 +120,7 @@ export default function Page() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
             {[
               { icon: Mountain, t: '55 mi to Mount Rushmore', d: 'Centrally located for Mount Rushmore, Crazy Horse, Deadwood and the Black Hills.' },
-              { icon: Truck, t: '200+ Full Hookup Sites', d: 'Water, electric, sewer. 30/50 AMP. Pull-throughs up to 100 ft for big rigs.' },
+              { icon: Truck, t: '156 Full Hookup Sites', d: 'Water, electric, sewer. 30/50 AMP. Pull-throughs up to 100 ft for big rigs.' },
               { icon: Waves, t: 'Pool, Hot Tubs, Beer Garden', d: 'Heated pool, multiple hot tubs, live music, game room — 16+ free amenities.' },
               { icon: Shield, t: 'Friendly On-Site Staff', d: 'On-site staff during business hours with after-hours on-call assistance.' },
             ].map(({ icon: Icon, t, d }) => (
