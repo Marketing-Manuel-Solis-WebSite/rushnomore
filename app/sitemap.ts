@@ -103,7 +103,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       images: [
         `${B}/images/RushMore-rv-camper-van.png`,
         `${B}/images/FHU Back-in.png`,
-        `${B}/images/FHU Pull-through.png`,
+        `${B}/images/PullRV.jpeg`,
         `${B}/images/WaterElectric Back-in.png`,
         `${B}/images/vip-site.png`,
       ],

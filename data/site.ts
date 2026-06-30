@@ -156,7 +156,7 @@ export const RV_TIERS: RVTier[] = [
     features: ['Water & electric hookup', '30 AMP service', 'Back-in site', 'Up to 100ft long'] },
   { name: 'FHU Back-in', price: '$51.76', note: 'starts at', img: '/images/FHU Back-in.png', badge: '',
     features: ['Full hook-up site', 'Water/Electric/Sewer', 'Back-in site', '30/50 AMP service'] },
-  { name: 'FHU Pull-through', price: '$62.36', note: 'starts at', img: '/images/FHU Pull-through.png', badge: '',
+  { name: 'FHU Pull-through', price: '$62.36', note: 'starts at', img: '/images/PullRV.jpeg', badge: '',
     features: ['Full hook-up site', 'Water/Electric/Sewer', 'Pull-through site', '30/50 AMP service'] },
   { name: 'Luxury w/out Hot Tub', price: '$62.36', note: 'starts at', img: '/images/vip-site.png', badge: 'POPULAR',
     features: ['Cement slab & gas BBQ', 'Mountain Valley location', 'Full hook-ups included', '30/50 AMP service'] },
@@ -169,10 +169,15 @@ const STANDARD_CABIN_INTERIOR = [
   '/images/Cabins/CabinTheJamesMadison/IMG_8481.jpeg',
   '/images/Cabins/CabinTheJamesMadison/IMG_8492.jpeg',
 ];
-const CABIN_9_10_INTERIOR = [
+const CABIN_9_INTERIOR = [
   '/images/Cabins/CabinJohnQuincyAdams/IMG_7785.jpeg',
   '/images/Cabins/CabinJohnQuincyAdams/IMG_8466.jpeg',
   '/images/Cabins/CabinJohnQuincyAdams/IMG_8467.jpeg',
+];
+const CABIN_10_INTERIOR = [
+  '/images/Cabins/CabinAndrewJackson/IMG_0266.jpeg',
+  '/images/Cabins/CabinAndrewJackson/IMG_0267.jpeg',
+  '/images/Cabins/CabinAndrewJackson/IMG_0268.jpeg',
 ];
 
 export const CABINS: CabinCategory[] = [
@@ -187,8 +192,8 @@ export const CABINS: CabinCategory[] = [
     { name: 'The John Adams', num: '12', sleeps: 4, price: '$174', img: '/images/Cabins/CabinJohnAdams/PhotoMainJohnAdams.jpeg', images: ['/images/Cabins/CabinJohnAdams/PhotoMainJohnAdams.jpeg', '/images/Cabins/CabinJohnAdams/IMG_8438.jpeg', '/images/Cabins/CabinJohnAdams/IMG_8442.jpeg', '/images/Cabins/CabinJohnAdams/IMG_8469.jpeg'], bath: true, beds: '1 Queen + futon in living room', note: 'Single-level — no loft.' },
   ]},
   { cat: 'Cabins Sleeping 6', items: [
-    { name: 'John Quincy Adams', num: '9', sleeps: 6, price: '$100.42', img: '/images/Cabins/CabinJohnQuincyAdams/PhotoMainJohnQuincyAdams.jpeg', images: ['/images/Cabins/CabinJohnQuincyAdams/PhotoMainJohnQuincyAdams.jpeg', ...CABIN_9_10_INTERIOR], bath: true },
-    { name: 'Andrew Jackson', num: '10', sleeps: 6, price: '$110.42', img: '/images/Cabins/CabinJohnQuincyAdams/PhotoMainJohnQuincyAdams.jpeg', images: ['/images/Cabins/CabinJohnQuincyAdams/PhotoMainJohnQuincyAdams.jpeg', ...CABIN_9_10_INTERIOR], bath: true, note: 'Larger floorplan with sitting area.' },
+    { name: 'John Quincy Adams', num: '9', sleeps: 6, price: '$100.42', img: '/images/Cabins/CabinJohnQuincyAdams/PhotoMainJohnQuincyAdams.jpeg', images: ['/images/Cabins/CabinJohnQuincyAdams/PhotoMainJohnQuincyAdams.jpeg', ...CABIN_9_INTERIOR], bath: true },
+    { name: 'Andrew Jackson', num: '10', sleeps: 6, price: '$110.42', img: '/images/Cabins/CabinJohnQuincyAdams/PhotoMainJohnQuincyAdams.jpeg', images: ['/images/Cabins/CabinJohnQuincyAdams/PhotoMainJohnQuincyAdams.jpeg', ...CABIN_10_INTERIOR], bath: true, note: 'Larger floorplan with sitting area.' },
     { name: 'Ulysses S. Grant', num: '11', sleeps: 6, price: '$174', img: '/images/Cabins/CabinUlyssesGrant/PhotoMainUlyssesGrant.png', images: ['/images/Cabins/CabinUlyssesGrant/PhotoMainUlyssesGrant.png'], bath: true, beds: '2 Queens (one in loft) + futon', note: 'Studio-style with full kitchen. Loft access requires stairs.' },
     { name: 'The George Washington', num: '15', sleeps: 6, price: '$126.84', img: '/images/Cabins/CabinGeorgeWashington/PhotoMainGeorgeWashington.jpeg', images: ['/images/Cabins/CabinGeorgeWashington/PhotoMainGeorgeWashington.jpeg', '/images/Cabins/CabinGeorgeWashington/IMG_8451.jpeg'], bath: true },
     { name: 'The James Monroe', num: '2', sleeps: 6, price: '$121.56', img: '/images/Cabins/CabinJamesMonroe/PhotoMainJamesMonroe.jpeg', images: ['/images/Cabins/CabinJamesMonroe/PhotoMainJamesMonroe.jpeg', '/images/Cabins/CabinJamesMonroe/IMG_7688.jpeg', '/images/Cabins/CabinJamesMonroe/IMG_7689.jpeg', '/images/Cabins/CabinJamesMonroe/IMG_7788.jpeg', '/images/Cabins/CabinJamesMonroe/IMG_7790.jpeg', '/images/Cabins/CabinJamesMonroe/IMG_7791.jpeg', '/images/Cabins/CabinJamesMonroe/IMG_7792.jpeg'], bath: true },
