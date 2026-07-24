@@ -26,6 +26,88 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ═══ MONTHLY PROMO — Stay Longer, Save More ═══ */}
+      <section
+        aria-labelledby="monthly-promo-heading"
+        className="py-20 md:py-24 bg-brand-navy text-white relative overflow-hidden"
+      >
+        <div className="absolute top-0 left-0 w-96 h-96 bg-brand-gold/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-brand-gold/10 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
+
+        <div className="max-w-7xl mx-auto px-4 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center">
+            <div className="relative rounded-3xl overflow-hidden shadow-lodge-xl border-2 border-white/20 aspect-[2/3] max-w-md mx-auto lg:mx-0 w-full">
+              <Image
+                src="/images/posts/stay-longer-save-more.png"
+                alt="Stay Longer, Save More — monthly RV site promotion at Rush No More Campground in Sturgis, SD: $750/month May–September, $650/month October–April"
+                fill
+                sizes="(max-width: 1024px) 90vw, 450px"
+                className="object-cover"
+                loading="lazy"
+              />
+            </div>
+
+            <div>
+              <span className="inline-block px-5 py-2 bg-brand-gold text-white text-xs font-black uppercase tracking-[0.2em] rounded-full shadow-gold mb-5">
+                ★ Monthly Special ★
+              </span>
+              <h2 id="monthly-promo-heading" className="mb-4 text-white text-4xl md:text-5xl leading-tight">
+                Stay Longer, <span className="text-brand-gold italic">Save More</span>
+              </h2>
+              <div className="w-32 h-1.5 bg-gold-gradient rounded-full mb-6" />
+              <p className="text-white/70 text-lg leading-relaxed font-medium mb-7">
+                Make the Black Hills your home base with a monthly RV site — full amenity access included,
+                with <strong className="text-white">year-round sites available starting September 1, 2026</strong>.
+              </p>
+
+              <div className="grid grid-cols-2 gap-4 mb-7">
+                <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-5 border border-white/10 text-center">
+                  <div className="text-xs uppercase font-bold tracking-wider text-white/50 mb-1">May 1 – September 1</div>
+                  <span className="font-display text-4xl md:text-5xl text-brand-gold font-bold block">$750</span>
+                  <span className="text-sm text-white/60 font-semibold">per month</span>
+                </div>
+                <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-5 border border-white/10 text-center">
+                  <div className="text-xs uppercase font-bold tracking-wider text-white/50 mb-1">Oct 1, 2026 – Apr 1, 2027</div>
+                  <span className="font-display text-4xl md:text-5xl text-brand-gold font-bold block">$650</span>
+                  <span className="text-sm text-white/60 font-semibold">per month</span>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mb-8">
+                {[
+                  'Free Wi-Fi',
+                  '24/7 Onsite Laundry Facility',
+                  'Swimming Pool & Spa (May 1 – Oct 1)',
+                  'Onsite Store Open Daily',
+                  'Quiet Park — Away from Freeways',
+                  'Free Extra Parking',
+                  'Onsite Propane & Ice Sales',
+                ].map((f, i) => (
+                  <span key={i} className="flex items-center gap-2.5 text-sm text-white/80 bg-white/5 backdrop-blur-sm px-3 py-2 rounded-lg font-medium border border-white/10">
+                    <CheckCircle className="w-4 h-4 text-brand-gold flex-shrink-0" />{f}
+                  </span>
+                ))}
+              </div>
+
+              <div className="flex flex-wrap gap-3">
+                <Link
+                  href="/monthly-rv-sites"
+                  className="inline-flex items-center gap-2 px-7 py-3.5 bg-brand-gold text-white font-bold rounded-xl shadow-gold hover:shadow-gold-lg hover:brightness-110 transition-all duration-300 uppercase tracking-wider text-sm"
+                >
+                  Reserve Your Monthly Site <ArrowRight className="w-4 h-4" />
+                </Link>
+                <a
+                  href={`tel:${SITE.phoneTel}`}
+                  className="inline-flex items-center gap-2 px-7 py-3.5 border-2 border-white/30 text-white font-bold rounded-xl hover:bg-white hover:text-brand-navy transition-all duration-300 uppercase tracking-wider text-sm"
+                >
+                  <Phone className="w-4 h-4" /> Call {SITE.phone}
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ═══════════════════════════════════════════════════════════════
           ACCOMMODATIONS
       ═══════════════════════════════════════════════════════════════ */}
