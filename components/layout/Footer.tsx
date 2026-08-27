@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { SITE } from '@/data/site';
 import { MapPin, Phone, Mail, AlertTriangle } from 'lucide-react';
+import { SocialLinks } from '@/components/ui/SocialLinks';
 
 const cols = {
   Stay: [
@@ -88,6 +89,14 @@ export function Footer() {
                 <Mail className="w-4 h-4 text-brand-gold" />
                 {SITE.email}
               </a>
+            </div>
+
+            {/* Social profiles */}
+            <div className="mt-7">
+              <h4 className="text-[10px] uppercase tracking-[0.2em] text-brand-gold mb-3 font-bold">
+                Follow Us
+              </h4>
+              <SocialLinks variant="dark" />
             </div>
           </div>
 

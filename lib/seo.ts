@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { SAME_AS } from '@/data/site';
 
 const DOMAIN = 'https://www.rushnomore.com';
 const OG_IMAGE = '/images/Aereal-2_1400.png';
@@ -140,15 +141,7 @@ export function organizationSchema() {
     email: EMAIL,
     address: ADDRESS,
     geo: GEO,
-    sameAs: [
-      'https://www.tripadvisor.com/Hotel_Review-g54818-d1631146-Reviews-Rush_No_More_Campground-Sturgis_South_Dakota.html',
-      'https://www.google.com/maps/place/Rush+No+More+Campground',
-      'https://www.facebook.com/people/Rush-No-More-RV-Resort-Cabins-Campgrounds-Black-Hills-Sturgis-SD/61586104841430/',
-      'https://www.instagram.com/rushnomorervpark/',
-      'https://www.youtube.com/@RushNoMoreCampground',
-      'https://www.tiktok.com/@rushnomore.campground',
-      'https://www.yelp.com/biz/rush-no-more-rv-resort-and-campground-sturgis',
-    ],
+    sameAs: SAME_AS,
     contactPoint: [
       {
         '@type': 'ContactPoint',
@@ -305,15 +298,7 @@ export function campgroundSchema() {
     tourBookingPage: BOOKING_URL,
     isAccessibleForFree: false,
     publicAccess: false,
-    sameAs: [
-      'https://www.tripadvisor.com/Hotel_Review-g54818-d1631146-Reviews-Rush_No_More_Campground-Sturgis_South_Dakota.html',
-      'https://www.google.com/maps/place/Rush+No+More+Campground',
-      'https://www.facebook.com/people/Rush-No-More-RV-Resort-Cabins-Campgrounds-Black-Hills-Sturgis-SD/61586104841430/',
-      'https://www.instagram.com/rushnomorervpark/',
-      'https://www.youtube.com/@RushNoMoreCampground',
-      'https://www.tiktok.com/@rushnomore.campground',
-      'https://www.yelp.com/biz/rush-no-more-rv-resort-and-campground-sturgis',
-    ],
+    sameAs: SAME_AS,
     additionalProperty: [
       { '@type': 'PropertyValue', name: 'Max RV Length', value: '100 feet' },
       { '@type': 'PropertyValue', name: 'Electrical Service', value: '30/50 AMP' },
@@ -379,6 +364,7 @@ export function lodgingSchema() {
       { '@type': 'Offer', name: 'Tent Camping', price: '35.00', priceCurrency: 'USD', description: '20+ shaded tent sites from $35/night', url: `${DOMAIN}/stay/tent-camping` },
     ],
     tourBookingPage: BOOKING_URL,
+    sameAs: SAME_AS,
   };
 }
 
@@ -481,6 +467,7 @@ export function localBusinessSchema() {
     priceRange: '$35 - $335',
     aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.8', reviewCount: '420', bestRating: '5' },
     areaServed: { '@type': 'City', name: 'Sturgis', containedInPlace: { '@type': 'State', name: 'South Dakota' } },
+    sameAs: SAME_AS,
   };
 }
 
@@ -846,6 +833,7 @@ export function placeSchema() {
         containedInPlace: { '@type': 'Country', name: 'United States' },
       },
     },
+    sameAs: SAME_AS,
   };
 }
 

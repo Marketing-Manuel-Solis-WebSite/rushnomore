@@ -112,6 +112,54 @@ export const SITE: SiteConfig & { rvStartPrice: string; cabinStartPrice: string;
   tentStartPrice: '35',
 };
 
+/* ─── Social profiles ───
+   Single source of truth: the footer/header/contact links AND the schema.org
+   `sameAs` arrays in lib/seo.ts both read from here. Keeping the visible link
+   and the structured-data URL byte-identical is what lets Google reconcile
+   these profiles with the Rush No More entity. ─── */
+export interface SocialProfile {
+  /** Platform key — maps to an icon in <SocialLinks />. */
+  key: 'facebook' | 'instagram' | 'youtube' | 'tiktok';
+  label: string;
+  handle: string;
+  href: string;
+}
+
+export const SOCIAL: SocialProfile[] = [
+  {
+    key: 'facebook',
+    label: 'Facebook',
+    handle: 'Rush No More RV Resort',
+    href: 'https://www.facebook.com/profile.php?id=61586104841430',
+  },
+  {
+    key: 'instagram',
+    label: 'Instagram',
+    handle: '@rushnomorervpark',
+    href: 'https://www.instagram.com/rushnomorervpark/',
+  },
+  {
+    key: 'youtube',
+    label: 'YouTube',
+    handle: '@RushNoMoreCampground',
+    href: 'https://www.youtube.com/@RushNoMoreCampground',
+  },
+  {
+    key: 'tiktok',
+    label: 'TikTok',
+    handle: '@rushnomore.campground',
+    href: 'https://www.tiktok.com/@rushnomore.campground',
+  },
+];
+
+/** Every off-site profile that represents this brand — feeds schema.org `sameAs`. */
+export const SAME_AS: string[] = [
+  ...SOCIAL.map((s) => s.href),
+  SITE.tripadvisor,
+  'https://www.google.com/maps/place/Rush+No+More+Campground',
+  'https://www.yelp.com/biz/rush-no-more-rv-resort-and-campground-sturgis',
+];
+
 export const NAV: NavItem[] = [
   { label: 'Stay', href: '/stay' },
   { label: 'Amenities', href: '/amenities' },

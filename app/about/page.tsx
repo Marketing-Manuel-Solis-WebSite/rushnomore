@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { SITE, REVIEWS, STATS } from '@/data/site';
 import { BookingCTA } from '@/components/ui';
+import { SocialLinks } from '@/components/ui/SocialLinks';
 import { FadeIn } from '@/components/motion';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { faqSchema, breadcrumbSchema, videoSchema } from '@/lib/seo';
@@ -412,6 +413,25 @@ export default function AboutPage() {
               );
             })}
           </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════════
+          FOLLOW US
+      ═══════════════════════════════════════════════════════════════ */}
+      <section className="py-16 md:py-20 bg-brand-navy text-white relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-80 h-80 bg-brand-gold/5 rounded-full blur-3xl" />
+        <div className="max-w-3xl mx-auto px-4 relative z-10 text-center">
+          <span className="badge-gold mb-4 inline-block">Stay Connected</span>
+          <h2 className="mb-4 text-white text-3xl md:text-4xl">
+            Follow Rush No More on <span className="text-brand-gold italic">Social</span>
+          </h2>
+          <p className="text-white/60 leading-relaxed font-medium mb-8">
+            See the campground before you arrive. We post site availability, Sturgis Rally
+            updates, live music and beer garden nights, Black Hills ride photos and
+            last-minute openings on Facebook and Instagram.
+          </p>
+          <SocialLinks variant="dark" className="justify-center" />
         </div>
       </section>
 

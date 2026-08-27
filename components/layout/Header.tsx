@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { NAV, SITE } from '@/data/site';
 import { WeatherWidget } from '@/components/weather';
 import { Phone, Menu, X, ChevronDown, MapPin, CalendarDays } from 'lucide-react';
+import { SocialLinks } from '@/components/ui/SocialLinks';
 
 export function Header() {
   const [open, setOpen] = useState(false);
@@ -228,6 +229,14 @@ export function Header() {
                     <CalendarDays className="w-4 h-4" />
                     Book Your Stay
                   </a>
+                </div>
+
+                {/* Social profiles */}
+                <div className="pt-5 mt-3 border-t border-gray-200">
+                  <p className="pb-3 text-[10px] font-bold uppercase tracking-[0.2em] text-brand-navy/40">
+                    Follow Rush No More
+                  </p>
+                  <SocialLinks variant="light" size="sm" />
                 </div>
               </div>
             </motion.div>

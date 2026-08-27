@@ -14,6 +14,7 @@ import {
   ExternalLink, Star, ArrowRight, Clock, MessageSquare,
   Users, Calendar, Truck, HelpCircle, Navigation, ChevronDown,
 } from 'lucide-react';
+import { SocialCards } from '@/components/ui/SocialLinks';
 
 /* ─── FAQ Data ─── */
 const FAQS = [
@@ -441,6 +442,15 @@ export default function ContactPage() {
                       <span className="text-white/40 text-xs">We reply within 24 hours</span>
                     </div>
                   </a>
+                </div>
+
+                {/* Social profiles */}
+                <div className="mt-7 pt-6 border-t border-white/10">
+                  <h4 className="font-display font-bold text-lg mb-2">Follow Rush No More</h4>
+                  <p className="text-white/60 text-sm mb-4 font-medium">
+                    Park updates, Sturgis Rally news, campground events and Black Hills photos.
+                  </p>
+                  <SocialCards />
                 </div>
               </div>
             </div>
