@@ -2,8 +2,8 @@ import { Metadata } from 'next';
 import { seo } from '@/lib/seo';
 
 export const metadata: Metadata = seo({
-  title: 'Spearfish Canyon Guide — Waterfalls, Fly Fishing & Fall Foliage',
-  description: 'Spearfish Canyon Scenic Byway guide from Rush No More in Sturgis, SD. Bridal Veil Falls, Roughlock Falls, Spearfish Creek fly fishing and the 20-mile limestone-walled byway. Drive route, trailheads and best seasons.',
+  title: 'Spearfish Canyon Guide — Waterfalls, Fishing & Fall Foliage',
+  description: 'Spearfish Canyon Scenic Byway guide from Rush No More: Bridal Veil Falls, Roughlock Falls, Spearfish Creek fly fishing, drive route and best seasons.',
   path: '/spearfish-canyon-guide',
   image: '/images/rv-camper-van.png',
   keywords: [

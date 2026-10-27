@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { SITE } from '@/data/site';
+import { SITE, FACTS, PET_POLICY_NOTE } from '@/data/site';
 import { BookingCTA } from '@/components/ui';
 import { FadeIn } from '@/components/motion';
 import { JsonLd } from '@/components/seo/JsonLd';
@@ -11,9 +11,9 @@ const POLICY_FAQS = [
   { q: 'What is your cancellation policy for RV and tent sites?', a: '14+ days before arrival: full refund minus $25 admin fee. 7–14 days: 50% refund. Less than 7 days: no refund. No-shows forfeit the entire reservation.' },
   { q: 'What is the cabin cancellation policy?', a: 'Cabins and luxury sites: 30+ days = full refund minus $25. 14–30 days = 75%. 7–14 days = 50%. Less than 7 days = no refund.' },
   { q: 'Are Sturgis Rally reservations refundable?', a: 'No. All rally and holiday reservations (Memorial Day, July 4th, Labor Day, Sturgis Rally) are non-refundable with full prepayment required at booking.' },
-  { q: 'What are your check-in and check-out times?', a: 'Check-in is at 3:00 PM. Check-out is by 11:00 AM. Late check-outs may be arranged at the office when space allows.' },
+  { q: 'What are your check-in and check-out times?', a: `Check-in is at ${FACTS.checkInLabel}. Check-out is by ${FACTS.checkOutLabel}. Late check-outs may be arranged at the office when space allows.` },
   { q: 'Can I have a wood fire?', a: 'No. Rush No More backs up to National Forest Service land, so wood fires are not allowed anywhere on the property. Propane campfire rentals and charcoal grills are permitted.' },
-  { q: 'Are pets allowed?', a: 'Yes. Dogs are welcome on leash throughout the park. Please clean up after your pet and keep them quiet during quiet hours (10 PM – 7 AM).' },
+  { q: 'Are pets allowed?', a: PET_POLICY_NOTE },
   { q: 'How many vehicles can I bring per site?', a: 'A maximum of two vehicles per site is included. Additional vehicles can be parked for $10 per day.' },
 ];
 import {
@@ -70,10 +70,10 @@ const CANCELLATION = [
 ];
 
 const PARK_RULES = [
-  { icon: Clock, text: 'Check-in: 3:00 PM | Check-out: 11:00 AM' },
+  { icon: Clock, text: `Check-in: ${FACTS.checkInLabel} | Check-out: ${FACTS.checkOutLabel}` },
   { icon: Volume2, text: 'Quiet hours: 10:00 PM - 7:00 AM' },
   { icon: Car, text: 'Speed limit: 5 MPH throughout the park' },
-  { icon: Dog, text: 'Pets must be leashed at all times. Clean up after your pet.' },
+  { icon: Dog, text: PET_POLICY_NOTE },
   { icon: Flame, text: 'NO WOOD FIRES ALLOWED — we back up to Forest Service land. Propane and charcoal only.' },
   { icon: Users, text: 'Maximum 2 vehicles per site. Extra vehicles $10/day.' },
 ];

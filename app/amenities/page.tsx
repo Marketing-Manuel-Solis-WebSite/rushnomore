@@ -4,7 +4,7 @@ import { useRef, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { SITE, AMENITIES, REVIEWS } from '@/data/site';
+import { SITE, AMENITIES, REVIEWS, PET_POLICY_NOTE, POOL_SEASON_NOTE } from '@/data/site';
 import { BookingCTA, SectionHeader } from '@/components/ui';
 import { FadeIn } from '@/components/motion';
 import { JsonLd } from '@/components/seo/JsonLd';
@@ -30,16 +30,16 @@ const FEATURED_AMENITIES = [
     icon: Waves,
     title: 'Pool & Hot Tubs',
     tagline: 'Cool off or soak under the stars',
-    description: 'Our heated swimming pool is the centerpiece of summer fun at Rush No More. Surrounded by comfortable lounge chairs and shaded areas, it\'s the perfect spot to cool off after a day exploring the Black Hills. When evening comes, slip into one of our hot tubs and watch the stars emerge over the Ponderosa pines.',
-    features: ['Heated swimming pool', 'Multiple hot tub spas', 'Poolside lounge chairs', 'Shaded seating areas', 'Open daily in season'],
-    hours: 'Pool: 9 AM – 9 PM · Hot Tubs: 9 AM – 10 PM',
+    description: 'Our swimming pool is the centerpiece of summer fun at Rush No More. Surrounded by comfortable lounge chairs and shaded areas, it\'s the perfect spot to cool off after a day exploring the Black Hills. When evening comes, slip into one of our hot tubs and watch the stars emerge over the Ponderosa pines.',
+    features: ['Swimming pool', 'Multiple hot tub spas', 'Poolside lounge chairs', 'Shaded seating areas', 'Free for registered guests'],
+    hours: POOL_SEASON_NOTE,
     image: '/images/Pool/PoolWithPeople.jpeg',
   },
   {
     icon: Beer,
     title: 'Beer Garden & Bar',
     tagline: 'Where stories are told and friendships are made',
-    description: 'Rush No More\'s famous Beer Garden is where campground life truly comes alive. Enjoy ice-cold craft beers, refreshing cocktails, and non-alcoholic beverages in our open-air gathering spot. With live music during rally season and special events, it\'s the social heart of the resort — and over 34,000 drinks served proves it.',
+    description: 'Rush No More\'s famous Beer Garden is where campground life truly comes alive. Enjoy ice-cold craft beers, refreshing cocktails, and non-alcoholic beverages in our open-air gathering spot. With live music during rally season and special events, it\'s the social heart of the resort.',
     features: ['Craft beer selection', 'Full bar cocktails', 'Non-alcoholic options', 'Live music events', 'Rally headquarters'],
     hours: 'Open 11 AM – 10 PM (extended during Rally)',
     image: '/images/BeerGarden/IMG_7326.jpeg',
@@ -66,12 +66,12 @@ const FEATURED_AMENITIES = [
 
 /* ─── Amenity Grid Data (the full 15) ─── */
 const AMENITY_GRID = [
-  { icon: Waves, title: 'Pool & Hot Tubs', desc: 'Heated pool and spa tubs for ultimate relaxation', tag: 'Most Popular' },
+  { icon: Waves, title: 'Pool & Hot Tubs', desc: 'Pool and spa tubs for ultimate relaxation', tag: 'Most Popular' },
   { icon: Beer, title: 'Beer Garden', desc: 'On-site bar with craft beers, cocktails & live music', tag: 'Fan Favorite' },
   { icon: ShowerHead, title: 'Modern Bathhouses', desc: 'Spotless, fully-equipped shower and restroom facilities', tag: '' },
   { icon: WashingMachine, title: 'Laundromats', desc: 'Coin-operated washers and dryers throughout the park', tag: '' },
   { icon: Wifi, title: 'Free Wi-Fi', desc: 'Complimentary Wi-Fi throughout the resort', tag: '' },
-  { icon: PawPrint, title: 'Pet Friendly', desc: 'Well-behaved pets welcome at most sites and select cabins', tag: 'Paws Welcome' },
+  { icon: PawPrint, title: 'Traveling With Pets?', desc: PET_POLICY_NOTE, tag: '' },
   { icon: Fuel, title: 'Propane Sales', desc: 'Convenient on-site propane refill and exchange', tag: '' },
   { icon: Utensils, title: 'Cafe', desc: 'Open weekends & all 10 days of Rally', tag: '' },
   { icon: Gamepad2, title: 'Game Room', desc: 'Arcade games, pool tables, and board games', tag: '' },
@@ -86,7 +86,7 @@ const AMENITY_GRID = [
 /* ─── "Day at Rush No More" Timeline ─── */
 const TIMELINE = [
   { time: '7:00 AM', icon: Sun, title: 'Wake Up to Pine Air', desc: 'Step outside to fresh mountain air, birdsong, and coffee on the patio.' },
-  { time: '9:00 AM', icon: Waves, title: 'Morning Swim', desc: 'Start the day with a refreshing dip in the heated pool before the crowds.' },
+  { time: '9:00 AM', icon: Waves, title: 'Morning Swim', desc: 'Start the day with a refreshing dip in the pool before the crowds.' },
   { time: '10:00 AM', icon: Mountain, title: 'Explore the Black Hills', desc: 'Head out to Mount Rushmore, Deadwood, or Custer State Park — all an easy drive.' },
   { time: '2:00 PM', icon: TreePine, title: 'Trail Time', desc: 'Hike our nature trails through Ponderosa pines and discover hidden views.' },
   { time: '4:00 PM', icon: Beer, title: 'Beer Garden O\'Clock', desc: 'Kick back with a cold craft beer and swap stories with fellow campers.' },
@@ -107,11 +107,11 @@ export default function AmenitiesPage() {
   return (
     <>
       <JsonLd data={breadcrumbSchema([{ name: 'Home', url: '/' }, { name: 'Amenities', url: '/amenities' }])} />
-      <JsonLd data={videoSchema({ name: 'Rush No More Amenities Tour — Pool, Hot Tubs, Beer Garden & More', description: 'Free resort amenities at Rush No More campground near Mount Rushmore — heated pool, hot tub spas, beer garden, game room, nature trails, modern bathhouses & more. No resort fees.', thumbnailUrl: '/images/Pool/PoolWithPeople.jpeg', contentUrl: '/videos/rushnomore-amenities.mp4', uploadDate: '2025-01-01' })} />
+      <JsonLd data={videoSchema({ name: 'Rush No More Amenities Tour — Pool, Hot Tubs, Beer Garden & More', description: 'Free resort amenities at Rush No More campground near Mount Rushmore — pool, hot tub spas, beer garden, game room, nature trails, modern bathhouses & more. No resort fees.', thumbnailUrl: '/images/Pool/PoolWithPeople.jpeg', contentUrl: '/videos/rushnomore-amenities.mp4', uploadDate: '2025-01-01' })} />
       <JsonLd data={faqSchema([
-        { q: 'Are amenities free at Rush No More?', a: 'Yes! Resort amenities are included free with every reservation — RV, cabin, or tent. This includes the heated pool, hot tubs, beer garden, game room, nature trails, bathhouses, Wi-Fi, and more.' },
-        { q: 'Does Rush No More have a swimming pool?', a: 'Yes! We have a heated swimming pool open seasonally (May through September) that is free for all registered guests.' },
-        { q: 'Is Rush No More pet friendly?', a: 'Absolutely! We welcome well-behaved pets. We have designated pet-friendly areas and ask that all pets be kept on leashes in common areas.' },
+        { q: 'Are amenities free at Rush No More?', a: 'Yes! Resort amenities are included free with every reservation — RV, cabin, or tent. This includes the pool, hot tubs, beer garden, game room, nature trails, bathhouses, Wi-Fi, and more.' },
+        { q: 'Does Rush No More have a swimming pool?', a: `Yes! We have a swimming pool that is free for all registered guests. ${POOL_SEASON_NOTE}` },
+        { q: 'Is Rush No More pet friendly?', a: PET_POLICY_NOTE },
         { q: 'Does Rush No More have a beer garden?', a: 'Yes! Our on-site beer garden serves craft beers, cocktails, and beverages. It is open weekends during regular season and all 10 days during the Sturgis Rally.' },
         { q: 'Is there Wi-Fi at Rush No More?', a: 'Yes, free Wi-Fi is available throughout the campground for all registered guests.' },
         { q: 'Are campfires allowed at Rush No More?', a: 'Wood fires are NOT allowed as we back up to Forest Service land. However, propane campfire rentals and charcoal grills are available and permitted.' },
@@ -159,7 +159,7 @@ export default function AmenitiesPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            Pool, hot tubs, beer garden, game room, nature trails, Wi-Fi, pet-friendly grounds & so much more — all included with every stay. No hidden fees, no surprises.
+            Pool, hot tubs, beer garden, game room, nature trails, Wi-Fi & so much more — all included with every stay. No hidden fees, no surprises.
           </motion.p>
 
           <motion.div
@@ -186,8 +186,8 @@ export default function AmenitiesPage() {
             {[
               { val: '15', label: 'Amenities' },
               { val: '100%', label: 'Included Free' },
-              { val: '4.8★', label: 'Guest Rating' },
-              { val: '4.8/5', label: 'TripAdvisor' },
+              { val: '156', label: 'RV Sites' },
+              { val: '20', label: 'Cabins' },
             ].map((s, i) => (
               <div key={i} className="text-center">
                 <span className="font-display text-3xl md:text-4xl text-brand-gold font-bold block">{s.val}</span>
@@ -211,7 +211,6 @@ export default function AmenitiesPage() {
             <span className="flex items-center gap-2"><Waves className="w-4 h-4" /> Pool & Hot Tubs</span>
             <span className="flex items-center gap-2"><Beer className="w-4 h-4" /> Beer Garden</span>
             <span className="flex items-center gap-2"><Wifi className="w-4 h-4" /> Free Wi-Fi</span>
-            <span className="flex items-center gap-2"><PawPrint className="w-4 h-4" /> Pet Friendly</span>
           </div>
         </div>
       </section>
@@ -738,9 +737,9 @@ export default function AmenitiesPage() {
               {
                 category: 'Pool & Hot Tubs',
                 photos: [
-                  { src: '/images/Pool/PoolGeneral.jpeg', alt: 'Heated swimming pool at Rush No More RV Resort in Sturgis, SD' },
+                  { src: '/images/Pool/PoolGeneral.jpeg', alt: 'Swimming pool at Rush No More RV Resort in Sturgis, SD' },
                   { src: '/images/Pool/PoolSunDay.jpeg', alt: 'Sunny day poolside at Rush No More campground near Mount Rushmore' },
-                  { src: '/images/Pool/PoolWithPeople.jpeg', alt: 'Guests enjoying the heated pool at Rush No More in the Black Hills' },
+                  { src: '/images/Pool/PoolWithPeople.jpeg', alt: 'Guests enjoying the pool at Rush No More in the Black Hills' },
                   { src: '/images/Jacuzzi/JacuzziRNM.jpeg', alt: 'Outdoor hot tub spa at Rush No More RV Resort, Sturgis South Dakota' },
                   { src: '/images/Jacuzzi/IMG_7205.jpeg', alt: 'Private hot tub spa at Luxury Spa RV site, Rush No More' },
                 ],

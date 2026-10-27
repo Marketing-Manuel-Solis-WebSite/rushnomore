@@ -39,7 +39,7 @@ const josefin = Josefin_Sans({
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.rushnomore.com'),
   title: { default: 'Rush No More RV Resort & Campground — Sturgis, SD', template: '%s' },
-  description: 'RV park, cabins & tent camping in Sturgis, SD — Black Hills basecamp for Mount Rushmore, Deadwood & the Sturgis Rally. RV from $41, cabins $51, tents $35. I-90 Exit 37.',
+  description: 'RV park, cabins & tent camping in Sturgis, SD — Black Hills basecamp for Mount Rushmore, Deadwood & the Sturgis Rally. RV from $41, cabins $51, tents $35.',
   applicationName: 'Rush No More RV Resort & Campground',
   authors: [{ name: 'Rush No More RV Resort & Campground', url: 'https://www.rushnomore.com' }],
   creator: 'Rush No More RV Resort & Campground',
@@ -70,14 +70,13 @@ export const metadata: Metadata = {
     'best rv park near mount rushmore',
     'cheap campground near sturgis',
     'campground with pool near mount rushmore',
-    'pet friendly rv park black hills',
     'full hookup rv sites sturgis',
     'luxury rv site south dakota',
     'campground with hot tub sturgis',
     'family campground mount rushmore',
     'rv park i-90 exit 37',
     // Rally-specific
-    'sturgis rally 2026 camping',
+    'sturgis rally camping',
     'sturgis motorcycle rally campground',
     'sturgis rally rv reservations',
     'sturgis rally cabins',
@@ -115,7 +114,6 @@ export const metadata: Metadata = {
     type: 'website',
     siteName: 'Rush No More RV Resort & Campground',
     locale: 'en_US',
-    alternateLocale: ['es_US'],
     url: 'https://www.rushnomore.com',
     countryName: 'United States',
     images: [
@@ -136,7 +134,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Rush No More RV Resort & Campground — Sturgis, SD',
-    description: 'Top-rated RV park, cabins & tent camping near Mount Rushmore.',
+    description: 'RV park, cabins & tent camping near Mount Rushmore.',
     images: ['/images/Aereal-2_1400.png'],
   },
   // Verification: fill in via the NEXT_PUBLIC_SITE_VERIFICATION_* env vars on

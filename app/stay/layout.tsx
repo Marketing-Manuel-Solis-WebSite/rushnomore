@@ -17,7 +17,7 @@ export const metadata: Metadata = seo({
     'where to camp black hills', 'best place to stay near mount rushmore',
     'affordable lodging near mount rushmore', 'year round campground south dakota',
     'campground open all year south dakota', 'winter rv park south dakota',
-    'summer camping black hills 2026', 'fall camping black hills south dakota',
+    'summer camping black hills', 'fall camping black hills south dakota',
     'spring camping south dakota', 'overnight camping near mount rushmore',
     'multi night stay near mount rushmore', 'weekly rv rates black hills',
     'monthly rv rates south dakota', 'long term rv stay sturgis sd',

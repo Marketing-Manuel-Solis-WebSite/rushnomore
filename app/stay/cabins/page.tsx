@@ -3,9 +3,9 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { SITE, CABINS } from '@/data/site';
+import { SITE, CABINS, FACTS, CABIN_MIX, PET_POLICY_NOTE } from '@/data/site';
 import { JsonLd } from '@/components/seo/JsonLd';
-import { faqSchema, breadcrumbSchema, serviceSchema, vacationRentalSchema, speakableSchema } from '@/lib/seo';
+import { faqSchema, breadcrumbSchema, serviceSchema, cabinAccommodationSchema, speakableSchema } from '@/lib/seo';
 import {
   ExternalLink, ArrowRight, Home, CheckCircle, Users,
   MapPin, Phone, TreePine, Waves, Beer, ShieldCheck,
@@ -15,18 +15,18 @@ import {
 const CABIN_FEATURES = [
   { icon: Thermometer, title: 'A/C & Heating', desc: 'Every cabin has climate control for year-round comfort.' },
   { icon: UtensilsCrossed, title: 'Full Kitchens Available', desc: 'Select cabins include full kitchens so you can cook your own meals.' },
-  { icon: PawPrint, title: 'Pet-Friendly Options', desc: 'Bring your furry friends — several cabins welcome pets.' },
-  { icon: Waves, title: 'Pool & Hot Tubs', desc: 'All cabin guests enjoy free access to the heated pool and hot tub spas.' },
+  { icon: PawPrint, title: 'Traveling With Pets?', desc: PET_POLICY_NOTE },
+  { icon: Waves, title: 'Pool & Hot Tubs', desc: 'All cabin guests enjoy free access to the pool and hot tub spas.' },
   { icon: Beer, title: 'Beer Garden & Bar', desc: 'Craft brews and cocktails at our on-site beer garden, steps away.' },
   { icon: ShieldCheck, title: 'On-Site Staff', desc: 'Friendly on-site staff during business hours with after-hours on-call assistance.' },
 ];
 
 const FAQS = [
-  { q: 'How many cabins does Rush No More have?', a: 'We have 20 unique cabins — 19 named after US Presidents, plus the JFK House. They range from cozy 2-person economy units to spacious suites sleeping up to 10 guests.' },
+  { q: 'How many cabins does Rush No More have?', a: `We have ${FACTS.cabins} cabins — ${CABIN_MIX}. They range from cozy 2-person economy units to spacious suites sleeping up to 10 guests.` },
   { q: 'Do cabins have bathrooms?', a: 'Yes, every cabin at Rush No More has its own private bathroom and shower.' },
   { q: 'Are there cabins with kitchens?', a: 'Select larger cabins include full kitchens with refrigerator, stove, and cookware. Smaller economy cabins do not have kitchen facilities.' },
   { q: 'How far are the cabins from Mount Rushmore?', a: 'Rush No More is approximately 55 miles (about 1 hour) from Mount Rushmore National Memorial, making it an easy day trip.' },
-  { q: 'Can I bring my dog to a cabin?', a: 'Yes! Several of our cabins are pet-friendly. Please let us know at booking so we can assign a pet-friendly unit.' },
+  { q: 'Can I bring my dog to a cabin?', a: PET_POLICY_NOTE },
   { q: 'Are cabins available during the Sturgis Rally?', a: 'Yes, cabins are available during the Sturgis Motorcycle Rally (August). Rally rates apply — book 6-12 months in advance as they sell out quickly.' },
 ];
 
@@ -37,22 +37,21 @@ export default function CabinsPage() {
       <JsonLd data={faqSchema(FAQS)} />
       <JsonLd data={serviceSchema({
         name: 'Presidential Cabins at Rush No More',
-        description: '20 unique cabins near Mount Rushmore — 19 named after US Presidents plus the JFK House, sleeping 2-10 guests, A/C & heating, private bathrooms, pet-friendly options.',
+        description: `${FACTS.cabins} cabins near Mount Rushmore — ${CABIN_MIX}, sleeping 2-10 guests, A/C & heating, private bathrooms.`,
         url: '/stay/cabins',
         image: '/images/Cabins/CabinUlyssesGrant/PhotoMainUlyssesGrant.png',
         priceMin: '51.76',
         priceMax: '332.00',
         serviceType: 'Cabin Rental',
       })} />
-      <JsonLd data={vacationRentalSchema({
-        name: 'Presidential Cabins — Rush No More',
-        description: 'Presidential cabin rentals near Mount Rushmore. 20 unique cabins (19 named after US Presidents plus the JFK House), sleep 2-10, A/C & heating, private bathrooms.',
+      <JsonLd data={cabinAccommodationSchema({
+        name: 'Cabins at Rush No More',
+        description: `Cabin rentals near Mount Rushmore. ${FACTS.cabins} cabins (${CABIN_MIX}), sleep 2-10, A/C & heating, private bathrooms.`,
         url: '/stay/cabins',
         image: '/images/Cabins/CabinUlyssesGrant/PhotoMainUlyssesGrant.png',
-        price: '51.76',
-        bedrooms: 1,
-        occupancy: 10,
-        amenities: ['Air Conditioning', 'Heating', 'Private Bathroom', 'Pet Friendly', 'Free Wi-Fi', 'Pool Access', 'Hot Tub Access'],
+        minOccupancy: 2,
+        maxOccupancy: 10,
+        amenities: ['Air Conditioning', 'Heating', 'Private Bathroom', 'Free Wi-Fi', 'Pool Access', 'Hot Tub Access'],
       })} />
       <JsonLd data={speakableSchema('/stay/cabins', ['h1', 'h2'])} />
 
@@ -68,7 +67,7 @@ export default function CabinsPage() {
             Presidential <span className="text-brand-gold italic">Cabin Collection</span>
           </h1>
           <p className="text-lg text-white/80 max-w-3xl mx-auto mb-8">
-            20 unique cabins in Sturgis, South Dakota — 19 named after US Presidents plus the JFK House. From cozy couples&apos; retreats to spacious family suites sleeping 10, with full access to all resort amenities. Just 55 miles from Mount Rushmore.
+            {FACTS.cabins} cabins in Sturgis, South Dakota — {CABIN_MIX}. From cozy couples&apos; retreats to spacious family suites sleeping 10, with full access to all resort amenities. Just 55 miles from Mount Rushmore.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10 mb-10">
             {[

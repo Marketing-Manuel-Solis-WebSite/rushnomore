@@ -5,6 +5,7 @@ import { db } from '@/lib/firebase';
 import { collection, addDoc, Timestamp } from 'firebase/firestore';
 import { chatLimiter, checkRateLimit, getRequestIP } from '@/lib/rateLimit';
 import { sanitizeInput } from '@/lib/sanitize';
+import { FACTS, CABIN_MIX, PET_POLICY_NOTE, POOL_SEASON_NOTE } from '@/data/site';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -29,16 +30,17 @@ RESORT INFO:
 📞 Phone: 605-423-2545
 📧 Email: rushnomoresd@gmail.com
 🕐 Office Hours: Daily 8 AM – 8 PM Mountain Time
+🕑 Check-in: ${FACTS.checkInLabel} | Check-out: ${FACTS.checkOutLabel}
 🔗 Booking: https://bookingsus.newbook.cloud/rushnomore/index.php (online reservations)
 
 ACCOMMODATIONS:
 
-RV SITES (prices vary by weekday, weekend, Rally & holidays — starts at):
+RV SITES — ${FACTS.rvSites} sites (prices vary by weekday, weekend, Rally & holidays — starts at):
 1. Water/Electric Back-in — Starts at $41.22/night
    - Water & electric hookup, 30 AMP
    - Back-in site, up to 100ft
 
-2. FHU Back-in — Starts at $51.72/night
+2. FHU Back-in — Starts at $${FACTS.fhuBackInPrice}/night
    - Full hook-ups (Water/Electric/Sewer)
    - Back-in site, 30/50 AMP
 
@@ -57,7 +59,7 @@ RV SITES (prices vary by weekday, weekend, Rally & holidays — starts at):
    - Full hook-ups, 30/50 AMP
 
 6. Presidential Cabins (prices vary by weekday, weekend, Rally & holidays — starts at):
-   - 20 unique cabins (19 named after US Presidents plus the JFK House)
+   - ${FACTS.cabins} cabins (${CABIN_MIX}), numbered 1–21 — there is no Cabin 13
    - Sleep 2 to 10 guests
    - Cabin 14: starts at $51.76 | Cabins 7-8: starts at $62.86
    - Cabins 1,4,5,17-20: starts at $95.13 | Cabin 9: starts at $100.42 | Cabin 10: starts at $110.42
@@ -65,16 +67,17 @@ RV SITES (prices vary by weekday, weekend, Rally & holidays — starts at):
    - Cabin 3: starts at $136.35 | Cabin 6: starts at $136.56
    - Cabins 11,12,16: starts at $174 | Cabin 21 (JFK House): starts at $332
 
-5. Tent Camping — From $35/night (based on 2 people)
+7. Tent Camping — ${FACTS.tentSites} tent sites, from $35/night (based on 2 people)
    - Electric hookup: +$5/night
    - Additional guests: $5/day per person
    - Plus 6% SD state tax
-   - Shaded Ponderosa pine forest, water hookups nearby, bathhouse access. 15 of 20 sites have electricity. No fire pits included — propane campfire rentals available.
+   - Shaded Ponderosa pine forest, water hookups nearby, bathhouse access. ${FACTS.tentSitesElectric} of our ${FACTS.tentSites} tent sites have electricity. No fire pits included — propane campfire rentals available.
 
-16 FREE AMENITIES (all included with every stay):
-Pool & Hot Tubs, Beer Garden & Bar, Modern Bathhouses, Laundromats, Complimentary Wi-Fi, Pet Friendly (well-behaved pets welcome at most sites and select cabins), Propane Sales, Propane Campfire Rentals (NO WOOD FIRES — we back up to Forest Service land, propane and charcoal only), Cafe (open weekends & all 10 days of Rally), Game Room, Camp Library, Nature Trails, Camp Store, Picnic Pavilions, Hookup Options (water-electric and full-hookup sites available), Friendly On-Site Staff (during business hours, after-hours on-call assistance)
+FREE AMENITIES (all included with every stay):
+Pool & Hot Tubs (${POOL_SEASON_NOTE}), Beer Garden & Bar, Modern Bathhouses, Laundromats, Complimentary Wi-Fi, Propane Sales, Propane Campfire Rentals (NO WOOD FIRES — we back up to Forest Service land, propane and charcoal only), Cafe (open weekends & all 10 days of Rally), Game Room, Camp Library, Nature Trails, Camp Store, Picnic Pavilions, Hookup Options (water-electric and full-hookup sites available), Friendly On-Site Staff (during business hours, after-hours on-call assistance)
 
-STURGIS RALLY 2026 (Aug 2-18) — 10-night packages (pre-rally per-night rate in parentheses):
+STURGIS RALLY — next rally dates are TO BE CONFIRMED. Never state specific rally dates; tell guests to call to confirm dates and current rally rates. Rush No More is a campground hosting rally guests — it does NOT organize the Sturgis Rally.
+2027 rally rates are TO BE ANNOUNCED — tell guests to contact us. Most recently published 10-night rally packages, for reference only (pre-rally per-night rate in parentheses; confirm current rates by phone):
 - Full Hook-up Pull-Through (30/50A): $1,849.80 ($175/night)
 - Full Hook-up Back-In (30/50A): $1,792.65 ($169/night)
 - Water & Electric Back-In (30A, no sewer): $1,510.45 ($140/night)
@@ -99,16 +102,18 @@ NEARBY ATTRACTIONS:
 - Custer State Park: 70 mi (~1.5 hours)
 
 EVENTS:
-- Sturgis Motorcycle Rally: Every August
-- Dakota Rods & Classics Car Show: September 12, 2026 (free admission, on-site)
+- Sturgis Motorcycle Rally: held every August in Sturgis — exact dates to be confirmed
+- Dakota Rods & Classics Car Show: on-site, free admission — next show date to be confirmed
 - Weddings, reunions & group events: Outdoor pavilion with full kitchen, groups of 20-200
 
 DIRECTIONS:
 From I-90, take Exit 37 toward Sturgis → Turn right onto Brimstone Place → Rush No More is on your right (less than 2 minutes from interstate)
 
-PET POLICY: Well-behaved pets welcome at most sites and select cabins. Dogs must be on leash, owners must clean up after pets, and pets are not to be left unattended. Quiet hours apply.
+PET POLICY: Not confirmed — do not say pets are or are not allowed. Reply: "${PET_POLICY_NOTE}"
 
-The resort is family-owned, has a 4.8-star rating, has hosted 84+ Sturgis Rallies, served 4,200+ happy campers, and 34,000+ drinks at the beer garden.`;
+POOL SEASON: Not confirmed — do not state opening/closing dates. Reply: "${POOL_SEASON_NOTE}"
+
+The resort is family-owned and has welcomed Sturgis Rally guests since 2014. Do not quote star ratings or review counts.`;
 
 export async function POST(request: Request) {
   try {

@@ -2,15 +2,13 @@ import { Metadata } from 'next';
 import { seo } from '@/lib/seo';
 
 export const metadata: Metadata = seo({
-  title: 'Sturgis Motorcycle Rally 2026 — Dates, Schedule, Map & Rides | Rush No More',
-  description: 'The complete 2026 Sturgis Motorcycle Rally guide — official dates Aug 2–18, daily schedule, things to do, top motorcycle rides, where to stay, and how to plan your trip. Hosted from Rush No More, your Sturgis Rally HQ 5 miles from Main Street.',
+  title: 'Sturgis Rally Guide — Rides, Tips & Where to Stay | Rush No More',
+  description: 'Sturgis Motorcycle Rally guide: held every August, next dates to be confirmed. Top rides, tips and where to stay — Rush No More is 5 miles from Main Street.',
   path: '/sturgis-rally',
   image: '/images/BikeRally/IMG_9865.JPG',
   keywords: [
-    'sturgis motorcycle rally 2026',
-    'sturgis rally 2026',
-    'sturgis rally dates 2026',
-    '86th sturgis rally',
+    'sturgis motorcycle rally',
+    'sturgis rally dates',
     'sturgis bike rally',
     'sturgis south dakota motorcycle rally',
     'sturgis rally schedule',

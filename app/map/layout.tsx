@@ -2,8 +2,8 @@ import { Metadata } from 'next';
 import { seo } from '@/lib/seo';
 
 export const metadata: Metadata = seo({
-  title: 'Campground Map & Directions — I-90 Exit 37, Sturgis SD | Rush No More',
-  description: 'Interactive map of Rush No More RV Resort near Mount Rushmore. View RV sites, presidential cabins, tent areas, pool, beer garden & all amenities. Directions: I-90 Exit 37, right on Brimstone Place — under 2 minutes. 21137 Brimstone Place, Sturgis SD 57785. 5 mi from Sturgis, 12 mi from Deadwood, 55 mi from Mount Rushmore.',
+  title: 'Campground Map & Directions — I-90 Exit 37 | Rush No More',
+  description: 'Interactive map of Rush No More: RV sites, cabins, tent areas and amenities. I-90 Exit 37, right on Brimstone Place. 21137 Brimstone Place, Sturgis SD 57785.',
   path: '/map',
   image: '/images/RushNoMoreMap.jpg',
   keywords: [

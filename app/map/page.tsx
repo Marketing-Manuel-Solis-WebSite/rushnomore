@@ -36,7 +36,7 @@ const AREAS = [
   {
     icon: Home,
     title: 'Presidential Cabins',
-    desc: '20 unique cabins — 19 named after a US President plus the JFK House. From economy units for couples to luxury suites sleeping up to 10 guests.',
+    desc: '20 unique cabins — 13 named after U.S. Presidents (including the JFK House) plus 7 Standard Cabins. From economy units for couples to luxury suites sleeping up to 10 guests.',
     price: 'Starts at $51.76',
     href: '/stay/cabins',
     features: ['Sleeps 2-10 Guests', 'Full Kitchens Available', 'A/C & Heating', 'Private Bathrooms'],
@@ -44,7 +44,7 @@ const AREAS = [
   {
     icon: Tent,
     title: 'Tent Camping',
-    desc: 'Shaded sites under Ponderosa pines with water hookups nearby, and full access to all resort amenities including pool & hot tubs. 15 of 20 sites have electricity.',
+    desc: 'Shaded sites under Ponderosa pines with water hookups nearby, and full access to all resort amenities including pool & hot tubs. 15 of our 20+ tent sites have electricity.',
     price: 'From $35',
     href: '/stay/tent-camping',
     features: ['Shaded Pine Forest', '15 Sites with Electric', 'Water Hookups Nearby', 'Bathhouse Access'],

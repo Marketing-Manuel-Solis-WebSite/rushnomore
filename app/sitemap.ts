@@ -2,37 +2,37 @@ import { MetadataRoute } from 'next';
 
 const B = 'https://www.rushnomore.com';
 
-// Stable per-page lastmod dates. Google ignores sitemaps where every URL has
-// the same `now()` timestamp (signals a generated/empty sitemap). We bump these
-// dates manually when a page meaningfully changes — small content tweaks don't
-// count, only structural / pricing / schema changes.
+// lastmod = build date. This route is statically rendered, so the value is
+// computed once per deploy and matches the content actually shipped (no
+// hand-maintained dates that drift out of sync).
+const BUILD_DATE = new Date();
 const LM = {
-  homepage: '2026-04-30',
-  stay: '2026-04-22',
-  rvSites: '2026-04-22',
-  cabins: '2026-04-22',
-  tentCamping: '2026-04-22',
-  rallyInfo: '2026-05-08',
-  rallyHub: '2026-04-22',
-  rallyRates: '2026-04-22',
-  rvParkRushmore: '2026-04-22',
-  weddingsGroups: '2026-04-22',
-  monthlyRv: '2026-04-22',
-  explore: '2026-04-22',
-  events: '2026-04-22',
-  amenities: '2026-04-22',
-  itinerary: '2026-04-22',
-  motorcycleRides: '2026-04-22',
-  deadwood: '2026-04-22',
-  spearfish: '2026-04-22',
-  needles: '2026-04-22',
-  ironMountain: '2026-04-22',
-  contact: '2026-04-22',
-  map: '2026-04-22',
-  about: '2026-04-22',
-  policies: '2026-04-22',
-  ada: '2026-04-22',
-  legal: '2026-04-22',
+  homepage: BUILD_DATE,
+  stay: BUILD_DATE,
+  rvSites: BUILD_DATE,
+  cabins: BUILD_DATE,
+  tentCamping: BUILD_DATE,
+  rallyInfo: BUILD_DATE,
+  rallyHub: BUILD_DATE,
+  rallyRates: BUILD_DATE,
+  rvParkRushmore: BUILD_DATE,
+  weddingsGroups: BUILD_DATE,
+  monthlyRv: BUILD_DATE,
+  explore: BUILD_DATE,
+  events: BUILD_DATE,
+  amenities: BUILD_DATE,
+  itinerary: BUILD_DATE,
+  motorcycleRides: BUILD_DATE,
+  deadwood: BUILD_DATE,
+  spearfish: BUILD_DATE,
+  needles: BUILD_DATE,
+  ironMountain: BUILD_DATE,
+  contact: BUILD_DATE,
+  map: BUILD_DATE,
+  about: BUILD_DATE,
+  policies: BUILD_DATE,
+  ada: BUILD_DATE,
+  legal: BUILD_DATE,
 } as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -218,7 +218,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
           thumbnail_loc: `${B}/images/BikeRally/IMG_9865.JPG`,
           title: 'Events at Rush No More — Sturgis Rally, Car Show and Weddings',
           description:
-            'Events at Rush No More: Sturgis Motorcycle Rally (August 2 to 18, 2026), Dakota Rods plus Classics Car Show (September 12, 2026), weddings and group events.',
+            'Events at Rush No More: Sturgis Motorcycle Rally camping every August, the Dakota Rods plus Classics Car Show, weddings and group events.',
           content_loc: `${B}/videos/RNM-events.mp4`,
           family_friendly: 'yes',
           live: 'no',
@@ -245,7 +245,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
           thumbnail_loc: `${B}/images/Pool/PoolWithPeople.jpeg`,
           title: 'Free Resort Amenities at Rush No More RV Resort',
           description:
-            'Tour the free resort amenities at Rush No More — heated pool, hot tubs, beer garden, game room, nature trails and more.',
+            'Tour the free resort amenities at Rush No More — pool, hot tubs, beer garden, game room, nature trails and more.',
           content_loc: `${B}/videos/rushnomore-amenities.mp4`,
           family_friendly: 'yes',
           live: 'no',
@@ -348,7 +348,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
           thumbnail_loc: `${B}/images/GeneralImagesPark/IMG_7379.jpeg`,
           title: 'About Rush No More — Family-Owned Black Hills Campground',
           description:
-            'Meet the family behind Rush No More — the 4.8 star award-winning RV resort near Mount Rushmore in Sturgis, South Dakota.',
+            'Meet the family behind Rush No More — the family-owned RV resort near Mount Rushmore in Sturgis, South Dakota.',
           content_loc: `${B}/videos/RNM-about.mp4`,
           family_friendly: 'yes',
           live: 'no',

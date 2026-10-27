@@ -5,7 +5,7 @@ import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { SITE } from '@/data/site';
+import { SITE, FACTS } from '@/data/site';
 import {
   CheckCircle, Calendar, MapPin, Phone, Mail,
   Printer, Home, Loader2, Clock, Users, Sparkles,
@@ -175,7 +175,7 @@ function ConfirmationContent() {
                   <span className="text-[10px] text-brand-stone uppercase tracking-wider font-bold">Check-in</span>
                 </div>
                 <p className="font-bold text-brand-navy text-sm">{fmt(reservation.checkIn)}</p>
-                <p className="text-xs text-brand-stone">After 3:00 PM</p>
+                <p className="text-xs text-brand-stone">After {FACTS.checkInLabel}</p>
               </div>
               <div className="bg-surface-primary rounded-xl p-4 border border-surface-muted/50">
                 <div className="flex items-center gap-1.5 mb-1.5">

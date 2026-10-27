@@ -8,7 +8,7 @@ import { SITE, RALLY_RV, REVIEWS } from '@/data/site';
 import { BookingCTA, SectionHeader } from '@/components/ui';
 import { FadeIn } from '@/components/motion';
 import { JsonLd } from '@/components/seo/JsonLd';
-import { eventSchema, breadcrumbSchema, faqSchema, videoSchema } from '@/lib/seo';
+import { breadcrumbSchema, faqSchema, videoSchema } from '@/lib/seo';
 import {
   ExternalLink, Star, ArrowRight, ChevronDown,
   MapPin, Users, Music, Beer, Car, Calendar,
@@ -59,34 +59,15 @@ export default function EventsPage() {
 
   return (
     <>
-      {/* Schema */}
-      <JsonLd data={eventSchema({
-        name: 'Sturgis Motorcycle Rally 2026 at Rush No More',
-        description: 'Rush No More RV Resort is your perfect Sturgis Rally base camp — RV sites, cabins & tent camping just 5 miles from Main Street Sturgis. Beer garden, pool, hot tubs & full resort amenities.',
-        startDate: '2026-08-02', endDate: '2026-08-18',
-        image: '/images/BikeRally/IMG_9865.JPG',
-        price: '940.70',
-      })} />
-      <JsonLd data={eventSchema({
-        name: 'Dakota Rods & Classics Car Show 2026',
-        description: 'Annual Show and Shine at Rush No More RV Resort in Sturgis, SD. Free admission with classic cars, hot rods, live music, food vendors & beer garden.',
-        startDate: '2026-09-12', endDate: '2026-09-12',
-        image: '/images/car_show_RNM.png',
-      })} />
-      <JsonLd data={eventSchema({
-        name: '86th Sturgis Bike Rally — Charity Auction Night at Rush No More',
-        description: 'Charity Auction Night during the Sturgis Motorcycle Rally — silent auction, live auction and raffles benefiting the Combat Veterans Motorcycle Association SD 30-1. Bar / Beer Garden available.',
-        startDate: '2026-08-11T19:00:00-06:00', endDate: '2026-08-11T23:00:00-06:00',
-        image: '/images/posts/auctionnight.png',
-      })} />
+      {/* Schema — no Event markup until next rally / car show dates are confirmed */}
       <JsonLd data={breadcrumbSchema([{ name: 'Home', url: '/' }, { name: 'Events', url: '/events' }])} />
-      <JsonLd data={videoSchema({ name: 'Events at Rush No More — Sturgis Rally & Car Show', description: 'Experience the Sturgis Motorcycle Rally 2026 and Dakota Rods & Classics Car Show at Rush No More RV Resort. Beer garden, live music, and the ultimate rally base camp.', thumbnailUrl: '/images/BikeRally/IMG_9865.JPG', contentUrl: '/videos/RNM-events.mp4', uploadDate: '2025-01-01' })} />
+      <JsonLd data={videoSchema({ name: 'Events at Rush No More — Sturgis Rally & Car Show', description: 'Experience the Sturgis Motorcycle Rally and Dakota Rods & Classics Car Show at Rush No More RV Resort. Beer garden, live music, and the ultimate rally base camp.', thumbnailUrl: '/images/BikeRally/IMG_9865.JPG', contentUrl: '/videos/RNM-events.mp4', uploadDate: '2025-01-01' })} />
       <JsonLd data={faqSchema([
-        { q: 'When is the 2026 Sturgis Motorcycle Rally?', a: 'The 2026 Sturgis Motorcycle Rally runs from August 2-18, 2026. Rush No More is located just 5 miles from Main Street Sturgis.' },
+        { q: 'When is the next Sturgis Motorcycle Rally?', a: 'The Sturgis Motorcycle Rally is held every August in Sturgis, SD. Dates for the next rally are to be confirmed — call us for current dates and rally availability. Rush No More is located just 5 miles from Main Street Sturgis.' },
         { q: 'How far is Rush No More from the Sturgis Rally?', a: 'Rush No More is only 5 miles (7 minutes) from Main Street Sturgis, making it one of the closest campgrounds to the rally action.' },
         { q: 'How early should I book for the Sturgis Rally?', a: 'We recommend booking 6-12 months in advance for the Sturgis Rally as sites sell out quickly. Rally rates apply for the event period.' },
         { q: 'What are Rally rates at Rush No More?', a: 'Rally rates are 10-night packages: dry (no hookup) sites from $940.70, water & electric back-in from $1,510.45, full-hookup back-in from $1,792.65, full-hookup pull-through from $1,849.80, luxury sites from $2,357.11, and luxury spa sites with a private hot tub from $2,472.32.' },
-        { q: 'When is the Dakota Rods & Classics Car Show?', a: 'The Dakota Rods & Classics Car Show is September 12, 2026 at Rush No More. Free admission with classic cars, live music, food vendors, and beer garden.' },
+        { q: 'When is the Dakota Rods & Classics Car Show?', a: 'The next Dakota Rods & Classics Car Show date is to be confirmed — contact us for details. The show is held on-site at Rush No More with free admission with classic cars, live music, food vendors, and beer garden.' },
         { q: 'Can I host a wedding at Rush No More?', a: 'Yes! Our large outdoor pavilion with full commercial kitchen accommodates groups of 20-200 guests. Cabins, RV sites & tent camping allow all guests to stay on-site.' },
       ])} />
 
@@ -156,10 +137,10 @@ export default function EventsPage() {
             transition={{ duration: 0.5, delay: 0.5 }}
           >
             {[
-              { val: '84+', label: 'Rallies Hosted' },
+              { val: '5 mi', label: 'To Main Street' },
               { val: '500k+', label: 'Riders Annually' },
               { val: '10+', label: 'Years as Rally HQ' },
-              { val: '4.8★', label: 'Guest Rating' },
+              { val: '156', label: 'RV Sites' },
             ].map((s, i) => (
               <div key={i} className="text-center">
                 <span className="font-display text-3xl md:text-4xl text-brand-gold font-bold block">{s.val}</span>
@@ -199,7 +180,7 @@ export default function EventsPage() {
         <div className="max-w-7xl mx-auto px-4 relative z-10">
           <div className="text-center mb-16">
             <span className="inline-block px-5 py-2 bg-brand-gold text-white text-xs font-black uppercase tracking-[0.2em] rounded-full shadow-gold mb-5">
-              ★ August 2–18, 2026 ★
+              ★ Every August · Dates to Be Confirmed ★
             </span>
             <h2 className="mb-5 text-4xl md:text-5xl leading-tight">
               Sturgis Motorcycle <span className="text-brand-gold italic">Rally</span>
@@ -256,7 +237,7 @@ export default function EventsPage() {
                 </p>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mb-6">
-                  {['500,000+ riders annually', 'Live music & entertainment', 'On-site beer garden', 'Hot tubs & heated pool', 'Scenic rides nearby', 'On-site staff'].map((f, i) => (
+                  {['500,000+ riders annually', 'Live music & entertainment', 'On-site beer garden', 'Hot tubs & pool', 'Scenic rides nearby', 'On-site staff'].map((f, i) => (
                     <span key={i} className="flex items-center gap-2.5 text-sm text-brand-navy/80 bg-white/80 backdrop-blur-sm px-3 py-2.5 rounded-lg font-medium border border-surface-muted/30 shadow-sm">
                       <CheckCircle className="w-4 h-4 text-brand-gold flex-shrink-0" />{f}
                     </span>
@@ -403,13 +384,13 @@ export default function EventsPage() {
         <div className="max-w-7xl mx-auto px-4 relative z-10">
           <div className="text-center mb-16">
             <span className="inline-block px-5 py-2 bg-brand-gold text-white text-xs font-black uppercase tracking-[0.2em] rounded-full shadow-gold mb-5">
-              ★ Rally 2026 ★
+              ★ Rally Packages ★
             </span>
             <h2 className="mb-5 text-4xl md:text-5xl">
               RV Site <span className="text-brand-gold italic">Rally Pricing</span>
             </h2>
             <p className="text-brand-navy/70 text-lg max-w-2xl mx-auto font-medium">
-              10-day minimum. August 2–18, 2026. Secure your spot early — rally sites sell out months in advance.
+              10-day minimum. Next rally dates to be confirmed — call to confirm dates and current rates. Secure your spot early — rally sites sell out months in advance.
             </p>
             <div className="w-32 h-1.5 bg-gold-gradient rounded-full mt-5 mx-auto" />
           </div>
@@ -511,7 +492,7 @@ export default function EventsPage() {
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-12">
             <span className="inline-block px-5 py-2 bg-brand-gold text-white text-xs font-black uppercase tracking-[0.2em] rounded-full shadow-gold mb-4">
-              ★ Tuesday · August 11 · 7:00 PM ★
+              ★ Annual Rally Event · Date to Be Confirmed ★
             </span>
             <h2 className="mb-4 text-4xl md:text-5xl leading-tight">
               Charity <span className="text-brand-gold italic">Auction Night</span>
@@ -522,17 +503,7 @@ export default function EventsPage() {
             <div className="w-24 h-1 bg-gold-gradient rounded-full mt-5 mx-auto" />
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-            <div className="relative rounded-3xl overflow-hidden shadow-lodge-xl border-2 border-white aspect-[9/16] max-w-sm mx-auto lg:mx-0">
-              <Image
-                src="/images/posts/auctionnight.png"
-                alt="86th Sturgis Bike Rally Charity Auction Night flyer at Rush No More RV Resort, August 11 at 7 PM"
-                fill
-                sizes="(max-width: 1024px) 90vw, 400px"
-                className="object-cover"
-              />
-            </div>
-
+          <div className="max-w-3xl mx-auto">
             <div>
               <div className="flex items-center gap-3 mb-5">
                 <Heart className="w-8 h-8 text-brand-gold" />
@@ -558,8 +529,8 @@ export default function EventsPage() {
               <div className="grid grid-cols-2 gap-3 mb-6">
                 <div className="bg-white rounded-xl p-4 border border-brand-gold/15">
                   <div className="text-xs uppercase font-bold tracking-wider text-brand-stone mb-1">When</div>
-                  <div className="font-display font-bold text-brand-navy">Tuesday, August 11</div>
-                  <div className="text-sm text-brand-navy/70">7:00 PM</div>
+                  <div className="font-display font-bold text-brand-navy">During Rally week</div>
+                  <div className="text-sm text-brand-navy/70">Date to be confirmed</div>
                 </div>
                 <div className="bg-white rounded-xl p-4 border border-brand-gold/15">
                   <div className="text-xs uppercase font-bold tracking-wider text-brand-stone mb-1">Where</div>
@@ -598,7 +569,7 @@ export default function EventsPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <span className="inline-block px-5 py-2 bg-brand-gold text-white text-xs font-black uppercase tracking-[0.2em] rounded-full shadow-gold mb-5">
-                ★ September 12, 2026 ★
+                ★ Next Show · Date to Be Confirmed ★
               </span>
               <h2 className="mb-5 text-white text-4xl md:text-5xl leading-tight">
                 Dakota Rods & Classics <span className="text-brand-gold italic">Car Show</span>

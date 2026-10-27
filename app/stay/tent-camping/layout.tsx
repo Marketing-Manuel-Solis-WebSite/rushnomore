@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { seo } from '@/lib/seo';
 
 export const metadata: Metadata = seo({
-  title: 'Tent Camping Near Mount Rushmore — Shaded Sites from $35 | Rush No More',
+  title: 'Tent Camping Near Mount Rushmore — Sites from $35 | Rush No More',
   description: 'Tent camping from $35/night under Ponderosa pines at Rush No More in Sturgis, SD. 20+ sites, 15 with 20 AMP ($40). Bathhouses, pool, hot tubs. 55 mi to Mount Rushmore.',
   path: '/stay/tent-camping',
   image: '/images/tent_camping_RNM.png',

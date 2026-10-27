@@ -32,11 +32,11 @@ const FAQ = [
   },
   {
     q: 'What amenities are included?',
-    a: 'Heated pool, multiple hot tubs, beer garden with live music, game room, complimentary Wi-Fi, modern bathhouses, laundromat, camp store, nature trails, picnic pavilions, pet-friendly options and friendly on-site staff.',
+    a: 'Pool, multiple hot tubs, beer garden with live music, game room, complimentary Wi-Fi, modern bathhouses, laundromat, camp store, nature trails, picnic pavilions and friendly on-site staff.',
   },
   {
     q: 'Is the RV park open year-round?',
-    a: 'RV sites are open year-round. Pool, hot tubs and some luxury amenities are seasonal (May–October). Freeze-season water management is handled on site for winter guests.',
+    a: 'RV sites are open year-round. Pool, hot tubs and some luxury amenities are seasonal — please contact us to confirm dates. Freeze-season water management is handled on site for winter guests.',
   },
   {
     q: 'How close is the park to Sturgis and Deadwood?',
@@ -81,8 +81,8 @@ export default function Page() {
           </h1>
           <p className="text-lg md:text-xl text-white/85 max-w-3xl mx-auto mb-8 leading-relaxed font-medium">
             Rush No More RV Resort in Sturgis, SD — your Black Hills base camp for Mount Rushmore, Deadwood,
-            Crazy Horse and Sturgis Rally. <strong>156 full-hookup RV sites</strong>, pull-throughs up to 100 ft,
-            heated pool, hot tubs and beer garden. Nightly, weekly and monthly rates — book online or call today.
+            Crazy Horse and Sturgis Rally. <strong>156 RV sites</strong> with water/electric and full-hookup options, pull-throughs up to 100 ft,
+            pool, hot tubs and beer garden. Nightly, weekly and monthly rates — book online or call today.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
             <a
@@ -120,8 +120,8 @@ export default function Page() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
             {[
               { icon: Mountain, t: '55 mi to Mount Rushmore', d: 'Centrally located for Mount Rushmore, Crazy Horse, Deadwood and the Black Hills.' },
-              { icon: Truck, t: '156 Full Hookup Sites', d: 'Water, electric, sewer. 30/50 AMP. Pull-throughs up to 100 ft for big rigs.' },
-              { icon: Waves, t: 'Pool, Hot Tubs, Beer Garden', d: 'Heated pool, multiple hot tubs, live music, game room — 16+ free amenities.' },
+              { icon: Truck, t: '156 RV Sites', d: 'Water/electric and full-hookup options. 30/50 AMP. Pull-throughs up to 100 ft for big rigs.' },
+              { icon: Waves, t: 'Pool, Hot Tubs, Beer Garden', d: 'Pool, multiple hot tubs, live music, game room — free resort amenities.' },
               { icon: Shield, t: 'Friendly On-Site Staff', d: 'On-site staff during business hours with after-hours on-call assistance.' },
             ].map(({ icon: Icon, t, d }) => (
               <div key={t} className="bg-white rounded-2xl p-6 shadow-lodge border border-brand-gold/10">
@@ -276,7 +276,7 @@ export default function Page() {
             {[
               { icon: Truck, t: 'Hookup Options' },
               { icon: Zap, t: '30 / 50 AMP' },
-              { icon: Waves, t: 'Heated Pool' },
+              { icon: Waves, t: 'Swimming Pool' },
               { icon: Beer, t: 'Beer Garden' },
               { icon: Wifi, t: 'Free Wi-Fi' },
               { icon: Shield, t: 'On-Site Staff' },

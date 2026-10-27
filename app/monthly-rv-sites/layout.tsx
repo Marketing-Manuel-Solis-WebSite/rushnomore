@@ -2,8 +2,8 @@ import { Metadata } from 'next';
 import { seo } from '@/lib/seo';
 
 export const metadata: Metadata = seo({
-  title: 'Monthly RV Sites in Sturgis, SD — Long-Term Rates Near Mount Rushmore',
-  description: 'Long-term and monthly RV sites at Rush No More in Sturgis, South Dakota. Full hookups (water/electric/sewer), 30/50 AMP, big-rig pull-throughs. Quiet Black Hills setting 5 mi from Sturgis, 12 mi from Deadwood, 55 mi from Mount Rushmore. Call for monthly availability.',
+  title: 'Monthly RV Sites in Sturgis, SD — Long-Term Stays | Rush No More',
+  description: 'Monthly and long-term RV sites at Rush No More in Sturgis, SD. Hookups, 30/50 AMP and big-rig pull-throughs, 5 mi from Sturgis. Call for monthly availability.',
   path: '/monthly-rv-sites',
   image: '/images/rv-camper-van.png',
   keywords: [

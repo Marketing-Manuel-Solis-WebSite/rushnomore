@@ -15,7 +15,7 @@ import {
 const TENT_FEATURES = [
   { icon: TreePine, title: 'Shaded Ponderosa Pine Forest', desc: 'Spacious, level sites nestled under towering Ponderosa pines for natural shade and beauty.' },
   { icon: Zap, title: '15 Sites with Electricity', desc: '15 of our 20+ tent sites include 20 AMP electric hookups — charge devices, run fans, stay comfortable.' },
-  { icon: Waves, title: 'Heated Pool & Hot Tubs', desc: 'Cool off in the heated pool or unwind in the hot tub spas — all free with your tent site.' },
+  { icon: Waves, title: 'Pool & Hot Tubs', desc: 'Cool off in the pool or unwind in the hot tub spas — all free with your tent site.' },
   { icon: ShowerHead, title: 'Modern Bathhouses', desc: 'Clean, well-maintained shower and restroom facilities located near the tent camping area.' },
   { icon: Cable, title: 'Propane Campfire Rentals', desc: 'Rent a propane campfire for your site and enjoy the ambiance. No wood fires allowed in the park.' },
   { icon: ShieldCheck, title: 'Friendly On-Site Staff', desc: 'Friendly on-site staff during business hours, after-hours on-call assistance and well-lit grounds.' },
@@ -27,7 +27,7 @@ const FAQS = [
   { q: 'Are there showers and restrooms near the tent sites?', a: 'Absolutely. Modern, clean bathhouses with hot showers and restrooms are located a short walk from all tent sites.' },
   { q: 'How far is Rush No More from Mount Rushmore?', a: 'We are approximately 55 miles from Mount Rushmore (about 1 hour drive), making it an easy and scenic day trip.' },
   { q: 'Can I have a campfire at my tent site?', a: 'Wood fires are not permitted. However, you can rent a propane campfire unit for your site — all the ambiance with none of the risk.' },
-  { q: 'What amenities do tent campers have access to?', a: 'All resort amenities are included free: heated pool, hot tub spas, beer garden & bar, game room, nature trails, modern bathhouses, complimentary Wi-Fi, camp store, and friendly on-site staff.' },
+  { q: 'What amenities do tent campers have access to?', a: 'All resort amenities are included free: pool, hot tub spas, beer garden & bar, game room, nature trails, modern bathhouses, complimentary Wi-Fi, camp store, and friendly on-site staff.' },
   { q: 'Is tent camping available during the Sturgis Rally?', a: 'Yes, tent camping is available during Rally week. Rally rates apply — book early as sites fill up fast.' },
 ];
 
@@ -59,7 +59,7 @@ export default function TentCampingPage() {
             Camp Under the <span className="text-brand-gold italic">Ponderosa Pines</span>
           </h1>
           <p className="text-lg text-white/80 max-w-3xl mx-auto mb-8">
-            The best-value camping near Mount Rushmore — shaded tent sites from $35/night with heated pool, hot tubs, beer garden & 16 free resort amenities in Sturgis, South Dakota.
+            The best-value camping near Mount Rushmore — shaded tent sites from $35/night with pool, hot tubs, beer garden & free resort amenities in Sturgis, South Dakota.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10 mb-10">
             {[

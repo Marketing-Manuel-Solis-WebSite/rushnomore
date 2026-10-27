@@ -1,23 +1,19 @@
 import type { Metadata } from 'next';
-import { SAME_AS } from '@/data/site';
+import { SAME_AS, SITE, FACTS, ADDRESS_PARTS, GEO_COORDS, CABIN_MIX } from '@/data/site';
 
+// Business facts come from data/site.ts — the single source of truth.
 const DOMAIN = 'https://www.rushnomore.com';
 const OG_IMAGE = '/images/Aereal-2_1400.png';
-const BUSINESS_NAME = 'Rush No More RV Resort & Campground';
-const PHONE = '+1-605-423-2545';
-const EMAIL = 'rushnomoresd@gmail.com';
-const BOOKING_URL = 'https://bookingsus.newbook.cloud/rushnomore/index.php';
+const BUSINESS_NAME = SITE.name;
+const PHONE = `+1-${SITE.phone}`;
+const EMAIL = SITE.email;
+const BOOKING_URL = SITE.booking;
+const MAP_URL = SITE.maps;
+const PRICE_VALID_UNTIL = '2027-12-31';
 
-const ADDRESS = {
-  '@type': 'PostalAddress' as const,
-  streetAddress: '21137 Brimstone Place',
-  addressLocality: 'Sturgis',
-  addressRegion: 'SD',
-  postalCode: '57785',
-  addressCountry: 'US',
-};
+const ADDRESS = { '@type': 'PostalAddress' as const, ...ADDRESS_PARTS };
 
-const GEO = { '@type': 'GeoCoordinates' as const, latitude: 44.39857, longitude: -103.46825 };
+const GEO = { '@type': 'GeoCoordinates' as const, ...GEO_COORDS };
 
 /* ─── Page-level metadata ─── */
 export function seo(o: {
@@ -183,7 +179,7 @@ export function campgroundSchema() {
     url: DOMAIN,
     telephone: PHONE,
     email: EMAIL,
-    description: 'Top-rated RV resort, presidential cabins & tent camping in Sturgis, SD — 5 miles from Main Street Sturgis, gateway to Mount Rushmore & the Black Hills. Pool, hot tubs, beer garden, game room & free resort amenities.',
+    description: 'RV resort, presidential cabins & tent camping in Sturgis, SD — 5 miles from Main Street Sturgis, gateway to Mount Rushmore & the Black Hills. Pool, hot tubs, beer garden, game room & free resort amenities.',
     slogan: 'Your Black Hills adventure starts here',
     image: [
       `${DOMAIN}/images/Aereal-2_1400.png`,
@@ -202,12 +198,12 @@ export function campgroundSchema() {
     logo: `${DOMAIN}/images/RushNoMore-logo.png`,
     address: ADDRESS,
     geo: GEO,
-    hasMap: 'https://maps.app.goo.gl/sBHGqk1yV4c2Tx1z9',
+    hasMap: MAP_URL,
     priceRange: '$35 - $335',
     currenciesAccepted: 'USD',
     paymentAccepted: 'Cash, Credit Card, Debit Card',
-    checkinTime: '14:00',
-    checkoutTime: '11:00',
+    checkinTime: FACTS.checkInTime,
+    checkoutTime: FACTS.checkOutTime,
     openingHoursSpecification: [
       {
         '@type': 'OpeningHoursSpecification',
@@ -217,44 +213,14 @@ export function campgroundSchema() {
       },
     ],
     amenityFeature: [
-      'Heated Swimming Pool', 'Multiple Hot Tub Spas', 'Beer Garden & Bar',
+      'Swimming Pool', 'Multiple Hot Tub Spas', 'Beer Garden & Bar',
       'Game Room', 'Nature Trails', 'Modern Bathhouses', 'Laundromat',
-      'Free Wi-Fi', 'Pet Friendly', 'Propane Sales',
+      'Free Wi-Fi', 'Propane Sales',
       'Propane Campfires & Charcoal Grills', 'Camp Library', 'Camp Store', 'Picnic Pavilions',
       'On-Site Staff',
     ].map(name => ({ '@type': 'LocationFeatureSpecification', name, value: true })),
     availableLanguage: ['English', 'Spanish'],
-    numberOfRooms: 192,
-    petsAllowed: true,
     smokingAllowed: false,
-    starRating: { '@type': 'Rating', ratingValue: '4.8', bestRating: '5' },
-    aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.8', reviewCount: '420', bestRating: '5', worstRating: '1' },
-    review: [
-      {
-        '@type': 'Review',
-        author: { '@type': 'Person', name: 'Happy Camper' },
-        datePublished: '2025-08-15',
-        reviewBody: 'We are always so thrilled when we have the chance to stay here during our summer travels. The campground is close to the highway but you would never know it. Peaceful, quiet, and incredibly well-maintained.',
-        name: 'No Rushing Here',
-        reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
-      },
-      {
-        '@type': 'Review',
-        author: { '@type': 'Person', name: 'Rally Enthusiast' },
-        datePublished: '2025-08-10',
-        reviewBody: 'This is our 4th year staying at Rush No More for the Sturgis Rally. The location can\'t be beat — close enough to the action but far enough for peace and quiet at night.',
-        name: 'Best Rally Base Camp',
-        reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
-      },
-      {
-        '@type': 'Review',
-        author: { '@type': 'Person', name: 'Family Traveler' },
-        datePublished: '2025-07-20',
-        reviewBody: 'Brought the whole family — grandparents in their RV, us in a cabin, kids in tents. Everyone was happy! The pool, game room, and trails kept the kids entertained for days.',
-        name: 'Family Friendly Paradise',
-        reviewRating: { '@type': 'Rating', ratingValue: '4', bestRating: '5' },
-      },
-    ],
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
       name: 'Accommodations',
@@ -264,7 +230,7 @@ export function campgroundSchema() {
           name: 'RV Sites',
           itemListElement: [
             { '@type': 'Offer', itemOffered: { '@type': 'Product', name: 'Water/Electric Back-in RV Site', description: 'Water & electric hookup, 30 AMP service, back-in site, up to 100ft long' }, price: '41.22', priceCurrency: 'USD', availability: 'https://schema.org/InStock' },
-            { '@type': 'Offer', itemOffered: { '@type': 'Product', name: 'Full Hookup Back-in RV Site', description: 'Full hookup (water/electric/sewer), 30/50 AMP, back-in site' }, price: '51.76', priceCurrency: 'USD', availability: 'https://schema.org/InStock' },
+            { '@type': 'Offer', itemOffered: { '@type': 'Product', name: 'Full Hookup Back-in RV Site', description: 'Full hookup (water/electric/sewer), 30/50 AMP, back-in site' }, price: FACTS.fhuBackInPrice, priceCurrency: 'USD', availability: 'https://schema.org/InStock' },
             { '@type': 'Offer', itemOffered: { '@type': 'Product', name: 'Full Hookup Pull-through RV Site', description: 'Full hookup (water/electric/sewer), 30/50 AMP, pull-through site' }, price: '62.36', priceCurrency: 'USD', availability: 'https://schema.org/InStock' },
             { '@type': 'Offer', itemOffered: { '@type': 'Product', name: 'Luxury RV Site', description: 'Cement slab, gas BBQ, Mountain Valley location, full hookups, 30/50 AMP' }, price: '62.36', priceCurrency: 'USD', availability: 'https://schema.org/InStock' },
             { '@type': 'Offer', itemOffered: { '@type': 'Product', name: 'Luxury Spa RV Site with Private Hot Tub', description: 'Private hot tub spa, cement slab, gas BBQ, full hookups, 30/50 AMP' }, price: '72.93', priceCurrency: 'USD', availability: 'https://schema.org/InStock' },
@@ -274,10 +240,10 @@ export function campgroundSchema() {
           '@type': 'OfferCatalog',
           name: 'Presidential Cabins',
           itemListElement: [
-            { '@type': 'Offer', itemOffered: { '@type': 'LodgingReservation', name: 'Economy Cabin (Sleeps 2)', description: 'Cozy cabin named after a US President, A/C & heating, private bathroom' }, price: '51.76', priceCurrency: 'USD', availability: 'https://schema.org/InStock' },
-            { '@type': 'Offer', itemOffered: { '@type': 'LodgingReservation', name: 'Standard Cabin (Sleeps 4)', description: 'Presidential cabin with more space, A/C & heating, private bathroom' }, price: '95.13', priceCurrency: 'USD', availability: 'https://schema.org/InStock' },
-            { '@type': 'Offer', itemOffered: { '@type': 'LodgingReservation', name: 'Family Cabin (Sleeps 6-7)', description: 'Spacious family cabin, full kitchen available, A/C & heating' }, price: '100.42', priceCurrency: 'USD', availability: 'https://schema.org/InStock' },
-            { '@type': 'Offer', itemOffered: { '@type': 'LodgingReservation', name: 'Presidential Suite (Sleeps 10)', description: 'The John F. Kennedy — our largest cabin for groups and families' }, price: '332.00', priceCurrency: 'USD', availability: 'https://schema.org/InStock' },
+            { '@type': 'Offer', itemOffered: { '@type': 'Service', serviceType: 'Cabin rental', name: 'Economy Cabin (Sleeps 2)', description: 'Cozy cabin named after a US President, A/C & heating, private bathroom' }, price: '51.76', priceCurrency: 'USD', availability: 'https://schema.org/InStock' },
+            { '@type': 'Offer', itemOffered: { '@type': 'Service', serviceType: 'Cabin rental', name: 'Standard Cabin (Sleeps 4)', description: 'Cabin with more space, A/C & heating, private bathroom' }, price: '95.13', priceCurrency: 'USD', availability: 'https://schema.org/InStock' },
+            { '@type': 'Offer', itemOffered: { '@type': 'Service', serviceType: 'Cabin rental', name: 'Family Cabin (Sleeps 6-7)', description: 'Spacious family cabin, A/C & heating' }, price: '100.42', priceCurrency: 'USD', availability: 'https://schema.org/InStock' },
+            { '@type': 'Offer', itemOffered: { '@type': 'Service', serviceType: 'Cabin rental', name: 'Presidential Suite (Sleeps 10)', description: 'The John F. Kennedy — our largest cabin for groups and families' }, price: '332.00', priceCurrency: 'USD', availability: 'https://schema.org/InStock' },
           ],
         },
         {
@@ -291,9 +257,9 @@ export function campgroundSchema() {
       ],
     },
     containsPlace: [
-      { '@type': 'CampingPitch', name: 'RV Sites', description: '156 full-hookup RV sites with 30/50 AMP, water & sewer', numberOfRooms: 156 },
-      { '@type': 'Accommodation', name: 'Presidential Cabins', description: '20 unique cabins — 19 named after US Presidents plus the JFK House, sleeping 2-10 guests', numberOfRooms: 20 },
-      { '@type': 'CampingPitch', name: 'Tent Sites', description: '20+ shaded tent sites under Ponderosa pines', numberOfRooms: 20 },
+      { '@type': 'CampingPitch', name: 'RV Sites', description: `${FACTS.rvSites} RV sites — water/electric and full-hookup options, 30/50 AMP` },
+      { '@type': 'Accommodation', name: 'Cabins', description: `${FACTS.cabins} cabins — ${CABIN_MIX}, sleeping 2-10 guests` },
+      { '@type': 'CampingPitch', name: 'Tent Sites', description: `${FACTS.tentSites} shaded tent sites under Ponderosa pines` },
     ],
     tourBookingPage: BOOKING_URL,
     isAccessibleForFree: false,
@@ -311,12 +277,10 @@ export function campgroundSchema() {
       { '@type': 'PropertyValue', name: 'Distance to Rapid City', value: '30 miles' },
       { '@type': 'PropertyValue', name: 'Distance to Badlands National Park', value: '75 miles' },
       { '@type': 'PropertyValue', name: 'Interstate Access', value: 'I-90 Exit 37' },
-      { '@type': 'PropertyValue', name: 'Total RV Sites', value: '156' },
-      { '@type': 'PropertyValue', name: 'Total Cabins', value: '16' },
-      { '@type': 'PropertyValue', name: 'Total Tent Sites', value: '20+' },
+      { '@type': 'PropertyValue', name: 'Total RV Sites', value: String(FACTS.rvSites) },
+      { '@type': 'PropertyValue', name: 'Total Cabins', value: String(FACTS.cabins) },
+      { '@type': 'PropertyValue', name: 'Total Tent Sites', value: FACTS.tentSites },
       { '@type': 'PropertyValue', name: 'Elevation', value: '3,400 feet' },
-      { '@type': 'PropertyValue', name: 'Season', value: 'Year-round (RV), May-October (Luxury/Pool)' },
-      { '@type': 'PropertyValue', name: 'Rally Years Hosted', value: '84+' },
       { '@type': 'PropertyValue', name: 'Founded', value: '2014' },
     ],
   };
@@ -332,7 +296,7 @@ export function lodgingSchema() {
     url: DOMAIN,
     telephone: PHONE,
     email: EMAIL,
-    description: 'Top-rated RV park, presidential cabins & tent camping near Mount Rushmore in Sturgis, South Dakota. 156 RV sites, 20 cabins & 20+ tent sites with heated pool, hot tubs, beer garden & free resort amenities.',
+    description: `RV park, cabins & tent camping near Mount Rushmore in Sturgis, South Dakota. ${FACTS.rvSites} RV sites, ${FACTS.cabins} cabins & ${FACTS.tentSites} tent sites with pool, hot tubs, beer garden & free resort amenities.`,
     image: [
       `${DOMAIN}/images/Aereal-2_1400.png`,
       `${DOMAIN}/images/Cabins/CabinUlyssesGrant/PhotoMainUlyssesGrant.png`,
@@ -340,36 +304,35 @@ export function lodgingSchema() {
     ],
     address: ADDRESS,
     geo: GEO,
-    hasMap: 'https://maps.app.goo.gl/sBHGqk1yV4c2Tx1z9',
+    hasMap: MAP_URL,
     priceRange: '$35 - $335',
     currenciesAccepted: 'USD',
     paymentAccepted: 'Cash, Credit Card, Debit Card',
-    starRating: { '@type': 'Rating', ratingValue: '4.8', bestRating: '5' },
-    aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.8', reviewCount: '420', bestRating: '5', worstRating: '1' },
-    checkinTime: '14:00',
-    checkoutTime: '11:00',
-    petsAllowed: true,
+    checkinTime: FACTS.checkInTime,
+    checkoutTime: FACTS.checkOutTime,
     smokingAllowed: false,
-    numberOfRooms: 192,
     availableLanguage: ['English', 'Spanish'],
     amenityFeature: [
-      'Heated Swimming Pool', 'Multiple Hot Tub Spas', 'Beer Garden & Bar',
+      'Swimming Pool', 'Multiple Hot Tub Spas', 'Beer Garden & Bar',
       'Game Room', 'Nature Trails', 'Modern Bathhouses', 'Laundromat',
-      'Free Wi-Fi', 'Pet Friendly', 'Propane Sales',
+      'Free Wi-Fi', 'Propane Sales',
       'Camp Library', 'Camp Store', 'Picnic Pavilions', 'On-Site Staff',
     ].map(name => ({ '@type': 'LocationFeatureSpecification', name, value: true })),
     makesOffer: [
-      { '@type': 'Offer', name: 'RV Sites', price: '41.22', priceCurrency: 'USD', description: '156 full-hookup RV sites from $41.22/night', url: `${DOMAIN}/stay/rv-sites` },
-      { '@type': 'Offer', name: 'Presidential Cabins', price: '51.76', priceCurrency: 'USD', description: '20 unique presidential cabins from $51.76/night', url: `${DOMAIN}/stay/cabins` },
-      { '@type': 'Offer', name: 'Tent Camping', price: '35.00', priceCurrency: 'USD', description: '20+ shaded tent sites from $35/night', url: `${DOMAIN}/stay/tent-camping` },
+      { '@type': 'Offer', name: 'RV Sites', price: '41.22', priceCurrency: 'USD', description: `${FACTS.rvSites} RV sites from $41.22/night`, url: `${DOMAIN}/stay/rv-sites` },
+      { '@type': 'Offer', name: 'Cabins', price: '51.76', priceCurrency: 'USD', description: `${FACTS.cabins} cabins from $51.76/night`, url: `${DOMAIN}/stay/cabins` },
+      { '@type': 'Offer', name: 'Tent Camping', price: '35.00', priceCurrency: 'USD', description: `${FACTS.tentSites} shaded tent sites from $35/night`, url: `${DOMAIN}/stay/tent-camping` },
     ],
     tourBookingPage: BOOKING_URL,
     sameAs: SAME_AS,
   };
 }
 
-/* ─── Event schema ─── */
-export function eventSchema(event: { name: string; description: string; startDate: string; endDate: string; image?: string; price?: string; url?: string }) {
+/* ─── Event schema ───
+   Only for on-site events Rush No More itself runs, with confirmed future
+   dates. Never use it for the Sturgis Rally — we are a venue/host for rally
+   guests, not the rally organizer. `organizedByUs` must be explicit. ─── */
+export function eventSchema(event: { name: string; description: string; startDate: string; endDate: string; image?: string; price?: string; url?: string; organizedByUs: boolean }) {
   return {
     '@context': 'https://schema.org',
     '@type': 'Event',
@@ -386,8 +349,7 @@ export function eventSchema(event: { name: string; description: string; startDat
       address: ADDRESS,
       geo: GEO,
     },
-    organizer: { '@type': 'Organization', name: BUSINESS_NAME, url: DOMAIN },
-    performer: { '@type': 'Organization', name: BUSINESS_NAME },
+    organizer: event.organizedByUs ? { '@type': 'Organization', name: BUSINESS_NAME, url: DOMAIN } : undefined,
     offers: event.price ? {
       '@type': 'Offer',
       price: event.price,
@@ -457,7 +419,7 @@ export function localBusinessSchema() {
     logo: `${DOMAIN}/images/RushNoMore-logo.png`,
     address: ADDRESS,
     geo: GEO,
-    hasMap: 'https://maps.app.goo.gl/sBHGqk1yV4c2Tx1z9',
+    hasMap: MAP_URL,
     openingHoursSpecification: {
       '@type': 'OpeningHoursSpecification',
       dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
@@ -465,7 +427,6 @@ export function localBusinessSchema() {
       closes: '20:00',
     },
     priceRange: '$35 - $335',
-    aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.8', reviewCount: '420', bestRating: '5' },
     areaServed: { '@type': 'City', name: 'Sturgis', containedInPlace: { '@type': 'State', name: 'South Dakota' } },
     sameAs: SAME_AS,
   };
@@ -491,7 +452,7 @@ export function accommodationListSchema() {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
     name: 'Accommodations at Rush No More RV Resort & Campground',
-    description: 'Choose from 156 RV sites, 20 presidential cabins, and 20+ shaded tent sites near Mount Rushmore in Sturgis, South Dakota.',
+    description: `Choose from ${FACTS.rvSites} RV sites, ${FACTS.cabins} cabins, and ${FACTS.tentSites} shaded tent sites near Mount Rushmore in Sturgis, South Dakota.`,
     numberOfItems: 3,
     itemListElement: [
       {
@@ -500,7 +461,7 @@ export function accommodationListSchema() {
         name: 'Full Hookup RV Sites',
         url: `${DOMAIN}/stay/rv-sites`,
         image: `${DOMAIN}/images/rv-camper-van.png`,
-        description: '156 full-hookup RV sites with 30/50 AMP, water & sewer. Pull-throughs up to 100ft. Luxury sites with cement slab, gas BBQ & private hot tub available. From $41.22/night.',
+        description: `${FACTS.rvSites} RV sites — water/electric and full-hookup options, 30/50 AMP. Sites up to 100ft. Luxury sites with cement slab, gas BBQ & private hot tub available. From $41.22/night.`,
       },
       {
         '@type': 'ListItem',
@@ -508,7 +469,7 @@ export function accommodationListSchema() {
         name: 'Presidential Cabins',
         url: `${DOMAIN}/stay/cabins`,
         image: `${DOMAIN}/images/Cabins/CabinUlyssesGrant/PhotoMainUlyssesGrant.png`,
-        description: '20 unique cabins (19 named after US Presidents plus the JFK House) — sleeping 2-10 guests. A/C, heating, private bathrooms. Economy, standard, family & luxury options. From $51.76/night.',
+        description: `${FACTS.cabins} cabins (${CABIN_MIX}) — sleeping 2-10 guests. A/C, heating, private bathrooms. Economy, standard, family & luxury options. From $51.76/night.`,
       },
       {
         '@type': 'ListItem',
@@ -516,7 +477,7 @@ export function accommodationListSchema() {
         name: 'Tent Camping',
         url: `${DOMAIN}/stay/tent-camping`,
         image: `${DOMAIN}/images/tent_camping_RNM.png`,
-        description: '20+ spacious tent sites under Ponderosa pines with modern bathhouse access. 15 sites with 20 AMP electric hookup. From $35/night.',
+        description: `${FACTS.tentSites} spacious tent sites under Ponderosa pines with modern bathhouse access. ${FACTS.tentSitesElectric} sites with 20 AMP electric hookup. From $35/night.`,
       },
     ],
   };
@@ -532,89 +493,89 @@ export function offerCatalogSchema() {
     itemListElement: [
       {
         '@type': 'Offer',
-        itemOffered: { '@type': 'LodgingReservation', name: 'Water/Electric Back-in RV Site' },
+        itemOffered: { '@type': 'Service', name: 'Water/Electric Back-in RV Site' },
         name: 'Water/Electric Back-in RV Site',
         description: 'Water & electric hookup, 30 AMP, back-in site up to 100ft',
         price: '41.22',
         priceCurrency: 'USD',
-        priceValidUntil: '2026-12-31',
+        priceValidUntil: PRICE_VALID_UNTIL,
         availability: 'https://schema.org/InStock',
         url: `${DOMAIN}/stay/rv-sites`,
       },
       {
         '@type': 'Offer',
-        itemOffered: { '@type': 'LodgingReservation', name: 'Full Hookup Pull-through RV Site' },
+        itemOffered: { '@type': 'Service', name: 'Full Hookup Pull-through RV Site' },
         name: 'Full Hookup Pull-through RV Site',
         description: 'Full hookup (water/electric/sewer), 30/50 AMP, pull-through',
         price: '62.36',
         priceCurrency: 'USD',
-        priceValidUntil: '2026-12-31',
+        priceValidUntil: PRICE_VALID_UNTIL,
         availability: 'https://schema.org/InStock',
         url: `${DOMAIN}/stay/rv-sites`,
       },
       {
         '@type': 'Offer',
-        itemOffered: { '@type': 'LodgingReservation', name: 'Luxury Spa RV Site with Private Hot Tub' },
+        itemOffered: { '@type': 'Service', name: 'Luxury Spa RV Site with Private Hot Tub' },
         name: 'Luxury Spa RV Site with Private Hot Tub',
         description: 'Private hot tub spa, cement slab, gas BBQ, full hookups, 30/50 AMP',
         price: '72.93',
         priceCurrency: 'USD',
-        priceValidUntil: '2026-12-31',
+        priceValidUntil: PRICE_VALID_UNTIL,
         availability: 'https://schema.org/InStock',
         url: `${DOMAIN}/stay/rv-sites`,
       },
       {
         '@type': 'Offer',
-        itemOffered: { '@type': 'LodgingReservation', name: 'Economy Presidential Cabin (Sleeps 2)' },
+        itemOffered: { '@type': 'Service', name: 'Economy Presidential Cabin (Sleeps 2)' },
         name: 'Economy Presidential Cabin (Sleeps 2)',
         description: 'Cozy cabin named after a US President, A/C & heating, private bathroom',
         price: '51.76',
         priceCurrency: 'USD',
-        priceValidUntil: '2026-12-31',
+        priceValidUntil: PRICE_VALID_UNTIL,
         availability: 'https://schema.org/InStock',
         url: `${DOMAIN}/stay/cabins`,
       },
       {
         '@type': 'Offer',
-        itemOffered: { '@type': 'LodgingReservation', name: 'Family Presidential Cabin (Sleeps 6-7)' },
+        itemOffered: { '@type': 'Service', name: 'Family Presidential Cabin (Sleeps 6-7)' },
         name: 'Family Presidential Cabin (Sleeps 6-7)',
         description: 'Spacious family cabin, full kitchen, A/C & heating',
         price: '100.42',
         priceCurrency: 'USD',
-        priceValidUntil: '2026-12-31',
+        priceValidUntil: PRICE_VALID_UNTIL,
         availability: 'https://schema.org/InStock',
         url: `${DOMAIN}/stay/cabins`,
       },
       {
         '@type': 'Offer',
-        itemOffered: { '@type': 'LodgingReservation', name: 'Presidential Suite JFK (Sleeps 10)' },
+        itemOffered: { '@type': 'Service', name: 'Presidential Suite JFK (Sleeps 10)' },
         name: 'Presidential Suite JFK (Sleeps 10)',
         description: 'The John F. Kennedy — our largest cabin for groups and families',
         price: '332.00',
         priceCurrency: 'USD',
-        priceValidUntil: '2026-12-31',
+        priceValidUntil: PRICE_VALID_UNTIL,
         availability: 'https://schema.org/InStock',
         url: `${DOMAIN}/stay/cabins`,
       },
       {
         '@type': 'Offer',
-        itemOffered: { '@type': 'LodgingReservation', name: 'Basic Tent Site' },
+        itemOffered: { '@type': 'Service', name: 'Basic Tent Site' },
         name: 'Basic Tent Site',
         description: 'Shaded tent site under Ponderosa pines with bathhouse access',
         price: '35.00',
         priceCurrency: 'USD',
-        priceValidUntil: '2026-12-31',
+        priceValidUntil: PRICE_VALID_UNTIL,
         availability: 'https://schema.org/InStock',
         url: `${DOMAIN}/stay/tent-camping`,
       },
       {
         '@type': 'Offer',
-        itemOffered: { '@type': 'LodgingReservation', name: 'Electric Tent Site' },
+        itemOffered: { '@type': 'Service', name: 'Electric Tent Site' },
         name: 'Electric Tent Site',
         description: 'Shaded tent site with 20 AMP electric hookup and bathhouse access',
         price: '40.00',
         priceCurrency: 'USD',
-        priceValidUntil: '2026-12-31',
+        priceValidUntil: PRICE_VALID_UNTIL,
         availability: 'https://schema.org/InStock',
         url: `${DOMAIN}/stay/tent-camping`,
       },
@@ -721,7 +682,6 @@ export function serviceSchema(service: {
       availability: 'https://schema.org/InStock',
       url: BOOKING_URL,
     },
-    aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.8', reviewCount: '420', bestRating: '5', worstRating: '1' },
   };
 }
 
@@ -750,10 +710,9 @@ export function productSchema(product: {
       priceCurrency: 'USD',
       availability: 'https://schema.org/InStock',
       url: BOOKING_URL,
-      priceValidUntil: '2026-12-31',
+      priceValidUntil: PRICE_VALID_UNTIL,
       seller: { '@type': 'Organization', name: BUSINESS_NAME },
     },
-    aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.8', reviewCount: '420' },
   };
 }
 
@@ -815,7 +774,7 @@ export function placeSchema() {
     url: DOMAIN,
     address: ADDRESS,
     geo: GEO,
-    hasMap: 'https://maps.app.goo.gl/sBHGqk1yV4c2Tx1z9',
+    hasMap: MAP_URL,
     photo: [
       `${DOMAIN}/images/Aereal-2_1400.png`,
       `${DOMAIN}/images/Pool/PoolWithPeople.jpeg`,
@@ -869,40 +828,32 @@ export function relatedPagesSchema(pages: { name: string; url: string; descripti
   };
 }
 
-/* ─── VacationRental schema (Google 2024+) — for cabin listings ─── */
-export function vacationRentalSchema(rental: {
+/* ─── Accommodation schema — cabins inside the campground ───
+   Cabins are units of the Campground/LodgingBusiness, not stand-alone
+   VacationRental listings (that type is reserved for Google's vacation-rental
+   partner feed). Pricing lives on the Campground's hasOfferCatalog. ─── */
+export function cabinAccommodationSchema(cabins: {
   name: string;
   description: string;
   image: string;
   url: string;
-  price: string;
-  bedrooms?: number;
-  occupancy?: number;
+  minOccupancy?: number;
+  maxOccupancy?: number;
   amenities?: string[];
 }) {
   return {
     '@context': 'https://schema.org',
-    '@type': 'VacationRental',
-    name: rental.name,
-    description: rental.description,
-    image: rental.image.startsWith('http') ? rental.image : `${DOMAIN}${rental.image}`,
-    url: `${DOMAIN}${rental.url}`,
-    brand: { '@type': 'Brand', name: BUSINESS_NAME },
+    '@type': 'Accommodation',
+    name: cabins.name,
+    description: cabins.description,
+    image: cabins.image.startsWith('http') ? cabins.image : `${DOMAIN}${cabins.image}`,
+    url: `${DOMAIN}${cabins.url}`,
     address: ADDRESS,
     geo: GEO,
-    containsPlace: rental.bedrooms
-      ? { '@type': 'Accommodation', numberOfBedrooms: rental.bedrooms, occupancy: { '@type': 'QuantitativeValue', maxValue: rental.occupancy } }
+    containedInPlace: { '@type': 'Campground', '@id': `${DOMAIN}/#campground`, name: BUSINESS_NAME },
+    occupancy: cabins.maxOccupancy
+      ? { '@type': 'QuantitativeValue', minValue: cabins.minOccupancy, maxValue: cabins.maxOccupancy }
       : undefined,
-    amenityFeature: rental.amenities?.map(a => ({ '@type': 'LocationFeatureSpecification', name: a, value: true })),
-    offers: {
-      '@type': 'Offer',
-      price: rental.price,
-      priceCurrency: 'USD',
-      availability: 'https://schema.org/InStock',
-      url: BOOKING_URL,
-    },
-    checkinTime: '14:00',
-    checkoutTime: '11:00',
-    aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.8', reviewCount: '420' },
+    amenityFeature: cabins.amenities?.map(a => ({ '@type': 'LocationFeatureSpecification', name: a, value: true })),
   };
 }

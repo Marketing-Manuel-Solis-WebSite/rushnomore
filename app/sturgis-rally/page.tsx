@@ -4,7 +4,7 @@ import { SITE, RALLY_RV } from '@/data/site';
 import { BookingCTA } from '@/components/ui';
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 import { JsonLd } from '@/components/seo/JsonLd';
-import { eventSchema, faqSchema } from '@/lib/seo';
+import { faqSchema } from '@/lib/seo';
 import {
   Bike, MapPin, Calendar, Users, Trophy, Flag,
   ArrowRight, ExternalLink, Phone, CheckCircle, Star,
@@ -20,8 +20,8 @@ const RALLY_GALLERY = [
 ];
 
 const RALLY_FACTS = [
-  { icon: Calendar, label: 'Official 2026 Dates', value: 'August 2 – 18, 2026' },
-  { icon: Trophy, label: 'Edition', value: '86th Annual Rally' },
+  { icon: Calendar, label: 'Next Rally Dates', value: 'To be confirmed' },
+  { icon: Trophy, label: 'Held', value: 'Every August' },
   { icon: Users, label: 'Attendance', value: '500,000+ riders' },
   { icon: Flag, label: 'Founded', value: '1938' },
   { icon: MapPin, label: 'From Rush No More', value: '5 mi to Main Street' },
@@ -33,7 +33,7 @@ const RALLY_AMENITIES = [
   { icon: Shield, t: 'Friendly On-Site Staff', d: 'On-site staff during business hours with after-hours on-call assistance.' },
   { icon: MapPin, t: '5 Miles to Main Street', d: 'Roll into Sturgis in about 7 minutes — close to the action, peaceful at night.' },
   { icon: Star, t: '10+ Years Hosting Rally', d: 'Rally-savvy staff and a proven base camp with a strong repeat-rider community.' },
-  { icon: CheckCircle, t: 'All Resort Amenities Included', d: 'Heated pool, hot tubs, game room, laundry, Wi-Fi, propane sales, camp store and more.' },
+  { icon: CheckCircle, t: 'All Resort Amenities Included', d: 'Pool, hot tubs, game room, laundry, Wi-Fi, propane sales, camp store and more.' },
 ];
 
 const RALLY_RIDES = [
@@ -44,7 +44,7 @@ const RALLY_RIDES = [
 ];
 
 const RALLY_FAQ = [
-  { q: 'When is the 2026 Sturgis Motorcycle Rally?', a: 'The 86th Annual Sturgis Motorcycle Rally runs August 2–18, 2026. Rush No More accepts rally bookings across the full window.' },
+  { q: 'When is the next Sturgis Motorcycle Rally?', a: 'The Sturgis Motorcycle Rally is held every August in Sturgis, South Dakota. Dates for the next rally are to be confirmed — call us for current dates and rally availability at Rush No More.' },
   { q: 'How many people attend the Sturgis Rally?', a: 'The Sturgis Motorcycle Rally consistently draws around 500,000 riders and visitors, making it the world\'s largest motorcycle gathering.' },
   { q: 'When did the Sturgis Rally start?', a: 'The first rally was held in 1938 by the Jackpine Gypsies Motorcycle Club. It has been held annually ever since and grown into the international event it is today.' },
   { q: 'How far is Rush No More from Main Street Sturgis?', a: 'Rush No More sits 5 miles from Main Street Sturgis — about a 7-minute ride. Close enough to roll in any time, far enough that the campground stays peaceful at night.' },
@@ -58,25 +58,11 @@ const RALLY_FAQ = [
 export default function Page() {
   return (
     <>
-      <JsonLd data={eventSchema({
-        name: '86th Annual Sturgis Motorcycle Rally 2026',
-        description: 'The 86th Sturgis Motorcycle Rally runs August 2–18, 2026 in Sturgis, South Dakota — the world\'s largest motorcycle gathering. Rush No More is your base camp 5 miles from Main Street.',
-        startDate: '2026-08-02',
-        endDate: '2026-08-18',
-        image: '/images/BikeRally/IMG_9865.JPG',
-        url: 'https://www.rushnomore.com/sturgis-rally',
-      })} />
-      <JsonLd data={eventSchema({
-        name: '86th Sturgis Bike Rally — Charity Auction Night at Rush No More',
-        description: 'Charity Auction Night during the Sturgis Motorcycle Rally — silent auction, live auction and raffles benefiting the Combat Veterans Motorcycle Association SD 30-1. Hosted at Rush No More RV Resort, 21137 Brimstone Pl, Sturgis, SD. Bar / Beer Garden available.',
-        startDate: '2026-08-11T19:00:00-06:00',
-        endDate: '2026-08-11T23:00:00-06:00',
-        image: '/images/posts/auctionnight.png',
-        url: 'https://www.rushnomore.com/sturgis-rally',
-      })} />
+      {/* No Event schema: Rush No More hosts rally guests but does not organize
+          the Sturgis Rally, and next rally dates are not yet confirmed. */}
       <JsonLd data={faqSchema(RALLY_FAQ)} />
 
-      <Breadcrumbs items={[{ name: 'Sturgis Motorcycle Rally 2026', url: '/sturgis-rally' }]} />
+      <Breadcrumbs items={[{ name: 'Sturgis Motorcycle Rally', url: '/sturgis-rally' }]} />
 
       {/* Hero */}
       <section className="relative bg-brand-navy text-white py-24 md:py-32 overflow-hidden">
@@ -89,10 +75,10 @@ export default function Page() {
         <div className="absolute inset-0 bg-gradient-to-t from-brand-navy via-brand-navy/75 to-brand-navy/30" />
         <div className="relative max-w-6xl mx-auto px-4 text-center">
           <span className="inline-block px-5 py-2 bg-brand-gold text-white text-xs font-black uppercase tracking-[0.2em] rounded-full mb-6">
-            ★ 86th Annual · August 2–18, 2026 ★
+            ★ Every August · Next Dates to Be Confirmed ★
           </span>
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-display font-bold mb-6 leading-[1.05]">
-            Sturgis Motorcycle Rally <span className="text-brand-gold italic">2026</span>
+            Sturgis Motorcycle Rally <span className="text-brand-gold italic">Guide</span>
           </h1>
           <p className="text-lg md:text-xl text-white/85 max-w-3xl mx-auto mb-8 leading-relaxed font-medium">
             The world&apos;s largest motorcycle gathering — and Rush No More is your Black Hills base camp,
@@ -126,7 +112,7 @@ export default function Page() {
       <section className="py-16 bg-surface-primary">
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-display font-bold text-center mb-4">
-            Sturgis Rally 2026 at a Glance
+            Sturgis Rally at a Glance
           </h2>
           <div className="w-24 h-1 bg-gold-gradient rounded-full mx-auto mb-12" />
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
@@ -187,17 +173,7 @@ export default function Page() {
             <div className="w-24 h-1 bg-gold-gradient rounded-full mx-auto" />
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-            <div className="relative rounded-3xl overflow-hidden shadow-lodge-xl border-2 border-white aspect-[9/16] max-w-sm mx-auto lg:mx-0">
-              <Image
-                src="/images/posts/auctionnight.png"
-                alt="86th Sturgis Bike Rally Charity Auction Night flyer at Rush No More RV Resort"
-                fill
-                sizes="(max-width: 1024px) 90vw, 400px"
-                className="object-cover"
-              />
-            </div>
-
+          <div className="max-w-3xl mx-auto">
             <div>
               <div className="flex items-center gap-3 mb-5">
                 <Heart className="w-8 h-8 text-brand-gold" />
@@ -223,8 +199,8 @@ export default function Page() {
               <div className="grid grid-cols-2 gap-3 mb-6">
                 <div className="bg-white rounded-xl p-4 border border-brand-gold/15">
                   <div className="text-xs uppercase font-bold tracking-wider text-brand-stone mb-1">When</div>
-                  <div className="font-display font-bold text-brand-navy">Tuesday, August 11</div>
-                  <div className="text-sm text-brand-navy/70">7:00 PM</div>
+                  <div className="font-display font-bold text-brand-navy">During Rally week</div>
+                  <div className="text-sm text-brand-navy/70">Date to be confirmed</div>
                 </div>
                 <div className="bg-white rounded-xl p-4 border border-brand-gold/15">
                   <div className="text-xs uppercase font-bold tracking-wider text-brand-stone mb-1">Where</div>
@@ -401,7 +377,7 @@ export default function Page() {
       <section className="py-20 bg-white">
         <div className="max-w-3xl mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-display font-bold text-center mb-4">
-            Sturgis Rally 2026 — FAQ
+            Sturgis Rally — FAQ
           </h2>
           <div className="w-24 h-1 bg-gold-gradient rounded-full mx-auto mb-10" />
           <div className="space-y-4">
@@ -449,7 +425,7 @@ export default function Page() {
       </section>
 
       <BookingCTA
-        title="Book Your 2026 Sturgis Rally Stay"
+        title="Book Your Sturgis Rally Stay"
         subtitle="Rally bookings sell out every year. Lock in your spot at Rush No More — 5 miles from Main Street."
       />
     </>

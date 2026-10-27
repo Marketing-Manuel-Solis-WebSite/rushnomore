@@ -43,7 +43,7 @@ export function HeroSection() {
       {/* Content */}
       <div className="relative z-20 max-w-5xl mx-auto px-8 text-center text-white">
         <span className="badge-gold mb-8 inline-block !bg-brand-gold/30 !text-brand-gold-light animate-fade-in-up">
-          Top-Rated RV Resort in the Black Hills
+          Family-Owned RV Resort in the Black Hills
         </span>
 
         <h1 className="text-5xl md:text-6xl lg:text-7xl font-display mb-6 leading-[1.1] animate-fade-in-up delay-100">
@@ -53,7 +53,7 @@ export function HeroSection() {
         </h1>
 
         <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto mb-10 animate-fade-in-up delay-200">
-          156 RV sites, 20 presidential cabins & shaded tent camping in Sturgis, SD — just 55 miles from Mount Rushmore. Heated pool, hot tubs, beer garden & free resort amenities.
+          156 RV sites, 20 presidential cabins & shaded tent camping in Sturgis, SD — just 55 miles from Mount Rushmore. Pool, hot tubs, beer garden & free resort amenities.
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up delay-300">

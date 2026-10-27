@@ -13,7 +13,7 @@ const POPULAR = [
   { href: '/stay/cabins', label: 'Presidential Cabins' },
   { href: '/stay/tent-camping', label: 'Tent Camping' },
   { href: '/sturgis-rally-camping', label: 'Sturgis Rally Camping' },
-  { href: '/rally-rates', label: 'Rally Rates 2026' },
+  { href: '/rally-rates', label: 'Rally Rates' },
   { href: '/monthly-rv-sites', label: 'Monthly RV Sites' },
   { href: '/weddings-groups', label: 'Weddings & Groups' },
   { href: '/amenities', label: 'Amenities' },

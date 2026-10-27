@@ -3,7 +3,7 @@ import { seo } from '@/lib/seo';
 
 export const metadata: Metadata = seo({
   title: 'Deadwood Day Trip from Sturgis — Casinos & Gold Rush History',
-  description: 'The complete Deadwood, SD day trip guide from Rush No More — 12 miles and 15 minutes from camp. 80+ gaming halls, Adams Museum, gold panning at Broken Boot, Mt. Moriah Cemetery and the Trial of Jack McCall. Route, timing, parking and dining tips.',
+  description: 'Deadwood, SD day trip from Rush No More, 12 miles away: gaming halls, Adams Museum, Broken Boot gold panning, Mt. Moriah Cemetery, parking and dining tips.',
   path: '/deadwood-day-trip',
   image: '/images/Cabins/CabinJamesMonroe/PhotoMainJamesMonroe.jpeg',
   keywords: [

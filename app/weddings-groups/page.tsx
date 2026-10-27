@@ -15,7 +15,7 @@ const WG_FAQ = [
   { q: 'Can we bring our own caterer?', a: 'Yes. Our venue includes a full commercial kitchen that your caterer can use, or you can DIY for smaller gatherings.' },
   { q: 'Is live music allowed?', a: 'Absolutely — the pavilion is set up for bands, DJs and amplified sound. Respect for quiet hours applies after 10 PM per campground policy.' },
   { q: 'How far in advance should we book a wedding?', a: 'Peak wedding dates (June–September) book 9–12 months out. Contact us early to lock in your date.' },
-  { q: 'Is the venue pet-friendly for weddings?', a: 'Many of our cabins and all RV/tent sites are pet-friendly. Service animals are welcome at the pavilion; contact us for pet policies at your specific event.' },
+  { q: 'Is the venue pet-friendly for weddings?', a: 'Service animals are welcome at the pavilion. For pets, please contact us to confirm our current pet policy for your specific event.' },
 ];
 
 export default function Page() {
@@ -43,7 +43,7 @@ export default function Page() {
           <p className="text-lg md:text-xl text-white/80 max-w-3xl mx-auto leading-relaxed">
             A Black Hills venue that keeps your whole group together — pavilion for 20–200, full kitchen,
             on-site cabins, RV sites and tent camping. Golden-hour photo backdrops, Ponderosa pines, and
-            the same 4.8★ hospitality that made us a top-rated campground.
+            the same family-owned hospitality our campers come back for.
           </p>
         </div>
       </section>

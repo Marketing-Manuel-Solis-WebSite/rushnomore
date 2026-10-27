@@ -23,7 +23,7 @@ export interface Property {
   amenities: string[];
   images: string[];
   status: PropertyStatus;
-  seasonal: boolean;               // true = May 1 – Oct 1 only
+  seasonal: boolean;               // true = seasonal (window set via seasonStart/seasonEnd)
   seasonStart?: string;            // "05-01"
   seasonEnd?: string;              // "10-01"
   description?: string;

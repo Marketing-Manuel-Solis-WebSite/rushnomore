@@ -3,14 +3,14 @@ import { SITE, RALLY_RV } from '@/data/site';
 import { BookingCTA } from '@/components/ui';
 import { Breadcrumbs } from '@/components/seo/Breadcrumbs';
 import { JsonLd } from '@/components/seo/JsonLd';
-import { eventSchema, faqSchema } from '@/lib/seo';
+import { faqSchema } from '@/lib/seo';
 import {
   Bike, MapPin, Beer, Shield, Music, Truck, Home, Tent,
   ArrowRight, ExternalLink, Phone, CheckCircle, Clock,
 } from 'lucide-react';
 
 const RALLY_FAQ = [
-  { q: 'When is the 2026 Sturgis Motorcycle Rally?', a: 'The 2026 Sturgis Rally runs August 2–18, 2026 (officially August 8–17, with pre-rally activity starting earlier). Rush No More accepts rally bookings across the full window.' },
+  { q: 'When is the next Sturgis Motorcycle Rally?', a: 'The Sturgis Motorcycle Rally is held every August in Sturgis, SD. Dates for the next rally are to be confirmed — call us for current dates and rally availability.' },
   { q: 'How far is Rush No More from Main Street Sturgis?', a: 'Rush No More sits 5 miles (about 7 minutes) from Main Street Sturgis — close enough to ride in at any hour, far enough that the campground stays quiet at night.' },
   { q: 'When should I book for Sturgis Rally?', a: 'Book 6–12 months in advance. We sell out every year, and most rally-ready sites go by early spring for the following August.' },
   { q: 'Is there a minimum-night requirement during rally?', a: 'Yes — rally packages are sold as multi-night bundles (typically 10 nights). See current rally rates on our Rally Rates page for exact pricing.' },
@@ -21,15 +21,6 @@ const RALLY_FAQ = [
 export default function Page() {
   return (
     <>
-      <JsonLd data={eventSchema({
-        name: 'Sturgis Motorcycle Rally 2026 — Rush No More Base Camp',
-        description: 'Rush No More is your Sturgis Rally base camp — 5 miles from Main Street Sturgis with RV sites, cabins, tent camping, beer garden, pool and hot tubs.',
-        startDate: '2026-08-02',
-        endDate: '2026-08-18',
-        image: '/images/BikeRally/IMG_9865.JPG',
-        price: '940.70',
-        url: `https://www.rushnomore.com/sturgis-rally-camping`,
-      })} />
       <JsonLd data={faqSchema(RALLY_FAQ)} />
 
       <Breadcrumbs items={[{ name: 'Sturgis Rally Camping', url: '/sturgis-rally-camping' }]} />
@@ -45,14 +36,14 @@ export default function Page() {
         <div className="absolute inset-0 bg-gradient-to-t from-brand-navy via-brand-navy/70 to-brand-navy/40" />
         <div className="relative max-w-5xl mx-auto px-4 text-center">
           <span className="inline-block px-5 py-2 bg-brand-gold text-white text-xs font-black uppercase tracking-[0.2em] rounded-full mb-6">
-            ★ Official Rally HQ Since 2014 ★
+            ★ Rally Base Camp Since 2014 ★
           </span>
           <h1 className="text-4xl md:text-6xl font-display font-bold mb-5 leading-tight">
-            Sturgis Rally Camping <span className="text-brand-gold italic">2026</span>
+            Sturgis Rally <span className="text-brand-gold italic">Camping</span>
           </h1>
           <p className="text-lg md:text-xl text-white/80 max-w-3xl mx-auto mb-8 leading-relaxed font-medium">
-            Your Black Hills base camp for the 86th Sturgis Motorcycle Rally — <strong>5 miles from Main Street</strong>,
-            full amenities, and over a decade of hosting the world&apos;s largest rally. RV sites, presidential cabins,
+            Your Black Hills base camp for the Sturgis Motorcycle Rally (next dates to be confirmed) — <strong>5 miles from Main Street</strong>,
+            full amenities, and over a decade of hosting rally guests. RV sites, presidential cabins,
             and tent camping — all with pool, hot tubs and beer garden.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
@@ -156,7 +147,7 @@ export default function Page() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
               { icon: Truck, t: 'RV Sites for Rally', d: 'Full-hookup pull-throughs, 30/50 AMP, luxury and spa sites available.', href: '/stay/rv-sites' },
-              { icon: Home, t: 'Presidential Cabins', d: '20 cabins (19 named after US Presidents plus the JFK House) — sleep 2 to 10 guests.', href: '/stay/cabins' },
+              { icon: Home, t: 'Presidential Cabins', d: '20 cabins (13 named after U.S. Presidents, including the JFK House, plus 7 Standard Cabins) — sleep 2 to 10 guests.', href: '/stay/cabins' },
               { icon: Tent, t: 'Rally Tent Camping', d: 'Shaded tent sites under Ponderosa pines. Bathhouse + pool access.', href: '/stay/tent-camping' },
             ].map(({ icon: Icon, t, d, href }) => (
               <Link key={href} href={href} className="group block bg-white rounded-2xl p-8 shadow-lodge hover:shadow-gold-lg transition-all border border-brand-gold/10">
@@ -206,7 +197,7 @@ export default function Page() {
           </p>
           <div className="flex flex-wrap gap-3 justify-center">
             <Link href="/sturgis-rally" className="px-5 py-3 bg-brand-gold text-white font-bold rounded-xl uppercase tracking-wider text-sm">
-              Full 2026 Rally Guide
+              Full Rally Guide
             </Link>
             <Link href="/best-motorcycle-rides-near-sturgis" className="px-5 py-3 border border-white/30 text-white rounded-xl font-bold uppercase tracking-wider text-sm hover:bg-white/10">
               Top Rides Near Sturgis
@@ -226,7 +217,7 @@ export default function Page() {
 
       <BookingCTA
         title="Book Your Sturgis Rally Spot"
-        subtitle="We sell out every year. Lock in your 2026 rally stay today."
+        subtitle="We sell out every year. Call to confirm next rally dates and lock in your stay."
       />
     </>
   );

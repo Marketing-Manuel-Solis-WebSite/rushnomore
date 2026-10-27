@@ -36,7 +36,7 @@ const RV_FAQS = [
   { q: 'What hookups do RV sites include?', a: 'All sites include water, electric (30/50 AMP), and sewer. Luxury and Luxury Spa sites add cement slabs and gas BBQ grills.' },
   { q: 'How long can my RV be?', a: 'We accommodate RVs up to 100 feet with pull-through and back-in options.' },
   { q: 'What is the difference between Luxury and Luxury Spa?', a: 'Both have cement slabs + BBQ. Luxury Spa adds a private hot tub spa — the ultimate RV glamping experience.' },
-  { q: 'Are you open year-round?', a: 'Standard sites are open year-round. Luxury & Luxury Spa sites are seasonal (May 1 – October 1).' },
+  { q: 'Are you open year-round?', a: 'Standard sites are open year-round. Luxury & Luxury Spa sites are seasonal — please contact us to confirm availability for your dates.' },
 ];
 
 /* ═══════════════════════════════════════════════════════════════
@@ -55,7 +55,6 @@ const CABIN_FEATURES = [
   'Full kitchens in select cabins',
   'A/C and heating in every cabin',
   'Private bathrooms',
-  'Pet-friendly options',
   'Open year-round',
   'Propane campfire rentals available',
 ];
@@ -65,7 +64,7 @@ const CABIN_FEATURES = [
 ═══════════════════════════════════════════════════════════════ */
 const TENT_FEATURES = [
   { icon: TreePine, title: 'Shaded Pine Forest', desc: 'Spacious, level sites nestled under towering Ponderosa pines.' },
-  { icon: Zap, title: '15 Sites with Electricity', desc: '15 of our 20 tent sites include 20 AMP electric hookups.' },
+  { icon: Zap, title: '15 Sites with Electricity', desc: '15 of our 20+ tent sites include 20 AMP electric hookups.' },
   { icon: Waves, title: 'Full Amenity Access', desc: 'Pool, hot tubs, beer garden, game room — all included with tent sites.' },
   { icon: ShowerHead, title: 'Clean Bathhouses', desc: 'Modern, spotless shower and restroom facilities nearby.' },
   { icon: Cable, title: 'Propane Campfire Rentals', desc: 'Rent a propane campfire for your site. No wood fires allowed.' },
@@ -156,7 +155,7 @@ export default function StayPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            Top-Rated RV Resort
+            Family-Owned RV Resort
           </motion.span>
 
           <motion.h1
@@ -367,7 +366,7 @@ export default function StayPage() {
             </div>
 
             <div className="bg-brand-gold/10 border border-brand-gold/20 rounded-xl p-4 mt-8 text-center text-sm text-brand-navy/80 font-medium">
-              <strong>Seasonal Notice:</strong> Luxury & Luxury Spa sites are seasonal — May 1 through October 1. Standard RV sites are open year-round.
+              <strong>Seasonal Notice:</strong> Luxury & Luxury Spa sites are seasonal — please contact us to confirm availability for your dates. Standard RV sites are open year-round.
             </div>
           </div>
         </div>
@@ -391,7 +390,7 @@ export default function StayPage() {
                     'Pull-Through Available', 'Up to 100ft Long',
                     'Pool & Hot Tub Access', 'Beer Garden & Bar',
                     'Free Wi-Fi', 'Friendly On-Site Staff',
-                    'Pet-Friendly Options', 'Clean Bathhouses',
+                    'Clean Bathhouses',
                     'Game Room & Trails', 'Propane Available',
                   ].map((f, i) => (
                     <span key={i} className="flex items-center gap-2 text-sm text-brand-navy/80 font-medium">
@@ -523,7 +522,7 @@ export default function StayPage() {
           <div className="max-w-7xl mx-auto px-4 relative z-10">
             <div className="text-center mb-14">
               <span className="inline-block px-5 py-2 bg-brand-gold text-white text-xs font-black uppercase tracking-[0.2em] rounded-full shadow-gold mb-5">
-                ★ 16 Unique Cabins ★
+                ★ 20 Unique Cabins ★
               </span>
               <h3 className="text-3xl md:text-4xl mb-3">
                 Find Your Perfect <span className="text-brand-gold italic">Cabin</span>
@@ -659,7 +658,7 @@ export default function StayPage() {
                 { val: '$35', label: 'Per Night' },
                 { val: '+$5', label: 'Electric Option' },
                 { val: '16', label: 'Free Amenities' },
-                { val: '4.8★', label: 'Guest Rating' },
+                { val: '20+', label: 'Tent Sites' },
               ].map((s, i) => (
                 <div key={i} className="text-center">
                   <span className="font-display text-3xl text-brand-gold font-bold block">{s.val}</span>
@@ -769,7 +768,7 @@ export default function StayPage() {
                   Our tent sites are nestled in a shaded Ponderosa pine forest with spacious, level ground and the kind of natural beauty that makes the Black Hills unforgettable.
                 </p>
                 <p className="text-brand-navy/60 leading-relaxed font-medium mb-8">
-                  But unlike most campgrounds, you&apos;re not roughing it. Step out of your tent and you have access to a heated pool, hot tubs, a beer garden with craft brews, modern bathhouses, a game room, nature trails, and friendly on-site staff. It&apos;s the best of both worlds — nature and comfort.
+                  But unlike most campgrounds, you&apos;re not roughing it. Step out of your tent and you have access to a pool, hot tubs, a beer garden with craft brews, modern bathhouses, a game room, nature trails, and friendly on-site staff. It&apos;s the best of both worlds — nature and comfort.
                 </p>
                 <div className="grid grid-cols-2 gap-3 mb-8">
                   {[
@@ -815,7 +814,7 @@ export default function StayPage() {
                   <div className="aspect-square rounded-xl overflow-hidden shadow-lodge-lg border-2 border-white relative">
                     <Image
                       src="/images/Pool/PoolSunDay.jpeg"
-                      alt="Sunny day at the heated pool, Rush No More near Mount Rushmore"
+                      alt="Sunny day at the pool, Rush No More near Mount Rushmore"
                       fill
                       className="object-cover transition-transform duration-700 hover:scale-110"
                       sizes="(max-width: 768px) 50vw, 20vw"

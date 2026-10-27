@@ -18,7 +18,7 @@ import {
 
 const VALUES = [
   { icon: Heart, title: 'Family First', desc: "We're not a chain — we're a family. Every guest gets a personal welcome, a friendly escort to their site, and genuine Black Hills hospitality." },
-  { icon: Award, title: 'Excellence Always', desc: "Spotless bathhouses, manicured grounds, and 4.8 stars don't happen by accident. We sweat the small stuff so you don't have to." },
+  { icon: Award, title: 'Excellence Always', desc: "Spotless bathhouses, manicured grounds, and happy campers don't happen by accident. We sweat the small stuff so you don't have to." },
   { icon: ShieldCheck, title: 'Peace of Mind', desc: "Friendly on-site staff during business hours, after-hours on-call assistance and well-lit grounds mean you can truly relax — whether you're here for a weekend or the whole rally." },
   { icon: Users, title: 'Community Spirit', desc: 'From our beer garden gatherings to campfire conversations, Rush No More is where strangers become friends and friends become family.' },
   { icon: TreePine, title: 'Nature First', desc: 'Nestled among Ponderosa pines with trails, wildlife, and mountain views — we preserve the natural beauty that makes this place special.' },
@@ -35,7 +35,7 @@ const TEAM_HIGHLIGHTS = [
 ];
 
 const FAQS = [
-  { q: 'How long has Rush No More been open?', a: 'Rush No More has been welcoming campers for over a decade, hosting 84+ Sturgis Rallies and serving thousands of guests from across the country.' },
+  { q: 'How long has Rush No More been open?', a: 'Rush No More has been welcoming campers for over a decade, hosting Sturgis Rally guests every August and serving thousands of guests from across the country.' },
   { q: 'Is Rush No More family-friendly?', a: 'Absolutely! We welcome families of all sizes. Our pool, game room, nature trails, and spacious grounds are perfect for kids. Many families make it an annual tradition.' },
   { q: 'What makes you different from other campgrounds?', a: 'Personal service (we escort you to your site), free resort amenities, a prime location (5 mi to Sturgis, easy I-90 access), and unique offerings like Presidential Cabins and private hot tub spa sites.' },
   { q: 'Do you host events and weddings?', a: 'Yes! Our large outdoor pavilion with full kitchen is perfect for weddings, reunions, corporate retreats, and gatherings of 20-200 guests.' },
@@ -49,7 +49,7 @@ export default function AboutPage() {
     <>
       <JsonLd data={faqSchema(FAQS)} />
       <JsonLd data={breadcrumbSchema([{ name: 'Home', url: '/' }, { name: 'About', url: '/about' }])} />
-      <JsonLd data={videoSchema({ name: 'About Rush No More RV Resort & Campground', description: 'Take a virtual tour of Rush No More RV Resort — the top-rated campground near Mount Rushmore in Sturgis, South Dakota. See our RV sites, presidential cabins, pool, beer garden & free resort amenities.', thumbnailUrl: '/images/Aereal-2_1400.png', contentUrl: '/videos/RNM-about.mp4', uploadDate: '2025-01-01' })} />
+      <JsonLd data={videoSchema({ name: 'About Rush No More RV Resort & Campground', description: 'Take a virtual tour of Rush No More RV Resort — the family-owned campground near Mount Rushmore in Sturgis, South Dakota. See our RV sites, presidential cabins, pool, beer garden & free resort amenities.', thumbnailUrl: '/images/Aereal-2_1400.png', contentUrl: '/videos/RNM-about.mp4', uploadDate: '2025-01-01' })} />
 
       {/* HERO */}
       <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-brand-navy">
@@ -110,7 +110,7 @@ export default function AboutPage() {
                   That&apos;s the idea behind Rush No More. We&apos;re a family-owned resort in Sturgis, South Dakota, set among the Ponderosa pines at the edge of the Black Hills. We named our cabins after presidents, built a beer garden where strangers become friends, and made sure every single guest gets walked to their site with a handshake and a smile.
                 </p>
                 <p>
-                  Over the years, what started small has grown into something we&apos;re genuinely proud of: 16 resort amenities, a 4.8-star rating, thousands of returning guests, and a reputation as <em>the</em> place to stay during the Sturgis Rally. But we&apos;ve never lost the thing that matters most — we still know our regulars by name, and we still treat first-timers like old friends.
+                  Over the years, what started small has grown into something we&apos;re genuinely proud of: 16 resort amenities, thousands of returning guests, and a reputation as <em>the</em> place to stay during the Sturgis Rally. But we&apos;ve never lost the thing that matters most — we still know our regulars by name, and we still treat first-timers like old friends.
                 </p>
                 <p>
                   Whether you&apos;re rolling in on a Harley, pulling a 40-foot fifth wheel, pitching a tent with the kids, or booking a cabin for a quiet couples&apos; retreat — you&apos;ll feel it the moment you arrive. This place is different.
@@ -159,9 +159,9 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
             {[
               { num: '01', title: 'The Dream', desc: 'Founded with one goal — a campground where every guest feels at home in the Black Hills. A handful of RV sites and a lot of heart.' },
-              { num: '02', title: 'Presidential Cabins', desc: '20 cabins — 19 named after a U.S. President plus the JFK House. From economy to luxury suites sleeping 10 — an instant guest favorite.' },
+              { num: '02', title: 'Presidential Cabins', desc: '20 cabins — 13 named after U.S. Presidents (including the JFK House) plus 7 Standard Cabins. From economy to luxury suites sleeping 10 — an instant guest favorite.' },
               { num: '03', title: 'Rally Headquarters', desc: 'Word spread among riders — 5 miles from Sturgis with a legendary beer garden. Decade after decade, the go-to base camp.' },
-              { num: '04', title: 'Top Rated', desc: "4.8 stars, 84 rallies hosted, 4,200+ campers, full resort amenities. The Black Hills' most-loved resort — still growing every season." },
+              { num: '04', title: 'Still Growing', desc: "156 RV sites, 20 cabins, 20+ tent sites, full resort amenities. The Black Hills' most-loved resort — still growing every season." },
             ].map((step, i) => (
               <motion.div
                 key={i}

@@ -112,6 +112,36 @@ export const SITE: SiteConfig & { rvStartPrice: string; cabinStartPrice: string;
   tentStartPrice: '35',
 };
 
+/* ─── Confirmed facts ───
+   Single source of truth for counts, times and contact data. lib/seo.ts, the
+   chat prompt and page copy read from here — change a figure once, here. ─── */
+export const FACTS = {
+  rvSites: 156,
+  cabins: 20,
+  tentSites: '20+',
+  tentSitesElectric: 15,
+  checkInTime: '14:00',
+  checkInLabel: '2:00 PM',
+  checkOutTime: '11:00',
+  checkOutLabel: '11:00 AM',
+  fhuBackInPrice: '51.76',
+} as const;
+
+export const ADDRESS_PARTS = {
+  streetAddress: '21137 Brimstone Place',
+  addressLocality: 'Sturgis',
+  addressRegion: 'SD',
+  postalCode: '57785',
+  addressCountry: 'US',
+} as const;
+
+export const GEO_COORDS = { latitude: 44.39857, longitude: -103.46825 } as const;
+
+/* Unconfirmed policies — neutral wording until the office confirms them. */
+export const PET_POLICY_NOTE = 'Traveling with pets? Please contact us to confirm our current pet policy before booking.';
+export const POOL_SEASON_NOTE = 'Pool and hot tub season and hours vary — please contact us to confirm before your stay.';
+export const EVENT_DATES_TBC = 'Dates to be confirmed';
+
 /* ─── Social profiles ───
    Single source of truth: the footer/header/contact links AND the schema.org
    `sameAs` arrays in lib/seo.ts both read from here. Keeping the visible link
@@ -168,7 +198,7 @@ export const NAV: NavItem[] = [
     label: 'Sturgis Rally',
     href: '/sturgis-rally',
     children: [
-      { label: '2026 Rally Guide', href: '/sturgis-rally' },
+      { label: 'Rally Guide', href: '/sturgis-rally' },
       { label: 'Rally Camping', href: '/sturgis-rally-camping' },
       { label: 'Rally Rates', href: '/rally-rates' },
       { label: 'Best Rides', href: '/best-motorcycle-rides-near-sturgis' },
@@ -186,7 +216,7 @@ export const AMENITIES: Amenity[] = [
   { icon: 'ShowerHead', title: 'Bathhouses', desc: 'Clean, modern facilities throughout the park' },
   { icon: 'WashingMachine', title: 'Laundromats', desc: 'Convenient laundry facilities available' },
   { icon: 'Wifi', title: 'Free Wi-Fi', desc: 'Complimentary Wi-Fi throughout the resort' },
-  { icon: 'PawPrint', title: 'Pet Friendly', desc: 'Well-behaved pets welcome at most sites and select cabins' },
+  { icon: 'PawPrint', title: 'Traveling With Pets?', desc: PET_POLICY_NOTE },
   { icon: 'Fuel', title: 'Propane Sales', desc: 'Convenient propane refill service' },
   { icon: 'Flame', title: 'Propane & Charcoal Only', desc: 'No wood fires — propane campfire rentals & charcoal grills allowed' },
   { icon: 'Coffee', title: 'Cafe', desc: 'Open weekends & all 10 days of Rally' },
@@ -202,7 +232,7 @@ export const AMENITIES: Amenity[] = [
 export const RV_TIERS: RVTier[] = [
   { name: 'Water/Electric Back-in', price: '$41.22', note: 'starts at', img: '/images/WaterElectric Back-in.png', badge: '',
     features: ['Water & electric hookup', '30 AMP service', 'Back-in site', 'Up to 100ft long'] },
-  { name: 'FHU Back-in', price: '$51.76', note: 'starts at', img: '/images/FHU Back-in.png', badge: '',
+  { name: 'FHU Back-in', price: `$${FACTS.fhuBackInPrice}`, note: 'starts at', img: '/images/FHU Back-in.png', badge: '',
     features: ['Full hook-up site', 'Water/Electric/Sewer', 'Back-in site', '30/50 AMP service'] },
   { name: 'FHU Pull-through', price: '$62.36', note: 'starts at', img: '/images/PullRV.jpeg', badge: '',
     features: ['Full hook-up site', 'Water/Electric/Sewer', 'Pull-through site', '30/50 AMP service'] },
@@ -241,7 +271,9 @@ export const CABINS: CabinCategory[] = [
   ]},
   { cat: 'Cabins Sleeping 6', items: [
     { name: 'John Quincy Adams', num: '9', sleeps: 6, price: '$100.42', img: '/images/Cabins/CabinJohnQuincyAdams/PhotoMainJohnQuincyAdams.jpeg', images: ['/images/Cabins/CabinJohnQuincyAdams/PhotoMainJohnQuincyAdams.jpeg', ...CABIN_9_INTERIOR], bath: true },
-    { name: 'Andrew Jackson', num: '10', sleeps: 6, price: '$110.42', img: '/images/Cabins/CabinJohnQuincyAdams/PhotoMainJohnQuincyAdams.jpeg', images: ['/images/Cabins/CabinJohnQuincyAdams/PhotoMainJohnQuincyAdams.jpeg', ...CABIN_10_INTERIOR], bath: true, note: 'Larger floorplan with sitting area.' },
+    // No exterior photo of Cabin 10 exists yet — lead with its own interior shot
+    // rather than borrowing Cabin 9's (JQ Adams) exterior.
+    { name: 'Andrew Jackson', num: '10', sleeps: 6, price: '$110.42', img: CABIN_10_INTERIOR[0], images: CABIN_10_INTERIOR, bath: true, note: 'Larger floorplan with sitting area.' },
     { name: 'Ulysses S. Grant', num: '11', sleeps: 6, price: '$174', img: '/images/Cabins/CabinUlyssesGrant/PhotoMainUlyssesGrant.png', images: ['/images/Cabins/CabinUlyssesGrant/PhotoMainUlyssesGrant.png'], bath: true, beds: '2 Queens (one in loft) + futon', note: 'Studio-style with full kitchen. Loft access requires stairs.' },
     { name: 'The George Washington', num: '15', sleeps: 6, price: '$126.84', img: '/images/Cabins/CabinGeorgeWashington/PhotoMainGeorgeWashington.jpeg', images: ['/images/Cabins/CabinGeorgeWashington/PhotoMainGeorgeWashington.jpeg', '/images/Cabins/CabinGeorgeWashington/IMG_8451.jpeg'], bath: true },
     { name: 'The James Monroe', num: '2', sleeps: 6, price: '$121.56', img: '/images/Cabins/CabinJamesMonroe/PhotoMainJamesMonroe.jpeg', images: ['/images/Cabins/CabinJamesMonroe/PhotoMainJamesMonroe.jpeg', '/images/Cabins/CabinJamesMonroe/IMG_7688.jpeg', '/images/Cabins/CabinJamesMonroe/IMG_7689.jpeg', '/images/Cabins/CabinJamesMonroe/IMG_7788.jpeg', '/images/Cabins/CabinJamesMonroe/IMG_7790.jpeg', '/images/Cabins/CabinJamesMonroe/IMG_7791.jpeg', '/images/Cabins/CabinJamesMonroe/IMG_7792.jpeg'], bath: true },
@@ -254,6 +286,18 @@ export const CABINS: CabinCategory[] = [
     { name: 'John F. Kennedy', num: '21', sleeps: 10, price: '$332', img: '/images/Cabins/CabinJohnKennedy/PhotoMainJohnFKennedy.jpeg', images: ['/images/Cabins/CabinJohnKennedy/PhotoMainJohnFKennedy.jpeg'], bath: true, note: 'The JFK House — our largest cabin.' },
   ]},
 ];
+
+/* Cabin counts derived from the catalog above ("1,4,5,17-20" → 7 units). */
+const cabinUnits = (num: string) =>
+  num.split(',').reduce((n, part) => {
+    const [a, b] = part.split('-').map(Number);
+    return n + (b ? b - a + 1 : 1);
+  }, 0);
+const CABIN_ITEMS = CABINS.flatMap((c) => c.items);
+export const STANDARD_CABIN_COUNT = CABIN_ITEMS.filter((i) => i.name === 'Standard Cabins').reduce((n, i) => n + cabinUnits(i.num), 0);
+export const PRESIDENTIAL_CABIN_COUNT = CABIN_ITEMS.filter((i) => i.name !== 'Standard Cabins').reduce((n, i) => n + cabinUnits(i.num), 0);
+/** e.g. "13 named after U.S. Presidents (including the JFK House) plus 7 Standard Cabins" */
+export const CABIN_MIX = `${PRESIDENTIAL_CABIN_COUNT} named after U.S. Presidents (including the JFK House) plus ${STANDARD_CABIN_COUNT} Standard Cabins`;
 
 export const ATTRACTIONS: Attraction[] = [
   {
@@ -371,9 +415,9 @@ export const ATTRACTIONS: Attraction[] = [
     driveTime: '0 min',
     heroImage: '/images/car_show_RNM.png',
     description: 'Annual Show and Shine right here at Rush No More. Free admission with live music!',
-    longDescription: 'The Dakota Rods & Classics Car Show is our annual on-site event featuring classic cars, hot rods, and custom vehicles. This free-admission Show and Shine includes live music, food vendors, our famous beer garden, and a pool party. September 12, 2026 is this year\'s date — mark your calendar!',
+    longDescription: 'The Dakota Rods & Classics Car Show is our annual on-site event featuring classic cars, hot rods, and custom vehicles. This free-admission Show and Shine includes live music, food vendors, our famous beer garden, and a pool party. The next show date is to be confirmed — contact us for details.',
     highlights: ['Free admission', 'Classic cars & hot rods', 'Live music all day', 'Beer garden & food', 'Pool party'],
-    tips: ['September 12, 2026', 'Book your site early — it sells out', 'Bring a lawn chair for the show', 'Beer garden has special event hours'],
+    tips: ['Next show: dates to be confirmed', 'Book your site early — it sells out', 'Bring a lawn chair for the show', 'Beer garden has special event hours'],
   },
 ];
 
@@ -440,11 +484,12 @@ export const REVIEWS: Review[] = [
   { title: 'Family Friendly Paradise', text: 'Brought the whole family — grandparents in their RV, us in a cabin, kids in tents. Everyone was happy! The pool, game room, and trails kept the kids entertained for days. Would have liked a few more dining options nearby, but the camp store covered the basics.', rating: 4, source: 'Google' },
 ];
 
+// Only confirmed property facts — no unverified guest/sales counts.
 export const STATS: Stat[] = [
-  { value: '84', label: 'Rallies Hosted' },
-  { value: '4,200+', label: 'Happy Campers' },
-  { value: '34k', label: 'Drinks Served' },
-  { value: '100k', label: 'Great Memories' },
+  { value: String(FACTS.rvSites), label: 'RV Sites' },
+  { value: String(FACTS.cabins), label: 'Cabins' },
+  { value: FACTS.tentSites, label: 'Tent Sites' },
+  { value: '5 mi', label: 'To Main St Sturgis' },
 ];
 
 export const GALLERY_IMAGES = [

@@ -3,7 +3,7 @@ import { seo } from '@/lib/seo';
 
 export const metadata: Metadata = seo({
   title: 'RV Park Near Mount Rushmore — Full Hookups | Rush No More',
-  description: 'Book an RV park near Mount Rushmore at Rush No More in Sturgis, SD. Full hookups (water/electric/sewer), 30/50 AMP, pull-throughs up to 100 ft, heated pool, hot tubs, beer garden. Nightly, weekly & monthly RV site rates. 5 mi from Main Street Sturgis, 55 mi from Mount Rushmore, 12 mi from Deadwood.',
+  description: 'RV park near Mount Rushmore in Sturgis, SD: 156 RV sites, full hookups, 30/50 AMP, pull-throughs up to 100 ft, pool, hot tubs & beer garden. Book online.',
   path: '/rv-park-near-mount-rushmore',
   image: '/images/rv-camper-van.png',
   keywords: [

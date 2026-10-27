@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { SITE, AMENITIES, REVIEWS, STATS } from '@/data/site';
+import { SITE, AMENITIES, REVIEWS, STATS, PET_POLICY_NOTE } from '@/data/site';
 import { BookingCTA } from '@/components/ui';
 import { HeroSection } from '@/components/layout/HeroSection';
 import { ExternalLink, MapPin, Mountain, TreePine, Tent, Home, Truck, Phone, Star, ArrowRight, Users, Zap, Waves, Beer, ShieldCheck, Wifi, PawPrint, Clock, Navigation, Award, Heart, ThumbsUp, CheckCircle, Flame, Gamepad2, Quote, Calendar, Route } from 'lucide-react';
@@ -13,10 +13,10 @@ export default function HomePage() {
       {/* ═══ SOCIAL PROOF BAR ═══ */}
       <section className="bg-brand-navy text-white py-5 border-b-4 border-brand-gold">
         <div className="max-w-7xl mx-auto px-4 flex flex-wrap items-center justify-center gap-6 md:gap-12">
-          <div className="flex items-center gap-3 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/10">
-            <div className="flex -space-x-0.5">{[1,2,3,4,5].map(i => <Star key={i} className="w-5 h-5 text-brand-gold fill-brand-gold" />)}</div>
-            <span className="text-sm font-bold text-white/90">4.8/5 on TripAdvisor</span>
-          </div>
+          <a href={SITE.tripadvisor} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/10 hover:bg-white/20 transition-colors">
+            <Star className="w-5 h-5 text-brand-gold" />
+            <span className="text-sm font-bold text-white/90">Read our reviews on TripAdvisor</span>
+          </a>
           {STATS.map((s, i) => (
             <div key={i} className="text-center px-3">
               <span className="font-display text-3xl text-brand-gold font-bold">{s.value}</span>
@@ -77,7 +77,7 @@ export default function HomePage() {
                 {[
                   'Free Wi-Fi',
                   '24/7 Onsite Laundry Facility',
-                  'Swimming Pool & Spa (May 1 – Oct 1)',
+                  'Swimming Pool & Spa (seasonal — call to confirm)',
                   'Onsite Store Open Daily',
                   'Quiet Park — Away from Freeways',
                   'Free Extra Parking',
@@ -218,7 +218,7 @@ export default function HomePage() {
                       Each cabin named after a US President — from cozy economy units for couples to <strong className="text-brand-navy">full luxury suites sleeping up to 10 guests</strong>. Perfect for families, reunions, and anyone who wants comfort without sacrificing the outdoors.
                     </p>
                     <div className="grid grid-cols-2 gap-2.5 mb-7">
-                      {['Sleeps 2 to 10 Guests', 'Full Kitchens Available', 'A/C & Heating', 'Private Bathrooms', 'Pet-Friendly Options', '20 Unique Cabins'].map((f, i) => (
+                      {['Sleeps 2 to 10 Guests', 'Full Kitchens Available', 'A/C & Heating', 'Private Bathrooms', 'Free Resort Amenities', '20 Unique Cabins'].map((f, i) => (
                         <span key={i} className="flex items-center gap-2.5 text-sm text-brand-navy/80 bg-surface-secondary/80 backdrop-blur-sm px-3 py-2 rounded-lg font-medium border border-surface-muted/30">
                           <CheckCircle className="w-4 h-4 text-brand-gold flex-shrink-0" />{f}
                         </span>
@@ -298,7 +298,7 @@ export default function HomePage() {
                       </div>
                     </div>
                     <p className="text-brand-navy/80 text-base md:text-lg leading-relaxed mb-6 font-medium">
-                      Wake up to fresh mountain air under towering Ponderosa pines. Spacious, level sites with <strong className="text-brand-navy">full access to every resort amenity</strong> — pool, hot tubs, beer garden, bathhouses, and more. 15 of 20 sites have electricity.
+                      Wake up to fresh mountain air under towering Ponderosa pines. Spacious, level sites with <strong className="text-brand-navy">full access to every resort amenity</strong> — pool, hot tubs, beer garden, bathhouses, and more. 15 of our 20+ tent sites have electricity.
                     </p>
                     <div className="grid grid-cols-2 gap-2.5 mb-7">
                       {['Shaded Pine Forest', '15 Sites with Electric', 'Water Hookups Nearby', 'Clean Bathhouses', 'Pool & Hot Tub Access', 'Hiking Trail Access'].map((f, i) => (
@@ -368,15 +368,15 @@ export default function HomePage() {
                 More Than a <br /><span className="text-brand-gold italic">Campground</span>
               </h2>
               <div className="w-32 h-1.5 bg-gold-gradient rounded-full mb-6" />
-              <p className="text-brand-navy/80 text-lg mb-4 leading-relaxed font-medium">Rush No More is a top-rated RV resort nestled in the beautiful Black Hills of South Dakota. Just minutes from Sturgis and an easy drive to Mount Rushmore, Deadwood, Custer State Park, and Spearfish Canyon.</p>
+              <p className="text-brand-navy/80 text-lg mb-4 leading-relaxed font-medium">Rush No More is a family-owned RV resort nestled in the beautiful Black Hills of South Dakota. Just minutes from Sturgis and an easy drive to Mount Rushmore, Deadwood, Custer State Park, and Spearfish Canyon.</p>
               <p className="text-brand-navy/70 mb-8 leading-relaxed font-medium">Our dedicated team has hosted thousands of happy campers. We combine premium amenities, gorgeous mountain surroundings, and genuine warm hospitality to create an experience you&apos;ll never forget.</p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
                 {[
-                  { icon: Award, text: 'Top-rated on TripAdvisor & Google' },
+                  { icon: Award, text: 'Read our reviews on TripAdvisor' },
                   { icon: Heart, text: 'Family-owned, personal service' },
                   { icon: ShieldCheck, text: 'On-site staff with after-hours on-call' },
-                  { icon: ThumbsUp, text: '4,200+ happy campers & counting' },
+                  { icon: ThumbsUp, text: '20 presidential cabins' },
                 ].map((item, i) => (
                   <div key={i} className="flex items-center gap-3 p-3.5 rounded-xl bg-white/70 backdrop-blur-sm border border-brand-gold/15 shadow-lodge hover:shadow-gold hover:-translate-y-0.5 transition-all duration-300">
                     <div className="w-10 h-10 bg-brand-gold/10 backdrop-blur-sm rounded-lg flex items-center justify-center flex-shrink-0 border border-brand-gold/15">
@@ -443,18 +443,18 @@ export default function HomePage() {
               {/* Floating glassmorphic stat */}
               <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 bg-white/70 backdrop-blur-xl px-8 py-4 rounded-2xl shadow-lodge-xl flex items-center gap-6 z-10 border border-brand-gold/20">
                 <div className="text-center">
-                  <span className="font-display text-2xl text-brand-gold font-bold block">84</span>
-                  <span className="text-[9px] text-brand-stone uppercase tracking-widest font-bold">Rallies</span>
+                  <span className="font-display text-2xl text-brand-gold font-bold block">20+</span>
+                  <span className="text-[9px] text-brand-stone uppercase tracking-widest font-bold">Tent Sites</span>
                 </div>
                 <div className="w-px h-10 bg-brand-gold/20" />
                 <div className="text-center">
-                  <span className="font-display text-2xl text-brand-gold font-bold block">4,200+</span>
-                  <span className="text-[9px] text-brand-stone uppercase tracking-widest font-bold">Campers</span>
+                  <span className="font-display text-2xl text-brand-gold font-bold block">20</span>
+                  <span className="text-[9px] text-brand-stone uppercase tracking-widest font-bold">Cabins</span>
                 </div>
                 <div className="w-px h-10 bg-brand-gold/20" />
                 <div className="text-center">
-                  <span className="font-display text-2xl text-brand-gold font-bold block">4.8★</span>
-                  <span className="text-[9px] text-brand-stone uppercase tracking-widest font-bold">Rating</span>
+                  <span className="font-display text-2xl text-brand-gold font-bold block">156</span>
+                  <span className="text-[9px] text-brand-stone uppercase tracking-widest font-bold">RV Sites</span>
                 </div>
               </div>
             </div>
@@ -545,7 +545,7 @@ export default function HomePage() {
               { icon: Waves, title: 'Pool & Hot Tubs', desc: 'Cool off or soak under the Black Hills stars' },
               { icon: Beer, title: 'Beer Garden', desc: 'Relax with a cold one after a day of adventure' },
               { icon: Wifi, title: 'Free Wi-Fi', desc: 'Stay connected throughout the entire park' },
-              { icon: PawPrint, title: 'Pet Friendly', desc: 'Your furry family members are welcome' },
+              { icon: PawPrint, title: 'Traveling With Pets?', desc: PET_POLICY_NOTE },
             ].map((a, i) => (
               <div key={i} className="bg-white/80 backdrop-blur-sm border-2 border-brand-gold/15 rounded-2xl p-6 text-center hover:bg-white hover:-translate-y-2 hover:shadow-gold hover:border-brand-gold/30 transition-all duration-300 group shadow-lodge">
                 <div className="w-16 h-16 bg-brand-gold/10 backdrop-blur-sm rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-brand-gold group-hover:scale-110 transition-all duration-300 border border-brand-gold/15">
@@ -713,7 +713,7 @@ export default function HomePage() {
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-10">
             <span className="inline-block px-5 py-2 bg-brand-gold text-white text-xs font-black uppercase tracking-[0.2em] rounded-full shadow-gold mb-4">
-              ★ Upcoming On-Site Event ★
+              ★ Annual On-Site Rally Event ★
             </span>
             <h2 className="mb-3">
               Charity <span className="text-brand-gold italic">Auction Night</span>
@@ -724,23 +724,13 @@ export default function HomePage() {
             <div className="w-24 h-1.5 bg-gold-gradient rounded-full mt-5 mx-auto" />
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-            <div className="relative rounded-3xl overflow-hidden shadow-lodge-xl border-2 border-white aspect-[9/16] max-w-sm mx-auto lg:mx-0">
-              <Image
-                src="/images/posts/auctionnight.png"
-                alt="86th Sturgis Bike Rally Charity Auction Night flyer at Rush No More RV Resort, Tuesday August 11 at 7 PM"
-                fill
-                sizes="(max-width: 1024px) 90vw, 400px"
-                className="object-cover"
-              />
-            </div>
-
+          <div className="max-w-3xl mx-auto">
             <div>
               <div className="grid grid-cols-2 gap-3 mb-6">
                 <div className="bg-white rounded-xl p-4 border border-brand-gold/15 shadow-lodge">
                   <div className="text-xs uppercase font-bold tracking-wider text-brand-stone mb-1">When</div>
-                  <div className="font-display font-bold text-brand-navy">Tuesday, August 11</div>
-                  <div className="text-sm text-brand-navy/70">7:00 PM</div>
+                  <div className="font-display font-bold text-brand-navy">During Rally week</div>
+                  <div className="text-sm text-brand-navy/70">Date to be confirmed</div>
                 </div>
                 <div className="bg-white rounded-xl p-4 border border-brand-gold/15 shadow-lodge">
                   <div className="text-xs uppercase font-bold tracking-wider text-brand-stone mb-1">Where</div>
@@ -801,7 +791,7 @@ export default function HomePage() {
             </h2>
             <p className="text-brand-navy/70 text-lg max-w-2xl mx-auto font-medium">
               Routes, itineraries and rally insider info — written by the team that has hosted
-              campers in Sturgis for 84+ Sturgis Motorcycle Rallies.
+              rally guests in Sturgis for over a decade.
             </p>
             <div className="w-32 h-1.5 bg-gold-gradient rounded-full mt-5 mx-auto" />
           </div>
@@ -834,7 +824,7 @@ export default function HomePage() {
               </div>
               <div className="p-5">
                 <p className="text-brand-navy/70 text-sm mb-4 leading-relaxed font-medium">
-                  Everything you need for the Sturgis Motorcycle Rally — Aug 2 to 18, 2026. RV, cabin
+                  Everything you need for the Sturgis Motorcycle Rally — next dates to be confirmed. RV, cabin
                   and tent options 5 miles from Main Street.
                 </p>
                 <span className="text-brand-gold font-bold text-sm flex items-center gap-1.5 group-hover:gap-2.5 transition-all uppercase tracking-wider">
@@ -846,7 +836,7 @@ export default function HomePage() {
             <Link
               href="/rally-rates"
               className="group block rounded-2xl overflow-hidden border-2 border-brand-gold/15 hover:border-brand-gold/40 hover:-translate-y-1 hover:shadow-gold-lg transition-all duration-500 bg-surface-primary"
-              aria-label="2026 Sturgis Rally rates and reservations"
+              aria-label="Sturgis Rally rates and reservations"
             >
               <div className="relative aspect-[16/10] overflow-hidden">
                 <div
@@ -858,14 +848,14 @@ export default function HomePage() {
                 <div className="absolute inset-0 bg-gradient-to-t from-brand-navy via-brand-navy/30 to-transparent" />
                 <div className="absolute bottom-4 left-4 right-4">
                   <h3 className="text-xl md:text-2xl font-display text-white font-bold">
-                    Sturgis Rally Rates 2026
+                    Sturgis Rally Rates
                   </h3>
                 </div>
               </div>
               <div className="p-5">
                 <p className="text-brand-navy/70 text-sm mb-4 leading-relaxed font-medium">
-                  Full rate table for Rally week. Tent, RV and presidential cabin pricing — book
-                  before sites are claimed.
+                  Rally rate table for RV, cabin and tent stays. 2027 rates to be announced —
+                  contact us.
                 </p>
                 <span className="text-brand-gold font-bold text-sm flex items-center gap-1.5 group-hover:gap-2.5 transition-all uppercase tracking-wider">
                   See Rally Rates <ArrowRight className="w-4 h-4" />

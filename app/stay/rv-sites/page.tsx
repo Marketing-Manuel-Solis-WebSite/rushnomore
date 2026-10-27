@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { SITE, RV_TIERS } from '@/data/site';
+import { SITE, RV_TIERS, PET_POLICY_NOTE } from '@/data/site';
 import { BookingCTA } from '@/components/ui';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { faqSchema, breadcrumbSchema, serviceSchema, speakableSchema } from '@/lib/seo';
@@ -16,7 +16,7 @@ import {
 const WHY_CHOOSE = [
   { icon: Zap, title: '30 & 50 AMP Service', desc: '30 AMP standard on Water/Electric sites; 30 or 50 AMP on Full-Hookup, Luxury and Luxury Spa sites.' },
   { icon: Navigation, title: 'Pull-Throughs up to 100ft', desc: 'Big rigs welcome — our longest pull-through sites accommodate up to 100 feet.' },
-  { icon: Waves, title: 'Pool & Hot Tubs Included', desc: 'Heated pool and multiple hot tub spas are free with every RV site.' },
+  { icon: Waves, title: 'Pool & Hot Tubs Included', desc: 'The pool and multiple hot tub spas are free with every RV site.' },
   { icon: Beer, title: 'On-Site Beer Garden', desc: 'Craft brews, cocktails, and a social atmosphere steps from your site.' },
   { icon: ShieldCheck, title: 'Friendly On-Site Staff', desc: 'Friendly on-site staff during business hours, after-hours on-call assistance and well-lit grounds.' },
   { icon: Wifi, title: 'Free Wi-Fi', desc: 'Stay connected throughout the resort with complimentary Wi-Fi.' },
@@ -27,9 +27,9 @@ const FAQS = [
   { q: 'How long can my RV be?', a: 'We accommodate RVs up to 100 feet with both pull-through and back-in options available.' },
   { q: 'How far is Rush No More from Mount Rushmore?', a: 'Rush No More is approximately 55 miles from Mount Rushmore National Memorial, about a 1-hour scenic drive through the Black Hills.' },
   { q: 'What is the difference between Luxury and Luxury Spa sites?', a: 'Both include cement slabs and gas BBQ grills. Luxury Spa sites add a private hot tub spa right at your site — the ultimate RV glamping experience.' },
-  { q: 'Are RV sites open year-round?', a: 'Standard RV sites are open year-round. Luxury and Luxury Spa sites are seasonal (May 1 through October 1).' },
+  { q: 'Are RV sites open year-round?', a: 'Standard RV sites are open year-round. Luxury and Luxury Spa sites are seasonal — please contact us to confirm availability for your dates.' },
   { q: 'Is there a dump station?', a: 'Full Hook-Up sites have their own sewer connection at the site. Guests on Water/Electric sites can use the on-site dump station — please ask the front desk for directions on arrival.' },
-  { q: 'Are pets allowed at the RV park?', a: 'Yes! Well-behaved pets are welcome at most RV sites. Pets must be on leash, owners must clean up after them, and pets are not to be left unattended.' },
+  { q: 'Are pets allowed at the RV park?', a: PET_POLICY_NOTE },
 ];
 
 export default function RVSitesPage() {
@@ -39,7 +39,7 @@ export default function RVSitesPage() {
       <JsonLd data={faqSchema(FAQS)} />
       <JsonLd data={serviceSchema({
         name: 'RV Sites at Rush No More — Full Hookup 30/50 AMP',
-        description: '156 full-hookup RV sites (water/electric/sewer, 30/50 AMP) near Mount Rushmore. Pull-throughs up to 100 ft, luxury sites with cement slab and gas BBQ, and Luxury Spa sites with private hot tub.',
+        description: '156 RV sites near Mount Rushmore — water/electric and full-hookup (water/electric/sewer) options with 30/50 AMP. Pull-throughs up to 100 ft, luxury sites with cement slab and gas BBQ, and Luxury Spa sites with private hot tub.',
         url: '/stay/rv-sites',
         image: '/images/RushMore-rv-camper-van.png',
         priceMin: '41.22',
@@ -54,13 +54,13 @@ export default function RVSitesPage() {
         <div className="absolute inset-0 bg-brand-navy/60" />
         <div className="relative z-10 max-w-5xl mx-auto px-4 text-center text-white py-32">
           <span className="inline-block px-5 py-2 bg-brand-gold/30 text-brand-gold-light text-xs font-black uppercase tracking-[0.2em] rounded-full mb-6">
-            #1 RV Park Near Mount Rushmore
+            RV Park Near Mount Rushmore
           </span>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-display mb-6 leading-[1.1]">
             Full-Hookup <span className="text-brand-gold italic">RV Sites</span> in the Black Hills
           </h1>
           <p className="text-lg text-white/80 max-w-3xl mx-auto mb-8">
-            156 premium RV sites with 30/50 AMP, pull-throughs up to 100ft, heated pool, beer garden & free resort amenities — just 55 miles from Mount Rushmore in Sturgis, South Dakota.
+            156 premium RV sites with 30/50 AMP, pull-throughs up to 100ft, pool, beer garden & free resort amenities — just 55 miles from Mount Rushmore in Sturgis, South Dakota.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10 mb-10">
             {[
@@ -238,7 +238,7 @@ export default function RVSitesPage() {
             Ready to <span className="text-brand-gold italic">Book?</span>
           </h2>
           <p className="text-brand-navy/60 text-lg mb-8 font-medium">
-            Secure your RV site at the Black Hills&apos; top-rated resort. Prices vary by weekday, weekend, Rally &amp; holidays. Water/Electric from $41.22/night, FHU from $51.72, Luxury from $62.36.
+            Secure your RV site at Rush No More in the Black Hills. Prices vary by weekday, weekend, Rally &amp; holidays. Water/Electric from $41.22/night, FHU from $51.76, Luxury from $62.36.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4">
             <a href={SITE.booking} target="_blank" rel="noopener noreferrer" className="btn-gold text-base px-8 py-4">

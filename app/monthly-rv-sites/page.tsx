@@ -9,7 +9,7 @@ import { Phone, ArrowRight, Truck, Zap, Wifi, Shield, Snowflake, Sun } from 'luc
 const FAQ = [
   { q: 'Are monthly rates available year-round?', a: 'The RV park is open year-round. Monthly rates are available in shoulder and off-season windows; rally-week dates (early August) are excluded. Call for current monthly availability.' },
   { q: 'What&apos;s included with a monthly RV site?', a: 'Full hookups (water/electric/sewer), 30/50 AMP service, complimentary Wi-Fi, bathhouse access, laundromat, pool when seasonal, beer garden access and friendly on-site staff.' },
-  { q: 'Can I stay through the winter?', a: 'Yes — the park operates year-round for RV guests. Pool and some luxury amenities are seasonal (May–October). Freeze-season water management is handled on site.' },
+  { q: 'Can I stay through the winter?', a: 'Yes — the park operates year-round for RV guests. Pool and some luxury amenities are seasonal — please contact us to confirm dates. Freeze-season water management is handled on site.' },
   { q: 'Is there a minimum stay for monthly rates?', a: 'Monthly rates require a 28-night commitment. For shorter extended stays, weekly rates may apply.' },
   { q: 'Do monthly rates include electric?', a: 'Electric is typically metered and billed separately from the site rate for monthly guests. Call for current billing structure.' },
   { q: 'Is mail delivery available?', a: 'Package receiving is available at the office. Confirm delivery arrangements with the front desk on arrival.' },
@@ -81,7 +81,7 @@ export default function Page() {
               { icon: Zap, t: '30 / 50 AMP', d: 'Both amperages available — big rigs welcome.' },
               { icon: Wifi, t: 'Complimentary Wi-Fi', d: 'Stay connected throughout the resort.' },
               { icon: Shield, t: 'Friendly On-Site Staff', d: 'On-site staff during business hours with after-hours on-call assistance.' },
-              { icon: Sun, t: 'Seasonal Amenities', d: 'Pool, hot tubs and beer garden May–October.' },
+              { icon: Sun, t: 'Seasonal Amenities', d: 'Pool, hot tubs and beer garden are seasonal — contact us to confirm.' },
               { icon: Snowflake, t: 'Year-Round Operation', d: 'RV sites open through winter with cold-weather protocols.' },
             ].map(({ icon: Icon, t, d }) => (
               <div key={t} className="bg-surface-primary rounded-2xl p-6 border border-brand-gold/15">
@@ -154,7 +154,7 @@ export default function Page() {
           <Link href="/stay/rv-sites" className="px-5 py-2.5 border border-brand-navy/20 rounded-full text-sm font-bold hover:bg-brand-navy hover:text-white transition-all">RV Site Types</Link>
           <Link href="/stay/cabins" className="px-5 py-2.5 border border-brand-navy/20 rounded-full text-sm font-bold hover:bg-brand-navy hover:text-white transition-all">Presidential Cabins</Link>
           <Link href="/sturgis-rally-camping" className="px-5 py-2.5 border border-brand-navy/20 rounded-full text-sm font-bold hover:bg-brand-navy hover:text-white transition-all">Rally Camping</Link>
-          <Link href="/rally-rates" className="px-5 py-2.5 border border-brand-navy/20 rounded-full text-sm font-bold hover:bg-brand-navy hover:text-white transition-all">Rally Rates 2026</Link>
+          <Link href="/rally-rates" className="px-5 py-2.5 border border-brand-navy/20 rounded-full text-sm font-bold hover:bg-brand-navy hover:text-white transition-all">Rally Rates</Link>
           <Link href="/amenities" className="px-5 py-2.5 border border-brand-navy/20 rounded-full text-sm font-bold hover:bg-brand-navy hover:text-white transition-all">All Amenities</Link>
           <Link href="/policies" className="px-5 py-2.5 border border-brand-navy/20 rounded-full text-sm font-bold hover:bg-brand-navy hover:text-white transition-all">Policies</Link>
         </div>

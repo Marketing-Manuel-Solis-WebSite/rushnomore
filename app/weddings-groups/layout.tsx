@@ -2,8 +2,8 @@ import { Metadata } from 'next';
 import { seo } from '@/lib/seo';
 
 export const metadata: Metadata = seo({
-  title: 'Weddings, Reunions & Group Events — Black Hills Venue in Sturgis, SD',
-  description: 'Host weddings, family reunions, corporate retreats and group events at Rush No More in the Black Hills. Pavilion for 20–200 guests, commercial kitchen, on-site cabins, RV sites and tent camping so everyone stays together. Beer garden, pool and stunning Black Hills backdrops.',
+  title: 'Weddings & Group Events — Black Hills Venue in Sturgis, SD',
+  description: 'Weddings, reunions, retreats and group events at Rush No More in the Black Hills. Pavilion for 20–200 guests plus cabins, RV and tent sites so everyone stays.',
   path: '/weddings-groups',
   image: '/images/EventCenter/IMG_7513.jpeg',
   keywords: [
