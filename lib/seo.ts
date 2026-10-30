@@ -229,11 +229,11 @@ export function campgroundSchema() {
           '@type': 'OfferCatalog',
           name: 'RV Sites',
           itemListElement: [
-            { '@type': 'Offer', itemOffered: { '@type': 'Product', name: 'Water/Electric Back-in RV Site', description: 'Water & electric hookup, 30 AMP service, back-in site, up to 100ft long' }, price: '41.22', priceCurrency: 'USD', availability: 'https://schema.org/InStock' },
-            { '@type': 'Offer', itemOffered: { '@type': 'Product', name: 'Full Hookup Back-in RV Site', description: 'Full hookup (water/electric/sewer), 30/50 AMP, back-in site' }, price: FACTS.fhuBackInPrice, priceCurrency: 'USD', availability: 'https://schema.org/InStock' },
-            { '@type': 'Offer', itemOffered: { '@type': 'Product', name: 'Full Hookup Pull-through RV Site', description: 'Full hookup (water/electric/sewer), 30/50 AMP, pull-through site' }, price: '62.36', priceCurrency: 'USD', availability: 'https://schema.org/InStock' },
-            { '@type': 'Offer', itemOffered: { '@type': 'Product', name: 'Luxury RV Site', description: 'Cement slab, gas BBQ, Mountain Valley location, full hookups, 30/50 AMP' }, price: '62.36', priceCurrency: 'USD', availability: 'https://schema.org/InStock' },
-            { '@type': 'Offer', itemOffered: { '@type': 'Product', name: 'Luxury Spa RV Site with Private Hot Tub', description: 'Private hot tub spa, cement slab, gas BBQ, full hookups, 30/50 AMP' }, price: '72.93', priceCurrency: 'USD', availability: 'https://schema.org/InStock' },
+            { '@type': 'Offer', itemOffered: { '@type': 'CampingPitch', name: 'Water/Electric Back-in RV Site', description: 'Water & electric hookup, 30 AMP service, back-in site, up to 100ft long' }, price: '41.22', priceCurrency: 'USD', availability: 'https://schema.org/InStock' },
+            { '@type': 'Offer', itemOffered: { '@type': 'CampingPitch', name: 'Full Hookup Back-in RV Site', description: 'Full hookup (water/electric/sewer), 30/50 AMP, back-in site' }, price: FACTS.fhuBackInPrice, priceCurrency: 'USD', availability: 'https://schema.org/InStock' },
+            { '@type': 'Offer', itemOffered: { '@type': 'CampingPitch', name: 'Full Hookup Pull-through RV Site', description: 'Full hookup (water/electric/sewer), 30/50 AMP, pull-through site' }, price: '62.36', priceCurrency: 'USD', availability: 'https://schema.org/InStock' },
+            { '@type': 'Offer', itemOffered: { '@type': 'CampingPitch', name: 'Luxury RV Site', description: 'Cement slab, gas BBQ, Mountain Valley location, full hookups, 30/50 AMP' }, price: '62.36', priceCurrency: 'USD', availability: 'https://schema.org/InStock' },
+            { '@type': 'Offer', itemOffered: { '@type': 'CampingPitch', name: 'Luxury Spa RV Site with Private Hot Tub', description: 'Private hot tub spa, cement slab, gas BBQ, full hookups, 30/50 AMP' }, price: '72.93', priceCurrency: 'USD', availability: 'https://schema.org/InStock' },
           ],
         },
         {
@@ -250,8 +250,8 @@ export function campgroundSchema() {
           '@type': 'OfferCatalog',
           name: 'Tent Camping',
           itemListElement: [
-            { '@type': 'Offer', itemOffered: { '@type': 'Product', name: 'Basic Tent Site', description: 'Shaded site under Ponderosa pines with bathhouse access' }, price: '35.00', priceCurrency: 'USD', availability: 'https://schema.org/InStock' },
-            { '@type': 'Offer', itemOffered: { '@type': 'Product', name: 'Electric Tent Site', description: 'Shaded tent site with 20 AMP electric hookup and bathhouse access' }, price: '40.00', priceCurrency: 'USD', availability: 'https://schema.org/InStock' },
+            { '@type': 'Offer', itemOffered: { '@type': 'CampingPitch', name: 'Basic Tent Site', description: 'Shaded site under Ponderosa pines with bathhouse access' }, price: '35.00', priceCurrency: 'USD', availability: 'https://schema.org/InStock' },
+            { '@type': 'Offer', itemOffered: { '@type': 'CampingPitch', name: 'Electric Tent Site', description: 'Shaded tent site with 20 AMP electric hookup and bathhouse access' }, price: '40.00', priceCurrency: 'USD', availability: 'https://schema.org/InStock' },
           ],
         },
       ],
