@@ -4,6 +4,7 @@ import dynamic from 'next/dynamic';
 import { usePathname } from 'next/navigation';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
+import { BookingClickTracker } from '@/components/layout/BookingClickTracker';
 
 // Below-the-fold / deferred components. SSR is fine — but no need to inline
 // them in the initial client chunk, since they render after scroll/idle.
@@ -28,6 +29,7 @@ export function LayoutShell({ children }: { children: React.ReactNode }) {
         <>
           <Footer />
           <BookingBar />
+          <BookingClickTracker />
           <AIChatWidget />
         </>
       )}
