@@ -45,13 +45,10 @@ export const metadata: Metadata = {
   creator: 'Rush No More RV Resort & Campground',
   publisher: 'Rush No More RV Resort & Campground',
   category: 'Travel & Tourism',
-  alternates: {
-    canonical: 'https://www.rushnomore.com/',
-    languages: {
-      'en-US': 'https://www.rushnomore.com/',
-      'x-default': 'https://www.rushnomore.com/',
-    },
-  },
+  // Homepage canonical + hreflang are rendered as <link> tags in app/page.tsx:
+  // Next's metadata resolver strips the trailing slash from a root URL
+  // ("https://www.rushnomore.com/" → "https://www.rushnomore.com"), which would
+  // not match the sitemap entry. Every other route sets its own via seo().
   keywords: [
     // Primary money keywords
     'rv park near mount rushmore',

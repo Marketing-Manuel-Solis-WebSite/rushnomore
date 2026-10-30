@@ -5,9 +5,16 @@ import { BookingCTA } from '@/components/ui';
 import { HeroSection } from '@/components/layout/HeroSection';
 import { ExternalLink, MapPin, Mountain, TreePine, Tent, Home, Truck, Phone, Star, ArrowRight, Users, Zap, Waves, Beer, ShieldCheck, Wifi, PawPrint, Clock, Navigation, Award, Heart, ThumbsUp, CheckCircle, Flame, Gamepad2, Quote, Calendar, Route } from 'lucide-react';
 
+const HOME_URL = 'https://www.rushnomore.com/';
+
 export default function HomePage() {
   return (
     <>
+      {/* React 19 hoists these into <head>. Kept here (not in metadata) so the
+          trailing slash survives and matches the sitemap URL exactly. */}
+      <link rel="canonical" href={HOME_URL} />
+      <link rel="alternate" hrefLang="en-US" href={HOME_URL} />
+      <link rel="alternate" hrefLang="x-default" href={HOME_URL} />
       <HeroSection />
 
       {/* ═══ SOCIAL PROOF BAR ═══ */}
