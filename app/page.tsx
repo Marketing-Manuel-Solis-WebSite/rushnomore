@@ -610,7 +610,14 @@ export default function HomePage() {
             ].map((item, i) => (
               <Link key={i} href={item.href} className="group block rounded-2xl overflow-hidden border border-white/10 hover:border-brand-gold/40 transition-all duration-500 hover:-translate-y-1 bg-white/5 backdrop-blur-sm">
                 <div className="relative aspect-[16/10] overflow-hidden">
-                  <div className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style={{ backgroundImage: `url('${item.img}')` }} />
+                  <Image
+                    src={item.img}
+                    alt=""
+                    fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    className="object-cover transition-transform duration-700 group-hover:scale-110"
+                    loading="lazy"
+                  />
                   <div className="absolute inset-0 bg-gradient-to-t from-brand-navy via-brand-navy/30 to-transparent" />
                   <div className="absolute top-3 right-3">
                     <span className="px-3 py-1.5 bg-white/15 backdrop-blur-md rounded-full text-[10px] font-black uppercase tracking-wider text-brand-gold-light border border-white/20">{item.dist}</span>
@@ -811,11 +818,13 @@ export default function HomePage() {
               aria-label="Sturgis Motorcycle Rally camping at Rush No More"
             >
               <div className="relative aspect-[16/10] overflow-hidden">
-                <div
-                  className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
-                  style={{ backgroundImage: "url('/images/BikeRally/IMG_9865.JPG')" }}
-                  role="img"
-                  aria-label="Motorcycles at Rush No More during the Sturgis Rally"
+                <Image
+                  src="/images/BikeRally/IMG_9865.JPG"
+                  alt="Motorcycles at Rush No More during the Sturgis Rally"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                  loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-brand-navy via-brand-navy/30 to-transparent" />
                 <div className="absolute top-3 left-3">
@@ -846,11 +855,13 @@ export default function HomePage() {
               aria-label="Sturgis Rally rates and reservations"
             >
               <div className="relative aspect-[16/10] overflow-hidden">
-                <div
-                  className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
-                  style={{ backgroundImage: "url('/images/vip-site.png')" }}
-                  role="img"
-                  aria-label="Rush No More luxury RV site for Sturgis Rally guests"
+                <Image
+                  src="/images/vip-site.png"
+                  alt="Rush No More luxury RV site for Sturgis Rally guests"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                  loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-brand-navy via-brand-navy/30 to-transparent" />
                 <div className="absolute bottom-4 left-4 right-4">
@@ -876,11 +887,13 @@ export default function HomePage() {
               aria-label="Best motorcycle rides near Sturgis, South Dakota"
             >
               <div className="relative aspect-[16/10] overflow-hidden">
-                <div
-                  className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
-                  style={{ backgroundImage: "url('/images/DSC05580-s.png')" }}
-                  role="img"
-                  aria-label="Iron Mountain Road framing Mount Rushmore in the Black Hills"
+                <Image
+                  src="/images/DSC05580-s.png"
+                  alt="Iron Mountain Road framing Mount Rushmore in the Black Hills"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                  loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-brand-navy via-brand-navy/30 to-transparent" />
                 <div className="absolute bottom-4 left-4 right-4">

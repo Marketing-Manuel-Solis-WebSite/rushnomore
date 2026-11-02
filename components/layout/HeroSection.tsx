@@ -1,31 +1,35 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { SITE } from '@/data/site';
 import { MapPin, Mountain, TreePine, Phone } from 'lucide-react';
 
 export function HeroSection() {
+  const [showVideo, setShowVideo] = useState(false);
+
+  useEffect(() => {
+    let idleId: number | undefined;
+    let timeoutId: ReturnType<typeof setTimeout> | undefined;
+    const mount = () => setShowVideo(true);
+    const schedule = () => {
+      if ('requestIdleCallback' in window) idleId = window.requestIdleCallback(mount, { timeout: 2000 });
+      else timeoutId = setTimeout(mount, 200);
+    };
+    if (document.readyState === 'complete') schedule();
+    else window.addEventListener('load', schedule, { once: true });
+    return () => {
+      window.removeEventListener('load', schedule);
+      if (idleId !== undefined) window.cancelIdleCallback(idleId);
+      if (timeoutId !== undefined) clearTimeout(timeoutId);
+    };
+  }, []);
+
   return (
     <section className="relative min-h-[100dvh] flex items-center justify-center overflow-hidden bg-brand-navy">
-      {/* Background hero video — resort montage. The aerial image is the
-          LCP/poster fallback and shows until the video can autoplay (or if
-          autoplay is blocked, e.g. on low-power mobile). We use the
-          "perfect day" montage rather than the old archway clip, which
-          resembled the neighbor's driveway and risked misdirecting guests. */}
-      <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="auto"
-        poster="/images/Aereal-2_1400.png"
-        aria-hidden="true"
-        className="absolute inset-0 w-full h-full object-cover"
-      >
-        <source src="/videos/rush-no-more-perfect-day.mp4" type="video/mp4" />
-      </video>
-
-      {/* LCP / fallback image (shown until the video paints or if it fails) */}
+      {/* LCP / fallback image. Painted first so it shows exactly where the
+          poster used to, until the deferred video mounts on top of it (or
+          forever if autoplay is blocked, e.g. on low-power mobile). */}
       <Image
         src="/images/Aereal-2_1400.png"
         alt="Aerial view of Rush No More RV Resort and campground in the Black Hills, Sturgis SD"
@@ -34,8 +38,28 @@ export function HeroSection() {
         fetchPriority="high"
         sizes="100vw"
         quality={75}
-        className="object-cover -z-10"
+        className="object-cover"
       />
+
+      {/* Background hero video — resort montage. Mounted only after the page
+          load event + idle so its bytes never compete with the LCP image. We
+          use the "perfect day" montage rather than the old archway clip,
+          which resembled the neighbor's driveway and risked misdirecting
+          guests. The -480p file is a lighter re-encode of the same clip. */}
+      {showVideo && (
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          poster="/images/Aereal-2_1400.webp"
+          aria-hidden="true"
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src="/videos/rush-no-more-perfect-day-480p.mp4" type="video/mp4" />
+        </video>
+      )}
 
       {/* Overlay negro más fuerte para mejor legibilidad */}
       <div className="absolute inset-0 bg-black/30" />
